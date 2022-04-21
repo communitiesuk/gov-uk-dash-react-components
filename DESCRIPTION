@@ -1,0 +1,13 @@
+Package: ukGovDashComponents
+Title: Dash components for Gov UK
+Version: 0.0.1
+Description: Dash components for Gov UK
+Depends: R (>= 3.0.2)
+Imports: 
+Suggests: 
+License: MIT + file LICENSE
+URL: https://github.com/communitiesuk/uk-gov-dash-components
+BugReports: https://github.com/communitiesuk/uk-gov-dash-components/issues
+Encoding: UTF-8
+LazyData: true
+KeepSource: true

@@ -1,0 +1,11 @@
+include uk_gov_dash_components/uk_gov_dash_components.min.js
+include uk_gov_dash_components/uk_gov_dash_components.min.js.map
+include uk_gov_dash_components/async-*.js
+include uk_gov_dash_components/async-*.js.map
+include uk_gov_dash_components/*-shared.js
+include uk_gov_dash_components/*-shared.js.map
+include uk_gov_dash_components/metadata.json
+include uk_gov_dash_components/package-info.json
+include README.md
+include LICENSE
+include package.json
