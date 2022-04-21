@@ -1,4 +1,353 @@
 {
+  "src/lib/components/AutoComplete.react.js": {
+    "description": "Lazy loaded Autocomplete\r\n\n@param {\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tdefaultValue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n} [props={}]\r\n@return {*}",
+    "displayName": "AutoComplete",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "autoselect": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Should auto select",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "cssNamespace": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "cssNamespace",
+        "defaultValue": {
+          "value": "'autocomplete'",
+          "computed": false
+        }
+      },
+      "displayMenu": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "'inline'",
+          "computed": false
+        }
+      },
+      "minLength": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      },
+      "name": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "'input-autocomplete'",
+          "computed": false
+        }
+      },
+      "placeholder": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "onConfirm": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "() => { }",
+          "computed": false
+        }
+      },
+      "confirmOnBlur": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "showNoOptionsFound": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "showAllValues": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "required": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "tNoResults": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "() => 'No results found'",
+          "computed": false
+        }
+      },
+      "tAssistiveHint": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description",
+        "defaultValue": {
+          "value": "() => 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.'",
+          "computed": false
+        }
+      },
+      "source": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "templates": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusQueryTooShort": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusNoResults": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusSelectedOption": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusResults": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "dropdownArrow": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "React component for dropdown arrow",
+        "defaultValue": {
+          "value": "DropdownArrowDown",
+          "computed": true
+        }
+      },
+      "element": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Accessible element"
+      },
+      "value": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The value displayed in the input.",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      },
+      "ariaLabelledBy": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "This is the ID for the label field"
+      }
+    }
+  },
+  "src/lib/components/dropdownArrowDown.react.js": {
+    "description": "Default dropdown arrow\r\n\n@param {string} { className }",
+    "displayName": "DropdownArrowDown",
+    "methods": [],
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Class name to add to SVG"
+      }
+    }
+  },
+  "src/lib/components/status.js": {
+    "description": "Display ststus\r\n\n@export\r\n@class Status\r\n@extends {Component}",
+    "displayName": "Status",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "length": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "length"
+      },
+      "minQueryLength": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "min Query Length"
+      },
+      "queryLength": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Query Length"
+      },
+      "selectedOption": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Selected option"
+      },
+      "selectedOptionIndex": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Selected Option Index"
+      },
+      "tQueryTooShort": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "tQueryTooShort",
+        "defaultValue": {
+          "value": "(minQueryLength) => `Type in ${minQueryLength} or more characters for results`",
+          "computed": false
+        }
+      },
+      "tNoResults": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "tNoResults",
+        "defaultValue": {
+          "value": "() => 'No search results'",
+          "computed": false
+        }
+      },
+      "tSelectedOption": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "tSelectedOption",
+        "defaultValue": {
+          "value": "(selectedOption, length, index) => `${selectedOption} ${index + 1} of ${length} is highlighted`",
+          "computed": false
+        }
+      },
+      "tResults": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "tResults",
+        "defaultValue": {
+          "value": "(length, contentSelectedOption) => {\r\n    const words = {\r\n        result: (length === 1) ? 'result' : 'results',\r\n        is: (length === 1) ? 'is' : 'are'\r\n    }\r\n\r\n    return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`\r\n}",
+          "computed": false
+        }
+      }
+    }
+  },
   "src/lib/components/UkGovDashComponents.react.js": {
     "description": "ExampleComponent is an example component.\r\nIt takes a property, `label`, and\r\ndisplays it.\r\nIt renders an input with the property `value`\r\nwhich is editable by the user.",
     "displayName": "UkGovDashComponents",

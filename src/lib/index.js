@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import UkGovDashComponents from './components/UkGovDashComponents.react';
-
+import AutoComplete from './components/AutoComplete.react'
 export {
-    UkGovDashComponents
+    AutoComplete
 };
