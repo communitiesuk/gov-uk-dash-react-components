@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "f0f2650-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "148c1b2-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "f0f2650-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "148c1b2-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "2ff4d77b05591b9102f1";
+/******/ 	var hotCurrentHash = "78fe0b19462e66fe84cf";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650550368");
+/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650552577");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -32750,7 +32750,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"f0f2650"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"148c1b2"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -34430,12 +34430,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_status__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/status */ "./src/lib/components/status.js");
 /* harmony import */ var _autocomplete_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./autocomplete.css */ "./src/lib/fragments/autocomplete.css");
 /* harmony import */ var _autocomplete_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_autocomplete_css__WEBPACK_IMPORTED_MODULE_6__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -34449,6 +34443,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /* eslint-disable no-undefined */
 
@@ -34488,32 +34488,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  * @return {*}
  */
 
-var AutoComplete = function AutoComplete() {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _components_AutoComplete_react__WEBPACK_IMPORTED_MODULE_2__["defaultProps"],
-      id = _ref.id,
-      autoselect = _ref.autoselect,
-      cssNamespace = _ref.cssNamespace,
-      value = _ref.value,
-      displayMenu = _ref.displayMenu,
-      minLength = _ref.minLength,
-      name = _ref.name,
-      placeholder = _ref.placeholder,
-      onConfirm = _ref.onConfirm,
-      confirmOnBlur = _ref.confirmOnBlur,
-      showNoOptionsFound = _ref.showNoOptionsFound,
-      showAllValues = _ref.showAllValues,
-      required = _ref.required,
-      tNoResults = _ref.tNoResults,
-      tAssistiveHint = _ref.tAssistiveHint,
-      source = _ref.source,
-      templates = _ref.templates,
-      dropdownArrowFactory = _ref.dropdownArrow,
-      tStatusQueryTooShort = _ref.tStatusQueryTooShort,
-      tStatusNoResults = _ref.tStatusNoResults,
-      tStatusSelectedOption = _ref.tStatusSelectedOption,
-      tStatusResults = _ref.tStatusResults,
-      setProps = _ref.setProps,
-      ariaLabelledBy = _ref.ariaLabelledBy;
+var AutoComplete = function AutoComplete(props) {
+  var _defaultProps$props = _objectSpread(_objectSpread({}, _components_AutoComplete_react__WEBPACK_IMPORTED_MODULE_2__["defaultProps"]), props),
+      id = _defaultProps$props.id,
+      autoselect = _defaultProps$props.autoselect,
+      cssNamespace = _defaultProps$props.cssNamespace,
+      value = _defaultProps$props.value,
+      displayMenu = _defaultProps$props.displayMenu,
+      minLength = _defaultProps$props.minLength,
+      name = _defaultProps$props.name,
+      placeholder = _defaultProps$props.placeholder,
+      onConfirm = _defaultProps$props.onConfirm,
+      confirmOnBlur = _defaultProps$props.confirmOnBlur,
+      showNoOptionsFound = _defaultProps$props.showNoOptionsFound,
+      showAllValues = _defaultProps$props.showAllValues,
+      required = _defaultProps$props.required,
+      tNoResults = _defaultProps$props.tNoResults,
+      tAssistiveHint = _defaultProps$props.tAssistiveHint,
+      source = _defaultProps$props.source,
+      templates = _defaultProps$props.templates,
+      dropdownArrowFactory = _defaultProps$props.dropdownArrow,
+      tStatusQueryTooShort = _defaultProps$props.tStatusQueryTooShort,
+      tStatusNoResults = _defaultProps$props.tStatusNoResults,
+      tStatusSelectedOption = _defaultProps$props.tStatusSelectedOption,
+      tStatusResults = _defaultProps$props.tStatusResults,
+      setProps = _defaultProps$props.setProps,
+      ariaLabelledBy = _defaultProps$props.ariaLabelledBy;
 
   if (!id) {
     throw new Error('id is not defined');

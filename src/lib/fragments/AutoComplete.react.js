@@ -36,32 +36,33 @@ import './autocomplete.css';
  * }=defaultProps]
  * @return {*}
  */
-const AutoComplete = ({
-	id,
-	autoselect,
-	cssNamespace,
-	value,
-	displayMenu,
-	minLength,
-	name,
-	placeholder,
-	onConfirm,
-	confirmOnBlur,
-	showNoOptionsFound,
-	showAllValues,
-	required,
-	tNoResults,
-	tAssistiveHint,
-	source,
-	templates,
-	dropdownArrow: dropdownArrowFactory,
-	tStatusQueryTooShort,
-	tStatusNoResults,
-	tStatusSelectedOption,
-	tStatusResults,
-	setProps,
-	ariaLabelledBy
-} = defaultProps) => {
+const AutoComplete = (props) => {
+	const {
+		id,
+		autoselect,
+		cssNamespace,
+		value,
+		displayMenu,
+		minLength,
+		name,
+		placeholder,
+		onConfirm,
+		confirmOnBlur,
+		showNoOptionsFound,
+		showAllValues,
+		required,
+		tNoResults,
+		tAssistiveHint,
+		source,
+		templates,
+		dropdownArrow: dropdownArrowFactory,
+		tStatusQueryTooShort,
+		tStatusNoResults,
+		tStatusSelectedOption,
+		tStatusResults,
+		setProps,
+		ariaLabelledBy
+	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
 	// if (configurationOptions.preserveNullOptions === undefined) configurationOptions.preserveNullOptions = true
