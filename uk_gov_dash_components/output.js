@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "d1a4058759c8db220bd5";
+/******/ 	var hotCurrentHash = "0b33ff541c0c7fbcfb88";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650633722");
+/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650635063");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -34617,7 +34617,7 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleComponentBlur = function handleComponentBlur(newState, escape) {
-    var focusOnBlur = escape && selectElement ? -1 : null;
+    var focusOnBlur = escape && (selectElement || showAllValues) ? -1 : null;
     var newQuery;
 
     if (confirmOnBlur) {
@@ -34763,7 +34763,7 @@ var AutoComplete = function AutoComplete(props) {
     // and also make menu open
 
     if (selectElement && isMenuOpen === false) {
-      source('', function (options) {
+      dataSource('', function (options) {
         setMenuOpen(true);
         setOptions(options);
         var index = query && options.indexOf(query) > 0 ? options.indexOf(query) - 1 : options.length - 1;
@@ -34791,7 +34791,7 @@ var AutoComplete = function AutoComplete(props) {
     // and also make menu open
 
     if (selectElement && !isMenuOpen) {
-      source('', function (options) {
+      dataSource('', function (options) {
         setMenuOpen(true);
         setOptions(options);
         var index = query && options.indexOf(query) > -1 ? options.indexOf(query) + 1 : 0;
@@ -34853,7 +34853,7 @@ var AutoComplete = function AutoComplete(props) {
         handleOptionClick(event, selected);
       }
     } else if (selectElement) {
-      source('', function (options) {
+      dataSource('', function (options) {
         setOptions(options);
         var index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0;
         var openMenu = true;
@@ -34970,17 +34970,17 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputClick = function handleInputClick(event) {
-    if (selectElement && isMenuOpen === false) {
+    if ((selectElement || showAllValues) && isMenuOpen === false) {
       var newQuery = event.target.value;
-      source('', function (options) {
+      dataSource('', function (options) {
         var currentSelectionIndex = options.indexOf(newQuery);
         setMenuOpen(true);
         setOptions(options);
         setFocus(currentSelectionIndex);
-        selected(currentSelectionIndex);
+        setSelected(currentSelectionIndex);
         setHover(null);
       });
-    } else if (selectElement) {
+    } else if (selectElement || showAllValues) {
       handleComponentBlur({
         menuOpen: false
       }, true);
@@ -35108,9 +35108,7 @@ var AutoComplete = function AutoComplete(props) {
     autoComplete: "off",
     className: "".concat(inputClassName).concat(inputModifierFocused).concat(inputModifierType),
     id: id,
-    onClick: function onClick(event) {
-      return handleInputClick(event);
-    },
+    onClick: handleInputClick,
     onBlur: handleInputBlur,
     onChange: handleInputChange,
     onFocus: handleInputFocus,

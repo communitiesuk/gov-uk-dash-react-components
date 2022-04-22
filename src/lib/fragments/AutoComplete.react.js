@@ -105,7 +105,7 @@ const AutoComplete = (props) => {
 	}
 
 	const handleComponentBlur = (newState, escape) => {
-		const focusOnBlur = escape && selectElement ? -1 : null
+		const focusOnBlur = escape && (selectElement || showAllValues) ? -1 : null
 		let newQuery
 		if (confirmOnBlur) {
 			newQuery = newState.query || query
@@ -248,7 +248,7 @@ const AutoComplete = (props) => {
 		// In this case they focus on the option before the selected one (or the last),
 		// and also make menu open
 		if (selectElement && isMenuOpen === false) {
-			source('', (options) => {
+			dataSource('', (options) => {
 				setMenuOpen(true);
 				setOptions(options);
 
@@ -277,7 +277,7 @@ const AutoComplete = (props) => {
 		// In this case they focus on the option after the selected one (or the first),
 		// and also make menu open
 		if (selectElement && !isMenuOpen) {
-			source('', (options) => {
+			dataSource('', (options) => {
 				setMenuOpen(true);
 				setOptions(options);
 					let index = query && options.indexOf(query) > -1 ? options.indexOf(query) + 1 : 0
@@ -335,7 +335,7 @@ const AutoComplete = (props) => {
 				handleOptionClick(event, selected)
 			}
 		} else if (selectElement) {
-			source('', (options) => {
+			dataSource('', (options) => {
 				setOptions(options)
 
 				let index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0
@@ -439,17 +439,17 @@ const AutoComplete = (props) => {
 	}
 
 	const handleInputClick = (event) => {
-		if (selectElement && isMenuOpen === false) {
+		if ((selectElement || showAllValues) && isMenuOpen === false) {
 			const newQuery = event.target.value
-			source('', (options) => {
+			dataSource('', (options) => {
 				const currentSelectionIndex = options.indexOf(newQuery)
 				setMenuOpen(true);
 				setOptions(options);
 				setFocus(currentSelectionIndex);
-				selected(currentSelectionIndex);
+				setSelected(currentSelectionIndex);
 				setHover(null);
 			})
-		} else if (selectElement) {
+		} else if (selectElement || showAllValues) {
 			handleComponentBlur({
 				menuOpen: false
 			}, true)
@@ -579,7 +579,7 @@ const AutoComplete = (props) => {
 				autoComplete='off'
 				className={`${inputClassName}${inputModifierFocused}${inputModifierType}`}
 				id={id}
-				onClick={(event) => handleInputClick(event)}
+				onClick={handleInputClick}
 				onBlur={handleInputBlur}
 				onChange={handleInputChange}
 				onFocus={handleInputFocus}
