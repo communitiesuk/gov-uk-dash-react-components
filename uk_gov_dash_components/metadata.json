@@ -207,7 +207,7 @@
           "computed": true
         }
       },
-      "element": {
+      "selectElement": {
         "type": {
           "name": "any"
         },
@@ -238,6 +238,24 @@
         },
         "required": false,
         "description": "This is the ID for the label field"
+      },
+      "alwaysDisplayArrow": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "alwaysDisplayArrow",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "wrapperRef": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "wrapperRef"
       }
     }
   },

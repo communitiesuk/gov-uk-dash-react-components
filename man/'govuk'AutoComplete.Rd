@@ -10,18 +10,22 @@ Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaul
 }
 
 \usage{
-'govuk'AutoComplete(id=NULL, ariaLabelledBy=NULL, autoselect=NULL,
-confirmOnBlur=NULL, cssNamespace=NULL, displayMenu=NULL,
-dropdownArrow=NULL, element=NULL, minLength=NULL, name=NULL,
-onConfirm=NULL, placeholder=NULL, required=NULL,
-showAllValues=NULL, showNoOptionsFound=NULL, source=NULL,
-tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
+'govuk'AutoComplete(id=NULL, alwaysDisplayArrow=NULL, ariaLabelledBy=NULL,
+autoselect=NULL, confirmOnBlur=NULL, cssNamespace=NULL,
+displayMenu=NULL, dropdownArrow=NULL, minLength=NULL,
+name=NULL, onConfirm=NULL, placeholder=NULL, required=NULL,
+selectElement=NULL, showAllValues=NULL,
+showNoOptionsFound=NULL, source=NULL, tAssistiveHint=NULL,
+tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
-tStatusSelectedOption=NULL, templates=NULL, value=NULL)
+tStatusSelectedOption=NULL, templates=NULL, value=NULL,
+wrapperRef=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
+
+\item{alwaysDisplayArrow}{Logical. alwaysDisplayArrow}
 
 \item{ariaLabelledBy}{Character. This is the ID for the label field}
 
@@ -35,8 +39,6 @@ tStatusSelectedOption=NULL, templates=NULL, value=NULL)
 
 \item{dropdownArrow}{Logical | numeric | character | named list | unnamed list. React component for dropdown arrow}
 
-\item{element}{Logical | numeric | character | named list | unnamed list. Accessible element}
-
 \item{minLength}{Numeric. No Description}
 
 \item{name}{Character. No Description}
@@ -46,6 +48,8 @@ tStatusSelectedOption=NULL, templates=NULL, value=NULL)
 \item{placeholder}{Character. No Description}
 
 \item{required}{Logical. No Description}
+
+\item{selectElement}{Logical | numeric | character | named list | unnamed list. Accessible element}
 
 \item{showAllValues}{Logical. No Description}
 
@@ -68,6 +72,8 @@ tStatusSelectedOption=NULL, templates=NULL, value=NULL)
 \item{templates}{Logical | numeric | character | named list | unnamed list. No Description}
 
 \item{value}{Character. The value displayed in the input.}
+
+\item{wrapperRef}{Logical | numeric | character | named list | unnamed list. wrapperRef}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}
