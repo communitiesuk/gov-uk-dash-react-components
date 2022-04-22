@@ -276,7 +276,18 @@ const App = () => {
             <h1>Autocomplete</h1>
             <div>
                 <label htmlFor="autocomplete-default">Country</label>
-                <AutoComplete source={suggest} id="autocomplete-default" />
+                <AutoComplete
+                    source={[
+                        "Local authorities",
+                        "Regional",
+                        "Local authority type",
+                    ]}
+                    id="autocomplete-default"
+                    showAllValues={true}
+                    displayMenu="overlay"
+                    placeholder="Select Option"
+                    alwaysDisplayArrow={true}
+                />
             </div>
         </>
     )

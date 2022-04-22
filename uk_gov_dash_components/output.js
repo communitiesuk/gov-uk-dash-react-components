@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "148c1b2-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "c4d0c49-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "148c1b2-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "c4d0c49-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "78fe0b19462e66fe84cf";
+/******/ 	var hotCurrentHash = "d1a4058759c8db220bd5";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650552577");
+/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650633722");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -32750,7 +32750,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"148c1b2"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"c4d0c49"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -33858,8 +33858,12 @@ var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Autocomplete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "autocomplete-default"
   }, "Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["AutoComplete"], {
-    source: suggest,
-    id: "autocomplete-default"
+    source: ["Local authorities", "Regional", "Local authority type"],
+    id: "autocomplete-default",
+    showAllValues: true,
+    displayMenu: "overlay",
+    placeholder: "Select Option",
+    alwaysDisplayArrow: true
   })));
 };
 
@@ -33981,7 +33985,8 @@ AutoComplete.defaultProps = {
   tAssistiveHint: function tAssistiveHint() {
     return 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.';
   },
-  dropdownArrow: _dropdownArrowDown_react__WEBPACK_IMPORTED_MODULE_3__["default"]
+  dropdownArrow: _dropdownArrowDown_react__WEBPACK_IMPORTED_MODULE_3__["default"],
+  alwaysDisplayArrow: true
 };
 AutoComplete.propTypes = {
   /**
@@ -34092,7 +34097,7 @@ AutoComplete.propTypes = {
   /**
    * Accessible element
    */
-  element: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any,
+  selectElement: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any,
 
   /**
    * The value displayed in the input.
@@ -34108,7 +34113,17 @@ AutoComplete.propTypes = {
   /**
    * This is the ID for the label field
    */
-  ariaLabelledBy: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
+  ariaLabelledBy: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+
+  /**
+   * alwaysDisplayArrow
+   */
+  alwaysDisplayArrow: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+
+  /**
+   * wrapperRef
+   */
+  wrapperRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any
 };
 var defaultProps = AutoComplete.defaultProps;
 var propTypes = AutoComplete.propTypes;
@@ -34124,8 +34139,11 @@ var propTypes = AutoComplete.propTypes;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+
 
 /**
  *Default dropdown arrow
@@ -34135,16 +34153,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var DropdownArrowDown = function DropdownArrowDown(_ref) {
   var className = _ref.className;
-  return /*#__PURE__*/React.createElement("svg", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     version: "1.1",
     xmlns: "http://www.w3.org/2000/svg",
     className: className,
     focusable: "false"
-  }, /*#__PURE__*/React.createElement("g", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
     stroke: "none",
     fill: "none",
-    "fill-rule": "evenodd"
-  }, /*#__PURE__*/React.createElement("polygon", {
+    fillRule: "evenodd"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polygon", {
     fill: "#000000",
     points: "0 0 22 0 11 17"
   })));
@@ -34155,7 +34173,7 @@ DropdownArrowDown.propTypes = {
   /**
    * Class name to add to SVG
    */
-  className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
 };
 
 /***/ }),
@@ -34513,7 +34531,9 @@ var AutoComplete = function AutoComplete(props) {
       tStatusSelectedOption = _defaultProps$props.tStatusSelectedOption,
       tStatusResults = _defaultProps$props.tStatusResults,
       setProps = _defaultProps$props.setProps,
-      ariaLabelledBy = _defaultProps$props.ariaLabelledBy;
+      ariaLabelledBy = _defaultProps$props.ariaLabelledBy,
+      selectElement = _defaultProps$props.selectElement,
+      alwaysDisplayArrow = _defaultProps$props.alwaysDisplayArrow;
 
   if (!id) {
     throw new Error('id is not defined');
@@ -34524,8 +34544,6 @@ var AutoComplete = function AutoComplete(props) {
   } // if (configurationOptions.preserveNullOptions === undefined) configurationOptions.preserveNullOptions = true
   // if (configurationOptions.autoselect === undefined) configurationOptions.autoselect = true
   // if (configurationOptions.showAllValues === undefined) configurationOptions.showAllValues = true
-  // if (configurationOptions.confirmOnBlur === undefined) configurationOptions.confirmOnBlur = true
-  // if (configurationOptions.alwaysDisplayArrow === undefined) configurationOptions.alwaysDisplayArrow = true
 
 
   var createSimpleEngine = function createSimpleEngine(values) {
@@ -34598,7 +34616,8 @@ var AutoComplete = function AutoComplete(props) {
     }).indexOf(query.toLowerCase()) !== -1;
   };
 
-  var handleComponentBlur = function handleComponentBlur(newState) {
+  var handleComponentBlur = function handleComponentBlur(newState, escape) {
+    var focusOnBlur = escape && selectElement ? -1 : null;
     var newQuery;
 
     if (confirmOnBlur) {
@@ -34608,7 +34627,7 @@ var AutoComplete = function AutoComplete(props) {
       newQuery = query;
     }
 
-    setFocus(null);
+    setFocus(focusOnBlur);
     setMenuOpen(newState.menuOpen || false);
     setQuery(newQuery);
     setSelected(null);
@@ -34634,10 +34653,12 @@ var AutoComplete = function AutoComplete(props) {
     }
   };
 
-  var handleInputBlur = function handleInputBlur() {
+  var handleInputBlur = function handleInputBlur(event) {
+    var _event$relatedTarget;
+
     var focusingAnOption = isFocus !== -1;
 
-    if (!focusingAnOption) {
+    if (!focusingAnOption || !(event !== null && event !== void 0 && (_event$relatedTarget = event.relatedTarget) !== null && _event$relatedTarget !== void 0 && _event$relatedTarget.matches('li.autocomplete__option'))) {
       var keepMenuOpen = isMenuOpen && Object(_helper_isIOS__WEBPACK_IMPORTED_MODULE_3__["isIOSDevice"])();
       var newQuery = Object(_helper_isIOS__WEBPACK_IMPORTED_MODULE_3__["isIOSDevice"])() ? query : templateInputValue(options[selected]);
       handleComponentBlur({
@@ -34648,7 +34669,11 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputFocus = function handleInputFocus() {
-    var shouldReopenMenu = !validChoiceMade && query.length >= minLength && options.length > 0;
+    if (selectElement) {
+      return;
+    }
+
+    var shouldReopenMenu = !validChoiceMade && (query === null || query === void 0 ? void 0 : query.length) >= minLength && (options === null || options === void 0 ? void 0 : options.length) > 0;
     setFocus(-1);
 
     if (shouldReopenMenu) {
@@ -34657,10 +34682,39 @@ var AutoComplete = function AutoComplete(props) {
     }
   };
 
-  var handleOptionFocus = function handleOptionFocus(index) {
-    setFocus(index);
+  var wrapAround = function wrapAround(index) {
+    var selectOptions = selectElement.options;
+    var queryLength = query ? query.trim().length : 0;
+    var length = queryLength > minLength ? options.length : selectOptions.length;
+
+    if (index < 0) {
+      return length - 1;
+    } else if (index >= length) {
+      return 0;
+    }
+
+    return index;
+  };
+
+  var handleOptionFocus = function handleOptionFocus(index, select) {
+    // if we're replacing a select element, then we need
+    // to allow the user to wrap around the options when pressing
+    // up/down arrows
+    var useIndex = selectElement ? wrapAround(index) : index;
+    setFocus(useIndex);
     setHover(null);
-    setSelected(index);
+    setSelected(useIndex);
+
+    if (select) {
+      var selectedOption = options[useIndex];
+      var newQuery = templateInputValue(selectedOption);
+      setQuery(newQuery);
+      setValidChoiceMade(true);
+
+      if (selectElement) {
+        onConfirm(selectedOption);
+      }
+    }
   };
 
   var handleOptionMouseEnter = function handleOptionMouseEnter(index) {
@@ -34675,36 +34729,18 @@ var AutoComplete = function AutoComplete(props) {
     return Object(_helper_isIOS__WEBPACK_IMPORTED_MODULE_3__["isIOSDevice"])() ? false : autoselect;
   };
 
-  var handleInputChange = function handleInputChange(event) {
-    var autoselect = hasAutoselect();
-    var newQuery = event.target.value;
-    var queryChanged = query !== newQuery;
-    var queryLongEnough = newQuery.length >= minLength;
-    setQuery(newQuery);
-    setAriaHint();
-    var searchForOptions = showAllValues || newQuery.length && queryChanged && queryLongEnough;
-
-    if (searchForOptions) {
-      dataSource(newQuery, function (options) {
-        var optionsAvailable = options.length > 0;
-        setMenuOpen(optionsAvailable);
-        setOptions(options);
-        setSelected(autoselect && optionsAvailable ? 0 : -1);
-        setValidChoiceMade(false);
-      });
-    } else if (!newQuery.length || !queryLongEnough) {
-      setMenuOpen(false);
-      setOptions([]);
-    }
-  };
-
   var handleOptionClick = function handleOptionClick(event, index) {
+    var menuOpen = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
     var selectedOption = options[index];
     var newQuery = templateInputValue(selectedOption);
-    onConfirm(selectedOption);
+    onConfirm(selectedOption); // Do not remove this, otherwise the input can receive the event and
+    // keep the menu open unintentionally
+
+    event.preventDefault();
+    event.stopPropagation();
     setFocus(-1);
     setHover(null);
-    setMenuOpen(false);
+    setMenuOpen(menuOpen);
     setQuery(newQuery);
     setSelected(-1);
     setValidChoiceMade(true);
@@ -34721,18 +34757,52 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleUpArrow = function handleUpArrow(event) {
-    event.preventDefault();
-    var allowMoveUp = selected !== -1 && isMenuOpen;
+    event.preventDefault(); // If we're replacing a select element, we need to provide the interaction
+    // where the dropdown is closed, and user presses up.
+    // In this case they focus on the option before the selected one (or the last),
+    // and also make menu open
 
-    if (allowMoveUp) {
-      handleOptionFocus(selected - 1);
+    if (selectElement && isMenuOpen === false) {
+      source('', function (options) {
+        setMenuOpen(true);
+        setOptions(options);
+        var index = query && options.indexOf(query) > 0 ? options.indexOf(query) - 1 : options.length - 1;
+
+        if (index < 0) {
+          index = options.length - 1;
+        }
+
+        handleOptionFocus(index, true);
+      });
+    } else {
+      var isNotAtTop = selected !== -1;
+      var allowMoveUp = isNotAtTop && isMenuOpen;
+
+      if (allowMoveUp || selectElement) {
+        handleOptionFocus(selected - 1, autoselect);
+      }
     }
   };
 
   var handleDownArrow = function handleDownArrow(event) {
-    event.preventDefault(); // if not open, open
+    event.preventDefault(); // If we're replacing a select element, we need to provide the interaction
+    // where the dropdown is closed, and user presses down.
+    // In this case they focus on the option after the selected one (or the first),
+    // and also make menu open
 
-    if (showAllValues && isMenuOpen === false) {
+    if (selectElement && !isMenuOpen) {
+      source('', function (options) {
+        setMenuOpen(true);
+        setOptions(options);
+        var index = query && options.indexOf(query) > -1 ? options.indexOf(query) + 1 : 0;
+
+        if (index >= options.length) {
+          index = 0;
+        }
+
+        handleOptionFocus(index, true);
+      });
+    } else if (showAllValues && !isMenuOpen) {
       event.preventDefault();
       dataSource('', function (options) {
         setMenuOpen(true);
@@ -34743,22 +34813,27 @@ var AutoComplete = function AutoComplete(props) {
       });
     } else if (isMenuOpen) {
       var isNotAtBottom = selected !== options.length - 1;
-      var allowMoveDown = isNotAtBottom && isMenuOpen;
 
-      if (allowMoveDown) {
-        handleOptionFocus(selected + 1);
+      if (isNotAtBottom || selectElement) {
+        handleOptionFocus(selected + 1, autoselect);
       }
     }
   };
 
   var handleSpace = function handleSpace(event) {
-    // if not open, open
-    if (showAllValues && isMenuOpen === false && query === '') {
-      event.preventDefault();
+    if (selectElement && !isMenuOpen || showAllValues && !isMenuOpen && query === '') {
+      if (query.trim().length === 0) {
+        event.preventDefault();
+      }
+
       dataSource('', function (options) {
+        var index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0;
         setMenuOpen(true);
         setOptions(options);
+        setFocus(index);
+        setSelected(index);
       });
+      return;
     }
 
     var focusIsOnOption = isFocus !== -1;
@@ -34777,6 +34852,21 @@ var AutoComplete = function AutoComplete(props) {
       if (hasSelectedOption) {
         handleOptionClick(event, selected);
       }
+    } else if (selectElement) {
+      source('', function (options) {
+        setOptions(options);
+        var index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0;
+        var openMenu = true;
+
+        if (!selectElement) {
+          index = -1;
+          openMenu = false;
+        }
+
+        setMenuOpen(openMenu);
+        setFocus(index);
+        setSelected(index);
+      });
     }
   };
 
@@ -34810,7 +34900,7 @@ var AutoComplete = function AutoComplete(props) {
       case 'escape':
         handleComponentBlur({
           query: query
-        });
+        }, true);
         break;
 
       default:
@@ -34820,6 +34910,98 @@ var AutoComplete = function AutoComplete(props) {
 
         break;
     }
+  };
+
+  var handleInputChange = function handleInputChange(event) {
+    // Besides the normal input that can be received by the user,
+    // we also need to take care of special actions even in the input
+    switch (_helper_keys__WEBPACK_IMPORTED_MODULE_4__["keyCodes"][event.keyCode]) {
+      case 'up':
+        handleUpArrow(event);
+        break;
+
+      case 'down':
+        handleDownArrow(event);
+        break;
+
+      case 'space':
+        handleSpace(event);
+        break;
+
+      case 'enter':
+        handleEnter(event);
+        break;
+
+      case 'escape':
+        handleComponentBlur({
+          query: event.target.value
+        }, true);
+        break;
+
+      default:
+        {
+          var _autoselect = hasAutoselect();
+
+          var newQuery = event.target.value;
+          var queryChanged = query !== newQuery;
+
+          var _queryLongEnough = newQuery.length >= minLength;
+
+          setQuery(newQuery);
+          setAriaHint(newQuery.length === 0);
+          var searchForOptions = showAllValues || newQuery.length && queryChanged && _queryLongEnough;
+
+          if (searchForOptions) {
+            dataSource(newQuery, function (options) {
+              var optionsAvailable = options.length > 0;
+              setMenuOpen(optionsAvailable);
+              setOptions(options);
+              setSelected(_autoselect && optionsAvailable ? 0 : -1);
+              setValidChoiceMade(false);
+              setFocus(selectElement ? optionsAvailable ? 0 : -1 : focus);
+            });
+          } else if (!newQuery.length || !_queryLongEnough) {
+            setMenuOpen(false);
+            setOptions([]);
+          }
+        }
+        break;
+    }
+  };
+
+  var handleInputClick = function handleInputClick(event) {
+    if (selectElement && isMenuOpen === false) {
+      var newQuery = event.target.value;
+      source('', function (options) {
+        var currentSelectionIndex = options.indexOf(newQuery);
+        setMenuOpen(true);
+        setOptions(options);
+        setFocus(currentSelectionIndex);
+        selected(currentSelectionIndex);
+        setHover(null);
+      });
+    } else if (selectElement) {
+      handleComponentBlur({
+        menuOpen: false
+      }, true);
+    } else {
+      handleInputChange(event);
+    }
+  };
+
+  var clearSelection = function clearSelection() {
+    setFocus(null);
+    setHover(null);
+    setMenuOpen(false);
+    setOptions(value ? [value] : []);
+    setQuery('');
+    setValidChoiceMade(false);
+    selectElement.value = null;
+    var event = new Event('selectElement', {
+      bubbles: true,
+      cancelable: false
+    });
+    selectElement.dispatchEvent(event);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -34841,6 +35023,13 @@ var AutoComplete = function AutoComplete(props) {
           value: inputReference.value
         }
       });
+    }
+
+    if (selectElement) {
+      // Expose public API
+      selectElement.accessibleAutocomplete = {
+        clearSelection: clearSelection
+      };
     }
   }, 100);
   var autoselectRend = hasAutoselect();
@@ -34871,7 +35060,7 @@ var AutoComplete = function AutoComplete(props) {
   } : null;
   var dropdownArrow; // we only need a dropdown arrow if showAllValues is set to a truthy value
 
-  if (showAllValues) {
+  if (showAllValues || alwaysDisplayArrow) {
     dropdownArrow = dropdownArrowFactory({
       className: dropdownArrowClassName
     }); // if the factory returns a string we'll render this as HTML (usage w/o (P)React)
@@ -34920,7 +35109,7 @@ var AutoComplete = function AutoComplete(props) {
     className: "".concat(inputClassName).concat(inputModifierFocused).concat(inputModifierType),
     id: id,
     onClick: function onClick(event) {
-      return handleInputChange(event);
+      return handleInputClick(event);
     },
     onBlur: handleInputBlur,
     onChange: handleInputChange,

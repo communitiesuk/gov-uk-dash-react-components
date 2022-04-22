@@ -61,15 +61,15 @@ const AutoComplete = (props) => {
 		tStatusSelectedOption,
 		tStatusResults,
 		setProps,
-		ariaLabelledBy
+		ariaLabelledBy,
+		selectElement,
+		alwaysDisplayArrow,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
 	// if (configurationOptions.preserveNullOptions === undefined) configurationOptions.preserveNullOptions = true
 	// if (configurationOptions.autoselect === undefined) configurationOptions.autoselect = true
 	// if (configurationOptions.showAllValues === undefined) configurationOptions.showAllValues = true
-	// if (configurationOptions.confirmOnBlur === undefined) configurationOptions.confirmOnBlur = true
-	// if (configurationOptions.alwaysDisplayArrow === undefined) configurationOptions.alwaysDisplayArrow = true
 
 	const createSimpleEngine = (values) => (query, syncResults) => {
 		var matches = values.filter(r => r.toLowerCase().indexOf(query.toLowerCase()) !== -1)
@@ -104,7 +104,8 @@ const AutoComplete = (props) => {
 		return options.map(entry => templateInputValue(entry).toLowerCase()).indexOf(query.toLowerCase()) !== -1
 	}
 
-	const handleComponentBlur = (newState) => {
+	const handleComponentBlur = (newState, escape) => {
+		const focusOnBlur = escape && selectElement ? -1 : null
 		let newQuery
 		if (confirmOnBlur) {
 			newQuery = newState.query || query
@@ -112,7 +113,7 @@ const AutoComplete = (props) => {
 		} else {
 			newQuery = query
 		}
-		setFocus(null);
+		setFocus(focusOnBlur);
 		setMenuOpen(newState.menuOpen || false);
 		setQuery(newQuery);
 		setSelected(null);
@@ -137,9 +138,9 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	const handleInputBlur = () => {
+	const handleInputBlur = (event) => {
 		const focusingAnOption = isFocus !== -1
-		if (!focusingAnOption) {
+		if (!focusingAnOption || !event?.relatedTarget?.matches('li.autocomplete__option')) {
 			const keepMenuOpen = isMenuOpen && isIOSDevice()
 			const newQuery = isIOSDevice() ? query : templateInputValue(options[selected])
 			handleComponentBlur({
@@ -150,7 +151,10 @@ const AutoComplete = (props) => {
 	}
 
 	const handleInputFocus = () => {
-		const shouldReopenMenu = !validChoiceMade && query.length >= minLength && options.length > 0
+		if (selectElement) {
+			return
+		}
+		const shouldReopenMenu = !validChoiceMade && query?.length >= minLength && options?.length > 0
 		setFocus(-1);
 		if (shouldReopenMenu) {
 			setMenuOpen(shouldReopenMenu || isMenuOpen);
@@ -158,10 +162,40 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	const handleOptionFocus = (index) => {
-		setFocus(index);
+	const wrapAround = (index) => {
+		const selectOptions = selectElement.options
+		const queryLength = query ? query.trim().length : 0
+		const length = queryLength > minLength ? options.length : selectOptions.length
+
+		if (index < 0) {
+			return length - 1
+		} else if (index >= length) {
+			return 0
+		}
+
+		return index
+	}
+
+	const handleOptionFocus = (index, select) => {
+		// if we're replacing a select element, then we need
+		// to allow the user to wrap around the options when pressing
+		// up/down arrows
+		const useIndex = selectElement ? wrapAround(index) : index;
+
+		setFocus(useIndex);
 		setHover(null);
-		setSelected(index);
+		setSelected(useIndex);
+
+		if (select) {
+			const selectedOption = options[useIndex]
+			const newQuery = templateInputValue(selectedOption)
+			setQuery(newQuery);
+			setValidChoiceMade(true);
+
+			if (selectElement) {
+				onConfirm(selectedOption)
+			}
+		}
 	}
 
 	const handleOptionMouseEnter = (index) => {
@@ -177,36 +211,20 @@ const AutoComplete = (props) => {
 	}
 
 
-	const handleInputChange = (event) => {
-		const autoselect = hasAutoselect()
-		const newQuery = event.target.value
-		const queryChanged = query !== newQuery
-		const queryLongEnough = newQuery.length >= minLength
 
-		setQuery(newQuery)
-		setAriaHint()
-		const searchForOptions = showAllValues || (newQuery.length && queryChanged && queryLongEnough)
-		if (searchForOptions) {
-			dataSource(newQuery, (options) => {
-				const optionsAvailable = options.length > 0
-				setMenuOpen(optionsAvailable);
-				setOptions(options);
-				setSelected((autoselect && optionsAvailable) ? 0 : -1);
-				setValidChoiceMade(false);
-			})
-		} else if (!newQuery.length || !queryLongEnough) {
-			setMenuOpen(false);
-			setOptions([]);
-		}
-	}
-
-	const handleOptionClick = (event, index) => {
+	const handleOptionClick = (event, index, menuOpen = false) => {
 		const selectedOption = options[index]
 		const newQuery = templateInputValue(selectedOption)
 		onConfirm(selectedOption)
+
+		// Do not remove this, otherwise the input can receive the event and
+		// keep the menu open unintentionally
+		event.preventDefault()
+		event.stopPropagation()
+
 		setFocus(-1);
 		setHover(null);
-		setMenuOpen(false);
+		setMenuOpen(menuOpen);
 		setQuery(newQuery)
 		setSelected(-1);
 		setValidChoiceMade(true);
@@ -224,16 +242,53 @@ const AutoComplete = (props) => {
 
 	const handleUpArrow = (event) => {
 		event.preventDefault()
-		const allowMoveUp = selected !== -1 && isMenuOpen
-		if (allowMoveUp) {
-			handleOptionFocus(selected - 1)
+
+		// If we're replacing a select element, we need to provide the interaction
+		// where the dropdown is closed, and user presses up.
+		// In this case they focus on the option before the selected one (or the last),
+		// and also make menu open
+		if (selectElement && isMenuOpen === false) {
+			source('', (options) => {
+				setMenuOpen(true);
+				setOptions(options);
+
+					let index = query && options.indexOf(query) > 0 ? options.indexOf(query) - 1 : options.length - 1
+
+					if (index < 0) {
+						index = options.length - 1
+					}
+
+					handleOptionFocus(index, true)
+			})
+		} else {
+			const isNotAtTop = selected !== -1
+			const allowMoveUp = isNotAtTop && isMenuOpen
+
+			if (allowMoveUp || selectElement) {
+				handleOptionFocus(selected - 1, autoselect)
+			}
 		}
 	}
 
 	const handleDownArrow = (event) => {
 		event.preventDefault()
-		// if not open, open
-		if (showAllValues && isMenuOpen === false) {
+		// If we're replacing a select element, we need to provide the interaction
+		// where the dropdown is closed, and user presses down.
+		// In this case they focus on the option after the selected one (or the first),
+		// and also make menu open
+		if (selectElement && !isMenuOpen) {
+			source('', (options) => {
+				setMenuOpen(true);
+				setOptions(options);
+					let index = query && options.indexOf(query) > -1 ? options.indexOf(query) + 1 : 0
+
+					if (index >= options.length) {
+						index = 0
+					}
+
+					handleOptionFocus(index, true)
+			})
+		} else if (showAllValues && !isMenuOpen) {
 			event.preventDefault()
 			dataSource('', (options) => {
 				setMenuOpen(true);
@@ -243,22 +298,27 @@ const AutoComplete = (props) => {
 				setHover(null);
 			})
 		} else if (isMenuOpen) {
+
 			const isNotAtBottom = selected !== options.length - 1
-			const allowMoveDown = isNotAtBottom && isMenuOpen
-			if (allowMoveDown) {
-				handleOptionFocus(selected + 1)
+			if (isNotAtBottom || selectElement) {
+				handleOptionFocus(selected + 1, autoselect)
 			}
 		}
 	}
 
 	const handleSpace = (event) => {
-		// if not open, open
-		if (showAllValues && isMenuOpen === false && query === '') {
-			event.preventDefault()
+		if ((selectElement && !isMenuOpen) || (showAllValues && !isMenuOpen && query === '')) {
+			if (query.trim().length === 0) {
+				event.preventDefault()
+			}
 			dataSource('', (options) => {
+				const index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0
 				setMenuOpen(true);
 				setOptions(options);
+				setFocus(index);
+				setSelected(index);
 			})
+			return;
 		}
 		const focusIsOnOption = isFocus !== -1
 		if (focusIsOnOption) {
@@ -274,6 +334,21 @@ const AutoComplete = (props) => {
 			if (hasSelectedOption) {
 				handleOptionClick(event, selected)
 			}
+		} else if (selectElement) {
+			source('', (options) => {
+				setOptions(options)
+
+				let index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0
+				let openMenu = true
+
+				if (!selectElement) {
+					index = -1
+					openMenu = false
+				}
+				setMenuOpen(openMenu);
+				setFocus(index);
+				setSelected(index);
+			})
 		}
 	}
 
@@ -303,7 +378,7 @@ const AutoComplete = (props) => {
 			case 'escape':
 				handleComponentBlur({
 					query: query
-				})
+				}, true)
 				break
 			default:
 				if (isPrintableKeyCode(event.keyCode)) {
@@ -311,6 +386,89 @@ const AutoComplete = (props) => {
 				}
 				break
 		}
+	}
+	const handleInputChange = (event) => {
+		// Besides the normal input that can be received by the user,
+		// we also need to take care of special actions even in the input
+		switch (keyCodes[event.keyCode]) {
+			case 'up':
+				handleUpArrow(event)
+				break
+			case 'down':
+				handleDownArrow(event)
+				break
+			case 'space':
+				handleSpace(event)
+				break
+			case 'enter':
+				handleEnter(event)
+				break
+			case 'escape':
+				handleComponentBlur({
+					query: event.target.value
+				}, true)
+
+				break
+			default: {
+				const autoselect = hasAutoselect()
+				const newQuery = event.target.value
+				const queryChanged = query !== newQuery
+				const queryLongEnough = newQuery.length >= minLength
+
+
+				setQuery(newQuery)
+				setAriaHint(newQuery.length === 0)
+
+				const searchForOptions = showAllValues || (newQuery.length && queryChanged && queryLongEnough)
+				if (searchForOptions) {
+					dataSource(newQuery, (options) => {
+						const optionsAvailable = options.length > 0
+						setMenuOpen(optionsAvailable);
+						setOptions(options);
+						setSelected((autoselect && optionsAvailable) ? 0 : -1);
+						setValidChoiceMade(false);
+						setFocus(selectElement ? (optionsAvailable ? 0 : -1) : focus)
+					})
+				} else if (!newQuery.length || !queryLongEnough) {
+					setMenuOpen(false);
+					setOptions([]);
+				}
+			}
+				break
+		}
+	}
+
+	const handleInputClick = (event) => {
+		if (selectElement && isMenuOpen === false) {
+			const newQuery = event.target.value
+			source('', (options) => {
+				const currentSelectionIndex = options.indexOf(newQuery)
+				setMenuOpen(true);
+				setOptions(options);
+				setFocus(currentSelectionIndex);
+				selected(currentSelectionIndex);
+				setHover(null);
+			})
+		} else if (selectElement) {
+			handleComponentBlur({
+				menuOpen: false
+			}, true)
+		} else {
+			handleInputChange(event)
+		}
+	}
+
+	const clearSelection = () => {
+		setFocus(null);
+		setHover(null);
+		setMenuOpen(false);
+		setOptions(value ? [value] : []);
+		setQuery('');
+		setValidChoiceMade(false);
+		selectElement.value = null
+		const event = new Event('selectElement', { bubbles: true, cancelable: false });
+		selectElement.dispatchEvent(event);
+
 	}
 
 	useEffect(() => {
@@ -325,6 +483,13 @@ const AutoComplete = (props) => {
 		const queryHasChanged = inputReference?.value !== query
 		if (queryHasChanged) {
 			handleInputChange({ target: { value: inputReference.value } })
+		}
+
+		if (selectElement) {
+			// Expose public API
+			selectElement.accessibleAutocomplete = {
+				clearSelection: clearSelection
+			}
 		}
 	}, 100)
 
@@ -369,7 +534,7 @@ const AutoComplete = (props) => {
 	let dropdownArrow
 
 	// we only need a dropdown arrow if showAllValues is set to a truthy value
-	if (showAllValues) {
+	if (showAllValues || alwaysDisplayArrow) {
 		dropdownArrow = dropdownArrowFactory({ className: dropdownArrowClassName })
 
 		// if the factory returns a string we'll render this as HTML (usage w/o (P)React)
@@ -380,7 +545,7 @@ const AutoComplete = (props) => {
 
 
 	return (
-		<div className={wrapperClassName} onKeyDown={handleKeyDown}>
+		<div className={wrapperClassName} onKeyDown={handleKeyDown} >
 			<Status
 				id={id}
 				length={options?.length}
@@ -414,7 +579,7 @@ const AutoComplete = (props) => {
 				autoComplete='off'
 				className={`${inputClassName}${inputModifierFocused}${inputModifierType}`}
 				id={id}
-				onClick={(event) => handleInputChange(event)}
+				onClick={(event) => handleInputClick(event)}
 				onBlur={handleInputBlur}
 				onChange={handleInputChange}
 				onFocus={handleInputFocus}

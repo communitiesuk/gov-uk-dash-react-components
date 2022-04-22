@@ -55,7 +55,8 @@ AutoComplete.defaultProps = {
 	required: false,
 	tNoResults: () => 'No results found',
 	tAssistiveHint: () => 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.',
-	dropdownArrow: DropdownArrowDown
+	dropdownArrow: DropdownArrowDown,
+	alwaysDisplayArrow: true,
 };
 
 AutoComplete.propTypes = {
@@ -148,7 +149,7 @@ AutoComplete.propTypes = {
 	/**
 	 * Accessible element
 	 */
-	element: PropTypes.any,
+	selectElement: PropTypes.any,
 
 	/**
 	 * The value displayed in the input.
@@ -165,6 +166,16 @@ AutoComplete.propTypes = {
 	 * This is the ID for the label field
 	 */
 	ariaLabelledBy: PropTypes.string,
+
+	/**
+	 * alwaysDisplayArrow
+	 */
+	alwaysDisplayArrow: PropTypes.bool,
+
+	/**
+	 * wrapperRef
+	 */
+	wrapperRef: PropTypes.any
 };
 
 
