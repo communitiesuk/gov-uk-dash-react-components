@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "c4d0c49-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "854506d-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "c4d0c49-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "854506d-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "0b33ff541c0c7fbcfb88";
+/******/ 	var hotCurrentHash = "3680b3dc8f7c01dd96b7";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v0_0_1m1650635063");
+/******/ 	        fileFragments.splice(1, 0, "v1_0_0-beta_5m1650883790");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -32750,7 +32750,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"c4d0c49"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"854506d"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -33861,6 +33861,7 @@ var App = function App() {
     source: ["Local authorities", "Regional", "Local authority type"],
     id: "autocomplete-default",
     showAllValues: true,
+    bn: true,
     displayMenu: "overlay",
     placeholder: "Select Option",
     alwaysDisplayArrow: true
@@ -34154,18 +34155,14 @@ __webpack_require__.r(__webpack_exports__);
 var DropdownArrowDown = function DropdownArrowDown(_ref) {
   var className = _ref.className;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg",
     className: className,
-    focusable: "false"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
-    stroke: "none",
-    fill: "none",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polygon", {
-    fill: "#000000",
-    points: "0 0 22 0 11 17"
-  })));
+    style: {
+      top: '8px'
+    },
+    viewBox: "0 0 512 512"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DropdownArrowDown);

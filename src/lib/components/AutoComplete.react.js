@@ -29,6 +29,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ * 	style
  * } [props={}]
  * @return {*}
  */
@@ -175,7 +176,12 @@ AutoComplete.propTypes = {
 	/**
 	 * wrapperRef
 	 */
-	wrapperRef: PropTypes.any
+	wrapperRef: PropTypes.any,
+
+	/**
+	 * Override the css style of the wrapper
+	 */
+	style: PropTypes.string
 };
 
 

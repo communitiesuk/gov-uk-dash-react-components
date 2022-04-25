@@ -6,7 +6,7 @@
 \title{AutoComplete component}
 
 \description{
-Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, } [props={}] @return {*}
+Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style } [props={}] @return {*}
 }
 
 \usage{
@@ -15,8 +15,8 @@ autoselect=NULL, confirmOnBlur=NULL, cssNamespace=NULL,
 displayMenu=NULL, dropdownArrow=NULL, minLength=NULL,
 name=NULL, onConfirm=NULL, placeholder=NULL, required=NULL,
 selectElement=NULL, showAllValues=NULL,
-showNoOptionsFound=NULL, source=NULL, tAssistiveHint=NULL,
-tNoResults=NULL, tStatusNoResults=NULL,
+showNoOptionsFound=NULL, source=NULL, style=NULL,
+tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
 tStatusSelectedOption=NULL, templates=NULL, value=NULL,
 wrapperRef=NULL)
@@ -56,6 +56,8 @@ wrapperRef=NULL)
 \item{showNoOptionsFound}{Logical. No Description}
 
 \item{source}{Logical | numeric | character | named list | unnamed list. No Description}
+
+\item{style}{Character. Override the css style of the wrapper}
 
 \item{tAssistiveHint}{No Description}
 

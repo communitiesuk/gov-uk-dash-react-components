@@ -64,6 +64,7 @@ const AutoComplete = (props) => {
 		ariaLabelledBy,
 		selectElement,
 		alwaysDisplayArrow,
+		style,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -545,7 +546,7 @@ const AutoComplete = (props) => {
 
 
 	return (
-		<div className={wrapperClassName} onKeyDown={handleKeyDown} >
+		<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
 			<Status
 				id={id}
 				length={options?.length}
