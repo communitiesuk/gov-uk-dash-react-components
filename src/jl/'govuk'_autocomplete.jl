@@ -51,7 +51,7 @@ Keyword arguments:
 - `showAllValues` (Bool; optional): No Description
 - `showNoOptionsFound` (Bool; optional): No Description
 - `source` (Bool | Real | String | Dict | Array; optional): No Description
-- `style` (String; optional): Override the css style of the wrapper
+- `style` (Bool | Real | String | Dict | Array; optional): Override the css style of the wrapper
 - `tStatusNoResults` (Bool | Real | String | Dict | Array; optional): No Description
 - `tStatusResults` (Bool | Real | String | Dict | Array; optional): No Description
 - `templates` (Bool | Real | String | Dict | Array; optional): No Description

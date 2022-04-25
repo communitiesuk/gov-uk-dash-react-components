@@ -259,7 +259,7 @@
       },
       "style": {
         "type": {
-          "name": "string"
+          "name": "any"
         },
         "required": false,
         "description": "Override the css style of the wrapper"

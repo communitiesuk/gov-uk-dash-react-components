@@ -181,7 +181,7 @@ AutoComplete.propTypes = {
 	/**
 	 * Override the css style of the wrapper
 	 */
-	style: PropTypes.string
+	style: PropTypes.any
 };
 
 

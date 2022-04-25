@@ -72,7 +72,7 @@ If you have selected install_dependencies during the prompt, you can skip this p
 
 3. Test your tarball by copying it into a new environment and installing it locally:
     ```
-    $ pip install uk_gov_dash_components-1.0.0-beta.5.tar.gz
+    $ pip install uk_gov_dash_components-1.0.0-beta.7.tar.gz
     ```
 
 4. If it works, then you can publish the component to NPM and PyPI:

@@ -57,7 +57,7 @@ wrapperRef=NULL)
 
 \item{source}{Logical | numeric | character | named list | unnamed list. No Description}
 
-\item{style}{Character. Override the css style of the wrapper}
+\item{style}{Logical | numeric | character | named list | unnamed list. Override the css style of the wrapper}
 
 \item{tAssistiveHint}{No Description}
 

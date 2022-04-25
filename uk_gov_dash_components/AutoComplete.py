@@ -84,7 +84,7 @@ Keyword arguments:
 - source (boolean | number | string | dict | list; optional):
     No Description.
 
-- style (string; optional):
+- style (boolean | number | string | dict | list; optional):
     Override the css style of the wrapper.
 
 - tStatusNoResults (boolean | number | string | dict | list; optional):
