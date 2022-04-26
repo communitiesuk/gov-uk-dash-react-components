@@ -283,10 +283,11 @@ const App = () => {
                         "Local authority type",
                     ]}
                     id="autocomplete-default"
-                    showAllValues={true}bn
+                    showAllValues={true}
                     displayMenu="overlay"
                     placeholder="Select Option"
                     alwaysDisplayArrow={true}
+                    value={null}
                 />
             </div>
         </>

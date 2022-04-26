@@ -267,7 +267,8 @@ app.layout = html.Div([
             'Zambia',
             'Zimbabwe'
         ],
-        value='',
+        value="",
+        showAllValues=True,
         style={"minWidth": "50%"}
     ),
     html.Div(id='output')

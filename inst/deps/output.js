@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "f4498d7-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "3d58e9d-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "f4498d7-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "3d58e9d-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "74ec4f7e2b62cfc01d46";
+/******/ 	var hotCurrentHash = "30f218a3aa6c56a6a3f0";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_0_0-beta_7m1650962157");
+/******/ 	        fileFragments.splice(1, 0, "v1_0_0-beta_8m1650966465");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -865,7 +865,7 @@ window["uk_gov_dash_components"] =
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".autocomplete__wrapper {\n\tposition: relative;\n}\n\n.autocomplete__hint,\n.autocomplete__input {\n\t-webkit-appearance: none;\n\tborder: 2px solid #0b0c0c;\n\tborder-radius: 0;\n\t/* Safari 10 on iOS adds implicit border rounding. */\n\tbox-sizing: border-box;\n\t-moz-box-sizing: border-box;\n\t-webkit-box-sizing: border-box;\n\tmargin-bottom: 0;\n\t/* BUG: Safari 10 on macOS seems to add an implicit margin. */\n\twidth: 100%;\n}\n\n.autocomplete__input {\n\tbackground-color: transparent;\n\tposition: relative;\n}\n\n.autocomplete__hint {\n\tcolor: #b1b4b6;\n\tposition: absolute;\n}\n\n.autocomplete__input--default {\n\tpadding: 5px;\n}\n\n.autocomplete__input--focused {\n\toutline: 3px solid #fd0;\n\toutline-offset: 0;\n\tbox-shadow: inset 0 0 0 2px;\n}\n\n.autocomplete__input--show-all-values {\n\tpadding: 5px 34px 5px 5px;\n\t/* Space for arrow. Other padding should match .autocomplete__input--default. */\n\tcursor: pointer;\n}\n\n.autocomplete__dropdown-arrow-down {\n\tdisplay: inline-block;\n\tposition: absolute;\n\tright: 8px;\n\twidth: 24px;\n\theight: 24px;\n\ttop: 10px;\n\tpointer-events: none;\n}\n\n.autocomplete__menu {\n\tbackground-color: #fff;\n\tborder: 2px solid #0B0C0C;\n\tborder-top: 0;\n\tcolor: #0B0C0C;\n\tmargin: 0;\n\tmax-height: 342px;\n\toverflow-x: hidden;\n\tpadding: 0;\n\twidth: 100%;\n\twidth: calc(100% - 4px);\n}\n\n.autocomplete__menu--visible {\n\tdisplay: block;\n}\n\n.autocomplete__menu--hidden {\n\tdisplay: none;\n}\n\n.autocomplete__menu--overlay {\n\tbox-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;\n\tleft: 0;\n\tposition: absolute;\n\ttop: 100%;\n\tz-index: 100;\n}\n\n.autocomplete__menu--inline {\n\tposition: relative;\n}\n\n.autocomplete__option {\n\tborder-bottom: solid #b1b4b6;\n\tborder-width: 1px 0;\n\tcursor: pointer;\n\tdisplay: block;\n\tposition: relative;\n}\n\n.autocomplete__option>* {\n\tpointer-events: none;\n}\n\n.autocomplete__option:first-of-type {\n\tborder-top-width: 0;\n}\n\n.autocomplete__option:last-of-type {\n\tborder-bottom-width: 0;\n}\n\n.autocomplete__option--odd {\n\tbackground-color: #FAFAFA;\n}\n\n.autocomplete__option--focused,\n.autocomplete__option:hover {\n\tbackground-color: #1d70b8;\n\tborder-color: #1d70b8;\n\tcolor: white;\n\toutline: none;\n}\n\n@media (-ms-high-contrast: active),\n(forced-colors: active) {\n\t.autocomplete__menu {\n\t\tborder-color: FieldText;\n\t}\n\n\t.autocomplete__option {\n\t\tbackground-color: Field;\n\t\tcolor: FieldText;\n\t}\n\n\t.autocomplete__option--focused,\n\t.autocomplete__option:hover {\n\t\tforced-color-adjust: none;\n\t\t/* prevent backplate from obscuring text */\n\t\tbackground-color: Highlight;\n\t\tborder-color: Highlight;\n\t\tcolor: HighlightText;\n\n\t\t/* Prefer SelectedItem / SelectedItemText in browsers that support it */\n\t\tbackground-color: SelectedItem;\n\t\tborder-color: SelectedItem;\n\t\tcolor: SelectedItemText;\n\t\toutline-color: SelectedItemText;\n\t}\n}\n\n.autocomplete__option--no-results {\n\tbackground-color: #FAFAFA;\n\tcolor: #646b6f;\n\tcursor: not-allowed;\n}\n\n.autocomplete__hint,\n.autocomplete__input,\n.autocomplete__option {\n\tfont-size: 16px;\n\tline-height: 1.25;\n}\n\n.autocomplete__hint,\n.autocomplete__option {\n\tpadding: 5px;\n}\n\n@media (min-width: 641px) {\n\n\t.autocomplete__hint,\n\t.autocomplete__input,\n\t.autocomplete__option {\n\t\tfont-size: 19px;\n\t\tline-height: 1.31579;\n\t}\n}", ""]);
+exports.push([module.i, ".autocomplete__wrapper {\n\tposition: relative;\n}\n\n.autocomplete__hint,\n.autocomplete__input {\n\t-webkit-appearance: none;\n\tborder: 2px solid #0b0c0c;\n\tborder-radius: 0;\n\t/* Safari 10 on iOS adds implicit border rounding. */\n\tbox-sizing: border-box;\n\t-moz-box-sizing: border-box;\n\t-webkit-box-sizing: border-box;\n\tmargin-bottom: 0;\n\t/* BUG: Safari 10 on macOS seems to add an implicit margin. */\n\twidth: 100%;\n}\n\n.autocomplete__input {\n\tbackground-color: transparent;\n\tposition: relative;\n}\n\n.autocomplete__hint {\n\tcolor: #b1b4b6;\n\tposition: absolute;\n}\n\n.autocomplete__input--default {\n\tpadding: 5px;\n}\n\n.autocomplete__input--focused {\n\toutline: 3px solid #fd0 !important ; /*  need to remove important when dash input.css if figured out */\n\toutline-offset: 0;\n\tbox-shadow: inset 0 0 0 2px;\n}\n\n.autocomplete__input--show-all-values {\n\tpadding: 5px 34px 5px 5px;\n\t/* Space for arrow. Other padding should match .autocomplete__input--default. */\n\tcursor: pointer;\n}\n\n.autocomplete__dropdown-arrow-down {\n\tdisplay: inline-block;\n\tposition: absolute;\n\tright: 8px;\n\twidth: 24px;\n\theight: 24px;\n\ttop: 10px;\n\tpointer-events: none;\n}\n\n.autocomplete__menu {\n\tbackground-color: #fff;\n\tborder: 2px solid #0B0C0C;\n\tborder-top: 0;\n\tcolor: #0B0C0C;\n\tmargin: 0;\n\tmax-height: 342px;\n\toverflow-x: hidden;\n\tpadding: 0;\n\twidth: 100%;\n\twidth: calc(100% - 4px);\n}\n\n.autocomplete__menu--visible {\n\tdisplay: block;\n}\n\n.autocomplete__menu--hidden {\n\tdisplay: none;\n}\n\n.autocomplete__menu--overlay {\n\tbox-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;\n\tleft: 0;\n\tposition: absolute;\n\ttop: 100%;\n\tz-index: 100;\n}\n\n.autocomplete__menu--inline {\n\tposition: relative;\n}\n\n.autocomplete__option {\n\tborder-bottom: solid #b1b4b6;\n\tborder-width: 1px 0;\n\tcursor: pointer;\n\tdisplay: block;\n\tposition: relative;\n}\n\n.autocomplete__option>* {\n\tpointer-events: none;\n}\n\n.autocomplete__option:first-of-type {\n\tborder-top-width: 0;\n}\n\n.autocomplete__option:last-of-type {\n\tborder-bottom-width: 0;\n}\n\n.autocomplete__option--odd {\n\tbackground-color: #FAFAFA;\n}\n\n.autocomplete__option--focused,\n.autocomplete__option:hover {\n\tbackground-color: #1d70b8;\n\tborder-color: #1d70b8;\n\tcolor: white;\n\toutline: none;\n}\n\n@media (-ms-high-contrast: active),\n(forced-colors: active) {\n\t.autocomplete__menu {\n\t\tborder-color: FieldText;\n\t}\n\n\t.autocomplete__option {\n\t\tbackground-color: Field;\n\t\tcolor: FieldText;\n\t}\n\n\t.autocomplete__option--focused,\n\t.autocomplete__option:hover {\n\t\tforced-color-adjust: none;\n\t\t/* prevent backplate from obscuring text */\n\t\tbackground-color: Highlight;\n\t\tborder-color: Highlight;\n\t\tcolor: HighlightText;\n\n\t\t/* Prefer SelectedItem / SelectedItemText in browsers that support it */\n\t\tbackground-color: SelectedItem;\n\t\tborder-color: SelectedItem;\n\t\tcolor: SelectedItemText;\n\t\toutline-color: SelectedItemText;\n\t}\n}\n\n.autocomplete__option--no-results {\n\tbackground-color: #FAFAFA;\n\tcolor: #646b6f;\n\tcursor: not-allowed;\n}\n\n.autocomplete__hint,\n.autocomplete__input,\n.autocomplete__option {\n\tfont-size: 16px;\n\tline-height: 1.25;\n}\n\n.autocomplete__hint,\n.autocomplete__option {\n\tpadding: 5px;\n}\n\n@media (min-width: 641px) {\n\n\t.autocomplete__hint,\n\t.autocomplete__input,\n\t.autocomplete__option {\n\t\tfont-size: 19px;\n\t\tline-height: 1.31579;\n\t}\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -32750,7 +32750,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"f4498d7"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"3d58e9d"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -33861,10 +33861,10 @@ var App = function App() {
     source: ["Local authorities", "Regional", "Local authority type"],
     id: "autocomplete-default",
     showAllValues: true,
-    bn: true,
     displayMenu: "overlay",
     placeholder: "Select Option",
-    alwaysDisplayArrow: true
+    alwaysDisplayArrow: true,
+    value: null
   })));
 };
 
@@ -34582,12 +34582,14 @@ var AutoComplete = function AutoComplete(props) {
       isMenuOpen = _useState6[0],
       setMenuOpen = _useState6[1];
 
+  debugger;
+
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value ? [value] : []),
       _useState8 = _slicedToArray(_useState7, 2),
       options = _useState8[0],
       setOptions = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value !== null && value !== void 0 ? value : ''),
       _useState10 = _slicedToArray(_useState9, 2),
       query = _useState10[0],
       setQuery = _useState10[1];
@@ -35017,6 +35019,8 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    debugger;
+
     if (typeof setProps === 'function') {
       setProps({
         value: query
@@ -35275,7 +35279,7 @@ var insertInto;
 
 
 
-var options = {"insertAt":"bottom","hmr":true}
+var options = {"insertAt":"top","hmr":true}
 
 options.transform = transform
 options.insertInto = undefined;

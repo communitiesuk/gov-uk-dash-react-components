@@ -80,9 +80,10 @@ const AutoComplete = (props) => {
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 	const [ isFocus, setFocus ] = useState(null);
 	const [ isHover, setHover ] = useState(null);
-	const [ isMenuOpen, setMenuOpen ] = useState(false);
+	const [isMenuOpen, setMenuOpen] = useState(false);
+	debugger;
 	const [options, setOptions] = useState(value ? [value] : []);
-	const [query, setQuery] = useState(value);
+	const [query, setQuery] = useState(value ?? '');
 	const [ validChoiceMade, setValidChoiceMade ] = useState(false);
 	const [ selected, setSelected ] = useState(null);
 	const [ ariaHint, setAriaHint ] = useState(true);
@@ -475,6 +476,7 @@ const AutoComplete = (props) => {
 	}
 
 	useEffect(() => {
+		debugger;
 		if (typeof setProps === 'function' ) {
 			setProps({ value: query})
 		}
