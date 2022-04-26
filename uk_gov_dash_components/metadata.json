@@ -232,13 +232,6 @@
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       },
-      "ariaLabelledBy": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "This is the ID for the label field"
-      },
       "alwaysDisplayArrow": {
         "type": {
           "name": "bool"
@@ -249,6 +242,216 @@
           "value": "true",
           "computed": false
         }
+      },
+      "wrapperRef": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "wrapperRef"
+      },
+      "style": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Override the css style of the wrapper"
+      },
+      "ariaLabelledBy": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "This is the ID for the label field"
+      }
+    }
+  },
+  "src/lib/components/Dropdown.react.js": {
+    "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
+    "displayName": "Dropdown",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Label text"
+      },
+      "autoselect": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Should auto select"
+      },
+      "cssNamespace": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "cssNamespace"
+      },
+      "displayMenu": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "minLength": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "name": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "placeholder": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "onConfirm": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "confirmOnBlur": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "showNoOptionsFound": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "showAllValues": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "required": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tNoResults": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tAssistiveHint": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "source": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "templates": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusQueryTooShort": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusNoResults": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusSelectedOption": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "tStatusResults": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "No Description"
+      },
+      "dropdownArrow": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "React component for dropdown arrow"
+      },
+      "selectElement": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Accessible element"
+      },
+      "value": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The value displayed in the input."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      },
+      "alwaysDisplayArrow": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "alwaysDisplayArrow"
       },
       "wrapperRef": {
         "type": {

@@ -67,12 +67,12 @@ _js_dist.extend(
     [
         {
             'relative_package_path': 'uk_gov_dash_components.min.js',
-    
+
             'namespace': package_name
         },
         {
             'relative_package_path': 'uk_gov_dash_components.min.js.map',
-    
+
             'namespace': package_name,
             'dynamic': True
         }

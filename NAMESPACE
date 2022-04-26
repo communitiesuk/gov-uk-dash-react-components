@@ -1,6 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 export('govuk'AutoComplete)
+export('govuk'Dropdown)
 export('govuk'dropdownArrowDown)
 export('govuk'status)
 export('govuk'UkGovDashComponents)
+export(Dropdown)

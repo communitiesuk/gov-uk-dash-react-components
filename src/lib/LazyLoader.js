@@ -1,7 +1,9 @@
 import AutoComplete from './fragments/AutoComplete.react'
+import Dropdown from './fragments/Dropdown.react'
 
 export {
-	AutoComplete
+	AutoComplete,
+	Dropdown
 }
 
 

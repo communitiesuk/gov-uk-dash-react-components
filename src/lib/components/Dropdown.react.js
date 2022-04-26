@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AutoComplete as RealComponent } from '../LazyLoader';
-import DropdownArrowDown from './dropdownArrowDown.react';
+import {
+	defaultProps,
+} from './AutoComplete.react';
+import { Dropdown as RealComponent } from '../LazyLoader';
+
+
 
 /**
- * Lazy loaded Autocomplete
- *
- * @param {
+ * @param {{
+ * 	label: string,
  * 	id,
  * 	autoselect,
  * 	cssNamespace,
- * 	defaultValue,
+ * 	value,
  * 	displayMenu,
  * 	minLength,
  * 	name,
@@ -29,42 +32,27 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
- * 	style
- * } [props={}]
+ * }} [props={}]
+ *
  * @return {*}
  */
-const AutoComplete = (props = {}) => {
+const Dropdown = (props = {}) => {
 	return (
-			<RealComponent {...props} />
+		<RealComponent {...props} />
 	);
 }
 
-export default AutoComplete
-
-AutoComplete.defaultProps = {
-	autoselect: false,
-	cssNamespace: 'autocomplete',
-	value: '',
-	displayMenu: 'inline',
-	minLength: 0,
-	name: 'input-autocomplete',
-	placeholder: '',
-	onConfirm: () => { },
-	confirmOnBlur: true,
-	showNoOptionsFound: true,
-	showAllValues: false,
-	required: false,
-	tNoResults: () => 'No results found',
-	tAssistiveHint: () => 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.',
-	dropdownArrow: DropdownArrowDown,
-	alwaysDisplayArrow: true,
-};
-
-export const basePropTypes = {
+export const dropdownPropTypes = {
 	/**
 	 * The ID used to identify this component in Dash callbacks.
 	 */
 	id: PropTypes.string,
+
+	/**
+	 * Label text
+	 */
+	label: PropTypes.string,
+
 	/**
 	 * Should auto select
 	 */
@@ -177,16 +165,10 @@ export const basePropTypes = {
 	 * Override the css style of the wrapper
 	 */
 	style: PropTypes.any
-};
 
-AutoComplete.propTypes = {
-	...basePropTypes,
-	/**
-	 * This is the ID for the label field
-	 */
-	ariaLabelledBy: PropTypes.string,
-};
+}
 
+Dropdown.propTypes = dropdownPropTypes;
+Dropdown.defaultProps = defaultProps;
 
-export const defaultProps = AutoComplete.defaultProps;
-export const propTypes = AutoComplete.propTypes;
+export default Dropdown;

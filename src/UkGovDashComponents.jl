@@ -6,6 +6,7 @@ const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "1.0.0"
 
 include("jl/'govuk'_autocomplete.jl")
+include("jl/'govuk'_dropdown.jl")
 include("jl/'govuk'_dropdownarrowdown.jl")
 include("jl/'govuk'_status.jl")
 include("jl/'govuk'_ukgovdashcomponents.jl")

@@ -81,7 +81,6 @@ const AutoComplete = (props) => {
 	const [ isFocus, setFocus ] = useState(null);
 	const [ isHover, setHover ] = useState(null);
 	const [isMenuOpen, setMenuOpen] = useState(false);
-	debugger;
 	const [options, setOptions] = useState(value ? [value] : []);
 	const [query, setQuery] = useState(value ?? '');
 	const [ validChoiceMade, setValidChoiceMade ] = useState(false);
@@ -442,7 +441,6 @@ const AutoComplete = (props) => {
 	}
 
 	const handleInputClick = (event) => {
-		debugger
 		if ((selectElement || showAllValues) && isMenuOpen === false) {
 			const newQuery = event.target.value
 			dataSource('', (options) => {
@@ -476,7 +474,6 @@ const AutoComplete = (props) => {
 	}
 
 	useEffect(() => {
-		debugger;
 		if (typeof setProps === 'function' ) {
 			setProps({ value: query})
 		}
