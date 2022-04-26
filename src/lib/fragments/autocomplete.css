@@ -31,7 +31,7 @@
 }
 
 .autocomplete__input--focused {
-	outline: 3px solid #fd0;
+	outline: 3px solid #fd0 !important ; /*  need to remove important when dash input.css if figured out */
 	outline-offset: 0;
 	box-shadow: inset 0 0 0 2px;
 }

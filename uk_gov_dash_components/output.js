@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "854506d-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "f4498d7-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "854506d-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "f4498d7-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "3680b3dc8f7c01dd96b7";
+/******/ 	var hotCurrentHash = "74ec4f7e2b62cfc01d46";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_0_0-beta_5m1650883790");
+/******/ 	        fileFragments.splice(1, 0, "v1_0_0-beta_7m1650962157");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -32750,7 +32750,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"854506d"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"f4498d7"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -33957,6 +33957,7 @@ __webpack_require__.r(__webpack_exports__);
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ * 	style
  * } [props={}]
  * @return {*}
  */
@@ -34124,7 +34125,12 @@ AutoComplete.propTypes = {
   /**
    * wrapperRef
    */
-  wrapperRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any
+  wrapperRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any,
+
+  /**
+   * Override the css style of the wrapper
+   */
+  style: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any
 };
 var defaultProps = AutoComplete.defaultProps;
 var propTypes = AutoComplete.propTypes;
@@ -34459,6 +34465,8 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -34530,7 +34538,8 @@ var AutoComplete = function AutoComplete(props) {
       setProps = _defaultProps$props.setProps,
       ariaLabelledBy = _defaultProps$props.ariaLabelledBy,
       selectElement = _defaultProps$props.selectElement,
-      alwaysDisplayArrow = _defaultProps$props.alwaysDisplayArrow;
+      alwaysDisplayArrow = _defaultProps$props.alwaysDisplayArrow,
+      style = _defaultProps$props.style;
 
   if (!id) {
     throw new Error('id is not defined');
@@ -34538,17 +34547,21 @@ var AutoComplete = function AutoComplete(props) {
 
   if (!source) {
     throw new Error('source is not defined');
-  } // if (configurationOptions.preserveNullOptions === undefined) configurationOptions.preserveNullOptions = true
-  // if (configurationOptions.autoselect === undefined) configurationOptions.autoselect = true
-  // if (configurationOptions.showAllValues === undefined) configurationOptions.showAllValues = true
-
+  }
 
   var createSimpleEngine = function createSimpleEngine(values) {
     return function (query, syncResults) {
-      var matches = values.filter(function (r) {
-        return r.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-      });
-      syncResults(matches);
+      if (values.length && _typeof(values[0]) === 'object') {
+        syncResults(values.filter(function (r) {
+          var _ref, _r$label;
+
+          return ((_ref = (_r$label = r === null || r === void 0 ? void 0 : r.label) !== null && _r$label !== void 0 ? _r$label : r === null || r === void 0 ? void 0 : r.name) !== null && _ref !== void 0 ? _ref : r === null || r === void 0 ? void 0 : r.value).toLowerCase().indexOf(query.toLowerCase()) !== -1;
+        }));
+      } else {
+        syncResults(values.filter(function (r) {
+          return r.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+        }));
+      }
     };
   };
 
@@ -34666,7 +34679,7 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputFocus = function handleInputFocus() {
-    if (selectElement) {
+    if (selectElement || showAllValues) {
       return;
     }
 
@@ -34967,6 +34980,8 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputClick = function handleInputClick(event) {
+    debugger;
+
     if ((selectElement || showAllValues) && isMenuOpen === false) {
       var newQuery = event.target.value;
       dataSource('', function (options) {
@@ -35074,7 +35089,8 @@ var AutoComplete = function AutoComplete(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: wrapperClassName,
-    onKeyDown: handleKeyDown
+    onKeyDown: handleKeyDown,
+    style: style
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_status__WEBPACK_IMPORTED_MODULE_5__["default"], {
     id: id,
     length: options === null || options === void 0 ? void 0 : options.length,
@@ -35259,7 +35275,7 @@ var insertInto;
 
 
 
-var options = {"insertAt":"top","hmr":true}
+var options = {"insertAt":"bottom","hmr":true}
 
 options.transform = transform
 options.insertInto = undefined;

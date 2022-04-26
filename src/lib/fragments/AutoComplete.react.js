@@ -68,13 +68,14 @@ const AutoComplete = (props) => {
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
-	// if (configurationOptions.preserveNullOptions === undefined) configurationOptions.preserveNullOptions = true
-	// if (configurationOptions.autoselect === undefined) configurationOptions.autoselect = true
-	// if (configurationOptions.showAllValues === undefined) configurationOptions.showAllValues = true
 
 	const createSimpleEngine = (values) => (query, syncResults) => {
-		var matches = values.filter(r => r.toLowerCase().indexOf(query.toLowerCase()) !== -1)
-		syncResults(matches)
+
+		if (values.length && typeof values[0] === 'object') {
+			syncResults(values.filter(r => (r?.label ?? r?.name ?? r?.value).toLowerCase().indexOf(query.toLowerCase()) !== -1))
+		} else {
+			syncResults(values.filter(r => r.toLowerCase().indexOf(query.toLowerCase()) !== -1))
+		}
 	}
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 	const [ isFocus, setFocus ] = useState(null);
@@ -152,7 +153,7 @@ const AutoComplete = (props) => {
 	}
 
 	const handleInputFocus = () => {
-		if (selectElement) {
+		if (selectElement || showAllValues) {
 			return
 		}
 		const shouldReopenMenu = !validChoiceMade && query?.length >= minLength && options?.length > 0
@@ -440,6 +441,7 @@ const AutoComplete = (props) => {
 	}
 
 	const handleInputClick = (event) => {
+		debugger
 		if ((selectElement || showAllValues) && isMenuOpen === false) {
 			const newQuery = event.target.value
 			dataSource('', (options) => {
