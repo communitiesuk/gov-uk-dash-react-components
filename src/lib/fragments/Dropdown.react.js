@@ -43,11 +43,11 @@ const Dropdown = (props = {}) => {
 	const { labelProps, fieldProps } = useLabel(props);
 	const [autoCompleteProps] = useState(autoComplete);
 	return (
-		<div className="govuk-form-group">
+		<div className="govuk-form-group" style={props.style}>
 			<label className="govuk-label" {...labelProps}>{label}</label>
 			<AutoComplete
 				ariaLabelledBy={fieldProps['aria-labelledby']}
-				{...autoCompleteProps}
+				{...{ ...autoCompleteProps, style: null }}
 			/>
 		</div>
 	);

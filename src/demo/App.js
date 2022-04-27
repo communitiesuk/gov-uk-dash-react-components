@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { AutoComplete } from '../lib';
+import { Dropdown } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -14,8 +14,9 @@ const App = () => {
         <>
             <h1>Autocomplete</h1>
             <div>
-                <label htmlFor="autocomplete-default">Country</label>
-                <AutoComplete
+                <Dropdown
+                    label="Hello world"
+                    style={{minWidth: '50%'}}
                     source={[
                         { label: "Local authorities", value: "Hello LOL" },
                         { label: "Regional", value: "Hello LOL2" },
