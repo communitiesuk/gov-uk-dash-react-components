@@ -10,9 +10,9 @@ app.layout = html.Div([
         label="Something",
         id='input',
         source=[
-            'Afghanistan',
-            'Akrotiri',
-            'Albania'
+            {"label": "Some label", "value": "Afghanistan"},
+            {"label": "Some test ", "value": "Akrotiri"},
+            {"label": "Some vb", "value": "Albania"},
         ],
         value="",
         showAllValues=True,

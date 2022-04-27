@@ -42,7 +42,7 @@ export default class Status extends Component {
 		}, statusDebounceMillis)
 	}
 
-	componentWillReceiveProps({ queryLength }) {
+	UNSAFE_componentWillReceiveProps({ queryLength }) {
 		this.setState({ debounced: false })
 	}
 

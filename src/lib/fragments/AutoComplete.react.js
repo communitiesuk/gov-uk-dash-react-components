@@ -72,34 +72,64 @@ const AutoComplete = (props) => {
 	const createSimpleEngine = (values) => (query, syncResults) => {
 
 		if (values.length && typeof values[0] === 'object') {
-			syncResults(values.filter(r => (r?.label ?? r?.name ?? r?.value).toLowerCase().indexOf(query.toLowerCase()) !== -1))
+			syncResults(values.filter(r => (r ? r.label || r.name || r.value || r : r).toLowerCase().indexOf(query.toLowerCase()) !== -1))
 		} else {
 			syncResults(values.filter(r => r.toLowerCase().indexOf(query.toLowerCase()) !== -1))
 		}
+	}
+	const getOptionFromValue = (query, options) => {
+		return options.find(opt => (opt.value || opt) === query);
+	}
+
+	const getOptionLabelFromValue = (query, options) => {
+		const res = getOptionFromValue(query, options);
+		return res?.label || res?.name || res
 	}
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 	const [ isFocus, setFocus ] = useState(null);
 	const [ isHover, setHover ] = useState(null);
 	const [isMenuOpen, setMenuOpen] = useState(false);
-	const [options, setOptions] = useState(value ? [value] : []);
-	const [query, setQuery] = useState(value ?? '');
-	const [ validChoiceMade, setValidChoiceMade ] = useState(false);
-	const [ selected, setSelected ] = useState(null);
-	const [ ariaHint, setAriaHint ] = useState(true);
+
+	const [validChoiceMade, setValidChoiceMade ] = useState(false);
+	const [selected, setSelected] = useState(null);
+	const [ariaHint, setAriaHint] = useState(true);
+
+	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : ''
+	const [options, setOptions] = useState(startValue ? [startValue] : []);
+	const [query, setQuery] = useState(startValue);
+
+
+	if (!Array.isArray(source)) {
+		dataSource('', (options) => {
+			const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, options) || '') : '';
+			setOptions(options);
+			setQuery(startValue);
+		})
+	}
+
+
 
 	const elementReferences = {};
+
+	const getRealOptions = (options) => {
+		return typeof options[0] === 'object' ? options.map(option => option?.value || option) : options;
+	}
+
+
+
+
 
 
 	// This template is used when converting from a state.options object into a state.query.
 	const templateInputValue = (value) => {
 		const inputValueTemplate = templates?.inputValue
-		return inputValueTemplate ? inputValueTemplate(value) : value
+		return inputValueTemplate ? inputValueTemplate(value) : (value?.value ?? value)
 	}
 
 	// This template is used when displaying results / suggestions.
 	const templateSuggestion = (value) => {
 		const suggestionTemplate = templates?.suggestion
-		return suggestionTemplate ? suggestionTemplate(value) : value
+		return suggestionTemplate ? suggestionTemplate(value) : (value ? value.label || value.name || value.value || value : value)
 	}
 
 	const isQueryAnOption = (query, options) => {
@@ -107,11 +137,12 @@ const AutoComplete = (props) => {
 	}
 
 	const handleComponentBlur = (newState, escape) => {
-		const focusOnBlur = escape && (selectElement || showAllValues) ? -1 : null
+		const focusOnBlur = escape && (selectElement) ? -1 : null
 		let newQuery
 		if (confirmOnBlur) {
-			newQuery = newState.query || query
-			onConfirm(options[selected])
+			newQuery = newState.query || query;
+			const selectedOption = options[selected];
+			onConfirm(selectedOption?.value ?? selectedOption)
 		} else {
 			newQuery = query
 		}
@@ -217,7 +248,7 @@ const AutoComplete = (props) => {
 	const handleOptionClick = (event, index, menuOpen = false) => {
 		const selectedOption = options[index]
 		const newQuery = templateInputValue(selectedOption)
-		onConfirm(selectedOption)
+		onConfirm(selectedOption?.value ?? selectedOption)
 
 		// Do not remove this, otherwise the input can receive the event and
 		// keep the menu open unintentionally
@@ -228,7 +259,9 @@ const AutoComplete = (props) => {
 		setHover(null);
 		setMenuOpen(menuOpen);
 		setQuery(newQuery)
-		setSelected(-1);
+		if (confirmOnBlur) {
+			setSelected(-1);
+		}
 		setValidChoiceMade(true);
 	}
 
@@ -254,7 +287,9 @@ const AutoComplete = (props) => {
 				setMenuOpen(true);
 				setOptions(options);
 
-					let index = query && options.indexOf(query) > 0 ? options.indexOf(query) - 1 : options.length - 1
+				const realOpt = getRealOptions(options);
+
+				let index = query && realOpt.indexOf(query) > 0 ? realOpt.indexOf(query) - 1 : options.length - 1
 
 					if (index < 0) {
 						index = options.length - 1
@@ -282,13 +317,14 @@ const AutoComplete = (props) => {
 			dataSource('', (options) => {
 				setMenuOpen(true);
 				setOptions(options);
-					let index = query && options.indexOf(query) > -1 ? options.indexOf(query) + 1 : 0
+				const realOpt = getRealOptions(options);
+				let index = query && realOpt.indexOf(query) > -1 ? realOpt.indexOf(query) + 1 : 0
 
-					if (index >= options.length) {
-						index = 0
-					}
+				if (index >= options.length) {
+					index = 0
+				}
 
-					handleOptionFocus(index, true)
+				handleOptionFocus(index, true)
 			})
 		} else if (showAllValues && !isMenuOpen) {
 			event.preventDefault()
@@ -314,7 +350,8 @@ const AutoComplete = (props) => {
 				event.preventDefault()
 			}
 			dataSource('', (options) => {
-				const index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0
+				const realOpt = getRealOptions(options);
+				const index = query && realOpt.indexOf(query) > -1 ? realOpt.indexOf(query) : 0
 				setMenuOpen(true);
 				setOptions(options);
 				setFocus(index);
@@ -339,8 +376,8 @@ const AutoComplete = (props) => {
 		} else if (selectElement) {
 			dataSource('', (options) => {
 				setOptions(options)
-
-				let index = query && options.indexOf(query) > -1 ? options.indexOf(query) : 0
+				const realOpt = getRealOptions(options);
+				let index = query && realOpt.indexOf(query) > -1 ? realOpt.indexOf(query) : 0
 				let openMenu = true
 
 				if (!selectElement) {
@@ -474,7 +511,7 @@ const AutoComplete = (props) => {
 	}
 
 	useEffect(() => {
-		if (typeof setProps === 'function' ) {
+		if (typeof setProps === 'function') {
 			setProps({ value: query})
 		}
 		setAriaHint(!query?.length)

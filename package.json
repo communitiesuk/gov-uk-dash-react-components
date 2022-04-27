@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "@react-aria/label": "^3.2.4",
+    "@react-aria/listbox": "^3.4.4",
     "ramda": "^0.26.1",
     "usehooks-ts": "2.1.1"
   },
