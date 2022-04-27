@@ -1,10 +1,15 @@
 /* eslint no-magic-numbers: 0 */
-import React from 'react';
+import React, { useState } from 'react';
 
-import { AutoComplete, Dropdown } from '../lib';
+import { AutoComplete } from '../lib';
 
 const App = () => {
-
+    const [value, setValue] = useState('');
+    const setPros = (props) => {
+        setValue(props.value)
+        console.log('props', props);
+        console.log('value', value);
+    }
     return (
         <>
             <h1>Autocomplete</h1>
@@ -12,33 +17,20 @@ const App = () => {
                 <label htmlFor="autocomplete-default">Country</label>
                 <AutoComplete
                     source={[
-                        "Local authorities",
-                        "Regional",
-                        "Local authority type",
+                        { label: "Local authorities", value: "Hello LOL" },
+                        { label: "Regional", value: "Hello LOL2" },
+                        { label: "Local authority type", value: "LOL" },
                     ]}
                     id="autocomplete-default"
                     showAllValues={true}
                     displayMenu="overlay"
                     placeholder="Select Option"
                     alwaysDisplayArrow={true}
-                    value={null}
+                    value="Hello LOL2"
+                    setProps={setPros}
                 />
+                <span>The output value is { value }</span>
             </div>
-
-            <Dropdown
-                id="example"
-                label="Example Label"
-                source={[
-                    "Local authorities",
-                    "Regional",
-                    "Local authority type",
-                ]}
-                showAllValues={true}
-                displayMenu="overlay"
-                alwaysDisplayArrow={true}
-                placeholder="Select Option"
-                value={null}
-            />
         </>
     )
 }

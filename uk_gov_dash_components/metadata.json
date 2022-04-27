@@ -576,6 +576,135 @@
       }
     }
   },
+  "src/lib/components/ui/ComboBox.react.js": {
+    "description": "",
+    "displayName": "ComboBox",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "defaultInputValue": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "defaultItems": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
+      "items": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "custom",
+                "raw": "{\r\n    key: PropTypes.String,\r\n    name: PropTypes.string,\r\n}"
+              }
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "custom",
+                "raw": "{\r\n    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),\r\n    name: PropTypes.string,\r\n}"
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "onSelectionChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "allowsCustomValue": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "onInputChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedKey": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "menuTrigger": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "src/lib/components/ui/ListBox.react.js": {
+    "description": "Listbox\r\n\n@param {*} [props={}]\r\n@return {*}",
+    "displayName": "ListBox",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      }
+    }
+  },
+  "src/lib/components/ui/Popover.react.js": {
+    "description": "Propover\r\n\n@export\r\n@param {*} props\r\n@return {*}",
+    "displayName": "Popover",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      }
+    }
+  },
   "src/lib/components/UkGovDashComponents.react.js": {
     "description": "ExampleComponent is an example component.\r\nIt takes a property, `label`, and\r\ndisplays it.\r\nIt renders an input with the property `value`\r\nwhich is editable by the user.",
     "displayName": "UkGovDashComponents",
