@@ -79,6 +79,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  */
 
 var AutoComplete = function AutoComplete(props) {
+  var _getOptionLabelFromVa;
+
   var _defaultProps$props = _objectSpread(_objectSpread({}, _components_AutoComplete_react__WEBPACK_IMPORTED_MODULE_2__["defaultProps"]), props),
       id = _defaultProps$props.id,
       autoselect = _defaultProps$props.autoselect,
@@ -130,6 +132,27 @@ var AutoComplete = function AutoComplete(props) {
     };
   };
 
+  var getOptionFromValue = function getOptionFromValue(query, options) {
+    return options.find(function (opt) {
+      var _ref;
+
+      return ((_ref = opt.value || opt) === null || _ref === void 0 ? void 0 : _ref.toLowerCase()) === (query === null || query === void 0 ? void 0 : query.toLowerCase());
+    });
+  };
+
+  var getValueFromQuery = function getValueFromQuery(query, options) {
+    return options.find(function (r) {
+      var _ref2;
+
+      return ((_ref2 = r ? r.label || r.name || r.value || r : r) === null || _ref2 === void 0 ? void 0 : _ref2.toLowerCase()) === (query === null || query === void 0 ? void 0 : query.toLowerCase());
+    });
+  };
+
+  var getOptionLabelFromValue = function getOptionLabelFromValue(query, options) {
+    var res = getOptionFromValue(query, options);
+    return (res === null || res === void 0 ? void 0 : res.label) || (res === null || res === void 0 ? void 0 : res.name) || res;
+  };
+
   var dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
@@ -147,35 +170,44 @@ var AutoComplete = function AutoComplete(props) {
       isMenuOpen = _useState6[0],
       setMenuOpen = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value ? [value] : []),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      options = _useState8[0],
-      setOptions = _useState8[1];
+      validChoiceMade = _useState8[0],
+      setValidChoiceMade = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(value !== null && value !== void 0 ? value : ''),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState10 = _slicedToArray(_useState9, 2),
-      query = _useState10[0],
-      setQuery = _useState10[1];
+      selected = _useState10[0],
+      setSelected = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState12 = _slicedToArray(_useState11, 2),
-      validChoiceMade = _useState12[0],
-      setValidChoiceMade = _useState12[1];
+      ariaHint = _useState12[0],
+      setAriaHint = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+  var startValue = Array.isArray(source) ? getOptionLabelFromValue(value, source) || '' : '';
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue ? [startValue] : []),
       _useState14 = _slicedToArray(_useState13, 2),
-      selected = _useState14[0],
-      setSelected = _useState14[1];
+      options = _useState14[0],
+      setOptions = _useState14[1];
 
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue),
       _useState16 = _slicedToArray(_useState15, 2),
-      ariaHint = _useState16[0],
-      setAriaHint = _useState16[1];
+      query = _useState16[0],
+      setQuery = _useState16[1];
+
+  if (!Array.isArray(source)) {
+    dataSource('', function (options) {
+      var startValue = Array.isArray(source) ? getOptionLabelFromValue(value, options) || '' : '';
+      setOptions(options);
+      setQuery(startValue);
+    });
+  }
 
   var elementReferences = {};
 
   var getRealOptions = function getRealOptions(options) {
-    debugger;
     return _typeof(options[0]) === 'object' ? options.map(function (option) {
       return (option === null || option === void 0 ? void 0 : option.value) || option;
     }) : options;
@@ -202,7 +234,7 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleComponentBlur = function handleComponentBlur(newState, escape) {
-    var focusOnBlur = escape && (selectElement || showAllValues) ? -1 : null;
+    var focusOnBlur = escape && selectElement ? -1 : null;
     var newQuery;
 
     if (confirmOnBlur) {
@@ -210,7 +242,7 @@ var AutoComplete = function AutoComplete(props) {
 
       newQuery = newState.query || query;
       var selectedOption = options[selected];
-      onConfirm((_selectedOption$value = selectedOption.value) !== null && _selectedOption$value !== void 0 ? _selectedOption$value : selectedOption);
+      onConfirm((_selectedOption$value = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value) !== null && _selectedOption$value !== void 0 ? _selectedOption$value : selectedOption);
     } else {
       newQuery = query;
     }
@@ -300,9 +332,7 @@ var AutoComplete = function AutoComplete(props) {
       setValidChoiceMade(true);
 
       if (selectElement) {
-        var _selectedOption$value2;
-
-        onConfirm((_selectedOption$value2 = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value) !== null && _selectedOption$value2 !== void 0 ? _selectedOption$value2 : selectedOption);
+        onConfirm(selectedOption);
       }
     }
   };
@@ -320,12 +350,12 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleOptionClick = function handleOptionClick(event, index) {
-    var _selectedOption$value3;
+    var _selectedOption$value2;
 
     var menuOpen = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
     var selectedOption = options[index];
     var newQuery = templateInputValue(selectedOption);
-    onConfirm((_selectedOption$value3 = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value) !== null && _selectedOption$value3 !== void 0 ? _selectedOption$value3 : selectedOption); // Do not remove this, otherwise the input can receive the event and
+    onConfirm((_selectedOption$value2 = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value) !== null && _selectedOption$value2 !== void 0 ? _selectedOption$value2 : selectedOption); // Do not remove this, otherwise the input can receive the event and
     // keep the menu open unintentionally
 
     event.preventDefault();
@@ -334,7 +364,11 @@ var AutoComplete = function AutoComplete(props) {
     setHover(null);
     setMenuOpen(menuOpen);
     setQuery(newQuery);
-    setSelected(-1);
+
+    if (confirmOnBlur) {
+      setSelected(-1);
+    }
+
     setValidChoiceMade(true);
   };
 
@@ -415,15 +449,12 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleSpace = function handleSpace(event) {
-    debugger;
-
-    if (selectElement && !isMenuOpen || showAllValues && !isMenuOpen && query === '') {
+    if (showAllValues && !isMenuOpen || showAllValues && !isMenuOpen && query === '') {
       if (query.trim().length === 0) {
         event.preventDefault();
       }
 
       dataSource('', function (options) {
-        debugger;
         var realOpt = getRealOptions(options);
         var index = query && realOpt.indexOf(query) > -1 ? realOpt.indexOf(query) : 0;
         setMenuOpen(true);
@@ -432,13 +463,6 @@ var AutoComplete = function AutoComplete(props) {
         setSelected(index);
       });
       return;
-    }
-
-    var focusIsOnOption = isFocus !== -1;
-
-    if (focusIsOnOption) {
-      event.preventDefault();
-      handleOptionClick(event, isFocus);
     }
   };
 
@@ -605,8 +629,9 @@ var AutoComplete = function AutoComplete(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (typeof setProps === 'function') {
+      var opt = getValueFromQuery(query, options);
       setProps({
-        value: query
+        value: (opt === null || opt === void 0 ? void 0 : opt.value) || opt || query
       });
     }
 
@@ -720,7 +745,7 @@ var AutoComplete = function AutoComplete(props) {
     type: "text",
     role: "combobox",
     required: required,
-    value: query
+    value: (_getOptionLabelFromVa = getOptionLabelFromValue(query, options)) !== null && _getOptionLabelFromVa !== void 0 ? _getOptionLabelFromVa : query
   })), dropdownArrow, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "".concat(menuClassName, " ").concat(menuModifierDisplayMenu, " ").concat(menuModifierVisibility),
     onMouseLeave: function onMouseLeave(event) {
@@ -846,5 +871,5 @@ AutoComplete.propTypes = _components_AutoComplete_react__WEBPACK_IMPORTED_MODULE
 /***/ })
 
 })
-//# sourceMappingURL=dcb08a1-main-wps-hmr.js.map
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkY2IwOGExLW1haW4td3BzLWhtci5qcyIsInNvdXJjZVJvb3QiOiIifQ==
+//# sourceMappingURL=6260d87-main-wps-hmr.js.map
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiI2MjYwZDg3LW1haW4td3BzLWhtci5qcyIsInNvdXJjZVJvb3QiOiIifQ==

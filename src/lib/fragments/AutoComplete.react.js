@@ -78,7 +78,11 @@ const AutoComplete = (props) => {
 		}
 	}
 	const getOptionFromValue = (query, options) => {
-		return options.find(opt => (opt.value || opt) === query);
+		return options.find(opt => (opt.value || opt)?.toLowerCase() === query?.toLowerCase());
+	}
+
+	const getValueFromQuery = (query, options) => {
+		return options.find(r => (r ? r.label || r.name || r.value || r : r)?.toLowerCase() === query?.toLowerCase());
 	}
 
 	const getOptionLabelFromValue = (query, options) => {
@@ -94,9 +98,9 @@ const AutoComplete = (props) => {
 	const [selected, setSelected] = useState(null);
 	const [ariaHint, setAriaHint] = useState(true);
 
-	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : ''
-	const [options, setOptions] = useState(startValue ? [startValue] : []);
-	const [query, setQuery] = useState(startValue);
+	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
+	const [options, setOptions] = useState(startValue !== '' ? source : []);
+	const [query, setQuery] = useState(startValue || value || '');
 
 
 	if (!Array.isArray(source)) {
@@ -345,7 +349,7 @@ const AutoComplete = (props) => {
 	}
 
 	const handleSpace = (event) => {
-		if ((selectElement && !isMenuOpen) || (showAllValues && !isMenuOpen && query === '')) {
+		if ((showAllValues && !isMenuOpen) || (showAllValues && !isMenuOpen && query === '')) {
 			if (query.trim().length === 0) {
 				event.preventDefault()
 			}
@@ -359,11 +363,6 @@ const AutoComplete = (props) => {
 			})
 			return;
 		}
-		const focusIsOnOption = isFocus !== -1
-		if (focusIsOnOption) {
-			event.preventDefault()
-			handleOptionClick(event, isFocus)
-		}
 	}
 
 	const handleEnter = (event) => {
@@ -371,7 +370,7 @@ const AutoComplete = (props) => {
 			event.preventDefault()
 			const hasSelectedOption = selected >= 0
 			if (hasSelectedOption) {
-				handleOptionClick(event, selected)
+				handleOptionClick(event, selected, false)
 			}
 		} else if (selectElement) {
 			dataSource('', (options) => {
@@ -497,40 +496,13 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	const clearSelection = () => {
-		setFocus(null);
-		setHover(null);
-		setMenuOpen(false);
-		setOptions(value ? [value] : []);
-		setQuery('');
-		setValidChoiceMade(false);
-		selectElement.value = null
-		const event = new Event('selectElement', { bubbles: true, cancelable: false });
-		selectElement.dispatchEvent(event);
-
-	}
-
 	useEffect(() => {
 		if (typeof setProps === 'function') {
-			setProps({ value: query})
+			const opt = getValueFromQuery(query, options)
+			setProps({ value: opt?.value || opt || query})
 		}
 		setAriaHint(!query?.length)
 	}, [query])
-
-	useInterval(() => {
-		const inputReference = elementReferences[-1]
-		const queryHasChanged = inputReference?.value !== query
-		if (queryHasChanged) {
-			handleInputChange({ target: { value: inputReference.value } })
-		}
-
-		if (selectElement) {
-			// Expose public API
-			selectElement.accessibleAutocomplete = {
-				clearSelection: clearSelection
-			}
-		}
-	}, 100)
 
 	const autoselectRend = hasAutoselect()
 
@@ -628,7 +600,7 @@ const AutoComplete = (props) => {
 				type='text'
 				role='combobox'
 				required={required}
-				value={query}
+				value={getOptionLabelFromValue(query, options) ?? query}
 			/>
 			{dropdownArrow}
 			<ul
@@ -655,7 +627,7 @@ const AutoComplete = (props) => {
 							id={`${id}__option--${index}`}
 							key={index}
 							onBlur={(event) => handleOptionBlur(event, index)}
-							onClick={(event) => handleOptionClick(event, index)}
+							onClick={(event) => handleOptionClick(event, index, false)}
 							onMouseDown={handleOptionMouseDown}
 							onMouseEnter={() => handleOptionMouseEnter(index)}
 							ref={(optionEl) => { elementReferences[index] = optionEl; }}
