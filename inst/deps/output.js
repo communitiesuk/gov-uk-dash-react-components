@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "6260d87-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "e879604-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "6260d87-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "e879604-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "40fbb3f9cc9acfb5a00e";
+/******/ 	var hotCurrentHash = "4e6833e853c5ade76547";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_0_0m1651068430");
+/******/ 	        fileFragments.splice(1, 0, "v1_0_0m1651072554");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -48041,7 +48041,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"6260d87"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"e879604"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -49180,7 +49180,7 @@ var App = function App() {
     displayMenu: "overlay",
     placeholder: "Select Option",
     alwaysDisplayArrow: true,
-    value: null,
+    value: "Hello LOL2",
     setProps: setPros
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "The output value is ", value)));
 };
@@ -50400,14 +50400,14 @@ var AutoComplete = function AutoComplete(props) {
       ariaHint = _useState12[0],
       setAriaHint = _useState12[1];
 
-  var startValue = Array.isArray(source) ? getOptionLabelFromValue(value, source) || '' : '';
+  var startValue = Array.isArray(source) ? getOptionLabelFromValue(value, source) || '' : null;
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue ? [startValue] : []),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue !== '' ? source : []),
       _useState14 = _slicedToArray(_useState13, 2),
       options = _useState14[0],
       setOptions = _useState14[1];
 
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue),
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue || value || ''),
       _useState16 = _slicedToArray(_useState15, 2),
       query = _useState16[0],
       setQuery = _useState16[1];
@@ -50687,7 +50687,7 @@ var AutoComplete = function AutoComplete(props) {
       var hasSelectedOption = selected >= 0;
 
       if (hasSelectedOption) {
-        handleOptionClick(event, selected);
+        handleOptionClick(event, selected, false);
       }
     } else if (selectElement) {
       dataSource('', function (options) {
@@ -50827,21 +50827,6 @@ var AutoComplete = function AutoComplete(props) {
     }
   };
 
-  var clearSelection = function clearSelection() {
-    setFocus(null);
-    setHover(null);
-    setMenuOpen(false);
-    setOptions(value ? [value] : []);
-    setQuery('');
-    setValidChoiceMade(false);
-    selectElement.value = null;
-    var event = new Event('selectElement', {
-      bubbles: true,
-      cancelable: false
-    });
-    selectElement.dispatchEvent(event);
-  };
-
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (typeof setProps === 'function') {
       var opt = getValueFromQuery(query, options);
@@ -50852,25 +50837,6 @@ var AutoComplete = function AutoComplete(props) {
 
     setAriaHint(!(query !== null && query !== void 0 && query.length));
   }, [query]);
-  Object(usehooks_ts__WEBPACK_IMPORTED_MODULE_1__["useInterval"])(function () {
-    var inputReference = elementReferences[-1];
-    var queryHasChanged = (inputReference === null || inputReference === void 0 ? void 0 : inputReference.value) !== query;
-
-    if (queryHasChanged) {
-      handleInputChange({
-        target: {
-          value: inputReference.value
-        }
-      });
-    }
-
-    if (selectElement) {
-      // Expose public API
-      selectElement.accessibleAutocomplete = {
-        clearSelection: clearSelection
-      };
-    }
-  }, 100);
   var autoselectRend = hasAutoselect();
   var inputFocused = isFocus === -1;
   var noOptionsAvailable = (options === null || options === void 0 ? void 0 : options.length) === 0;
@@ -50985,7 +50951,7 @@ var AutoComplete = function AutoComplete(props) {
         return handleOptionBlur(event, index);
       },
       onClick: function onClick(event) {
-        return handleOptionClick(event, index);
+        return handleOptionClick(event, index, false);
       },
       onMouseDown: handleOptionMouseDown,
       onMouseEnter: function onMouseEnter() {
