@@ -14,14 +14,12 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * 	autoselect,
  * 	cssNamespace,
  * 	value,
- * 	displayMenu,
  * 	minLength,
  * 	name,
  * 	placeholder,
  * 	onConfirm,
  * 	confirmOnBlur,
  * 	showNoOptionsFound,
- * 	showAllValues,
  * 	required,
  * 	tNoResults,
  * 	tAssistiveHint,
@@ -64,10 +62,6 @@ export const dropdownPropTypes = {
 	/**
 	 * No Description
 	 */
-	displayMenu: PropTypes.string,
-	/**
-	 * No Description
-	 */
 	minLength: PropTypes.number,
 	/**
 	 * No Description
@@ -89,10 +83,6 @@ export const dropdownPropTypes = {
 	 * No Description
 	 */
 	showNoOptionsFound: PropTypes.bool,
-	/**
-	 * No Description
-	 */
-	showAllValues: PropTypes.bool,
 	/**
 	 * No Description
 	 */
@@ -150,11 +140,6 @@ export const dropdownPropTypes = {
 		 * to Dash, to make them available for callbacks.
 		 */
 	setProps: PropTypes.func,
-
-	/**
-	 * alwaysDisplayArrow
-	 */
-	alwaysDisplayArrow: PropTypes.bool,
 
 	/**
 	 * wrapperRef

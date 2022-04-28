@@ -15,7 +15,6 @@ app.layout = html.Div([
             {"label": "Some vb", "value": "Albania"},
         ],
         value="",
-        showAllValues=True,
         style={"minWidth": "50%"}
     ),
     html.Div(id='output')

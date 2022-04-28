@@ -12,14 +12,12 @@ A Dropdown component.
 	autoselect,
 	cssNamespace,
 	value,
-	displayMenu,
 	minLength,
 	name,
 	placeholder,
 	onConfirm,
 	confirmOnBlur,
 	showNoOptionsFound,
-	showAllValues,
 	required,
 	tNoResults,
 	tAssistiveHint,
@@ -35,11 +33,9 @@ A Dropdown component.
 @return {*}
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
-- `alwaysDisplayArrow` (Bool; optional): alwaysDisplayArrow
 - `autoselect` (Bool; optional): Should auto select
 - `confirmOnBlur` (Bool; optional): No Description
 - `cssNamespace` (String; optional): cssNamespace
-- `displayMenu` (String; optional): No Description
 - `dropdownArrow` (Bool | Real | String | Dict | Array; optional): React component for dropdown arrow
 - `label` (String; optional): Label text
 - `minLength` (Real; optional): No Description
@@ -47,7 +43,6 @@ Keyword arguments:
 - `placeholder` (String; optional): No Description
 - `required` (Bool; optional): No Description
 - `selectElement` (Bool | Real | String | Dict | Array; optional): Accessible element
-- `showAllValues` (Bool; optional): No Description
 - `showNoOptionsFound` (Bool; optional): No Description
 - `source` (Bool | Real | String | Dict | Array; optional): No Description
 - `style` (Bool | Real | String | Dict | Array; optional): Override the css style of the wrapper
@@ -58,7 +53,7 @@ Keyword arguments:
 - `wrapperRef` (Bool | Real | String | Dict | Array; optional): wrapperRef
 """
 function 'govuk'_dropdown(; kwargs...)
-        available_props = Symbol[:id, :alwaysDisplayArrow, :autoselect, :confirmOnBlur, :cssNamespace, :displayMenu, :dropdownArrow, :label, :minLength, :name, :placeholder, :required, :selectElement, :showAllValues, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
+        available_props = Symbol[:id, :autoselect, :confirmOnBlur, :cssNamespace, :dropdownArrow, :label, :minLength, :name, :placeholder, :required, :selectElement, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
         wild_props = Symbol[]
         return Component("'govuk'_dropdown", "Dropdown", "uk_gov_dash_components", available_props, wild_props; kwargs...)
 end

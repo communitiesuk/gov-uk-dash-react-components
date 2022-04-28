@@ -6,17 +6,16 @@
 \title{Dropdown component}
 
 \description{
-@param {{ 	label: string, 	id, 	autoselect, 	cssNamespace, 	value, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, }} [props={}]  @return {*}
+@param {{ 	label: string, 	id, 	autoselect, 	cssNamespace, 	value, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, }} [props={}]  @return {*}
 }
 
 \usage{
-'govuk'Dropdown(id=NULL, alwaysDisplayArrow=NULL, autoselect=NULL,
-confirmOnBlur=NULL, cssNamespace=NULL, displayMenu=NULL,
-dropdownArrow=NULL, label=NULL, minLength=NULL, name=NULL,
-onConfirm=NULL, placeholder=NULL, required=NULL,
-selectElement=NULL, showAllValues=NULL,
-showNoOptionsFound=NULL, source=NULL, style=NULL,
-tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
+'govuk'Dropdown(id=NULL, autoselect=NULL, confirmOnBlur=NULL,
+cssNamespace=NULL, dropdownArrow=NULL, label=NULL,
+minLength=NULL, name=NULL, onConfirm=NULL, placeholder=NULL,
+required=NULL, selectElement=NULL, showNoOptionsFound=NULL,
+source=NULL, style=NULL, tAssistiveHint=NULL,
+tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
 tStatusSelectedOption=NULL, templates=NULL, value=NULL,
 wrapperRef=NULL)
@@ -25,15 +24,11 @@ wrapperRef=NULL)
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{alwaysDisplayArrow}{Logical. alwaysDisplayArrow}
-
 \item{autoselect}{Logical. Should auto select}
 
 \item{confirmOnBlur}{Logical. No Description}
 
 \item{cssNamespace}{Character. cssNamespace}
-
-\item{displayMenu}{Character. No Description}
 
 \item{dropdownArrow}{Logical | numeric | character | named list | unnamed list. React component for dropdown arrow}
 
@@ -50,8 +45,6 @@ wrapperRef=NULL)
 \item{required}{Logical. No Description}
 
 \item{selectElement}{Logical | numeric | character | named list | unnamed list. Accessible element}
-
-\item{showAllValues}{Logical. No Description}
 
 \item{showNoOptionsFound}{Logical. No Description}
 

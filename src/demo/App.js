@@ -23,10 +23,7 @@ const App = () => {
                         { label: "Local authority type", value: "LOL" },
                     ]}
                     id="autocomplete-default"
-                    showAllValues={true}
-                    displayMenu="overlay"
                     placeholder="Select Option"
-                    alwaysDisplayArrow={true}
                     value="Hello LOL2"
                     setProps={setPros}
                 />

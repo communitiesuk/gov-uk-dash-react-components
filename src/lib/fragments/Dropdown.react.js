@@ -16,14 +16,12 @@ import {
  * 	autoselect,
  * 	cssNamespace,
  * 	value,
- * 	displayMenu,
  * 	minLength,
  * 	name,
  * 	placeholder,
  * 	onConfirm,
  * 	confirmOnBlur,
  * 	showNoOptionsFound,
- * 	showAllValues,
  * 	required,
  * 	tNoResults,
  * 	tAssistiveHint,
@@ -47,6 +45,9 @@ const Dropdown = (props = {}) => {
 			<label className="govuk-label" {...labelProps}>{label}</label>
 			<AutoComplete
 				ariaLabelledBy={fieldProps['aria-labelledby']}
+				displayMenu="overlay"
+				showAllValues={true}
+				alwaysDisplayArrow={true}
 				{...{ ...autoCompleteProps, style: null }}
 			/>
 		</div>

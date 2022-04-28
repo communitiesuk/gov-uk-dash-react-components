@@ -267,7 +267,7 @@
     }
   },
   "src/lib/components/Dropdown.react.js": {
-    "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
+    "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
     "displayName": "Dropdown",
     "methods": [],
     "props": {
@@ -298,13 +298,6 @@
         },
         "required": false,
         "description": "cssNamespace"
-      },
-      "displayMenu": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "No Description"
       },
       "minLength": {
         "type": {
@@ -342,13 +335,6 @@
         "description": "No Description"
       },
       "showNoOptionsFound": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "No Description"
-      },
-      "showAllValues": {
         "type": {
           "name": "bool"
         },
@@ -445,13 +431,6 @@
         },
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
-      },
-      "alwaysDisplayArrow": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "alwaysDisplayArrow"
       },
       "wrapperRef": {
         "type": {
