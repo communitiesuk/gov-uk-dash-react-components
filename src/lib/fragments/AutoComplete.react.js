@@ -499,7 +499,10 @@ const AutoComplete = (props) => {
 	useEffect(() => {
 		if (typeof setProps === 'function') {
 			const opt = getValueFromQuery(query, options)
-			setProps({ value: opt?.value || opt || query})
+			const value = opt?.value || opt;
+			if (value) {
+				setProps({ value })
+			}
 		}
 		setAriaHint(!query?.length)
 	}, [query])
