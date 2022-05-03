@@ -498,7 +498,7 @@ const AutoComplete = (props) => {
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
-			const opt = getValueFromQuery(query, options)
+			const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
 			const value = opt?.value || opt;
 			if (value) {
 				setProps({ value })

@@ -263,7 +263,6 @@ var AutoComplete = function AutoComplete(props) {
     var focusingInput = event.relatedTarget === elementReferences[-1];
     var focusingAnotherOption = isFocus !== index && isFocus !== -1;
     var blurComponent = !focusingAnotherOption && focusingOutsideComponent || !(focusingAnotherOption || focusingInput);
-    debugger;
 
     if (blurComponent) {
       var keepMenuOpen = isMenuOpen && Object(_helper_isIOS__WEBPACK_IMPORTED_MODULE_3__["isIOSDevice"])();
@@ -354,7 +353,6 @@ var AutoComplete = function AutoComplete(props) {
     var _selectedOption$value2;
 
     var menuOpen = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    debugger;
     var selectedOption = options[index];
     var newQuery = templateInputValue(selectedOption);
     onConfirm((_selectedOption$value2 = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value) !== null && _selectedOption$value2 !== void 0 ? _selectedOption$value2 : selectedOption); // Do not remove this, otherwise the input can receive the event and
@@ -595,8 +593,6 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputClick = function handleInputClick(event) {
-    debugger;
-
     if ((selectElement || showAllValues) && isMenuOpen === false) {
       var newQuery = event.target.value;
       dataSource('', function (options) {

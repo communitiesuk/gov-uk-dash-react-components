@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "96d2dbe-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "af65e3a-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "96d2dbe-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "af65e3a-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "094f99cbc60ca42dbc7e";
+/******/ 	var hotCurrentHash = "f3fd6ebf89652f1ece6f";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_1_1m1651074104");
+/******/ 	        fileFragments.splice(1, 0, "v1_1_4m1651587381");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -15438,7 +15438,7 @@ module.exports = exports["default"];
 /*!******************************************************!*\
   !*** ./node_modules/intl-messageformat/lib/index.js ***!
   \******************************************************/
-/*! exports provided: default, PART_TYPE, isFormatXMLElementFn, formatToParts, IntlMessageFormat, ErrorCode, FormatError, InvalidValueError, InvalidValueTypeError, MissingValueError */
+/*! exports provided: PART_TYPE, isFormatXMLElementFn, formatToParts, IntlMessageFormat, ErrorCode, FormatError, InvalidValueError, InvalidValueTypeError, MissingValueError, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48041,7 +48041,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"96d2dbe"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["C:\\dev\\clients\\madetech\\communitiesuk\\uk_gov_dash_components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"af65e3a"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -49178,10 +49178,7 @@ var App = function App() {
       value: "LOL"
     }],
     id: "autocomplete-default",
-    showAllValues: true,
-    displayMenu: "overlay",
     placeholder: "Select Option",
-    alwaysDisplayArrow: true,
     value: "Hello LOL2",
     setProps: setPros
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "The output value is ", value)));
@@ -49499,14 +49496,12 @@ __webpack_require__.r(__webpack_exports__);
  * 	autoselect,
  * 	cssNamespace,
  * 	value,
- * 	displayMenu,
  * 	minLength,
  * 	name,
  * 	placeholder,
  * 	onConfirm,
  * 	confirmOnBlur,
  * 	showNoOptionsFound,
- * 	showAllValues,
  * 	required,
  * 	tNoResults,
  * 	tAssistiveHint,
@@ -49551,11 +49546,6 @@ var dropdownPropTypes = {
   /**
    * No Description
    */
-  displayMenu: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-
-  /**
-   * No Description
-   */
   minLength: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
 
   /**
@@ -49582,11 +49572,6 @@ var dropdownPropTypes = {
    * No Description
    */
   showNoOptionsFound: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
-
-  /**
-   * No Description
-   */
-  showAllValues: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
 
   /**
    * No Description
@@ -49653,11 +49638,6 @@ var dropdownPropTypes = {
   	 * to Dash, to make them available for callbacks.
   	 */
   setProps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
-
-  /**
-   * alwaysDisplayArrow
-   */
-  alwaysDisplayArrow: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
 
   /**
    * wrapperRef
@@ -50831,10 +50811,15 @@ var AutoComplete = function AutoComplete(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (typeof setProps === 'function') {
-      var opt = getValueFromQuery(query, options);
-      setProps({
-        value: (opt === null || opt === void 0 ? void 0 : opt.value) || opt || query
-      });
+      var opt = getOptionFromValue(query, options) || getValueFromQuery(query, options);
+
+      var _value = (opt === null || opt === void 0 ? void 0 : opt.value) || opt;
+
+      if (_value) {
+        setProps({
+          value: _value
+        });
+      }
     }
 
     setAriaHint(!(query !== null && query !== void 0 && query.length));
@@ -51225,14 +51210,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * 	autoselect,
  * 	cssNamespace,
  * 	value,
- * 	displayMenu,
  * 	minLength,
  * 	name,
  * 	placeholder,
  * 	onConfirm,
  * 	confirmOnBlur,
  * 	showNoOptionsFound,
- * 	showAllValues,
  * 	required,
  * 	tNoResults,
  * 	tAssistiveHint,
@@ -51268,7 +51251,10 @@ var Dropdown = function Dropdown() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", _extends({
     className: "govuk-label"
   }, labelProps), label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AutoComplete_react__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
-    ariaLabelledBy: fieldProps['aria-labelledby']
+    ariaLabelledBy: fieldProps['aria-labelledby'],
+    displayMenu: "overlay",
+    showAllValues: true,
+    alwaysDisplayArrow: true
   }, _objectSpread(_objectSpread({}, autoCompleteProps), {}, {
     style: null
   }))));

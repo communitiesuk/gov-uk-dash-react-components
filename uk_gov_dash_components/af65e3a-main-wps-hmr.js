@@ -185,14 +185,14 @@ var AutoComplete = function AutoComplete(props) {
       ariaHint = _useState12[0],
       setAriaHint = _useState12[1];
 
-  var startValue = Array.isArray(source) ? getOptionLabelFromValue(value, source) || '' : '';
+  var startValue = Array.isArray(source) ? getOptionLabelFromValue(value, source) || '' : null;
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue ? [startValue] : []),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue !== '' ? source : []),
       _useState14 = _slicedToArray(_useState13, 2),
       options = _useState14[0],
       setOptions = _useState14[1];
 
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue),
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(startValue || value || ''),
       _useState16 = _slicedToArray(_useState15, 2),
       query = _useState16[0],
       setQuery = _useState16[1];
@@ -593,7 +593,6 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputClick = function handleInputClick(event) {
-
     if ((selectElement || showAllValues) && isMenuOpen === false) {
       var newQuery = event.target.value;
       dataSource('', function (options) {
@@ -613,50 +612,21 @@ var AutoComplete = function AutoComplete(props) {
     }
   };
 
-  var clearSelection = function clearSelection() {
-    setFocus(null);
-    setHover(null);
-    setMenuOpen(false);
-    setOptions(value ? [value] : []);
-    setQuery('');
-    setValidChoiceMade(false);
-    selectElement.value = null;
-    var event = new Event('selectElement', {
-      bubbles: true,
-      cancelable: false
-    });
-    selectElement.dispatchEvent(event);
-  };
-
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (typeof setProps === 'function') {
-      var opt = getValueFromQuery(query, options);
-      setProps({
-        value: (opt === null || opt === void 0 ? void 0 : opt.value) || opt || query
-      });
+      var opt = getOptionFromValue(query, options) || getValueFromQuery(query, options);
+
+      var _value = (opt === null || opt === void 0 ? void 0 : opt.value) || opt;
+
+      if (_value) {
+        setProps({
+          value: _value
+        });
+      }
     }
 
     setAriaHint(!(query !== null && query !== void 0 && query.length));
   }, [query]);
-  Object(usehooks_ts__WEBPACK_IMPORTED_MODULE_1__["useInterval"])(function () {
-    var inputReference = elementReferences[-1];
-    var queryHasChanged = (inputReference === null || inputReference === void 0 ? void 0 : inputReference.value) !== query;
-
-    if (queryHasChanged) {
-      handleInputChange({
-        target: {
-          value: inputReference.value
-        }
-      });
-    }
-
-    if (selectElement) {
-      // Expose public API
-      selectElement.accessibleAutocomplete = {
-        clearSelection: clearSelection
-      };
-    }
-  }, 100);
   var autoselectRend = hasAutoselect();
   var inputFocused = isFocus === -1;
   var noOptionsAvailable = (options === null || options === void 0 ? void 0 : options.length) === 0;
@@ -872,5 +842,5 @@ AutoComplete.propTypes = _components_AutoComplete_react__WEBPACK_IMPORTED_MODULE
 /***/ })
 
 })
-//# sourceMappingURL=5f604f2-main-wps-hmr.js.map
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiI1ZjYwNGYyLW1haW4td3BzLWhtci5qcyIsInNvdXJjZVJvb3QiOiIifQ==
+//# sourceMappingURL=af65e3a-main-wps-hmr.js.map
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZjY1ZTNhLW1haW4td3BzLWhtci5qcyIsInNvdXJjZVJvb3QiOiIifQ==
