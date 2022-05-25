@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AutoComplete as RealComponent } from '../LazyLoader';
-import DropdownArrowDown from './dropdownArrowDown.react';
+import DropdownArrowDown from '../dropdownArrowDown.react';
 
 /**
  * Lazy loaded Autocomplete
