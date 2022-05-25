@@ -2,15 +2,15 @@ import { useButton } from '@react-aria/button';
 import { useComboBoxState } from '@react-stately/combobox';
 import { useComboBox } from '@react-aria/combobox';
 import { useFilter } from '@react-aria/i18n';
-import { propTypes } from '../components/ui/ComboBox.react';
+import { propTypes } from './props/ComboBox.react';
 
 import './combobox.css';
 
 import React, { useRef } from 'react';
 
 // Reuse the ListBox and Popover from your component library.See below for details.
-import { ListBox } from '../components/ui/ListBox.react';
-import { Popover } from '../components/ui/Popover.react';
+import { ListBox } from './ListBox.react';
+import { Popover } from './Popover.react';
 
 function ComboBox(props) {
 	// Setup filter function and state.
