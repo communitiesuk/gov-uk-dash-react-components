@@ -1,5 +1,9 @@
-import UkGovDashComponents from './components/UkGovDashComponents.tsx';
+import AutoComplete from './components/AutoComplete';
+import Dropdown from './components/Dropdown';
+import ComboBox from './components/ui/ComboBox';
 
 export {
-    UkGovDashComponents
-}
+    AutoComplete,
+    Dropdown,
+    ComboBox,
+};
