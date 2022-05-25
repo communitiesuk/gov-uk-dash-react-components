@@ -18,6 +18,17 @@
     "build": "npm run build:js && npm run build:backends",
     "watch": "npm run build:js::dev -- --watch"
   },
+  "dependencies": {
+    "@react-aria/button": "^3.4.3",
+    "@react-aria/combobox": "^3.2.5",
+    "@react-aria/focus": "^3.5.4",
+    "@react-aria/i18n": "^3.3.8",
+    "@react-aria/label": "^3.2.4",
+    "@react-aria/listbox": "^3.4.4",
+    "@react-aria/overlays": "^3.8.1",
+    "@react-stately/combobox": "^3.0.4",
+    "usehooks-ts": "2.1.1"
+  },
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/react": "^17.0.39",
