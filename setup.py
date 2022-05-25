@@ -1,5 +1,4 @@
 import json
-import os
 from setuptools import setup
 
 
@@ -17,7 +16,7 @@ setup(
     license=package['license'],
     description=package.get('description', package_name),
     install_requires=[],
-    classifiers = [
+    classifiers=[
         'Framework :: Dash',
-    ],    
+    ],
 )
