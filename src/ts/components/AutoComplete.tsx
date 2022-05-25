@@ -1,10 +1,10 @@
 /* eslint-disable no-undefined */
 import React, { useState, useEffect, render } from 'react';
 import { useInterval } from 'usehooks-ts'
-import { defaultProps, propTypes } from './props/AutoComplete.react';
+import { defaultProps, propTypes } from './props/AutoComplete';
 import { isIOSDevice } from '../helper/isIOS';
 import { isPrintableKeyCode, keyCodes } from '../helper/keys';
-import Status from '../components/status'
+import Status from './status'
 import './autocomplete.css';
 
 /**

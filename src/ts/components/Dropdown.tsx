@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useLabel } from '@react-aria/label';
-import AutoComplete from './AutoComplete.react';
+import AutoComplete from './AutoComplete';
 import {
 	defaultProps,
-} from './props/AutoComplete.react';
+} from './props/AutoComplete';
 import {
 	dropdownPropTypes,
-} from './props/Dropdown.react';
+} from './props/Dropdown';
 
 
 /**
