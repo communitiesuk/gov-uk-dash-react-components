@@ -2,8 +2,8 @@
 import React, { useState, useEffect, render } from 'react';
 import { useInterval } from 'usehooks-ts'
 import { defaultProps, propTypes } from '../components/AutoComplete.react';
-import { isIOSDevice } from '../helper/isIOS';
-import { isPrintableKeyCode, keyCodes } from '../helper/keys';
+import { isIOSDevice } from '../../../../../src/lib/helper/isIOS';
+import { isPrintableKeyCode, keyCodes } from '../../../../../src/lib/helper/keys';
 import Status from '../components/status'
 import './autocomplete.css';
 
