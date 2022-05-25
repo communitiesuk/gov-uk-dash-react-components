@@ -1,4 +1,4 @@
-export const keyCodes = {
+export const keyCodes: Record<KeyboardEvent["keyCode"], string> = {
 	13: 'enter',
 	27: 'escape',
 	32: 'space',
@@ -6,7 +6,8 @@ export const keyCodes = {
 	40: 'down'
 }
 
-export function isPrintableKeyCode(keyCode) {
+// Todo: 'keyCode' is deprecated.
+export function isPrintableKeyCode(keyCode: KeyboardEvent["keyCode"]) {
 	return (
 		(keyCode > 47 && keyCode < 58) || // number keys
 		keyCode === 32 || keyCode === 8 || // spacebar or backspace
