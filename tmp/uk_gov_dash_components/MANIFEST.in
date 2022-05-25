@@ -1,0 +1,2 @@
+recursive-include uk_gov_dash_components/** *.js *.css *.json *.html
+prune tests
