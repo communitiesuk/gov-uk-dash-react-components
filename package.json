@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Dash components for Gov UK",
   "main": "index.ts",
-"repository": {
+  "repository": {
     "type": "git",
     "url": "git://github.com/communitiesuk/uk-gov-dash-components.git"
   },
@@ -27,11 +27,13 @@
     "@react-aria/listbox": "^3.4.4",
     "@react-aria/overlays": "^3.8.1",
     "@react-stately/combobox": "^3.0.4",
+    "@react-stately/list": "^3.4.5",
     "usehooks-ts": "2.1.1"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/react": "^17.0.39",
+    "@types/react-dom": "^18.0.5",
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",
     "ramda": "^0.28.0",

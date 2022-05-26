@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import PropTypes from 'prop-types';
+import { DashComponentProps } from '../props'
 
-const debounce = function (func, wait, immediate) {
-	var timeout
+const debounce = (func: () => void, wait: number, immediate: boolean = false) => {
+	var timeout: NodeJS.Timeout
 	return function () {
 		var context = this
 		var args = arguments
@@ -16,107 +17,111 @@ const debounce = function (func, wait, immediate) {
 		if (callNow) {func.apply(context, args)}
 	}
 }
-const statusDebounceMillis = 1400
+const STATUS_DEBOUNCE_Millis = 1400
 
-/**
- * Display ststus
- *
- * @export
- * @class Status
- * @extends {Component}
- */
-export default class Status extends Component {
-	state = {
-		bump: false,
-		debounced: false
-	}
 
-	constructor(props) {
-		super(props)
-		const that = this
-		this.debounceStatusUpdate = debounce(function () {
-			if (!that.state.debounced) {
-				const shouldSilence = !that.props.isInFocus || that.props.validChoiceMade
-				that.setState(({ bump }) => ({ bump: !bump, debounced: true, silenced: shouldSilence }))
-			}
-		}, statusDebounceMillis)
-	}
+export const Status = (
+    props: {
+        isInFocus?: boolean;
+        validChoiceMade?: boolean;
+        length?: number;
+        queryLength?: number;
+        minQueryLength?: number;
+        selectedOption?: string;
+        selectedOptionIndex?: number;
+        tQueryTooShort?: (minQueryLength: number) => string | JSX.Element;
+        tNoResults: () => string | JSX.Element;
+        tSelectedOption?: (
+            selectedOption: string,
+            length: number,
+            selectedOptionIndex: number
+        ) => string;
+        tResults?: (length: number, contentSelectedOption: string) => string;
+    } & DashComponentProps
+) => {
+    const [bump, setBump] = useState(false);
+    const [debounced, setDebounced] = useState(false);
+    const [silenced, setSilenced] = useState(false);
 
-	UNSAFE_componentWillReceiveProps({ queryLength }) {
-		this.setState({ debounced: false })
-	}
+    const debounceStatusUpdate = debounce(function () {
+        if (!debounced) {
+            const shouldSilence = !props.isInFocus || props.validChoiceMade;
+            setBump(!bump);
+            setDebounced(true);
+            setSilenced(shouldSilence);
+        }
+    }, STATUS_DEBOUNCE_Millis);
 
-	render() {
-		const {
-			id,
-			length,
-			queryLength,
-			minQueryLength,
-			selectedOption,
-			selectedOptionIndex,
-			tQueryTooShort,
-			tNoResults,
-			tSelectedOption,
-			tResults
-		} = this.props
-		const { bump, debounced, silenced } = this.state
+    const {
+        id,
+        length,
+        queryLength,
+        minQueryLength,
+        selectedOption,
+        selectedOptionIndex,
+        tQueryTooShort,
+        tNoResults,
+        tSelectedOption,
+        tResults,
+    } = props;
 
-		const queryTooShort = queryLength < minQueryLength
-		const noResults = length === 0
+    const queryTooShort = queryLength < minQueryLength;
+    const noResults = length === 0;
 
-		const contentSelectedOption = selectedOption
-			? tSelectedOption(selectedOption, length, selectedOptionIndex)
-			: ''
+    const contentSelectedOption = selectedOption
+        ? tSelectedOption(selectedOption, length, selectedOptionIndex)
+        : "";
 
-		let content = null
-		if (queryTooShort) {
-			content = tQueryTooShort(minQueryLength)
-		} else if (noResults) {
-			content = tNoResults()
-		} else {
-			content = tResults(length, contentSelectedOption)
-		}
+    let content = null;
+    if (queryTooShort) {
+        content = tQueryTooShort(minQueryLength);
+    } else if (noResults) {
+        content = tNoResults();
+    } else {
+        content = tResults(length, contentSelectedOption);
+    }
 
-		this.debounceStatusUpdate()
+    debounceStatusUpdate();
 
-		return (
-			<div
-				style={{
-					border: '0',
-					clip: 'rect(0 0 0 0)',
-					height: '1px',
-					marginBottom: '-1px',
-					marginRight: '-1px',
-					overflow: 'hidden',
-					padding: '0',
-					position: 'absolute',
-					whiteSpace: 'nowrap',
-					width: '1px'
-				}}>
-				<div
-					id={id + '__status--A'}
-					role='status'
-					aria-atomic='true'
-					aria-live='polite'>
-					{(!silenced && debounced && bump) ? content : ''}
-				</div>
-				<div
-					id={id + '__status--B'}
-					role='status'
-					aria-atomic='true'
-					aria-live='polite'>
-					{(!silenced && debounced && !bump) ? content : ''}
-				</div>
-			</div>
-		)
-	}
-}
-
+    return (
+        <div
+            style={{
+                border: "0",
+                clip: "rect(0 0 0 0)",
+                height: "1px",
+                marginBottom: "-1px",
+                marginRight: "-1px",
+                overflow: "hidden",
+                padding: "0",
+                position: "absolute",
+                whiteSpace: "nowrap",
+                width: "1px",
+            }}
+        >
+            <div
+                id={id + "__status--A"}
+                role="status"
+                aria-atomic="true"
+                aria-live="polite"
+            >
+                {!silenced && debounced && bump ? content : ""}
+            </div>
+            <div
+                id={id + "__status--B"}
+                role="status"
+                aria-atomic="true"
+                aria-live="polite"
+            >
+                {!silenced && debounced && !bump ? content : ""}
+            </div>
+        </div>
+    );
+};
 Status.defaultProps = {
-	tQueryTooShort: (minQueryLength) => `Type in ${minQueryLength} or more characters for results`,
+	tQueryTooShort: (minQueryLength: any) => `Type in ${minQueryLength} or more characters for results`,
 	tNoResults: () => 'No search results',
-	tSelectedOption: (selectedOption, length, index) => `${selectedOption} ${index + 1} of ${length} is highlighted`,
-	tResults: (length, contentSelectedOption) => {
+	tSelectedOption: (selectedOption: string, length: number, index: number) => `${selectedOption} ${index + 1} of ${length} is highlighted`,
+	tResults: (length: number, contentSelectedOption: any) => {
 		const words = {
 			result: (length === 1) ? 'result' : 'results',
 			is: (length === 1) ? 'is' : 'are'
@@ -124,53 +129,4 @@ Status.defaultProps = {
 
 		return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`
 	}
-}
-
-Status.propTypes = {
-	/**
-	 * The ID used to identify this component in Dash callbacks.
-	 */
-	id: PropTypes.string,
-
-	/**
-	 * length
-	 */
-	length: PropTypes.number,
-
-	/**
-	 * min Query Length
-	 */
-	minQueryLength: PropTypes.number,
-
-	/**
-	 * Query Length
-	 */
-	queryLength: PropTypes.number,
-
-	/**
-	 * Selected option
-	 */
-	selectedOption: PropTypes.any,
-
-	/**
-	 * Selected Option Index
-	 */
-	selectedOptionIndex: PropTypes.number,
-
-	/**
-	 * tQueryTooShort
-	 */
-	tQueryTooShort: PropTypes.func,
-	/**
-	 * tNoResults
-	 */
-	tNoResults: PropTypes.func,
-	/**
-	 * tSelectedOption
-	 */
-	tSelectedOption: PropTypes.func,
-	/**
-	 * tResults
-	 */
-	tResults: PropTypes.func,
 }

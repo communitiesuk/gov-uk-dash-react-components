@@ -1,8 +1,7 @@
 import { useButton } from '@react-aria/button';
-import { useComboBoxState } from '@react-stately/combobox';
-import { useComboBox } from '@react-aria/combobox';
+import { ComboBoxStateProps, useComboBoxState } from '@react-stately/combobox';
+import { AriaComboBoxOptions, useComboBox } from '@react-aria/combobox';
 import { useFilter } from '@react-aria/i18n';
-import { propTypes } from './props/ComboBox';
 
 import './combobox.css';
 
@@ -11,8 +10,9 @@ import React, { useRef } from 'react';
 // Reuse the ListBox and Popover from your component library.See below for details.
 import { ListBox } from './ListBox';
 import { Popover } from './Popover';
+import { DashComponentProps } from '../../props';
 
-function ComboBox(props) {
+function ComboBox(props: ComboBoxStateProps<object> & AriaComboBoxOptions<object> & DashComponentProps) {
 	// Setup filter function and state.
 	const { contains } = useFilter({ sensitivity: 'base' });
 	const state = useComboBoxState({ ...props, defaultFilter: contains });
@@ -89,7 +89,6 @@ function ComboBox(props) {
 		</div>
 	);
 }
-ComboBox.propTypes = propTypes;
 ComboBox.defaultProps = {};
 
 export default ComboBox;
