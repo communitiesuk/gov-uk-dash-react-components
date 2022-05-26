@@ -41,53 +41,52 @@ function ComboBox(props: ComboBoxStateProps<object> & AriaComboBoxOptions<object
 	const { buttonProps } = useButton(triggerProps, buttonRef);
 
 	return (
-		<div style={{ display: 'inline-flex', flexDirection: 'column' }}>
-			<label className="govuk-label" {...labelProps}>{props.label}</label>
-			<div style={{ position: 'relative', display: 'inline-block' }}>
-				<input
-					{...buttonProps}
-					{...inputProps}
-					ref={inputRef}
-					className="dluhc-combobox"
-
-				/>
-				<button
-					{...buttonProps}
-					ref={buttonRef}
-					style={{
-						height: 24,
-						marginLeft: 0,
-						background: "transparent",
-						border: "transparent",
-						right: 0,
-						position: "absolute",
-						top: "8px",
-					}}
-				>
-					<span
-						aria-hidden="true"
-						style={{ padding: '0 2px' }}
-					>
-						▼
-					</span>
-				</button>
-				{state.isOpen &&
-					(
-						<Popover
-							popoverRef={popoverRef}
-							isOpen={state.isOpen}
-							onClose={state.close}
-						>
-							<ListBox
-								{...listBoxProps}
-								listBoxRef={listBoxRef}
-								state={state}
-							/>
-						</Popover>
-					)}
-			</div>
-		</div>
-	);
+        <div style={{ display: "inline-flex", flexDirection: "column" }}>
+            <label className="govuk-label" {...labelProps}>
+                {props.label}
+            </label>
+            <div style={{ position: "relative", display: "inline-block" }}>
+                <input
+                    {...buttonProps}
+                    {...inputProps}
+                    ref={inputRef}
+                    className="dluhc-combobox"
+                />
+                <button
+                    {...buttonProps}
+                    ref={buttonRef}
+                    style={{
+                        height: 24,
+                        marginLeft: 0,
+                        background: "transparent",
+                        border: "transparent",
+                        right: 0,
+                        position: "absolute",
+                        top: "8px",
+                    }}
+                >
+                    <span aria-hidden="true" style={{ padding: "0 2px" }}>
+                        ▼
+                    </span>
+                </button>
+                {state.isOpen && (
+                    <Popover
+                        popoverRef={popoverRef}
+                        isOpen={state.isOpen}
+                        onClose={state.close}
+                    >
+                        <ListBox
+														// Todo: children missing?
+                            children={(listBoxProps as unknown as any).children}
+                            {...listBoxProps}
+                            listBoxRef={listBoxRef}
+                            state={state}
+                        />
+                    </Popover>
+                )}
+            </div>
+        </div>
+    );
 }
 ComboBox.defaultProps = {};
 

@@ -504,7 +504,11 @@ const AutoComplete = (props: AutoCompleteTypes) => {
             setValidChoiceMade(true);
 
             if (selectElement) {
-                onConfirm(selectedOption);
+                if (isAutoCompleteOptionsHasValueObject(selectedOption)) {
+                    onConfirm(selectedOption.value);
+                } else {
+                    onConfirm(selectedOption)
+                }
             }
         }
     };

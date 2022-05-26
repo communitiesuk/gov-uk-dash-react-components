@@ -2,6 +2,8 @@ const path = require('path');
 
 const packagejson = require('./package.json');
 
+const TerserPlugin = require('terser-webpack-plugin');
+
 const dashLibraryName = packagejson.name.replace(/-/g, '_');
 
 module.exports = function (env, argv) {
@@ -38,7 +40,7 @@ module.exports = function (env, argv) {
         target: 'web',
         externals,
         resolve: {
-            extensions: ['.ts', '.tsx'],
+            extensions: ['.ts', '.tsx', '.js', '.jsx'],
         },
         module: {
             rules: [
@@ -47,7 +49,48 @@ module.exports = function (env, argv) {
                     use: 'ts-loader',
                     exclude: /node_modules/,
                 },
-            ]
-        }
+                {
+                    test: /\.css$/,
+                    use: [
+                        {
+                            loader: 'style-loader',
+                            options: {
+                                insert: function insertAtTop(element) {
+                                    var parent = document.querySelector("head");
+                                    var lastInsertedElement =
+                                        window._lastElementInsertedByStyleLoader;
+
+                                    if (!lastInsertedElement) {
+                                        parent.insertBefore(element, parent.firstChild);
+                                    } else if (lastInsertedElement.nextSibling) {
+                                        parent.insertBefore(element, lastInsertedElement.nextSibling);
+                                    } else {
+                                        parent.appendChild(element);
+                                    }
+
+                                    window._lastElementInsertedByStyleLoader = element;
+                                },
+                            },
+                        },
+                        {
+                            loader: 'css-loader',
+                        },
+                    ],
+                },
+            ],
+        },
+        optimization: {
+            minimize: true,
+            minimizer: [
+                new TerserPlugin({
+                    extractComments: true,
+                    parallel: true,
+                    terserOptions: {
+                        warnings: false,
+                        ie8: false
+                    }
+                })
+            ],
+        },
     }
 }
