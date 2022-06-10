@@ -12,6 +12,11 @@ import { ListBox } from './ListBox';
 import { Popover } from './Popover';
 import { DashComponentProps } from '../../props';
 
+/**
+ *
+ * ComboBox
+ *
+ */
 function ComboBox(props: ComboBoxStateProps<object> & AriaComboBoxOptions<object> & DashComponentProps) {
 	// Setup filter function and state.
 	const { contains } = useFilter({ sensitivity: 'base' });

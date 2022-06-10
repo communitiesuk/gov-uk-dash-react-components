@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { LabelAriaProps, useLabel } from '@react-aria/label';
-import AutoComplete, { AutoCompleteTypes } from './AutoComplete';
-import { autoCompleteDefaultProps } from './AutoComplete';
+import AutoComplete  from './autocomplete/AutoComplete';
+import { autoCompleteDefaultProps, AutoCompleteTypes } from "./autocomplete/AutoCompleteTypes";
 
 
-
+/**
+ *
+ *  Dropdown component
+ * @returns {JSX.Element}
+ */
 const Dropdown = (props: LabelAriaProps & AutoCompleteTypes): JSX.Element => {
     const { label, ...autoComplete } = props;
     const { labelProps, fieldProps } = useLabel(props);

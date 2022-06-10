@@ -3,7 +3,9 @@ import React, { useRef } from 'react';
 import { useOverlay, DismissButton, OverlayProps } from '@react-aria/overlays';
 import { FocusScope } from '@react-aria/focus';
 
-
+/**
+ * Popover
+ */
 export function Popover(
     props: OverlayProps & {
         popoverRef?: React.MutableRefObject<undefined>;

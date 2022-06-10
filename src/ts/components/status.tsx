@@ -1,5 +1,4 @@
-import React, { Component, useState } from 'react'
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
 import { DashComponentProps } from '../props'
 
 const debounce = (func: () => void, wait: number, immediate: boolean = false) => {
@@ -19,8 +18,10 @@ const debounce = (func: () => void, wait: number, immediate: boolean = false) =>
 }
 const STATUS_DEBOUNCE_Millis = 1400
 
-
-export const Status = (
+/**
+ * @description Show the status for Autocomplete
+ */
+const Status = (
     props: {
         isInFocus?: boolean;
         validChoiceMade?: boolean;
@@ -117,16 +118,18 @@ export const Status = (
         </div>
     );
 };
-Status.defaultProps = {
-	tQueryTooShort: (minQueryLength: any) => `Type in ${minQueryLength} or more characters for results`,
-	tNoResults: () => 'No search results',
-	tSelectedOption: (selectedOption: string, length: number, index: number) => `${selectedOption} ${index + 1} of ${length} is highlighted`,
-	tResults: (length: number, contentSelectedOption: any) => {
-		const words = {
-			result: (length === 1) ? 'result' : 'results',
-			is: (length === 1) ? 'is' : 'are'
-		}
+// Status.defaultProps = {
+// 	tQueryTooShort: (minQueryLength: any) => `Type in ${minQueryLength} or more characters for results`,
+// 	tNoResults: () => 'No search results',
+// 	tSelectedOption: (selectedOption: string, length: number, index: number) => `${selectedOption} ${index + 1} of ${length} is highlighted`,
+// 	tResults: (length: number, contentSelectedOption: any) => {
+// 		const words = {
+// 			result: (length === 1) ? 'result' : 'results',
+// 			is: (length === 1) ? 'is' : 'are'
+// 		}
 
-		return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`
-	}
-}
+// 		return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`
+// 	}
+// }
+
+export default Status
