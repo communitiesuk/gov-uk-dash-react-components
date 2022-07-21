@@ -266,6 +266,127 @@
       }
     }
   },
+  "src/lib/components/CheckboxList.react.js": {
+    "description": "Lazy loaded CheckboxList\r\n\n@param {\r\n\tid,\r\n\toptions,\r\n\tvalue,\r\n} [props={}]\r\n@return {*}",
+    "displayName": "CheckboxList",
+    "methods": [],
+    "props": {
+      "options": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  },
+                  {
+                    "name": "bool"
+                  }
+                ]
+              },
+              "description": "Array of options where the label and the value are the same thing - [string|number|bool]"
+            },
+            {
+              "name": "object",
+              "description": "Simpler `options` representation in dictionary format. The order is not guaranteed.\r\n{`value1`: `label1`, `value2`: `label2`, ... }\r\nwhich is equal to\r\n[{label: `label1`, value: `value1`}, {label: `label2`, value: `value2`}, ...]"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "exact",
+                "value": {
+                  "label": {
+                    "name": "node",
+                    "description": "The option's label",
+                    "required": true
+                  },
+                  "value": {
+                    "name": "union",
+                    "value": [
+                      {
+                        "name": "string"
+                      },
+                      {
+                        "name": "number"
+                      },
+                      {
+                        "name": "bool"
+                      }
+                    ],
+                    "description": "The value of the option. This value\r\ncorresponds to the items specified in the\r\n`value` property.",
+                    "required": true
+                  },
+                  "disabled": {
+                    "name": "bool",
+                    "description": "If true, this option is disabled and cannot be selected.",
+                    "required": false
+                  },
+                  "title": {
+                    "name": "string",
+                    "description": "The HTML 'title' attribute for the option. Allows for\r\ninformation on hover. For more information on this attribute,\r\nsee https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title",
+                    "required": false
+                  }
+                }
+              },
+              "description": "An array of options {label: [string|number], value: [string|number]},\r\nan optional disabled field can be used for each option"
+            }
+          ]
+        },
+        "required": false,
+        "description": "An array of options",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "value": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "number"
+              },
+              {
+                "name": "bool"
+              }
+            ]
+          }
+        },
+        "required": false,
+        "description": "The currently selected value",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID of this component, used to identify dash components\r\nin callbacks. The ID needs to be unique across all of the\r\ncomponents in an app."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the value changes."
+      }
+    }
+  },
   "src/lib/components/Dropdown.react.js": {
     "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
     "displayName": "Dropdown",

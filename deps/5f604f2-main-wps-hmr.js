@@ -593,6 +593,7 @@ var AutoComplete = function AutoComplete(props) {
   };
 
   var handleInputClick = function handleInputClick(event) {
+
     if ((selectElement || showAllValues) && isMenuOpen === false) {
       var newQuery = event.target.value;
       dataSource('', function (options) {

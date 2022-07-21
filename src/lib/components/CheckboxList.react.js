@@ -18,8 +18,6 @@ const CheckboxList = (props = {}) => {
 	);
 }
 
-export default CheckboxList
-
 CheckboxList.defaultProps = {    
     options: [],
     value: [],
@@ -110,3 +108,5 @@ CheckboxList.propTypes = {
 
 export const defaultProps = CheckboxList.defaultProps;
 export const propTypes = CheckboxList.propTypes;
+
+export default CheckboxList

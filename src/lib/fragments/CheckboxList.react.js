@@ -78,7 +78,7 @@ const CheckboxList = (props)=>{
 }
 
 
-export default CheckboxList
-
 CheckboxList.defaultProps = defaultProps;
 CheckboxList.propTypes = propTypes;
+
+export default CheckboxList
