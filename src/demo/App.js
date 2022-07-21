@@ -1,18 +1,18 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Dropdown } from '../lib';
+import { Dropdown, CheckboxList } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
-    const setPros = (props) => {
+    const setProps = (props) => {
         setValue(props.value)
         console.log('props', props);
         console.log('value', value);
     }
     return (
         <>
-            <h1>Autocomplete</h1>
+            <h2>Autocomplete</h2>
             <div>
                 <Dropdown
                     label="Hello world"
@@ -25,9 +25,13 @@ const App = () => {
                     id="autocomplete-default"
                     placeholder="Select Option"
                     value="Hello LOL2"
-                    setProps={setPros}
+                    setProps={setProps}
                 />
                 <span>The output value is { value }</span>
+            </div>
+            <h2>Checkbox list</h2>
+            <div>
+                <CheckboxList id="checkboxes" value={["restrict"]} options={["restrict"]} setProps={setProps} />
             </div>
         </>
     )
