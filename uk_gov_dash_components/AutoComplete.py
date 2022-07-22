@@ -101,17 +101,19 @@ Keyword arguments:
 
 - wrapperRef (boolean | number | string | dict | list; optional):
     wrapperRef."""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'uk_gov_dash_components'
+    _type = 'AutoComplete'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, autoselect=Component.UNDEFINED, cssNamespace=Component.UNDEFINED, displayMenu=Component.UNDEFINED, minLength=Component.UNDEFINED, name=Component.UNDEFINED, placeholder=Component.UNDEFINED, onConfirm=Component.UNDEFINED, confirmOnBlur=Component.UNDEFINED, showNoOptionsFound=Component.UNDEFINED, showAllValues=Component.UNDEFINED, required=Component.UNDEFINED, tNoResults=Component.UNDEFINED, tAssistiveHint=Component.UNDEFINED, source=Component.UNDEFINED, templates=Component.UNDEFINED, tStatusQueryTooShort=Component.UNDEFINED, tStatusNoResults=Component.UNDEFINED, tStatusSelectedOption=Component.UNDEFINED, tStatusResults=Component.UNDEFINED, dropdownArrow=Component.UNDEFINED, selectElement=Component.UNDEFINED, value=Component.UNDEFINED, alwaysDisplayArrow=Component.UNDEFINED, wrapperRef=Component.UNDEFINED, style=Component.UNDEFINED, ariaLabelledBy=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'alwaysDisplayArrow', 'ariaLabelledBy', 'autoselect', 'confirmOnBlur', 'cssNamespace', 'displayMenu', 'dropdownArrow', 'minLength', 'name', 'placeholder', 'required', 'selectElement', 'showAllValues', 'showNoOptionsFound', 'source', 'style', 'tStatusNoResults', 'tStatusResults', 'templates', 'value', 'wrapperRef']
-        self._type = 'AutoComplete'
-        self._namespace = 'uk_gov_dash_components'
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'alwaysDisplayArrow', 'ariaLabelledBy', 'autoselect', 'confirmOnBlur', 'cssNamespace', 'displayMenu', 'dropdownArrow', 'minLength', 'name', 'placeholder', 'required', 'selectElement', 'showAllValues', 'showNoOptionsFound', 'source', 'style', 'tStatusNoResults', 'tStatusResults', 'templates', 'value', 'wrapperRef']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
-        _locals.update(kwargs)  # For wildcard attrs
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
         for k in []:
             if k not in args:
