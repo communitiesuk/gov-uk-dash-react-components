@@ -17,13 +17,26 @@ app.layout = html.Div([
         value="",
         style={"minWidth": "50%"}
     ),
+
+    uk_gov_dash_components.Dropdown(
+        label="Comparison",
+        id='comparison',
+        source=[],
+        value="",
+        style={"minWidth": "50%"}
+    ),
     html.Div(id='output')
 ])
 
 
-@app.callback(Output('output', 'children'), [Input('input', 'value')])
-def display_output(value):
-    return 'You have entered {}'.format(value)
+# @app.callback(Output('output', 'children'), [Input('input', 'value')])
+# def display_output(value):
+#     return 'You have entered {}'.format(value)
+
+@app.callback(Output('comparison', 'source'), [Input('input', 'value')])
+def update_comparison(value):
+    print(value)
+    return ["B"]
 
 
 if __name__ == '__main__':

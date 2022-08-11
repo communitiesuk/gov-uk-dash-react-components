@@ -37,9 +37,11 @@ import {
  * @return {*}
  */
 const Dropdown = (props = {}) => {
-	const { label, ...autoComplete } = props;
+
+	const { label, source, ...autoComplete } = props;
 	const { labelProps, fieldProps } = useLabel(props);
 	const [autoCompleteProps] = useState(autoComplete);
+
 	return (
 		<div className="govuk-form-group" style={props.style}>
 			<label className="govuk-label" {...labelProps}>{label}</label>
@@ -48,6 +50,7 @@ const Dropdown = (props = {}) => {
 				displayMenu="overlay"
 				showAllValues={true}
 				alwaysDisplayArrow={true}
+				source={source}
 				{...{ ...autoCompleteProps, style: null }}
 			/>
 		</div>
