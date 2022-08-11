@@ -35,7 +35,6 @@ def display_output(value):
 
 @app.callback(Output('comparison', 'source'), [Input('input', 'value')])
 def update_comparison(value):
-    print(value)
     return ["B"]
 
 
