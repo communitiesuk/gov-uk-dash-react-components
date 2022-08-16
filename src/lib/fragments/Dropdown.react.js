@@ -7,7 +7,6 @@ import {
 import {
 	dropdownPropTypes,
 } from '../components/Dropdown.react';
-import { prop } from 'ramda';
 
 
 /**
