@@ -1,0 +1,13 @@
+name: dash_react_components
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.9
+  # latest version of plotly can be found at https://github.com/plotly/plotly.py/releases .
+  # Version is hardcoded to ensure uniformity no matter the platform.
+  - plotly=5.9.0
+  - pip=21.3.1
+# Some packages not available in Conda Forge, so have to be installed through pip.
+  - pip:
+    - dash[dev]
