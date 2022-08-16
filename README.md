@@ -54,6 +54,6 @@ If you have selected install_dependencies during the prompt, you can skip this p
 
 3. Test your tarball by copying it's full file path and installing it locally into a new environment by running:
     ```
-    pip install <full file path>
+    pip install "<full file path>"
     ```
-    eg. `pip install D:\Users\user\Desktop\Source Code Store\gov-uk-dash-react-components\dist\uk_gov_dash_components-1.2.1.tar.gz`
+    eg. `pip install "D:\Users\user\Desktop\Source Code Store\gov-uk-dash-react-components\dist\uk_gov_dash_components-1.2.1.tar.gz"`
