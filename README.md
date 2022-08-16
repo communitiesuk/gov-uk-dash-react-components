@@ -57,3 +57,12 @@ If you have selected install_dependencies during the prompt, you can skip this p
     pip install "<full file path>"
     ```
     eg. `pip install "D:\Users\user\Desktop\Source Code Store\gov-uk-dash-react-components\dist\uk_gov_dash_components-1.2.1.tar.gz"`
+
+4. For creating new versions of the package:
+    - After merging with master, go [here](https://github.com/communitiesuk/gov-uk-dash-react-components/releases/) to add a new version tag.
+    - Click 'Draft a new release'
+    - Under 'Choose a tag' dropdown, enter 'v&lt;version number&gt;'. Click 'Create new tag'
+    - Give the tag a release title, this should be the same as the tag name.
+    - Give a bullet point list of changes in the "Describe this release" section.
+    - Make sure 'Target' is set to 'main'.
+    - Click 'Publish release'.
