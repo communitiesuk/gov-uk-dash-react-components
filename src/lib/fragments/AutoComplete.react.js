@@ -87,7 +87,7 @@ const AutoComplete = (props) => {
 
 	const getOptionLabelFromValue = (query, options) => {
 		const res = getOptionFromValue(query, options);
-		return res?.label || res?.name || res
+		return res?.label || res?.name || res || ""
 	}
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 	const [ isFocus, setFocus ] = useState(null);
@@ -557,7 +557,7 @@ const AutoComplete = (props) => {
 		}
 	}
 
-
+	
 	return (
 		<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
 			<Status

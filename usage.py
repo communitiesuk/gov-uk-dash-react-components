@@ -5,37 +5,36 @@ from dash import html
 
 app = dash.Dash(__name__)
 
+unique_las = ["LA1", "LA2", "LA3"]
+la_lookups = {"LA1":["SUBLA1", "SUBLA2", "SUBLA3"], "LA2":["SUBLA4", "SUBLA5", "SUBLA6"], "LA3":["SUBLA7", "SUBLA8", "SUBLA9"]}
+
 app.layout = html.Div([
     uk_gov_dash_components.Dropdown(
         label="Something",
-        id='input',
-        source=[
-            {"label": "Some label", "value": "Afghanistan"},
-            {"label": "Some test ", "value": "Akrotiri"},
-            {"label": "Some vb", "value": "Albania"},
-        ],
+        id='local_authority',
+        source=unique_las,
         value="",
         style={"minWidth": "50%"}
     ),
 
     uk_gov_dash_components.Dropdown(
         label="Comparison",
-        id='comparison',
-        source=["A", "F"],
-        value="",
+        id='comparison_local_authority',
+        source=[],
+        value=None,
         style={"minWidth": "50%"}
     ),
     html.Div(id='output')
 ])
 
-
-@app.callback(Output('output', 'children'), [Input('input', 'value')])
-def display_output(value):
-    return 'You have entered {}'.format(value)
-
-@app.callback(Output('comparison', 'source'), [Input('input', 'value')])
+@app.callback(
+    Output('comparison_local_authority', 'source'), 
+    Output('comparison_local_authority', 'value'), 
+    [Input('local_authority', 'value')])
 def update_comparison(value):
-    return ["B", "C", "D"]
+    if value is None or value is "":
+        return [[], None]
+    return [la_lookups[value], None]
 
 
 if __name__ == '__main__':
