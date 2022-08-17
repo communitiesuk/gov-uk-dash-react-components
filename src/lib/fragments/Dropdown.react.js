@@ -36,8 +36,7 @@ import {
  *
  * @return {*}
  */
-const Dropdown = (props = {}) => {
-
+const Dropdown = (props = {}) => {	
 	const { label, ...autoComplete } = props;
 	const { labelProps, fieldProps } = useLabel(props);
 	return (

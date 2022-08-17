@@ -149,7 +149,7 @@ export const dropdownPropTypes = {
 	/**
 	 * Override the css style of the wrapper
 	 */
-	style: PropTypes.any
+	style: PropTypes.any,
 
 }
 

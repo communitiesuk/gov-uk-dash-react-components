@@ -102,7 +102,6 @@ const AutoComplete = (props) => {
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
 	const [query, setQuery] = useState(startValue || value || '');
 
-
 	if (!Array.isArray(source)) {
 		dataSource('', (options) => {
 			const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, options) || '') : '';
@@ -110,19 +109,11 @@ const AutoComplete = (props) => {
 			setQuery(startValue);
 		})
 	}
-
-
-
 	const elementReferences = {};
 
 	const getRealOptions = (options) => {
 		return typeof options[0] === 'object' ? options.map(option => option?.value || option) : options;
 	}
-
-
-
-
-
 
 	// This template is used when converting from a state.options object into a state.query.
 	const templateInputValue = (value) => {
@@ -447,12 +438,11 @@ const AutoComplete = (props) => {
 				}, true)
 
 				break
-			default: {
+			default: {				
 				const autoselect = hasAutoselect()
 				const newQuery = event.target.value
 				const queryChanged = query !== newQuery
 				const queryLongEnough = newQuery.length >= minLength
-
 
 				setQuery(newQuery)
 				setAriaHint(newQuery.length === 0)
@@ -507,6 +497,15 @@ const AutoComplete = (props) => {
 		setAriaHint(!query?.length)
 	}, [query])
 
+
+	useEffect(() => {
+		// reset query and options if value reset to null			
+		if (value === null) {			
+			setOptions(source);
+			setQuery("");
+		}
+	}, [value])
+
 	const autoselectRend = hasAutoselect()
 
 	const inputFocused = isFocus === -1
@@ -556,7 +555,6 @@ const AutoComplete = (props) => {
 			dropdownArrow = <div className={`${cssNamespace}__dropdown-arrow-down-wrapper`} dangerouslySetInnerHTML={{ __html: dropdownArrow }} />
 		}
 	}
-
 
 	return (
 		<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>

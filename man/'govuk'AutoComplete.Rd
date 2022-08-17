@@ -6,7 +6,7 @@
 \title{AutoComplete component}
 
 \description{
-Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style } [props={}] @return {*}
+Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style, } [props={}] @return {*}
 }
 
 \usage{

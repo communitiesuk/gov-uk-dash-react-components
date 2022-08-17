@@ -29,7 +29,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
- * 	style
+ * 	style,
  * } [props={}]
  * @return {*}
  */
@@ -176,7 +176,7 @@ export const basePropTypes = {
 	/**
 	 * Override the css style of the wrapper
 	 */
-	style: PropTypes.any
+	style: PropTypes.any,
 };
 
 AutoComplete.propTypes = {

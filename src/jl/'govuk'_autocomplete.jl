@@ -31,7 +31,7 @@ Lazy loaded Autocomplete
 	tStatusNoResults,
 	tStatusSelectedOption,
 	tStatusResults,
-	style
+	style,
 } [props={}]
 @return {*}
 Keyword arguments:
