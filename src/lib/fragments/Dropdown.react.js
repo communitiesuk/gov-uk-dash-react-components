@@ -32,25 +32,21 @@ import {
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
- *  rerender,
  * }} [props={}]
  *
  * @return {*}
  */
 const Dropdown = (props = {}) => {	
-	const { label, value, id, ...autoComplete } = props;
+	const { label, ...autoComplete } = props;
 	const { labelProps, fieldProps } = useLabel(props);
 	return (
 		<div className="govuk-form-group" style={props.style}>
 			<label className="govuk-label" {...labelProps}>{label}</label>
 			<AutoComplete
-				id={id}
-				// key={`${id}_${value}`}
 				ariaLabelledBy={fieldProps['aria-labelledby']}
 				displayMenu="overlay"
 				showAllValues={true}
 				alwaysDisplayArrow={true}
-				value={value}
 				{...{ ...autoComplete, style: null }}
 			/>
 		</div>

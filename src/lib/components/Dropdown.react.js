@@ -30,7 +30,6 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
- *  rerender,
  * }} [props={}]
  *
  * @return {*}
@@ -151,11 +150,6 @@ export const dropdownPropTypes = {
 	 * Override the css style of the wrapper
 	 */
 	style: PropTypes.any,
-
-	/**
-	 * Force a re render of the component
-	 */
-	rerender: PropTypes.bool,
 
 }
 

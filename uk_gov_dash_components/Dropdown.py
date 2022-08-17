@@ -27,7 +27,6 @@ class Dropdown(Component):
 	tStatusNoResults,
 	tStatusSelectedOption,
 	tStatusResults,
- rerender,
 }} [props={}]
 
 @return {*}
@@ -64,9 +63,6 @@ Keyword arguments:
 - required (boolean; optional):
     No Description.
 
-- rerender (boolean; optional):
-    Force a re render of the component.
-
 - selectElement (boolean | number | string | dict | list; optional):
     Accessible element.
 
@@ -98,10 +94,10 @@ Keyword arguments:
     _namespace = 'uk_gov_dash_components'
     _type = 'Dropdown'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, label=Component.UNDEFINED, autoselect=Component.UNDEFINED, cssNamespace=Component.UNDEFINED, minLength=Component.UNDEFINED, name=Component.UNDEFINED, placeholder=Component.UNDEFINED, onConfirm=Component.UNDEFINED, confirmOnBlur=Component.UNDEFINED, showNoOptionsFound=Component.UNDEFINED, required=Component.UNDEFINED, tNoResults=Component.UNDEFINED, tAssistiveHint=Component.UNDEFINED, source=Component.UNDEFINED, templates=Component.UNDEFINED, tStatusQueryTooShort=Component.UNDEFINED, tStatusNoResults=Component.UNDEFINED, tStatusSelectedOption=Component.UNDEFINED, tStatusResults=Component.UNDEFINED, dropdownArrow=Component.UNDEFINED, selectElement=Component.UNDEFINED, value=Component.UNDEFINED, wrapperRef=Component.UNDEFINED, style=Component.UNDEFINED, rerender=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'autoselect', 'confirmOnBlur', 'cssNamespace', 'dropdownArrow', 'label', 'minLength', 'name', 'placeholder', 'required', 'rerender', 'selectElement', 'showNoOptionsFound', 'source', 'style', 'tStatusNoResults', 'tStatusResults', 'templates', 'value', 'wrapperRef']
+    def __init__(self, id=Component.UNDEFINED, label=Component.UNDEFINED, autoselect=Component.UNDEFINED, cssNamespace=Component.UNDEFINED, minLength=Component.UNDEFINED, name=Component.UNDEFINED, placeholder=Component.UNDEFINED, onConfirm=Component.UNDEFINED, confirmOnBlur=Component.UNDEFINED, showNoOptionsFound=Component.UNDEFINED, required=Component.UNDEFINED, tNoResults=Component.UNDEFINED, tAssistiveHint=Component.UNDEFINED, source=Component.UNDEFINED, templates=Component.UNDEFINED, tStatusQueryTooShort=Component.UNDEFINED, tStatusNoResults=Component.UNDEFINED, tStatusSelectedOption=Component.UNDEFINED, tStatusResults=Component.UNDEFINED, dropdownArrow=Component.UNDEFINED, selectElement=Component.UNDEFINED, value=Component.UNDEFINED, wrapperRef=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'autoselect', 'confirmOnBlur', 'cssNamespace', 'dropdownArrow', 'label', 'minLength', 'name', 'placeholder', 'required', 'selectElement', 'showNoOptionsFound', 'source', 'style', 'tStatusNoResults', 'tStatusResults', 'templates', 'value', 'wrapperRef']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'autoselect', 'confirmOnBlur', 'cssNamespace', 'dropdownArrow', 'label', 'minLength', 'name', 'placeholder', 'required', 'rerender', 'selectElement', 'showNoOptionsFound', 'source', 'style', 'tStatusNoResults', 'tStatusResults', 'templates', 'value', 'wrapperRef']
+        self.available_properties = ['id', 'autoselect', 'confirmOnBlur', 'cssNamespace', 'dropdownArrow', 'label', 'minLength', 'name', 'placeholder', 'required', 'selectElement', 'showNoOptionsFound', 'source', 'style', 'tStatusNoResults', 'tStatusResults', 'templates', 'value', 'wrapperRef']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

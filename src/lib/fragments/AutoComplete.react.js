@@ -33,7 +33,6 @@ import './autocomplete.css';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
- *  rerender,
  * }=defaultProps]
  * @return {*}
  */
@@ -66,7 +65,6 @@ const AutoComplete = (props) => {
 		selectElement,
 		alwaysDisplayArrow,
 		style,
-		rerender,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -89,7 +87,7 @@ const AutoComplete = (props) => {
 
 	const getOptionLabelFromValue = (query, options) => {
 		const res = getOptionFromValue(query, options);
-		return res?.label || res?.name || res || ""
+		return res?.label || res?.name || res
 	}
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 	const [ isFocus, setFocus ] = useState(null);
@@ -440,12 +438,11 @@ const AutoComplete = (props) => {
 				}, true)
 
 				break
-			default: {
+			default: {				
 				const autoselect = hasAutoselect()
 				const newQuery = event.target.value
 				const queryChanged = query !== newQuery
 				const queryLongEnough = newQuery.length >= minLength
-
 
 				setQuery(newQuery)
 				setAriaHint(newQuery.length === 0)
@@ -501,18 +498,12 @@ const AutoComplete = (props) => {
 		setAriaHint(!query?.length)
 	}, [query])
 
-	
 
-	useEffect(() => {		
-		console.log(`FORCE A RE RENDER FOR COMPONENT ID ${id} with value ${value}. if result is ${value === null}`)
+
+	useEffect(() => {				
 		if(value === null){			
 			setOptions(source);
 			setQuery("");
-			// setSelected(-1);
-			// setFocus(-1);
-			// const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
-			// const value = opt?.value || opt;
-			// setQuery(value)
 		}
 	}, [value])
 
