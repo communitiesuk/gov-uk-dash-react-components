@@ -6,7 +6,7 @@
 \title{AutoComplete component}
 
 \description{
-Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style } [props={}] @return {*}
+Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style,  rerender, } [props={}] @return {*}
 }
 
 \usage{
@@ -14,7 +14,7 @@ Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaul
 autoselect=NULL, confirmOnBlur=NULL, cssNamespace=NULL,
 displayMenu=NULL, dropdownArrow=NULL, minLength=NULL,
 name=NULL, onConfirm=NULL, placeholder=NULL, required=NULL,
-selectElement=NULL, showAllValues=NULL,
+rerender=NULL, selectElement=NULL, showAllValues=NULL,
 showNoOptionsFound=NULL, source=NULL, style=NULL,
 tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
@@ -48,6 +48,8 @@ wrapperRef=NULL)
 \item{placeholder}{Character. No Description}
 
 \item{required}{Logical. No Description}
+
+\item{rerender}{Logical. Force a re render of the component}
 
 \item{selectElement}{Logical | numeric | character | named list | unnamed list. Accessible element}
 

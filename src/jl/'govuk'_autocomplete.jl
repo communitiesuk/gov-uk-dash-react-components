@@ -31,7 +31,8 @@ Lazy loaded Autocomplete
 	tStatusNoResults,
 	tStatusSelectedOption,
 	tStatusResults,
-	style
+	style,
+ rerender,
 } [props={}]
 @return {*}
 Keyword arguments:
@@ -47,6 +48,7 @@ Keyword arguments:
 - `name` (String; optional): No Description
 - `placeholder` (String; optional): No Description
 - `required` (Bool; optional): No Description
+- `rerender` (Bool; optional): Force a re render of the component
 - `selectElement` (Bool | Real | String | Dict | Array; optional): Accessible element
 - `showAllValues` (Bool; optional): No Description
 - `showNoOptionsFound` (Bool; optional): No Description
@@ -59,7 +61,7 @@ Keyword arguments:
 - `wrapperRef` (Bool | Real | String | Dict | Array; optional): wrapperRef
 """
 function 'govuk'_autocomplete(; kwargs...)
-        available_props = Symbol[:id, :alwaysDisplayArrow, :ariaLabelledBy, :autoselect, :confirmOnBlur, :cssNamespace, :displayMenu, :dropdownArrow, :minLength, :name, :placeholder, :required, :selectElement, :showAllValues, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
+        available_props = Symbol[:id, :alwaysDisplayArrow, :ariaLabelledBy, :autoselect, :confirmOnBlur, :cssNamespace, :displayMenu, :dropdownArrow, :minLength, :name, :placeholder, :required, :rerender, :selectElement, :showAllValues, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
         wild_props = Symbol[]
         return Component("'govuk'_autocomplete", "AutoComplete", "uk_gov_dash_components", available_props, wild_props; kwargs...)
 end

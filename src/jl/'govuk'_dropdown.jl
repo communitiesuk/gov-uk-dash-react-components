@@ -28,6 +28,7 @@ A Dropdown component.
 	tStatusNoResults,
 	tStatusSelectedOption,
 	tStatusResults,
+ rerender,
 }} [props={}]
 
 @return {*}
@@ -42,6 +43,7 @@ Keyword arguments:
 - `name` (String; optional): No Description
 - `placeholder` (String; optional): No Description
 - `required` (Bool; optional): No Description
+- `rerender` (Bool; optional): Force a re render of the component
 - `selectElement` (Bool | Real | String | Dict | Array; optional): Accessible element
 - `showNoOptionsFound` (Bool; optional): No Description
 - `source` (Bool | Real | String | Dict | Array; optional): No Description
@@ -53,7 +55,7 @@ Keyword arguments:
 - `wrapperRef` (Bool | Real | String | Dict | Array; optional): wrapperRef
 """
 function 'govuk'_dropdown(; kwargs...)
-        available_props = Symbol[:id, :autoselect, :confirmOnBlur, :cssNamespace, :dropdownArrow, :label, :minLength, :name, :placeholder, :required, :selectElement, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
+        available_props = Symbol[:id, :autoselect, :confirmOnBlur, :cssNamespace, :dropdownArrow, :label, :minLength, :name, :placeholder, :required, :rerender, :selectElement, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
         wild_props = Symbol[]
         return Component("'govuk'_dropdown", "Dropdown", "uk_gov_dash_components", available_props, wild_props; kwargs...)
 end

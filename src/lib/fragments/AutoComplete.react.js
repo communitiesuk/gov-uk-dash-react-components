@@ -33,6 +33,7 @@ import './autocomplete.css';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  rerender,
  * }=defaultProps]
  * @return {*}
  */
@@ -65,6 +66,7 @@ const AutoComplete = (props) => {
 		selectElement,
 		alwaysDisplayArrow,
 		style,
+		rerender,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -102,7 +104,6 @@ const AutoComplete = (props) => {
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
 	const [query, setQuery] = useState(startValue || value || '');
 
-
 	if (!Array.isArray(source)) {
 		dataSource('', (options) => {
 			const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, options) || '') : '';
@@ -110,19 +111,11 @@ const AutoComplete = (props) => {
 			setQuery(startValue);
 		})
 	}
-
-
-
 	const elementReferences = {};
 
 	const getRealOptions = (options) => {
 		return typeof options[0] === 'object' ? options.map(option => option?.value || option) : options;
 	}
-
-
-
-
-
 
 	// This template is used when converting from a state.options object into a state.query.
 	const templateInputValue = (value) => {
@@ -497,6 +490,7 @@ const AutoComplete = (props) => {
 	}
 
 	useEffect(() => {
+
 		if (typeof setProps === 'function') {
 			const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
 			const value = opt?.value || opt;
@@ -506,6 +500,21 @@ const AutoComplete = (props) => {
 		}
 		setAriaHint(!query?.length)
 	}, [query])
+
+	
+
+	useEffect(() => {		
+		console.log(`FORCE A RE RENDER FOR COMPONENT ID ${id} with value ${value}. if result is ${value === null}`)
+		if(value === null){			
+			setOptions(source);
+			setQuery("");
+			// setSelected(-1);
+			// setFocus(-1);
+			// const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
+			// const value = opt?.value || opt;
+			// setQuery(value)
+		}
+	}, [value])
 
 	const autoselectRend = hasAutoselect()
 

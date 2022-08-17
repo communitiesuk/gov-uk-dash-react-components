@@ -32,6 +32,7 @@ import {
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  rerender,
  * }} [props={}]
  *
  * @return {*}
@@ -44,7 +45,7 @@ const Dropdown = (props = {}) => {
 			<label className="govuk-label" {...labelProps}>{label}</label>
 			<AutoComplete
 				id={id}
-				key={`${id}_${value}`}
+				// key={`${id}_${value}`}
 				ariaLabelledBy={fieldProps['aria-labelledby']}
 				displayMenu="overlay"
 				showAllValues={true}

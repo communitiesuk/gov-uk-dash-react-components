@@ -6,16 +6,16 @@
 \title{Dropdown component}
 
 \description{
-@param {{ 	label: string, 	id, 	autoselect, 	cssNamespace, 	value, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, }} [props={}]  @return {*}
+@param {{ 	label: string, 	id, 	autoselect, 	cssNamespace, 	value, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults,  rerender, }} [props={}]  @return {*}
 }
 
 \usage{
 'govuk'Dropdown(id=NULL, autoselect=NULL, confirmOnBlur=NULL,
 cssNamespace=NULL, dropdownArrow=NULL, label=NULL,
 minLength=NULL, name=NULL, onConfirm=NULL, placeholder=NULL,
-required=NULL, selectElement=NULL, showNoOptionsFound=NULL,
-source=NULL, style=NULL, tAssistiveHint=NULL,
-tNoResults=NULL, tStatusNoResults=NULL,
+required=NULL, rerender=NULL, selectElement=NULL,
+showNoOptionsFound=NULL, source=NULL, style=NULL,
+tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
 tStatusSelectedOption=NULL, templates=NULL, value=NULL,
 wrapperRef=NULL)
@@ -43,6 +43,8 @@ wrapperRef=NULL)
 \item{placeholder}{Character. No Description}
 
 \item{required}{Logical. No Description}
+
+\item{rerender}{Logical. Force a re render of the component}
 
 \item{selectElement}{Logical | numeric | character | named list | unnamed list. Accessible element}
 

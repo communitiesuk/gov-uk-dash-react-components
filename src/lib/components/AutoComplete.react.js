@@ -29,7 +29,8 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
- * 	style
+ * 	style,
+ *  rerender,
  * } [props={}]
  * @return {*}
  */
@@ -58,6 +59,7 @@ AutoComplete.defaultProps = {
 	tAssistiveHint: () => 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.',
 	dropdownArrow: DropdownArrowDown,
 	alwaysDisplayArrow: true,
+	rerender:false
 };
 
 export const basePropTypes = {
@@ -176,7 +178,12 @@ export const basePropTypes = {
 	/**
 	 * Override the css style of the wrapper
 	 */
-	style: PropTypes.any
+	style: PropTypes.any,
+
+	/**
+	 * Force a re render of the component
+	 */
+	rerender: PropTypes.bool,
 };
 
 AutoComplete.propTypes = {
