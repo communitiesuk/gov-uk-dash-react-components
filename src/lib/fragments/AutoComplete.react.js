@@ -487,7 +487,6 @@ const AutoComplete = (props) => {
 	}
 
 	useEffect(() => {
-
 		if (typeof setProps === 'function') {
 			const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
 			const value = opt?.value || opt;
@@ -499,9 +498,9 @@ const AutoComplete = (props) => {
 	}, [query])
 
 
-
-	useEffect(() => {				
-		if(value === null){			
+	useEffect(() => {
+		// reset query and options if value reset to null			
+		if (value === null) {			
 			setOptions(source);
 			setQuery("");
 		}
@@ -557,7 +556,6 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	
 	return (
 		<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
 			<Status
