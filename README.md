@@ -2,7 +2,7 @@
 
 UK Gov dash components is a Dash component library.
 
-### Install dependencies
+## Install dependencies
 
 If you have selected install_dependencies during the prompt, you can skip this part.
 
@@ -15,30 +15,54 @@ If you have selected install_dependencies during the prompt, you can skip this p
     conda env create -f environment.yml 
     ```
 
-### Write your component code in `src/lib/components/UkGovDashComponents.react.js`.
+## Create a new component
 
-- The demo app is in `src/demo` and you will import your example component code into your demo app.
-- Test your code in a Python environment:
-    1. Build your code
-        ```
-        npm run build
-        ```
-    2. Run and modify the `example.py` sample dash app:
-        ```
-        python example.py
-        ```
-    3. Visit http://localhost:8050 in your web browser
+Use the `ComponentTemplate` component as a template.
+This component is class based, while other components in this repository are functions.
+You can read more about [function components in the React documentation](https://reactjs.org/docs/components-and-props.html#function-and-class-components). 
 
-- Write tests for your component.
-    - A sample test is available in `tests/test_example.py`, it will load `example.py` and you can then automate interactions with selenium.
-    - Run the tests with `pytest tests`.
-    - The Dash team uses these types of integration tests extensively. Browse the Dash component code on GitHub for more examples of testing (e.g. https://github.com/plotly/dash-core-components)
+1. Copy `src/lib/components/ComponentTemplate.react.js` -> `src/lib/components/YourComponent.react.js`
+1. Copy `src/lib/fragments/ComponentTemplate.react.js` -> `src/lib/fragments/YourComponent.react.js`
+1. Modify the newly created files, replacing all references to `ComponentTemplate` with `YourComponent`, and replacing the sample functionality with what you'd like.
+1. Add both an import and export of `YourComponent` to both `src/lib/index.js` and `src/lib/LazyLoader.js`
+1. Add `YourComponent` to the import at the top of the `src/demo/App.js` file, and add `<YourComponent>` to the App.render() function.
+    1. Run `npm start` to start the demo server.
+    1. Open http://localhost:55555 in your browser.
+    1. If nothing apears on the page, then open up the browser console to see the error(s).
+
+## Test your code within a Dash Application
+
+If you've previously been running `npm start` you've been running your component within a pure React environment separate to Dash.
+
+1. Build your code which will generate all the Python code required
+    ```
+    npm run build
+    ```
+2. Run the `example.py` sample Dash app:
+    ```
+    python example.py
+    ```
+3. Visit http://localhost:8050 in your web browser
+4. Add your component to `example.py` using the existing Python as a template.
+
+## Write tests for your component.
+
+__These are the default instructions__
+
+- A sample test is available in `tests/test_example.py`, it will load `example.py` and you can then automate interactions with selenium.
+- Run the tests with `pytest tests`.
+- The Dash team uses these types of integration tests extensively. Browse the Dash component code on GitHub for more examples of testing (e.g. https://github.com/plotly/dash-core-components)
+
+## Add custom styles to your component
+
+__These are the default instructions__
+
 - Add custom styles to your component by putting your custom CSS files into your distribution folder (`uk_gov_dash_components`).
     - Make sure that they are referenced in `MANIFEST.in` so that they get properly included when you're ready to publish your component.
     - Make sure the stylesheets are added to the `_css_dist` dict in `uk_gov_dash_components/__init__.py` so dash will serve them automatically when the component suite is requested.
 - [Review your code](./review_checklist.md)
 
-### Create a production build and publish:
+## Create a production build and publish:
 
 1. Build your code:
     ```
