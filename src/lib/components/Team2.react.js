@@ -39,7 +39,7 @@ Team2.propTypes = {
      * components in an app.
      */
     id: PropTypes.string,
-
+    clicks: PropTypes.number,
     /**
      * Dash-assigned callback that gets fired when the value changes.
      */

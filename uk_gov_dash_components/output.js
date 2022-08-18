@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "fa5f8d5-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "e3c4082-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "fa5f8d5-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "e3c4082-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "00b2560ed65d1333a71f";
+/******/ 	var hotCurrentHash = "e5ed9468efad28eb639d";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660835573");
+/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660836722");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -15438,7 +15438,7 @@ module.exports = exports["default"];
 /*!******************************************************!*\
   !*** ./node_modules/intl-messageformat/lib/index.js ***!
   \******************************************************/
-/*! exports provided: PART_TYPE, isFormatXMLElementFn, formatToParts, IntlMessageFormat, ErrorCode, FormatError, InvalidValueError, InvalidValueTypeError, MissingValueError, default */
+/*! exports provided: default, PART_TYPE, isFormatXMLElementFn, formatToParts, IntlMessageFormat, ErrorCode, FormatError, InvalidValueError, InvalidValueTypeError, MissingValueError */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64166,7 +64166,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\kate.riley\\Desktop\\Source Code Store\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"fa5f8d5"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\kate.riley\\Desktop\\Source Code Store\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"e3c4082"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -65315,6 +65315,7 @@ var App = function App() {
     id: "a-great-component-id",
     setProps: setProps
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["Team2"], {
+    clicks: 7,
     setProps: setProps
   })));
 };
@@ -67895,7 +67896,7 @@ var Team2 = /*#__PURE__*/function (_Component) {
     });
 
     _this.state = {
-      clicks: 0
+      clicks: props.clicks
     };
     return _this;
   }

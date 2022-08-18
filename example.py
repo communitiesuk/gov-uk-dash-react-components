@@ -26,7 +26,7 @@ app.layout = html.Div([
     ),
     html.Div(id='output'),
 
-    uk_gov_dash_components.Team2(),
+    uk_gov_dash_components.Team2(clicks=21),
 ])
 
 @app.callback(

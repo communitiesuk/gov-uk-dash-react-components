@@ -5,7 +5,7 @@ import { defaultProps, propTypes } from '../components/ComponentTemplate.react';
 class Team2 extends Component {
     constructor(props) {
         super(props);
-        this.state = {clicks: 0 
+        this.state = {clicks: props.clicks 
         }}
     update_clicks = () => {
         // update the state!

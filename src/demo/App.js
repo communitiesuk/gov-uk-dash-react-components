@@ -36,7 +36,7 @@ const App = () => {
             <h2>ComponentTemplate</h2>
             <ComponentTemplate id="a-great-component-id" setProps={setProps} />
             <div>
-                <Team2 setProps={setProps} />
+                <Team2 clicks={7} setProps={setProps} />
             </div>
         </>
     )

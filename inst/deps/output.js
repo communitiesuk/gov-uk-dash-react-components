@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "b2254f8-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "e3c4082-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "b2254f8-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "e3c4082-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "833d75681bacd8d17387";
+/******/ 	var hotCurrentHash = "e5ed9468efad28eb639d";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660832298");
+/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660836722");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -15438,7 +15438,7 @@ module.exports = exports["default"];
 /*!******************************************************!*\
   !*** ./node_modules/intl-messageformat/lib/index.js ***!
   \******************************************************/
-/*! exports provided: PART_TYPE, isFormatXMLElementFn, formatToParts, IntlMessageFormat, ErrorCode, FormatError, InvalidValueError, InvalidValueTypeError, MissingValueError, default */
+/*! exports provided: default, PART_TYPE, isFormatXMLElementFn, formatToParts, IntlMessageFormat, ErrorCode, FormatError, InvalidValueError, InvalidValueTypeError, MissingValueError */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64166,7 +64166,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\kate.riley\\Desktop\\Source Code Store\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"b2254f8"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\kate.riley\\Desktop\\Source Code Store\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"e3c4082"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -65315,6 +65315,7 @@ var App = function App() {
     id: "a-great-component-id",
     setProps: setProps
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["Team2"], {
+    clicks: 7,
     setProps: setProps
   })));
 };
@@ -67870,6 +67871,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -67878,19 +67881,39 @@ var Team2 = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(Team2);
 
-  function Team2() {
+  function Team2(props) {
+    var _this;
+
     _classCallCheck(this, Team2);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "update_clicks", function () {
+      // update the state!
+      _this.setState({
+        clicks: _this.state.clicks + 1
+      });
+    });
+
+    _this.state = {
+      clicks: props.clicks
+    };
+    return _this;
   }
 
   _createClass(Team2, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var date = new Date();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: this.props.id
-      }, date.toLocaleTimeString());
+      }, date.toLocaleTimeString(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.update_clicks();
+        }
+      }, "You have clicked ", this.state.clicks, " times"));
     }
   }]);
 
