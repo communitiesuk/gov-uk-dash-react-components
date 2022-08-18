@@ -32,16 +32,18 @@ You can read more about [function components in the React documentation](https:/
 
 ## Test your code within a Dash Application
 
-1. Build your code
+If you've previously been running `npm start` you've been running your component within a pure React environment separate to Dash.
+
+1. Build your code which will generate all the Python code required
     ```
     npm run build
     ```
-2. Run and modify the `example.py` sample dash app:
+2. Run the `example.py` sample Dash app:
     ```
     python example.py
     ```
 3. Visit http://localhost:8050 in your web browser
-
+4. Add your component to `example.py` using the existing Python as a template.
 
 ## Write tests for your component.
 
