@@ -7,6 +7,8 @@ const version = "1.2.2"
 
 include("jl/'govuk'_autocomplete.jl")
 include("jl/'govuk'_checkboxlist.jl")
+include("jl/'govuk'_componenttemplate.jl")
+include("jl/'govuk'_currenttime.jl")
 include("jl/'govuk'_dropdown.jl")
 include("jl/'govuk'_dropdownarrowdown.jl")
 include("jl/'govuk'_status.jl")

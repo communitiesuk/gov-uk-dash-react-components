@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate } from '../lib';
+import { Dropdown, CheckboxList, CurrentTime } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -33,8 +33,8 @@ const App = () => {
             <div>
                 <CheckboxList id="checkboxes" value={["restrict"]} options={["restrict"]} setProps={setProps} />
             </div>
-            <h2>ComponentTemplate</h2>
-            <ComponentTemplate id="a-great-component-id" setProps={setProps} />
+            <h2>CurrentTime</h2>
+            <CurrentTime id="a-great-component-id" value={100} setProps={setProps} />
         </>
     )
 }

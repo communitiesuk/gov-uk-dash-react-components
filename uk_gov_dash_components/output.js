@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "e8a3ef5-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "d347197-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "e8a3ef5-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "d347197-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "571f120aeeb4a46f4d20";
+/******/ 	var hotCurrentHash = "738c5b9f3346b26d50af";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660751555");
+/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660836456");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -64166,7 +64166,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\adrian.clay\\Desktop\\communitiesuk\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"e8a3ef5"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\tom.clarke\\Desktop\\code\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"d347197"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -65311,8 +65311,9 @@ var App = function App() {
     value: ["restrict"],
     options: ["restrict"],
     setProps: setProps
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ComponentTemplate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["ComponentTemplate"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CurrentTime"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["CurrentTime"], {
     id: "a-great-component-id",
+    value: 100,
     setProps: setProps
   }));
 };
@@ -65346,7 +65347,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*!*******************************!*\
   !*** ./src/lib/LazyLoader.js ***!
   \*******************************/
-/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, ComponentTemplate */
+/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, CurrentTime */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65363,8 +65364,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fragments_CheckboxList_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fragments/CheckboxList.react */ "./src/lib/fragments/CheckboxList.react.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CheckboxList", function() { return _fragments_CheckboxList_react__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _fragments_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fragments/ComponentTemplate.react */ "./src/lib/fragments/ComponentTemplate.react.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentTemplate", function() { return _fragments_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _fragments_CurrentTime_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fragments/CurrentTime.react */ "./src/lib/fragments/CurrentTime.react.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentTime", function() { return _fragments_CurrentTime_react__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
 
 
@@ -65718,10 +65719,10 @@ var propTypes = CheckboxList.propTypes;
 
 /***/ }),
 
-/***/ "./src/lib/components/ComponentTemplate.react.js":
-/*!*******************************************************!*\
-  !*** ./src/lib/components/ComponentTemplate.react.js ***!
-  \*******************************************************/
+/***/ "./src/lib/components/CurrentTime.react.js":
+/*!*************************************************!*\
+  !*** ./src/lib/components/CurrentTime.react.js ***!
+  \*************************************************/
 /*! exports provided: defaultProps, propTypes, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65742,13 +65743,14 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @param {
  * 	id,
+ * value,
  * } [props={}]
  * @return {*}
  */
 
-var ComponentTemplate = function ComponentTemplate() {
+var CurrentTime = function CurrentTime() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LazyLoader__WEBPACK_IMPORTED_MODULE_2__["ComponentTemplate"], props);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LazyLoader__WEBPACK_IMPORTED_MODULE_2__["CurrentTime"], props);
 };
 /**
  * PropTypes is a part of React, see full documenation below.
@@ -65756,13 +65758,13 @@ var ComponentTemplate = function ComponentTemplate() {
  */
 
 
-ComponentTemplate.defaultProps = {
+CurrentTime.defaultProps = {
   /**
    * Any default prop values, e.g.
    *   congratulatoryMessage: 'You are amazing'
    */
 };
-ComponentTemplate.propTypes = {
+CurrentTime.propTypes = {
   /**
    * Add any options you wish to pass to your component to this dictionary.
    */
@@ -65779,9 +65781,9 @@ ComponentTemplate.propTypes = {
    */
   setProps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-var defaultProps = ComponentTemplate.defaultProps;
-var propTypes = ComponentTemplate.propTypes;
-/* harmony default export */ __webpack_exports__["default"] = (ComponentTemplate);
+var defaultProps = CurrentTime.defaultProps;
+var propTypes = CurrentTime.propTypes;
+/* harmony default export */ __webpack_exports__["default"] = (CurrentTime);
 
 /***/ }),
 
@@ -67604,10 +67606,10 @@ ComboBox.defaultProps = {};
 
 /***/ }),
 
-/***/ "./src/lib/fragments/ComponentTemplate.react.js":
-/*!******************************************************!*\
-  !*** ./src/lib/fragments/ComponentTemplate.react.js ***!
-  \******************************************************/
+/***/ "./src/lib/fragments/CurrentTime.react.js":
+/*!************************************************!*\
+  !*** ./src/lib/fragments/CurrentTime.react.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -67615,7 +67617,7 @@ ComboBox.defaultProps = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ComponentTemplate.react */ "./src/lib/components/ComponentTemplate.react.js");
+/* harmony import */ var _components_CurrentTime_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/CurrentTime.react */ "./src/lib/components/CurrentTime.react.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67638,35 +67640,56 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
-var ComponentTemplate = /*#__PURE__*/function (_Component) {
-  _inherits(ComponentTemplate, _Component);
 
-  var _super = _createSuper(ComponentTemplate);
+var CurrentTime = /*#__PURE__*/function (_Component) {
+  _inherits(CurrentTime, _Component);
 
-  function ComponentTemplate() {
-    _classCallCheck(this, ComponentTemplate);
+  var _super = _createSuper(CurrentTime);
 
-    return _super.apply(this, arguments);
+  function CurrentTime(props) {
+    var _this;
+
+    _classCallCheck(this, CurrentTime);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleInputChange", function (e) {
+      // update the state!
+      _this.setState({
+        value: _this.state.value + 1
+      });
+    });
+
+    _this.state = {
+      value: _this.props.value
+    };
+    return _this;
   }
 
-  _createClass(ComponentTemplate, [{
+  _createClass(CurrentTime, [{
     key: "render",
     value: function render() {
+      var today = new Date();
+      var time = today.getHours() + 1 + ":" + today.getMinutes() + ":" + today.getSeconds();
+      var counter = this.state.value;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: this.props.id
-      }, "I love React.js!");
+      }, time, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleInputChange
+      }, "Click Me!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), counter);
     }
   }]);
 
-  return ComponentTemplate;
+  return CurrentTime;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-ComponentTemplate.defaultProps = _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_1__["defaultProps"];
-ComponentTemplate.propTypes = _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_1__["propTypes"];
-/* harmony default export */ __webpack_exports__["default"] = (ComponentTemplate);
+CurrentTime.defaultProps = _components_CurrentTime_react__WEBPACK_IMPORTED_MODULE_1__["defaultProps"];
+CurrentTime.propTypes = _components_CurrentTime_react__WEBPACK_IMPORTED_MODULE_1__["propTypes"];
+/* harmony default export */ __webpack_exports__["default"] = (CurrentTime);
 
 /***/ }),
 
@@ -67923,7 +67946,7 @@ function isPrintableKeyCode(keyCode) {
 /*!**************************!*\
   !*** ./src/lib/index.js ***!
   \**************************/
-/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, ComponentTemplate */
+/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, CurrentTime */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67940,8 +67963,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CheckboxList_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/CheckboxList.react */ "./src/lib/components/CheckboxList.react.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CheckboxList", function() { return _components_CheckboxList_react__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ComponentTemplate.react */ "./src/lib/components/ComponentTemplate.react.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentTemplate", function() { return _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _components_CurrentTime_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/CurrentTime.react */ "./src/lib/components/CurrentTime.react.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentTime", function() { return _components_CurrentTime_react__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
 /* eslint-disable import/prefer-default-export */
 

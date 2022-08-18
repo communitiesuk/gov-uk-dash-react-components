@@ -7,10 +7,11 @@ import { CurrentTime as RealComponent } from '../LazyLoader';
  *
  * @param {
  * 	id,
+ *  value,
  * } [props={}]
  * @return {*}
  */
-const ComponentTemplate = (props = {}) => {
+const CurrentTime = (props = {}) => {
     return (
         <RealComponent {...props} />
     );
@@ -21,14 +22,14 @@ const ComponentTemplate = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
-ComponentTemplate.defaultProps = {
+CurrentTime.defaultProps = {
     /**
      * Any default prop values, e.g.
      *   congratulatoryMessage: 'You are amazing'
      */
 };
 
-ComponentTemplate.propTypes = {
+CurrentTime.propTypes = {
     /**
      * Add any options you wish to pass to your component to this dictionary.
      */
@@ -39,6 +40,10 @@ ComponentTemplate.propTypes = {
      * components in an app.
      */
     id: PropTypes.string,
+    /**
+     * The default value used for the counter. 
+     */
+    value: PropTypes.number,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.
@@ -46,7 +51,7 @@ ComponentTemplate.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = ComponentTemplate.defaultProps;
-export const propTypes = ComponentTemplate.propTypes;
+export const defaultProps = CurrentTime.defaultProps;
+export const propTypes = CurrentTime.propTypes;
 
-export default ComponentTemplate
+export default CurrentTime

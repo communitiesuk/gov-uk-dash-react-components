@@ -3,6 +3,7 @@ import dash
 from dash.dependencies import Input, Output
 from dash import html
 
+
 app = dash.Dash(__name__)
 
 unique_las = ["LA1", "LA2", "LA3"]
@@ -24,7 +25,9 @@ app.layout = html.Div([
         value=None,
         style={"minWidth": "50%"}
     ),
-    html.Div(id='output')
+    html.Div(id='output'),
+    uk_gov_dash_components.CurrentTime(value = 100),
+    html.Img(src="./count.png")
 ])
 
 @app.callback(
