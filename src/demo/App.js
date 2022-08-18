@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, Team2 } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -35,6 +35,9 @@ const App = () => {
             </div>
             <h2>ComponentTemplate</h2>
             <ComponentTemplate id="a-great-component-id" setProps={setProps} />
+            <div>
+                <Team2 setProps={setProps} />
+            </div>
         </>
     )
 }

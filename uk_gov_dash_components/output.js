@@ -14,7 +14,7 @@ window["uk_gov_dash_components"] =
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "e8a3ef5-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "b2254f8-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -28,7 +28,7 @@ window["uk_gov_dash_components"] =
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "e8a3ef5-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "b2254f8-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -64,7 +64,7 @@ window["uk_gov_dash_components"] =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "571f120aeeb4a46f4d20";
+/******/ 	var hotCurrentHash = "833d75681bacd8d17387";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -836,7 +836,7 @@ window["uk_gov_dash_components"] =
 /******/ 	        var srcFragments = src.split('/');
 /******/ 	        var fileFragments = srcFragments.slice(-1)[0].split('.');
 /******/
-/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660751555");
+/******/ 	        fileFragments.splice(1, 0, "v1_2_2m1660832298");
 /******/ 	        srcFragments.splice(-1, 1, fileFragments.join('.'))
 /******/
 /******/ 	        return srcFragments.join('/');
@@ -64166,7 +64166,7 @@ function useWindowSize() {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\adrian.clay\\Desktop\\communitiesuk\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"e8a3ef5"};
+    options = {"compress":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":true,"port":55555,"progress":true,"secure":false,"static":["D:\\Users\\kate.riley\\Desktop\\Source Code Store\\gov-uk-dash-react-components"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"b2254f8"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -65314,7 +65314,9 @@ var App = function App() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ComponentTemplate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["ComponentTemplate"], {
     id: "a-great-component-id",
     setProps: setProps
-  }));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lib__WEBPACK_IMPORTED_MODULE_1__["Team2"], {
+    setProps: setProps
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -65346,7 +65348,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*!*******************************!*\
   !*** ./src/lib/LazyLoader.js ***!
   \*******************************/
-/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, ComponentTemplate */
+/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, ComponentTemplate, Team2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65365,6 +65367,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _fragments_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fragments/ComponentTemplate.react */ "./src/lib/fragments/ComponentTemplate.react.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentTemplate", function() { return _fragments_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _fragments_Team2_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fragments/Team2.react */ "./src/lib/fragments/Team2.react.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Team2", function() { return _fragments_Team2_react__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
 
 
 
@@ -65968,6 +65974,73 @@ var dropdownPropTypes = {
 Dropdown.propTypes = dropdownPropTypes;
 Dropdown.defaultProps = _AutoComplete_react__WEBPACK_IMPORTED_MODULE_2__["defaultProps"];
 /* harmony default export */ __webpack_exports__["default"] = (Dropdown);
+
+/***/ }),
+
+/***/ "./src/lib/components/Team2.react.js":
+/*!*******************************************!*\
+  !*** ./src/lib/components/Team2.react.js ***!
+  \*******************************************/
+/*! exports provided: defaultProps, propTypes, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultProps", function() { return defaultProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "propTypes", function() { return propTypes; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _LazyLoader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../LazyLoader */ "./src/lib/LazyLoader.js");
+
+
+
+/**
+ * Lazy loaded ComponentTemplate
+ *
+ * @param {
+ * 	id,
+ * } [props={}]
+ * @return {*}
+ */
+
+var Team2 = function Team2() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LazyLoader__WEBPACK_IMPORTED_MODULE_2__["Team2"], props);
+};
+/**
+ * PropTypes is a part of React, see full documenation below.
+ * https://reactjs.org/docs/typechecking-with-proptypes.html
+ */
+
+
+Team2.defaultProps = {
+  /**
+   * Any default prop values, e.g.
+   *   congratulatoryMessage: 'You are amazing'
+   */
+};
+Team2.propTypes = {
+  /**
+   * Add any options you wish to pass to your component to this dictionary.
+   */
+
+  /**
+   * The ID of this component, used to identify dash components
+   * in callbacks. The ID needs to be unique across all of the
+   * components in an app.
+   */
+  id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
+};
+var defaultProps = Team2.defaultProps;
+var propTypes = Team2.propTypes;
+/* harmony default export */ __webpack_exports__["default"] = (Team2);
 
 /***/ }),
 
@@ -67763,6 +67836,73 @@ Dropdown.defaultProps = _components_AutoComplete_react__WEBPACK_IMPORTED_MODULE_
 
 /***/ }),
 
+/***/ "./src/lib/fragments/Team2.react.js":
+/*!******************************************!*\
+  !*** ./src/lib/fragments/Team2.react.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ComponentTemplate.react */ "./src/lib/components/ComponentTemplate.react.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Team2 = /*#__PURE__*/function (_Component) {
+  _inherits(Team2, _Component);
+
+  var _super = _createSuper(Team2);
+
+  function Team2() {
+    _classCallCheck(this, Team2);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Team2, [{
+    key: "render",
+    value: function render() {
+      var date = new Date();
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: this.props.id
+      }, date.toLocaleTimeString());
+    }
+  }]);
+
+  return Team2;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+Team2.defaultProps = _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_1__["defaultProps"];
+Team2.propTypes = _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_1__["propTypes"];
+/* harmony default export */ __webpack_exports__["default"] = (Team2);
+
+/***/ }),
+
 /***/ "./src/lib/fragments/autocomplete.css":
 /*!********************************************!*\
   !*** ./src/lib/fragments/autocomplete.css ***!
@@ -67923,7 +68063,7 @@ function isPrintableKeyCode(keyCode) {
 /*!**************************!*\
   !*** ./src/lib/index.js ***!
   \**************************/
-/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, ComponentTemplate */
+/*! exports provided: AutoComplete, Dropdown, ComboBox, CheckboxList, ComponentTemplate, Team2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67943,7 +68083,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ComponentTemplate.react */ "./src/lib/components/ComponentTemplate.react.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentTemplate", function() { return _components_ComponentTemplate_react__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
+/* harmony import */ var _components_Team2_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Team2.react */ "./src/lib/components/Team2.react.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Team2", function() { return _components_Team2_react__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
 /* eslint-disable import/prefer-default-export */
+
 
 
 
