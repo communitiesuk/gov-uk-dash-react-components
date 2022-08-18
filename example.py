@@ -24,7 +24,9 @@ app.layout = html.Div([
         value=None,
         style={"minWidth": "50%"}
     ),
-    html.Div(id='output')
+    html.Div(id='output'),
+
+    uk_gov_dash_components.Team2(),
 ])
 
 @app.callback(

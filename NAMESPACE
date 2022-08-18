@@ -2,9 +2,11 @@
 
 export('govuk'AutoComplete)
 export('govuk'CheckboxList)
+export('govuk'ComponentTemplate)
 export('govuk'Dropdown)
 export('govuk'dropdownArrowDown)
 export('govuk'status)
+export('govuk'Team2)
 export('govuk'ComboBox)
 export('govuk'ListBox)
 export('govuk'Popover)

@@ -387,6 +387,27 @@
       }
     }
   },
+  "src/lib/components/ComponentTemplate.react.js": {
+    "description": "Lazy loaded ComponentTemplate\r\n\n@param {\r\n\tid,\r\n} [props={}]\r\n@return {*}",
+    "displayName": "ComponentTemplate",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID of this component, used to identify dash components\r\nin callbacks. The ID needs to be unique across all of the\r\ncomponents in an app."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the value changes."
+      }
+    }
+  },
   "src/lib/components/Dropdown.react.js": {
     "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
     "displayName": "Dropdown",
@@ -673,6 +694,27 @@
           "value": "(length, contentSelectedOption) => {\r\n    const words = {\r\n        result: (length === 1) ? 'result' : 'results',\r\n        is: (length === 1) ? 'is' : 'are'\r\n    }\r\n\r\n    return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`\r\n}",
           "computed": false
         }
+      }
+    }
+  },
+  "src/lib/components/Team2.react.js": {
+    "description": "Lazy loaded ComponentTemplate\r\n\n@param {\r\n\tid,\r\n} [props={}]\r\n@return {*}",
+    "displayName": "Team2",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID of this component, used to identify dash components\r\nin callbacks. The ID needs to be unique across all of the\r\ncomponents in an app."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the value changes."
       }
     }
   },
