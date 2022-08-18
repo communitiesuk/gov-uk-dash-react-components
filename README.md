@@ -18,6 +18,8 @@ If you have selected install_dependencies during the prompt, you can skip this p
 ## Create a new component
 
 Use the `ComponentTemplate` component as a template.
+This component is class based, while other components in this repository are functions.
+You can read more about [function components in the React documentation](https://reactjs.org/docs/components-and-props.html#function-and-class-components). 
 
 1. Copy `src/lib/components/ComponentTemplate.react.js` -> `src/lib/components/YourComponent.react.js`
 1. Copy `src/lib/fragments/ComponentTemplate.react.js` -> `src/lib/fragments/YourComponent.react.js`
