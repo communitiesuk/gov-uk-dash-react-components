@@ -2,6 +2,10 @@
 
 UK Gov dash components is a Dash component library.
 
+Plotly Dash have written some documentation on
+[React for Python Developers](https://dash.plotly.com/react-for-python-developers)
+which acts as good starting point.
+
 ## Install dependencies
 
 If you have selected install_dependencies during the prompt, you can skip this part.
