@@ -3,22 +3,25 @@
 from dash.development.base_component import Component, _explicitize_args
 
 
-class Popover(Component):
-    """A Popover component.
-Propover
+class ComponentTemplate(Component):
+    """A ComponentTemplate component.
+Lazy loaded ComponentTemplate
 
-@export
-@param {*} props
+@param {
+	id,
+} [props={}]
 @return {*}
 
 Keyword arguments:
 
 - id (string; optional):
-    The ID used to identify this component in Dash callbacks."""
+    The ID of this component, used to identify dash components in
+    callbacks. The ID needs to be unique across all of the components
+    in an app."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'uk_gov_dash_components'
-    _type = 'Popover'
+    _type = 'ComponentTemplate'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id']
@@ -33,4 +36,4 @@ Keyword arguments:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')
-        super(Popover, self).__init__(**args)
+        super(ComponentTemplate, self).__init__(**args)

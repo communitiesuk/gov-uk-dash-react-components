@@ -5,15 +5,16 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "1.2.2"
 
-include("jl/'govuk'_autocomplete.jl")
-include("jl/'govuk'_checkboxlist.jl")
-include("jl/'govuk'_dropdown.jl")
-include("jl/'govuk'_dropdownarrowdown.jl")
-include("jl/'govuk'_status.jl")
-include("jl/'govuk'_combobox.jl")
-include("jl/'govuk'_listbox.jl")
-include("jl/'govuk'_popover.jl")
-include("jl/'govuk'_ukgovdashcomponents.jl")
+include("jl/govuk_autocomplete.jl")
+include("jl/govuk_checkboxlist.jl")
+include("jl/govuk_componenttemplate.jl")
+include("jl/govuk_dropdown.jl")
+include("jl/govuk_ukgovdashcomponents.jl")
+include("jl/govuk_dropdownarrowdown.jl")
+include("jl/govuk_status.jl")
+include("jl/govuk_combobox.jl")
+include("jl/govuk_listbox.jl")
+include("jl/govuk_popover.jl")
 
 function __init__()
     DashBase.register_package(

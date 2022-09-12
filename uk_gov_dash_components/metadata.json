@@ -1,6 +1,6 @@
 {
   "src/lib/components/AutoComplete.react.js": {
-    "description": "Lazy loaded Autocomplete\r\n\n@param {\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tdefaultValue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n\tstyle,\r\n} [props={}]\r\n@return {*}",
+    "description": "Lazy loaded Autocomplete\n\n@param {\n\tid,\n\tautoselect,\n\tcssNamespace,\n\tdefaultValue,\n\tdisplayMenu,\n\tminLength,\n\tname,\n\tplaceholder,\n\tonConfirm,\n\tconfirmOnBlur,\n\tshowNoOptionsFound,\n\tshowAllValues,\n\trequired,\n\ttNoResults,\n\ttAssistiveHint,\n\tsource,\n\ttemplates,\n\tdropdownArrow: dropdownArrowFactory,\n\ttStatusQueryTooShort,\n\ttStatusNoResults,\n\ttStatusSelectedOption,\n\ttStatusResults,\n\tstyle,\n} [props={}]\n@return {*}",
     "displayName": "AutoComplete",
     "methods": [],
     "props": {
@@ -230,7 +230,7 @@
           "name": "func"
         },
         "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
       },
       "alwaysDisplayArrow": {
         "type": {
@@ -267,7 +267,7 @@
     }
   },
   "src/lib/components/CheckboxList.react.js": {
-    "description": "Lazy loaded CheckboxList\r\n\n@param {\r\n\tid,\r\n\toptions,\r\n\tvalue,\r\n} [props={}]\r\n@return {*}",
+    "description": "Lazy loaded CheckboxList\n\n@param {\n\tid,\n\toptions,\n\tvalue,\n} [props={}]\n@return {*}",
     "displayName": "CheckboxList",
     "methods": [],
     "props": {
@@ -295,7 +295,7 @@
             },
             {
               "name": "object",
-              "description": "Simpler `options` representation in dictionary format. The order is not guaranteed.\r\n{`value1`: `label1`, `value2`: `label2`, ... }\r\nwhich is equal to\r\n[{label: `label1`, value: `value1`}, {label: `label2`, value: `value2`}, ...]"
+              "description": "Simpler `options` representation in dictionary format. The order is not guaranteed.\n{`value1`: `label1`, `value2`: `label2`, ... }\nwhich is equal to\n[{label: `label1`, value: `value1`}, {label: `label2`, value: `value2`}, ...]"
             },
             {
               "name": "arrayOf",
@@ -320,7 +320,7 @@
                         "name": "bool"
                       }
                     ],
-                    "description": "The value of the option. This value\r\ncorresponds to the items specified in the\r\n`value` property.",
+                    "description": "The value of the option. This value\ncorresponds to the items specified in the\n`value` property.",
                     "required": true
                   },
                   "disabled": {
@@ -330,12 +330,12 @@
                   },
                   "title": {
                     "name": "string",
-                    "description": "The HTML 'title' attribute for the option. Allows for\r\ninformation on hover. For more information on this attribute,\r\nsee https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title",
+                    "description": "The HTML 'title' attribute for the option. Allows for\ninformation on hover. For more information on this attribute,\nsee https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title",
                     "required": false
                   }
                 }
               },
-              "description": "An array of options {label: [string|number], value: [string|number]},\r\nan optional disabled field can be used for each option"
+              "description": "An array of options {label: [string|number], value: [string|number]},\nan optional disabled field can be used for each option"
             }
           ]
         },
@@ -376,7 +376,28 @@
           "name": "string"
         },
         "required": false,
-        "description": "The ID of this component, used to identify dash components\r\nin callbacks. The ID needs to be unique across all of the\r\ncomponents in an app."
+        "description": "The ID of this component, used to identify dash components\nin callbacks. The ID needs to be unique across all of the\ncomponents in an app."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the value changes."
+      }
+    }
+  },
+  "src/lib/components/ComponentTemplate.react.js": {
+    "description": "Lazy loaded ComponentTemplate\n\n@param {\n\tid,\n} [props={}]\n@return {*}",
+    "displayName": "ComponentTemplate",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID of this component, used to identify dash components\nin callbacks. The ID needs to be unique across all of the\ncomponents in an app."
       },
       "setProps": {
         "type": {
@@ -388,7 +409,7 @@
     }
   },
   "src/lib/components/Dropdown.react.js": {
-    "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
+    "description": "@param {{\n\tlabel: string,\n\tid,\n\tautoselect,\n\tcssNamespace,\n\tvalue,\n\tminLength,\n\tname,\n\tplaceholder,\n\tonConfirm,\n\tconfirmOnBlur,\n\tshowNoOptionsFound,\n\trequired,\n\ttNoResults,\n\ttAssistiveHint,\n\tsource,\n\ttemplates,\n\tdropdownArrow: dropdownArrowFactory,\n\ttStatusQueryTooShort,\n\ttStatusNoResults,\n\ttStatusSelectedOption,\n\ttStatusResults,\n}} [props={}]\n\n@return {*}",
     "displayName": "Dropdown",
     "methods": [],
     "props": {
@@ -551,7 +572,7 @@
           "name": "func"
         },
         "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
       },
       "wrapperRef": {
         "type": {
@@ -569,8 +590,43 @@
       }
     }
   },
+  "src/lib/components/UkGovDashComponents.react.js": {
+    "description": "ExampleComponent is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
+    "displayName": "UkGovDashComponents",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "A label that will be printed when this component is rendered."
+      },
+      "value": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The value displayed in the input."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
   "src/lib/components/dropdownArrowDown.react.js": {
-    "description": "Default dropdown arrow\r\n\n@param {string} { className }",
+    "description": "Default dropdown arrow\n\n@param {string} { className }",
     "displayName": "DropdownArrowDown",
     "methods": [],
     "props": {
@@ -584,7 +640,7 @@
     }
   },
   "src/lib/components/status.js": {
-    "description": "Display ststus\r\n\n@export\r\n@class Status\r\n@extends {Component}",
+    "description": "Display ststus\n\n@export\n@class Status\n@extends {Component}",
     "displayName": "Status",
     "methods": [],
     "props": {
@@ -670,7 +726,7 @@
         "required": false,
         "description": "tResults",
         "defaultValue": {
-          "value": "(length, contentSelectedOption) => {\r\n    const words = {\r\n        result: (length === 1) ? 'result' : 'results',\r\n        is: (length === 1) ? 'is' : 'are'\r\n    }\r\n\r\n    return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`\r\n}",
+          "value": "(length, contentSelectedOption) => {\n    const words = {\n        result: (length === 1) ? 'result' : 'results',\n        is: (length === 1) ? 'is' : 'are'\n    }\n\n    return `${length} ${words.result} ${words.is} available. ${contentSelectedOption}`\n}",
           "computed": false
         }
       }
@@ -717,14 +773,14 @@
               "name": "arrayOf",
               "value": {
                 "name": "custom",
-                "raw": "{\r\n    key: PropTypes.String,\r\n    name: PropTypes.string,\r\n}"
+                "raw": "{\n    key: PropTypes.String,\n    name: PropTypes.string,\n}"
               }
             },
             {
               "name": "arrayOf",
               "value": {
                 "name": "custom",
-                "raw": "{\r\n    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),\r\n    name: PropTypes.string,\r\n}"
+                "raw": "{\n    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),\n    name: PropTypes.string,\n}"
               }
             }
           ]
@@ -778,7 +834,7 @@
     }
   },
   "src/lib/components/ui/ListBox.react.js": {
-    "description": "Listbox\r\n\n@param {*} [props={}]\r\n@return {*}",
+    "description": "Listbox\n\n@param {*} [props={}]\n@return {*}",
     "displayName": "ListBox",
     "methods": [],
     "props": {
@@ -792,7 +848,7 @@
     }
   },
   "src/lib/components/ui/Popover.react.js": {
-    "description": "Propover\r\n\n@export\r\n@param {*} props\r\n@return {*}",
+    "description": "Propover\n\n@export\n@param {*} props\n@return {*}",
     "displayName": "Popover",
     "methods": [],
     "props": {
@@ -802,41 +858,6 @@
         },
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
-      }
-    }
-  },
-  "src/lib/components/UkGovDashComponents.react.js": {
-    "description": "ExampleComponent is an example component.\r\nIt takes a property, `label`, and\r\ndisplays it.\r\nIt renders an input with the property `value`\r\nwhich is editable by the user.",
-    "displayName": "UkGovDashComponents",
-    "methods": [],
-    "props": {
-      "id": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The ID used to identify this component in Dash callbacks."
-      },
-      "label": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
-      },
-      "value": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The value displayed in the input."
-      },
-      "setProps": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       }
     }
   }

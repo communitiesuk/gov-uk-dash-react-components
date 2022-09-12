@@ -17,8 +17,8 @@ Lazy loaded CheckboxList
 Keyword arguments:
 
 - id (string; optional):
-    The ID of this component, used to identify dash components  in
-    callbacks. The ID needs to be unique across all of the  components
+    The ID of this component, used to identify dash components in
+    callbacks. The ID needs to be unique across all of the components
     in an app.
 
 - options (list of dicts; optional):
@@ -40,8 +40,8 @@ Keyword arguments:
         https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title.
 
     - value (string | number | boolean; required):
-        The value of the option. This value  corresponds to the items
-        specified in the  `value` property.
+        The value of the option. This value corresponds to the items
+        specified in the `value` property.
 
 - value (list of string | number | booleans; optional):
     The currently selected value."""
