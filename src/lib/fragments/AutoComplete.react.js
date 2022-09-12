@@ -497,12 +497,14 @@ const AutoComplete = (props) => {
 		setAriaHint(!query?.length)
 	}, [query])
 
-
 	useEffect(() => {
-		// reset query and options if value reset to null			
-		if (value === null) {			
-			setOptions(source);
+		// Set query and options when new value passed in
+		setOptions(source);
+
+		if (!value) {
 			setQuery("");
+		} else {
+			setQuery(value);
 		}
 	}, [value])
 
