@@ -499,11 +499,15 @@ const AutoComplete = (props) => {
 
 
 	useEffect(() => {
-		// reset query and options if value reset to null			
-		if (value === null) {			
-			setOptions(source);
-			setQuery("");
-		}
+		// Set query and options when new value passed in
+        setOptions(source);
+
+        if (!value) {
+            setQuery("");
+        } else {
+            setQuery(value);
+        }
+
 	}, [value])
 
 	const autoselectRend = hasAutoselect()
