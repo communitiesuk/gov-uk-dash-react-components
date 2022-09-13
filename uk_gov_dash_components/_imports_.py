@@ -1,5 +1,6 @@
 from .AutoComplete import AutoComplete
 from .CheckboxList import CheckboxList
+from .ComponentTemplate import ComponentTemplate
 from .Dropdown import Dropdown
 from .dropdownArrowDown import dropdownArrowDown
 from .status import status
@@ -11,6 +12,7 @@ from .UkGovDashComponents import UkGovDashComponents
 __all__ = [
     "AutoComplete",
     "CheckboxList",
+    "ComponentTemplate",
     "Dropdown",
     "dropdownArrowDown",
     "status",
