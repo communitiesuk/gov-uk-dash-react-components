@@ -7,6 +7,7 @@ import { SideNavigation as RealComponent } from '../LazyLoader';
  *
  * @param {
  * 	id,
+ *  title,
  * } [props={}]
  * @return {*}
  */
@@ -22,10 +23,7 @@ const SideNavigation = (props = {}) => {
  */
 
 SideNavigation.defaultProps = {
-    /**
-     * Any default prop values, e.g.
-     *   congratulatoryMessage: 'You are amazing'
-     */
+
 };
 
 SideNavigation.propTypes = {
@@ -39,6 +37,7 @@ SideNavigation.propTypes = {
      * components in an app.
      */
     id: PropTypes.string,
+    title: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.

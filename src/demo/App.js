@@ -35,7 +35,8 @@ const App = () => {
             </div>
             <h2>ComponentTemplate</h2>
             <ComponentTemplate id="a-great-component-id" setProps={setProps} />
-            <SideNavigation id="side-nav-id" setProps={setProps} />
+            <h2>SideNavigation</h2>
+            <SideNavigation id="side-nav-id" setProps={setProps} title = "Compare Local Authorities"/>
         </>
     )
 }
