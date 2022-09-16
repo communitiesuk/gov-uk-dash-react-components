@@ -3,7 +3,7 @@ import Dropdown from './fragments/Dropdown.react'
 import ComboBox from './fragments/ComboBox.react'
 import CheckboxList from './fragments/CheckboxList.react'
 import ComponentTemplate from './fragments/ComponentTemplate.react'
-import SideNavigation from './fragments/SideNavigation.react'
+import ExpandableMenuItem from './fragments/ExpandableMenuItem.react'
 
 export {
 	AutoComplete,
@@ -11,7 +11,7 @@ export {
 	ComboBox,
 	CheckboxList,
 	ComponentTemplate,
-	SideNavigation,
+	ExpandableMenuItem,
 }
 
 

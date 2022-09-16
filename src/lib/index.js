@@ -4,7 +4,7 @@ import Dropdown from './components/Dropdown.react';
 import ComboBox from './components/ui/ComboBox.react';
 import CheckboxList from './components/CheckboxList.react';
 import ComponentTemplate from './components/ComponentTemplate.react';
-import SideNavigation from './components/SideNavigation.react';
+import ExpandableMenuItem from './components/ExpandableMenuItem.react';
 
 export {
     AutoComplete,
@@ -12,5 +12,5 @@ export {
     ComboBox,
     CheckboxList,
     ComponentTemplate,
-    SideNavigation,
+    ExpandableMenuItem,
 };

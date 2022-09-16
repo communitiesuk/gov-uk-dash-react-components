@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SideNavigation as RealComponent } from '../LazyLoader';
+import { ExpandableMenuItem as RealComponent } from '../LazyLoader';
 
 /**
- * Lazy loaded SideNavigation
+ * Lazy loaded ExpandableMenuItem
  *
  * @param {
  * 	id,
  *  title,
+ *  collapsedByDefault,
+ *  links,
  * } [props={}]
  * @return {*}
  */
-const SideNavigation = (props = {}) => {
+const ExpandableMenuItem = (props = {}) => {
     return (
         <RealComponent {...props} />
     );
@@ -22,11 +24,12 @@ const SideNavigation = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
-SideNavigation.defaultProps = {
-
+ExpandableMenuItem.defaultProps = {
+    collapsedByDefault: true,
+    links: []
 };
 
-SideNavigation.propTypes = {
+ExpandableMenuItem.propTypes = {
     /**
      * Add any options you wish to pass to your component to this dictionary.
      */
@@ -37,7 +40,18 @@ SideNavigation.propTypes = {
      * components in an app.
      */
     id: PropTypes.string,
+    /**
+     * The clickable text to display sub-menu
+     */
     title: PropTypes.string,
+    /**
+     * Default behaviour of whether or not the sub-menu is collapsed on load
+     */
+    collapsedByDefault: PropTypes.bool,
+    /**
+     * An array of li HTML elements that will displayed on click
+     */
+    links: PropTypes.array,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.
@@ -45,7 +59,7 @@ SideNavigation.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = SideNavigation.defaultProps;
-export const propTypes = SideNavigation.propTypes;
+export const defaultProps = ExpandableMenuItem.defaultProps;
+export const propTypes = ExpandableMenuItem.propTypes;
 
-export default SideNavigation
+export default ExpandableMenuItem

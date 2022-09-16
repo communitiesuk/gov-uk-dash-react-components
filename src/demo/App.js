@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate, SideNavigation } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -12,7 +12,7 @@ const App = () => {
     }
     return (
         <>
-            <h2>Autocomplete</h2>
+            {/* <h2>Autocomplete</h2>
             <div>
                 <Dropdown
                     label="Hello world"
@@ -34,9 +34,38 @@ const App = () => {
                 <CheckboxList id="checkboxes" value={["restrict"]} options={["restrict"]} setProps={setProps} />
             </div>
             <h2>ComponentTemplate</h2>
-            <ComponentTemplate id="a-great-component-id" setProps={setProps} />
-            <h2>SideNavigation</h2>
-            <SideNavigation id="side-nav-id" setProps={setProps} title = "Compare Local Authorities"/>
+            <ComponentTemplate id="a-great-component-id" setProps={setProps} /> */}
+            <h2>ExpandableMenuItem</h2>
+            <ul>
+                <li>
+                    <a>
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        Core income time series
+                    </a>
+                </li>
+                <ExpandableMenuItem id="side-nav-id" setProps={setProps} title = "Compare Local Authorities" links = {
+                    [
+                        <li>
+                            <a href = "https://github.com/communitiesuk/">
+                                Children and Vulnerable People
+                            </a>
+                        </li>,
+                        <li>
+                        <a href = "https://github.com/communitiesuk/gov-uk-dash-react-components/blob/master/README.md">
+                            Cleaner, Safer Communities
+                        </a>
+                        </li>
+                    ]}/>
+                <li>
+                    <a>
+                        Local authority map
+                    </a>
+                </li>
+            </ul>
         </>
     )
 }
