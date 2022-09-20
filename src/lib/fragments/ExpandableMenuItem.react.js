@@ -19,14 +19,14 @@ class ExpandableMenuItem extends Component {
     
 
     render() {
-        const {id, title, children} = this.props
+        const {id, title, children, expandedClass, collapsedClass, ariaLabel} = this.props
         
         return (
-            <li id={id} className="moj-side-navigation__item" onClick={this.handleSubMenuVisibility}>
+            <li id={id} aria-label={ariaLabel} aria-controls="expandable-menu-contents" aria-expanded={!this.state.hidden} className={this.state.hidden ? collapsedClass : expandedClass} onClick={this.handleSubMenuVisibility}>
               <a>
                 {title}
               </a>
-                <div hidden = {this.state.hidden} >
+                <div id="expandable-menu-contents" hidden = {this.state.hidden}>
                   {children && <ul>
                       {children}
                     </ul>}                    

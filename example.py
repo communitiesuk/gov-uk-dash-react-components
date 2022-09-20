@@ -21,7 +21,7 @@ side_menu = [
         className="moj-side-navigation__item moj-side-navigation__item--active",
     ),
     uk_gov_dash_components.ExpandableMenuItem(
-        title="Test Expandable Menu",
+        title="Compare Local Authorities",
         children=[
             html.Li(
                 dcc.Link(
