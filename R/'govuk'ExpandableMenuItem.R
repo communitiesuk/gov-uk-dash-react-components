@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-'govuk'ExpandableMenuItem <- function(id=NULL, collapsedByDefault=NULL, links=NULL, title=NULL) {
+'govuk'ExpandableMenuItem <- function(children=NULL, id=NULL, collapsedByDefault=NULL, title=NULL) {
     
-    props <- list(id=id, collapsedByDefault=collapsedByDefault, links=links, title=title)
+    props <- list(children=children, id=id, collapsedByDefault=collapsedByDefault, title=title)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@
         props = props,
         type = 'ExpandableMenuItem',
         namespace = 'uk_gov_dash_components',
-        propNames = c('id', 'collapsedByDefault', 'links', 'title'),
+        propNames = c('children', 'id', 'collapsedByDefault', 'title'),
         package = 'ukGovDashComponents'
         )
 

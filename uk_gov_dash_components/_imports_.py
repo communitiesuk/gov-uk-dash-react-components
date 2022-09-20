@@ -21,5 +21,5 @@ __all__ = [
     "ComboBox",
     "ListBox",
     "Popover",
-    "UkGovDashComponents",
+    "UkGovDashComponents"
 ]

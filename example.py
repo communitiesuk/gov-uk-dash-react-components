@@ -22,23 +22,23 @@ side_menu = [
     ),
     uk_gov_dash_components.ExpandableMenuItem(
         title="Test Expandable Menu",
-        links=[
+        children=[
             html.Li(
                 dcc.Link(
                     "Option 1",
-                    href="www.github.com",
+                    href="https://www.github.com",
                     className="govuk-link govuk-link--no-visited-state",
                 ),
                 className="moj-side-navigation__item moj-side-navigation__item--active",
             ),
-            # html.Li(
-            #     dcc.Link(
-            #         "Option 2",
-            #         href="www.bbc.co.uk",
-            #         className="govuk-link govuk-link--no-visited-state",
-            #     ),
-            #     className="moj-side-navigation__item moj-side-navigation__item--active",
-            # ),
+            html.Li(
+                dcc.Link(
+                    "Option 2",
+                    href="https://www.bbc.co.uk",
+                    className="govuk-link govuk-link--no-visited-state",
+                ),
+                className="moj-side-navigation__item moj-side-navigation__item--active",
+            ),
         ],
     ),
 ]

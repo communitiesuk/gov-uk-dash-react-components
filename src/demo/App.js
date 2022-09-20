@@ -47,7 +47,7 @@ const App = () => {
                         Core income time series
                     </a>
                 </li>
-                <ExpandableMenuItem id="side-nav-id" setProps={setProps} title = "Compare Local Authorities" links = {
+                <ExpandableMenuItem id="side-nav-id" setProps={setProps} title = "Compare Local Authorities" children = {
                     [
                         <li>
                             <a href = "https://github.com/communitiesuk/">

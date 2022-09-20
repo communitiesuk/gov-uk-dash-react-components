@@ -16,17 +16,20 @@ class ExpandableMenuItem extends Component {
           hidden: !this.state.hidden
         })
       }
+    
 
     render() {
+        const {id, title, children} = this.props
+        
         return (
-            <li id={this.props.id} className="moj-side-navigation__item" onClick={this.handleSubMenuVisibility}>
+            <li id={id} className="moj-side-navigation__item" onClick={this.handleSubMenuVisibility}>
               <a>
-                {this.props.title}
+                {title}
               </a>
                 <div hidden = {this.state.hidden} >
-                    <ul>
-                      {this.props.links}
-                    </ul>
+                  {children && <ul>
+                      {children}
+                    </ul>}                    
                 </div>
             </li>
         )

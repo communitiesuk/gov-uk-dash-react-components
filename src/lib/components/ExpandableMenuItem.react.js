@@ -9,7 +9,7 @@ import { ExpandableMenuItem as RealComponent } from '../LazyLoader';
  * 	id,
  *  title,
  *  collapsedByDefault,
- *  links,
+ *  children,
  * } [props={}]
  * @return {*}
  */
@@ -25,15 +25,10 @@ const ExpandableMenuItem = (props = {}) => {
  */
 
 ExpandableMenuItem.defaultProps = {
-    collapsedByDefault: true,
-    links: []
+    collapsedByDefault: true,    
 };
 
 ExpandableMenuItem.propTypes = {
-    /**
-     * Add any options you wish to pass to your component to this dictionary.
-     */
-
     /**
      * The ID of this component, used to identify dash components
      * in callbacks. The ID needs to be unique across all of the
@@ -49,14 +44,13 @@ ExpandableMenuItem.propTypes = {
      */
     collapsedByDefault: PropTypes.bool,
     /**
-     * An array of li HTML elements that will displayed on click
-     */
-    links: PropTypes.array,
-
-    /**
      * Dash-assigned callback that gets fired when the value changes.
      */
     setProps: PropTypes.func,
+    /**
+     * An array of li HTML elements that will displayed on click
+     */
+    children: PropTypes.node,
 };
 
 export const defaultProps = ExpandableMenuItem.defaultProps;
