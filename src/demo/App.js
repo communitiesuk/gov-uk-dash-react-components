@@ -49,15 +49,15 @@ const App = () => {
                 </li>
                 <ExpandableMenuItem id="side-nav-id" setProps={setProps} title = "Compare Local Authorities" children = {
                     [
-                        <li>
+                        <li key={0}>
                             <a href = "https://github.com/communitiesuk/">
                                 Children and Vulnerable People
                             </a>
                         </li>,
-                        <li>
-                        <a href = "https://github.com/communitiesuk/gov-uk-dash-react-components/blob/master/README.md">
-                            Cleaner, Safer Communities
-                        </a>
+                        <li key={1}>
+                            <a href = "https://github.com/communitiesuk/gov-uk-dash-react-components/blob/master/README.md">
+                                Cleaner, Safer Communities
+                            </a>
                         </li>
                     ]}/>
                 <li>
