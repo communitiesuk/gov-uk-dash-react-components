@@ -72,9 +72,11 @@ var ExpandableMenuItem = /*#__PURE__*/function (_Component) {
           title = _this$props.title,
           children = _this$props.children,
           expandedClass = _this$props.expandedClass,
-          collapsedClass = _this$props.collapsedClass;
+          collapsedClass = _this$props.collapsedClass,
+          ariaLabel = _this$props.ariaLabel;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: id,
+        "aria-label": ariaLabel,
         "aria-controls": "expandable-menu-contents",
         "aria-expanded": !this.state.hidden,
         className: this.state.hidden ? collapsedClass : expandedClass,

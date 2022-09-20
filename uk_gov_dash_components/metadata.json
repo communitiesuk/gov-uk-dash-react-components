@@ -605,7 +605,7 @@
     }
   },
   "src/lib/components/ExpandableMenuItem.react.js": {
-    "description": "Lazy loaded ExpandableMenuItem\r\n\n@param {\r\n\tid,\r\n title,\r\n collapsedByDefault,\r\n children,\r\n} [props={}]\r\n@return {*}",
+    "description": "Lazy loaded ExpandableMenuItem\r\n\n@param {\r\n\tid,\r\n title,\r\n collapsedByDefault,\r\n children,\r\n expandedClass,\r\n collapsedClass,\r\n ariaLabel,\r\n} [props={}]\r\n@return {*}",
     "displayName": "ExpandableMenuItem",
     "methods": [],
     "props": {
@@ -643,10 +643,31 @@
       },
       "children": {
         "type": {
-          "name": "node"
+          "name": "array"
         },
         "required": false,
         "description": "An array of li HTML elements that will displayed on click"
+      },
+      "expandedClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "CSS class that will be applied when the menu is expanded"
+      },
+      "collapsedClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "CSS class that will be applied when the menu is collapsed"
+      },
+      "ariaLabel": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Accessible text to describe the expandable menu element, attached to Li element that wraps the children"
       }
     }
   },

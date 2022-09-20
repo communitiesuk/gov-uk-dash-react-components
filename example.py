@@ -40,6 +40,9 @@ side_menu = [
                 className="moj-side-navigation__item moj-side-navigation__item--active",
             ),
         ],
+        expandedClass="EXPANDED",
+        collapsedClass="COLLAPSED",
+        ariaLabel="Clickable Li item example"
     ),
 ]
 

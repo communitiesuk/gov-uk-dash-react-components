@@ -10,6 +10,9 @@ import { ExpandableMenuItem as RealComponent } from '../LazyLoader';
  *  title,
  *  collapsedByDefault,
  *  children,
+ *  expandedClass,
+ *  collapsedClass,
+ *  ariaLabel,
  * } [props={}]
  * @return {*}
  */
@@ -50,7 +53,19 @@ ExpandableMenuItem.propTypes = {
     /**
      * An array of li HTML elements that will displayed on click
      */
-    children: PropTypes.node,
+    children: PropTypes.array,
+    /**
+     * CSS class that will be applied when the menu is expanded
+     */
+    expandedClass: PropTypes.string,
+    /**
+     * CSS class that will be applied when the menu is collapsed
+     */
+    collapsedClass: PropTypes.string,
+    /**
+     * Accessible text to describe the expandable menu element, attached to Li element that wraps the children
+     */
+    ariaLabel: PropTypes.string,
 };
 
 export const defaultProps = ExpandableMenuItem.defaultProps;
