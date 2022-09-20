@@ -6,13 +6,14 @@
 \title{ExpandableMenuItem component}
 
 \description{
-Lazy loaded ExpandableMenuItem  @param { 	id,  title,  collapsedByDefault,  children,  expandedClass,  collapsedClass,  ariaLabel, } [props={}] @return {*}
+Lazy loaded ExpandableMenuItem  @param { 	id,  title,  collapsedByDefault,  children,  expandedClass,  collapsedClass,  ariaLabel,  subMenuClass,  titleClass, } [props={}] @return {*}
 }
 
 \usage{
 'govuk'ExpandableMenuItem(children=NULL, id=NULL, ariaLabel=NULL,
 collapsedByDefault=NULL, collapsedClass=NULL,
-expandedClass=NULL, title=NULL)
+expandedClass=NULL, subMenuClass=NULL, title=NULL,
+titleClass=NULL)
 }
 
 \arguments{
@@ -30,7 +31,11 @@ components in an app.}
 
 \item{expandedClass}{Character. CSS class that will be applied when the menu is expanded}
 
+\item{subMenuClass}{Character. CSS class that will be applied to the sub nav menu}
+
 \item{title}{Character. The clickable text to display sub-menu}
+
+\item{titleClass}{Character. CSS class that will be applied to the title of the sub nav menu}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

@@ -605,7 +605,7 @@
     }
   },
   "src/lib/components/ExpandableMenuItem.react.js": {
-    "description": "Lazy loaded ExpandableMenuItem\r\n\n@param {\r\n\tid,\r\n title,\r\n collapsedByDefault,\r\n children,\r\n expandedClass,\r\n collapsedClass,\r\n ariaLabel,\r\n} [props={}]\r\n@return {*}",
+    "description": "Lazy loaded ExpandableMenuItem\r\n\n@param {\r\n\tid,\r\n title,\r\n collapsedByDefault,\r\n children,\r\n expandedClass,\r\n collapsedClass,\r\n ariaLabel,\r\n subMenuClass,\r\n titleClass,\r\n} [props={}]\r\n@return {*}",
     "displayName": "ExpandableMenuItem",
     "methods": [],
     "props": {
@@ -668,6 +668,20 @@
         },
         "required": false,
         "description": "Accessible text to describe the expandable menu element, attached to Li element that wraps the children"
+      },
+      "subMenuClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "CSS class that will be applied to the sub nav menu"
+      },
+      "titleClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "CSS class that will be applied to the title of the sub nav menu"
       }
     }
   },

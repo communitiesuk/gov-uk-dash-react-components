@@ -13,6 +13,8 @@ import { ExpandableMenuItem as RealComponent } from '../LazyLoader';
  *  expandedClass,
  *  collapsedClass,
  *  ariaLabel,
+ *  subMenuClass,
+ *  titleClass,
  * } [props={}]
  * @return {*}
  */
@@ -66,6 +68,14 @@ ExpandableMenuItem.propTypes = {
      * Accessible text to describe the expandable menu element, attached to Li element that wraps the children
      */
     ariaLabel: PropTypes.string,
+    /**
+     * CSS class that will be applied to the sub nav menu
+     */
+    subMenuClass: PropTypes.string,
+    /**
+     * CSS class that will be applied to the title of the sub nav menu
+     */
+    titleClass: PropTypes.string,
 };
 
 export const defaultProps = ExpandableMenuItem.defaultProps;

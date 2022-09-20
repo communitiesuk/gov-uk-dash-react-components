@@ -19,6 +19,8 @@ Lazy loaded ExpandableMenuItem
  expandedClass,
  collapsedClass,
  ariaLabel,
+ subMenuClass,
+ titleClass,
 } [props={}]
 @return {*}
 Keyword arguments:
@@ -30,10 +32,12 @@ components in an app.
 - `collapsedByDefault` (Bool; optional): Default behaviour of whether or not the sub-menu is collapsed on load
 - `collapsedClass` (String; optional): CSS class that will be applied when the menu is collapsed
 - `expandedClass` (String; optional): CSS class that will be applied when the menu is expanded
+- `subMenuClass` (String; optional): CSS class that will be applied to the sub nav menu
 - `title` (String; optional): The clickable text to display sub-menu
+- `titleClass` (String; optional): CSS class that will be applied to the title of the sub nav menu
 """
 function 'govuk'_expandablemenuitem(; kwargs...)
-        available_props = Symbol[:children, :id, :ariaLabel, :collapsedByDefault, :collapsedClass, :expandedClass, :title]
+        available_props = Symbol[:children, :id, :ariaLabel, :collapsedByDefault, :collapsedClass, :expandedClass, :subMenuClass, :title, :titleClass]
         wild_props = Symbol[]
         return Component("'govuk'_expandablemenuitem", "ExpandableMenuItem", "uk_gov_dash_components", available_props, wild_props; kwargs...)
 end
