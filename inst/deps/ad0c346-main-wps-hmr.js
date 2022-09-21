@@ -51,11 +51,14 @@ var ExpandableMenuItem = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "handleSubMenuVisibility", function () {
-      // update the state!
-      _this.setState({
-        hidden: !_this.state.hidden
-      });
+    _defineProperty(_assertThisInitialized(_this), "handleSubMenuVisibility", function (event) {
+      var expandableControl = event.target.getAttribute('data-expandable-control');
+
+      if (expandableControl) {
+        _this.setState({
+          hidden: !_this.state.hidden
+        });
+      }
     });
 
     _this.state = {
@@ -73,7 +76,9 @@ var ExpandableMenuItem = /*#__PURE__*/function (_Component) {
           children = _this$props.children,
           expandedClass = _this$props.expandedClass,
           collapsedClass = _this$props.collapsedClass,
-          ariaLabel = _this$props.ariaLabel;
+          ariaLabel = _this$props.ariaLabel,
+          subMenuClass = _this$props.subMenuClass,
+          titleClass = _this$props.titleClass;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: id,
         "aria-label": ariaLabel,
@@ -81,10 +86,16 @@ var ExpandableMenuItem = /*#__PURE__*/function (_Component) {
         "aria-expanded": !this.state.hidden,
         className: this.state.hidden ? collapsedClass : expandedClass,
         onClick: this.handleSubMenuVisibility
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: titleClass,
+        href: "#",
+        "data-expandable-control": "expandable-link"
+      }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "expandable-menu-contents",
         hidden: this.state.hidden
-      }, children && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, children)));
+      }, children && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: subMenuClass
+      }, children)));
     }
   }]);
 

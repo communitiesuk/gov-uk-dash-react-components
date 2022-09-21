@@ -24,7 +24,7 @@ side_menu = [
         title="Compare Local Authorities",
         children=[
             html.Li(
-                dcc.Link(
+                html.A(
                     "Option 1",
                     href="https://www.github.com",
                     className="govuk-link govuk-link--no-visited-state",
@@ -32,7 +32,7 @@ side_menu = [
                 className="moj-side-navigation__item moj-side-navigation__item--active",
             ),
             html.Li(
-                dcc.Link(
+                html.A(
                     "Option 2",
                     href="https://www.bbc.co.uk",
                     className="govuk-link govuk-link--no-visited-state",
