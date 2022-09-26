@@ -12,7 +12,7 @@ const App = () => {
     }
     return (
         <>
-            {/* <h2>Autocomplete</h2>
+            <h2>Autocomplete</h2>
             <div>
                 <Dropdown
                     label="Hello world"
@@ -34,7 +34,7 @@ const App = () => {
                 <CheckboxList id="checkboxes" value={["restrict"]} options={["restrict"]} setProps={setProps} />
             </div>
             <h2>ComponentTemplate</h2>
-            <ComponentTemplate id="a-great-component-id" setProps={setProps} /> */}
+            <ComponentTemplate id="a-great-component-id" setProps={setProps} />
             <h2>ExpandableMenuItem</h2>
             <ul>
                 <li>
