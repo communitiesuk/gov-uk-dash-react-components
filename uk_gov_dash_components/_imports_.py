@@ -3,6 +3,7 @@ from .CheckboxList import CheckboxList
 from .ComponentTemplate import ComponentTemplate
 from .Dropdown import Dropdown
 from .dropdownArrowDown import dropdownArrowDown
+from .ExpandableMenuItem import ExpandableMenuItem
 from .status import status
 from .ComboBox import ComboBox
 from .ListBox import ListBox
@@ -15,6 +16,7 @@ __all__ = [
     "ComponentTemplate",
     "Dropdown",
     "dropdownArrowDown",
+    "ExpandableMenuItem",
     "status",
     "ComboBox",
     "ListBox",

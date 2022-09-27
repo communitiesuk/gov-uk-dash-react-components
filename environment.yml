@@ -8,6 +8,7 @@ dependencies:
   # Version is hardcoded to ensure uniformity no matter the platform.
   - plotly=5.9.0
   - pip=21.3.1
+  - black=22.3.0
 # Some packages not available in Conda Forge, so have to be installed through pip.
   - pip:
     - dash[dev]

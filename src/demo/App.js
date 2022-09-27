@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -35,6 +35,37 @@ const App = () => {
             </div>
             <h2>ComponentTemplate</h2>
             <ComponentTemplate id="a-great-component-id" setProps={setProps} />
+            <h2>ExpandableMenuItem</h2>
+            <ul>
+                <li>
+                    <a>
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        Core income time series
+                    </a>
+                </li>
+                <ExpandableMenuItem id="side-nav-id" setProps={setProps} title = "Compare Local Authorities" children = {
+                    [
+                        <li key={0}>
+                            <a href = "https://github.com/communitiesuk/">
+                                Children and Vulnerable People
+                            </a>
+                        </li>,
+                        <li key={1}>
+                            <a href = "https://github.com/communitiesuk/gov-uk-dash-react-components/blob/master/README.md">
+                                Cleaner, Safer Communities
+                            </a>
+                        </li>
+                    ]}/>
+                <li>
+                    <a>
+                        Local authority map
+                    </a>
+                </li>
+            </ul>
         </>
     )
 }

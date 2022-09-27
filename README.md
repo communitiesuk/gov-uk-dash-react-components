@@ -67,12 +67,16 @@ __These are the default instructions__
 - [Review your code](./review_checklist.md)
 
 ## Create a production build and publish:
-
+1. Update the `version` property of the `package.json` file in the syle of Major.Minor.Patch, e.g. 1.2.3
+    - Major - any breaking changes to previous functionality.
+    - Minor - additional functionality that doesn't effect backward compatibility. When updated the patch version should be reset to zero. eg. 2.3.1 goes to 2.4.0 for minor update.
+    - Patch - bug fixes that don't effect backward compatibility.
+    For more information see [here](https://semver.org)
 1. Build your code:
     ```
     npm run build
     ```
-2. Create a Python distribution
+1. Create a Python distribution
     ```
     python setup.py sdist bdist_wheel
     ```
@@ -80,13 +84,13 @@ __These are the default instructions__
     See [PyPA](https://packaging.python.org/guides/distributing-packages-using-setuptools/#packaging-your-project)
     for more information.
 
-3. Test your tarball by copying it's full file path and installing it locally into a new environment by running:
+1. Test your tarball by copying it's full file path and installing it locally into a new environment by running:
     ```
     pip install "<full file path>"
     ```
     eg. `pip install "D:\Users\user\Desktop\Source Code Store\gov-uk-dash-react-components\dist\uk_gov_dash_components-1.2.1.tar.gz"`
 
-4. For creating new versions of the package:
+1. For creating new versions of the package:
     - After merging with master, go [here](https://github.com/communitiesuk/gov-uk-dash-react-components/releases/) to add a new version tag.
     - Click 'Draft a new release'
     - Under 'Choose a tag' dropdown, enter 'v&lt;version number&gt;'. Click 'Create new tag'
