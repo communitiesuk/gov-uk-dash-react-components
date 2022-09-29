@@ -54,6 +54,7 @@ app.layout = html.Div(
             source=unique_las,
             value="",
             style={"minWidth": "50%"},
+            showNoOptionsFound=True,
         ),
         uk_gov_dash_components.Dropdown(
             label="Comparison",
@@ -71,9 +72,10 @@ app.layout = html.Div(
 @app.callback(
     Output("comparison", "source"),
     Output("comparison", "value"),
-    [Input("local_authority", "value")],
+    [Input("local_authority", "query")],
 )
 def update_comparison(value):
+    print(value)
     if value is None or value == "":
         return [[], None]
     return [la_lookups[value], None]

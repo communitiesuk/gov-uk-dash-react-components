@@ -32,6 +32,7 @@ import {
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  query
  * }} [props={}]
  *
  * @return {*}

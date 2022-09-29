@@ -33,6 +33,7 @@ import './autocomplete.css';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  query,
  * }=defaultProps]
  * @return {*}
  */
@@ -490,10 +491,10 @@ const AutoComplete = (props) => {
 		if (typeof setProps === 'function') {
 			const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
 			const value = opt?.value || opt;
-			if (value) {
-				setProps({ value })
+			// if (value) {
+				setProps({ value, query })
 			}
-		}
+		// }
 		setAriaHint(!query?.length)
 	}, [query])
 
