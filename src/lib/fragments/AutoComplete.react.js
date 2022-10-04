@@ -517,7 +517,7 @@ const AutoComplete = (props) => {
 	const showNoOptionsFoundRender = showNoOptionsFound &&
 		inputFocused && noOptionsAvailable && queryNotEmpty && queryLongEnough
 
-		const wrapperClassName = `${cssNamespace}__wrapper`
+	const wrapperClassName = `${cssNamespace}__wrapper`
 
 	const inputClassName = `${cssNamespace}__input`
 	const componentIsFocused = isFocus !== null
