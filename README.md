@@ -96,5 +96,5 @@ __These are the default instructions__
     - Under 'Choose a tag' dropdown, enter 'v&lt;version number&gt;'. Click 'Create new tag'
     - Give the tag a release title, this should be the same as the tag name.
     - Give a bullet point list of changes in the "Describe this release" section.
-    - Make sure 'Target' is set to 'main'.
+    - Make sure 'Target' is set to 'master'.
     - Click 'Publish release'.
