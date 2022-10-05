@@ -455,7 +455,7 @@ const AutoComplete = (props) => {
 						setOptions(options);
 						setSelected((autoselect && optionsAvailable) ? 0 : -1);
 						setValidChoiceMade(false);
-						setFocus(selectElement ? (optionsAvailable ? 0 : -1) : focus)
+						setFocus(selectElement ? (optionsAvailable ? 0 : -1) : isFocus)
 					})
 				} else if (!newQuery.length || !queryLongEnough) {
 					setMenuOpen(false);
