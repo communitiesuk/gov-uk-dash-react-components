@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentTemplate as RealComponent } from '../LazyLoader';
+import { Accordion as RealComponent } from '../LazyLoader';
 
 /**
  * Lazy loaded ComponentTemplate

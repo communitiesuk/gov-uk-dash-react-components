@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -66,6 +66,7 @@ const App = () => {
                     </a>
                 </li>
             </ul>
+            <Accordion id="accordion"></Accordion>
         </>
     )
 }
