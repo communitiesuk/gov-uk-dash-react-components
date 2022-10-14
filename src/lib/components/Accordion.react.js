@@ -7,6 +7,8 @@ import { Accordion as RealComponent } from '../LazyLoader';
  *
  * @param {
  * 	id,
+ *  heading,
+ *  children,
  * } [props={}]
  * @return {*}
  */
@@ -44,6 +46,16 @@ Accordion.propTypes = {
      * Dash-assigned callback that gets fired when the value changes.
      */
     setProps: PropTypes.func,
+
+    /**
+     * Accordion section heading.
+     */
+    heading: PropTypes.string,
+
+    /**
+     * Content of accordion.
+     */
+    children: PropTypes.array,
 };
 
 export const defaultProps = Accordion.defaultProps;
