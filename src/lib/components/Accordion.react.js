@@ -49,7 +49,7 @@ Accordion.propTypes = {
     /**
      * Accordion heading and children content object.
      */
-    accordionContent: PropTypes.objectOf({heading:PropTypes.string, children:PropTypes.array}),
+    accordionContent: PropTypes.arrayOf(PropTypes.objectOf({heading:PropTypes.string, children:PropTypes.array})),
 };
 
 export const defaultProps = Accordion.defaultProps;

@@ -1,3 +1,4 @@
+import { append } from 'ramda';
 import React, { Component } from 'react';
 import "../../dashboard.css"
 
@@ -20,7 +21,10 @@ class Accordion extends Component {
   }
 
   render() {
-    return (this.renderAccordionSection(1, this.props.accordionContent, this.state.hidden))
+    let accordionVar = []
+    for (let i = 0; i < this.props.accordionContent.length; i++) {
+      accordionVar.push (this.renderAccordionSection(i, this.props.accordionContent[i], this.state.hidden))}
+    return accordionVar
   }
     renderAccordionSection(index, accordionContent, hidden) {
       const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section",ShowString = "Show", HideString = "Hide"} = this.props
