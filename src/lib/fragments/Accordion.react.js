@@ -20,7 +20,7 @@ class Accordion extends Component {
   }
 
     render() {
-      const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section"} = this.props
+      const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section",ShowString = "Show", HideString = "Hide"} = this.props
         return (
           <body class="govuk-template__body app-example-page js-enabled">
           <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
@@ -38,7 +38,8 @@ class Accordion extends Component {
               <span class="moj-side-navigation__item--collapsed">
               </span>
             </span>
-            <span class="govuk-accordion__section-toggle-text"> Show 
+            <span class= {this.state.hidden ? "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down" : "govuk-accordion-nav__chevron" } ></span>
+            <span class="govuk-accordion__section-toggle-text"> {this.state.hidden ? ShowString : HideString} 
               <span class="govuk-visually-hidden"> this section</span>
             </span>
           </span>
