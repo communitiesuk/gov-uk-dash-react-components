@@ -24,7 +24,7 @@ class Accordion extends Component {
         return (
           <body class="govuk-template__body app-example-page js-enabled">
           <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-  <div class={this.state.hidden ? collapsedClass : collapsedClass +  expandedClass}>
+  <div class={this.state.hidden ? collapsedClass : collapsedClass + ' ' + expandedClass}>
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
         <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" id="accordion-default-heading-1" aria-expanded={!this.state.hidden} onClick={this.handleSubMenuVisibility}>
