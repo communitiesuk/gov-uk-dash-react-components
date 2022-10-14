@@ -7,8 +7,7 @@ import { Accordion as RealComponent } from '../LazyLoader';
  *
  * @param {
  * 	id,
- *  heading,
- *  children,
+ *  accordionContent,
  * } [props={}]
  * @return {*}
  */
@@ -48,14 +47,9 @@ Accordion.propTypes = {
     setProps: PropTypes.func,
 
     /**
-     * Accordion section heading.
+     * Accordion heading and children content object.
      */
-    heading: PropTypes.string,
-
-    /**
-     * Content of accordion.
-     */
-    children: PropTypes.array,
+    accordionContent: PropTypes.objectOf({heading:PropTypes.string, children:PropTypes.array}),
 };
 
 export const defaultProps = Accordion.defaultProps;

@@ -66,8 +66,7 @@ const App = () => {
                     </a>
                 </li>
             </ul>
-            <Accordion id="accordion" heading="TEST!"><h1>I am a child</h1></Accordion>
-            <Accordion id="accordion2" heading="PART 2">child2</Accordion>
+            <Accordion id="accordion" accordionContent={{heading:"TEST!", children:<h1>I am a child</h1>}}></Accordion>
         </>
     )
 }
