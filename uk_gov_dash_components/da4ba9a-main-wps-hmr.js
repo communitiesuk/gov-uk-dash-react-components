@@ -89,8 +89,8 @@ var Accordion = /*#__PURE__*/function (_Component) {
           ShowString = _this$props$ShowStrin === void 0 ? "Show" : _this$props$ShowStrin,
           _this$props$HideStrin = _this$props.HideString,
           HideString = _this$props$HideStrin === void 0 ? "Hide" : _this$props$HideStrin;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("body", {
-        className: "govuk-template__body app-example-page js-enabled"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "app-example-page js-enabled"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: hidden ? collapsedClass : collapsedClass + ' ' + expandedClass
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
