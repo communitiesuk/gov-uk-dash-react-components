@@ -8,31 +8,29 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: props.collapsedByDefault
+      hidden: [props.collapsedByDefault]
     }
   }
 
-  handleSubMenuVisibility = (event) => {
-      this.setState({
-        hidden: !this.state.hidden
-      })
-    
-
+  handleSubMenuVisibility = (index) => {
+    let hidden = [...this.state.hidden];
+    hidden[index] = !hidden[index];
+    this.setState({ hidden });
   }
 
   render() {
-    return this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden))
+    return this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden[index]))
   }
 
   renderAccordionSection(index, accordionContent, hidden) {
-    const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section",ShowString = "Show", HideString = "Hide"} = this.props
+    const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section", ShowString = "Show", HideString = "Hide"} = this.props
       return (
         <div className="app-example-page js-enabled">
         {/* <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default"> */}
           <div className={hidden ? collapsedClass : collapsedClass + ' ' + expandedClass}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
-                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" id={`accordion-default-heading-${index}`} aria-expanded={!this.state.hidden} onClick={this.handleSubMenuVisibility}>
+                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" id={`accordion-default-heading-${index}`} aria-expanded={!hidden} onClick={() => this.handleSubMenuVisibility(index)}>
                   <span className="govuk-accordion__section-heading-text" id={`accordion-default-heading-${index}`}>
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionContent.heading} 
                     </span>
