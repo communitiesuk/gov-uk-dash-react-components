@@ -79,7 +79,7 @@ var Accordion = /*#__PURE__*/function (_Component) {
     });
 
     _this.state = {
-      hidden: [props.collapsedByDefault]
+      hidden: new Array(_this.props.accordionContent.length).fill(true)
     };
     return _this;
   }
