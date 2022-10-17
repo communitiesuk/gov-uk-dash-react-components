@@ -21,10 +21,7 @@ class Accordion extends Component {
   }
 
   render() {
-    let accordionVar = []
-    for (let i = 0; i < this.props.accordionContent.length; i++) {
-      accordionVar.push (this.renderAccordionSection(i, this.props.accordionContent[i], this.state.hidden))}
-    return accordionVar
+    return this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden))
   }
     renderAccordionSection(index, accordionContent, hidden) {
       const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section",ShowString = "Show", HideString = "Hide"} = this.props
