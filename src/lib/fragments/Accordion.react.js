@@ -8,23 +8,23 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: new Array(this.props.accordionContent.length).fill(true) 
+      hidden: new Array(this.props.accordionContent.length).fill(true),
+      allSectionsOpen: false,
     }
   }
 
   handleSubMenuVisibility = (index) => {
     let hidden = [...this.state.hidden];
     hidden[index] = !hidden[index];
-    this.setState({ hidden });
+    this.setState({hidden, allSectionsOpen: hidden.every(element => element === false)});
   }
-
-
 
   showOrHideAllAccordionSections = () => {
-    let allSectionsOpen = this.state.hidden.every(element => element === false)
-    let hidden = new Array(this.state.hidden.length).fill(allSectionsOpen ? true : false)
-    this.setState({ hidden });
-  }
+    let hidden = new Array(this.state.hidden.length).fill(this.state.allSectionsOpen ? true : false)
+    this.setState({ hidden })
+    this.state.allSectionsOpen=!this.state.allSectionsOpen
+  } 
+
 
   render() {
     return (
@@ -32,8 +32,8 @@ class Accordion extends Component {
         <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
           <div className='govuk-accordion__controls'>
             <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
-              <span className='govuk-accordion-nav__chevron'></span>
-              <span className='govuk-accordion__show-all-text'>Hide all sections</span>
+            <span className= {this.state.allSectionsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
+            <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
           {this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden[index]))}
