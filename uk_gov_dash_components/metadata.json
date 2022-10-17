@@ -1,4 +1,45 @@
 {
+  "src/lib/components/Accordion.react.js": {
+    "description": "Lazy loaded ComponentTemplate\r\n\n@param {\r\n\tid,\r\n accordionContent,\r\n} [props={}]\r\n@return {*}",
+    "displayName": "Accordion",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID of this component, used to identify dash components\r\nin callbacks. The ID needs to be unique across all of the\r\ncomponents in an app."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the value changes."
+      },
+      "accordionContent": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "heading": {
+                "name": "string",
+                "required": false
+              },
+              "children": {
+                "name": "array",
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "Accordion heading and children content object."
+      }
+    }
+  },
   "src/lib/components/AutoComplete.react.js": {
     "description": "Lazy loaded Autocomplete\r\n\n@param {\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tdefaultValue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n\tstyle,\r\n} [props={}]\r\n@return {*}",
     "displayName": "AutoComplete",

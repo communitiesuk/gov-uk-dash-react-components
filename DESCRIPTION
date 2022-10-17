@@ -1,6 +1,6 @@
 Package: ukGovDashComponents
 Title: Dash components for Gov UK
-Version: 1.4.0
+Version: 1.5.0
 Description: Dash components for Gov UK
 Depends: R (>= 3.0.2)
 Imports: 
