@@ -18,15 +18,33 @@ class Accordion extends Component {
     this.setState({ hidden });
   }
 
+
+
+  showOrHideAllAccordionSections = () => {
+    let allSectionsOpen = this.state.hidden.every(element => element === false)
+    let hidden = new Array(this.state.hidden.length).fill(allSectionsOpen ? true : false)
+    this.setState({ hidden });
+  }
+
   render() {
-    return this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden[index]))
+    return (
+      <div className="app-example-page js-enabled">
+        <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div className='govuk-accordion__controls'>
+            <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
+              <span className='govuk-accordion-nav__chevron'></span>
+              <span className='govuk-accordion__show-all-text'>Hide all sections</span>
+            </button>
+          </div>
+          {this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden[index]))}
+        </div>
+      </div>
+    )
   }
 
   renderAccordionSection(index, accordionContent, hidden) {
     const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section", ShowString = "Show", HideString = "Hide"} = this.props
       return (
-        <div className="app-example-page js-enabled">
-        {/* <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default"> */}
           <div className={hidden ? collapsedClass : collapsedClass + ' ' + expandedClass}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
@@ -53,8 +71,6 @@ class Accordion extends Component {
                 <p className='govuk-body'>{accordionContent.children}</p>
             </div>
           </div> 
-        {/* </div>  */}
-    </div>
         )
     }
   }
