@@ -13,7 +13,7 @@ class Accordion extends Component {
     }
   }
 
-  handleSubMenuVisibility = (index) => {
+  openOrCloseAccordionSection = (index) => {
     let sectionsOpen = [...this.state.sectionsOpen];
     sectionsOpen[index] = !sectionsOpen[index];
     this.setState({sectionsOpen: sectionsOpen, allSectionsAreOpen: sectionsOpen.every(sectionIsOpen => sectionIsOpen)});
@@ -47,7 +47,7 @@ class Accordion extends Component {
           <div className={sectionIsOpen ? collapsedClass + ' ' + expandedClass : collapsedClass}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
-                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" id={`accordion-default-heading-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.handleSubMenuVisibility(index)}>
+                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" id={`accordion-default-heading-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
                   <span className="govuk-accordion__section-heading-text" id={`accordion-default-heading-${index}`}>
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeadings[index]} 
                     </span>
