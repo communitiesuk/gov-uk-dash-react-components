@@ -15,6 +15,3 @@ export {
 	ExpandableMenuItem,
 	Accordion
 }
-
-
-// export const UkGovDashComponents = React.lazy(() => import(/* webpackChunkName: "UkGovDashComponents" */ './fragments/UkGovDashComponents.react'));
