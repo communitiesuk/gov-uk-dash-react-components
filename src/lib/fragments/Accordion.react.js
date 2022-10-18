@@ -1,6 +1,5 @@
 import { append } from 'ramda';
 import React, { Component } from 'react';
-import "../../dashboard.css"
 
 import { defaultProps, propTypes } from '../components/ComponentTemplate.react';
 
