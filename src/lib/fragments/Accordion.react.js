@@ -1,4 +1,3 @@
-import { append } from 'ramda';
 import React, { Component } from 'react';
 
 import { defaultProps, propTypes } from '../components/ComponentTemplate.react';
