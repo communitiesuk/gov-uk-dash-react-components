@@ -8,7 +8,7 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: new Array(this.props.accordionContent.length).fill(true),
+      hidden: new Array(this.props.accordionHeadings.length).fill(true),
       allSectionsOpen: false,
     }
   }
@@ -36,21 +36,21 @@ class Accordion extends Component {
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
-          {this.props.accordionContent.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden[index]))}
+          {this.props.children.map((accordionSection, index) => this.renderAccordionSection(index, accordionSection, this.state.hidden[index]))}
         </div>
       </div>
     )
   }
 
   renderAccordionSection(index, accordionContent, hidden) {
-    const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section", ShowString = "Show", HideString = "Hide"} = this.props
+    const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section", ShowString = "Show", HideString = "Hide", accordionHeadings} = this.props
       return (
           <div className={hidden ? collapsedClass : collapsedClass + ' ' + expandedClass}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
                 <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" id={`accordion-default-heading-${index}`} aria-expanded={!hidden} onClick={() => this.handleSubMenuVisibility(index)}>
                   <span className="govuk-accordion__section-heading-text" id={`accordion-default-heading-${index}`}>
-                    <span className="govuk-accordion__section-heading-text-focus"> {accordionContent.heading} 
+                    <span className="govuk-accordion__section-heading-text-focus"> {accordionHeadings[index]} 
                     </span>
                   </span> 
                   <span className="govuk-visually-hidden govuk-accordion__section-heading-divider"></span>
@@ -68,7 +68,7 @@ class Accordion extends Component {
               </h2>
             </div>
             <div id={`accordion-default-heading-${index}`} className="govuk-accordion__section-content" aria-labelledby={`accordion-default-heading-${index}`}>
-                <p className='govuk-body'>{accordionContent.children}</p>
+                <p className='govuk-body'>{accordionContent}</p>
             </div>
           </div> 
         )
