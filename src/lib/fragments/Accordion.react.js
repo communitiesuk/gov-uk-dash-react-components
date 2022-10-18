@@ -9,20 +9,19 @@ class Accordion extends Component {
     super(props);
     this.state = {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(false),
-      allSectionsOpen: false,
+      allSectionsAreOpen: false,
     }
   }
 
   handleSubMenuVisibility = (index) => {
     let sectionsOpen = [...this.state.sectionsOpen];
     sectionsOpen[index] = !sectionsOpen[index];
-    this.setState({sectionsOpen: sectionsOpen, allSectionsOpen: sectionsOpen.every(sectionIsOpen => sectionIsOpen)});
+    this.setState({sectionsOpen: sectionsOpen, allSectionsAreOpen: sectionsOpen.every(sectionIsOpen => sectionIsOpen)});
   }
 
   showOrHideAllAccordionSections = () => {
-    let sectionsOpen = new Array(this.state.sectionsOpen.length).fill(this.state.allSectionsOpen ? false : true)
-    this.setState({ sectionsOpen: sectionsOpen })
-    this.state.allSectionsOpen=!this.state.allSectionsOpen
+    let sectionsOpen = new Array(this.state.sectionsOpen.length).fill(this.state.allSectionsAreOpen ? false : true);
+    this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen : !this.state.allSectionsAreOpen});
   } 
 
 
@@ -32,8 +31,8 @@ class Accordion extends Component {
         <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
           <div className='govuk-accordion__controls'>
             <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
-            <span className= {this.state.allSectionsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-            <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsOpen ? "Hide all sections" : "Show all sections"} </span>
+            <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
+            <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
           {this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))}
