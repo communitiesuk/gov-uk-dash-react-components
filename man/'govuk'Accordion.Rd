@@ -6,22 +6,21 @@
 \title{Accordion component}
 
 \description{
-Lazy loaded ComponentTemplate  @param { 	id,  accordionContent, } [props={}] @return {*}
+Lazy loaded ComponentTemplate  @param { 	id,  accordionHeadings,  children, } [props={}] @return {*}
 }
 
 \usage{
-'govuk'Accordion(id=NULL, accordionContent=NULL)
+'govuk'Accordion(children=NULL, id=NULL, accordionHeadings=NULL)
 }
 
 \arguments{
+\item{children}{List of a list of or a singular dash component, string or numbers. Array of accordion children.}
+
 \item{id}{Character. The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{accordionContent}{List of lists containing elements 'heading', 'children'.
-those elements have the following types:
-  - heading (character; optional)
-  - children (unnamed list; optional)s. Accordion heading and children content object.}
+\item{accordionHeadings}{List of characters. Array of accordion headings.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

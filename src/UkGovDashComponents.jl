@@ -16,7 +16,6 @@ include("jl/'govuk'_status.jl")
 include("jl/'govuk'_combobox.jl")
 include("jl/'govuk'_listbox.jl")
 include("jl/'govuk'_popover.jl")
-include("jl/'govuk'_ukgovdashcomponents.jl")
 
 function __init__()
     DashBase.register_package(

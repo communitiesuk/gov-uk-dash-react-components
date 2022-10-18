@@ -9,7 +9,6 @@ from .status import status
 from .ComboBox import ComboBox
 from .ListBox import ListBox
 from .Popover import Popover
-from .UkGovDashComponents import UkGovDashComponents
 
 __all__ = [
     "Accordion",
@@ -22,6 +21,5 @@ __all__ = [
     "status",
     "ComboBox",
     "ListBox",
-    "Popover",
-    "UkGovDashComponents"
+    "Popover"
 ]

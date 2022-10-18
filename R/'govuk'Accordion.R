@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-'govuk'Accordion <- function(id=NULL, accordionContent=NULL) {
+'govuk'Accordion <- function(children=NULL, id=NULL, accordionHeadings=NULL) {
     
-    props <- list(id=id, accordionContent=accordionContent)
+    props <- list(children=children, id=id, accordionHeadings=accordionHeadings)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@
         props = props,
         type = 'Accordion',
         namespace = 'uk_gov_dash_components',
-        propNames = c('id', 'accordionContent'),
+        propNames = c('children', 'id', 'accordionHeadings'),
         package = 'ukGovDashComponents'
         )
 
