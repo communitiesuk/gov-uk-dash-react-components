@@ -40,14 +40,14 @@ class Accordion extends Component {
   }
 
   renderAccordionSection(index, accordionSectionContent, sectionIsOpen) {
-    const { expandedClass="govuk-accordion__section--expanded", collapsedClass="govuk-accordion__section", ShowString = "Show", HideString = "Hide", accordionHeadings} = this.props
+    const accordionHeading = this.props.accordionHeadings[index]
       return (
-          <div className={sectionIsOpen ? collapsedClass + ' ' + expandedClass : collapsedClass}>
+          <div className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
                 <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
                   <span className="govuk-accordion__section-heading-text" >
-                    <span className="govuk-accordion__section-heading-text-focus"> {accordionHeadings[index]} 
+                    <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
                     </span>
                   </span> 
                   <span className="govuk-visually-hidden govuk-accordion__section-heading-divider"></span>
@@ -57,7 +57,7 @@ class Accordion extends Component {
                       </span>
                     </span>
                     <span className= {sectionIsOpen ?  "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                    <span className="govuk-accordion__section-toggle-text"> {sectionIsOpen ? HideString : ShowString} 
+                    <span className="govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"} 
                       <span className="govuk-visually-hidden"> this section</span>
                     </span>
                   </span>
