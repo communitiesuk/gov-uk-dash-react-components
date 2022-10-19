@@ -45,8 +45,8 @@ class Accordion extends Component {
           <div className={sectionIsOpen ? collapsedClass + ' ' + expandedClass : collapsedClass}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
-                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" id={`accordion-default-heading-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
-                  <span className="govuk-accordion__section-heading-text" id={`accordion-default-heading-${index}`}>
+                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
+                  <span className="govuk-accordion__section-heading-text" >
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeadings[index]} 
                     </span>
                   </span> 
@@ -64,7 +64,7 @@ class Accordion extends Component {
                 </button>
               </h2>
             </div>
-            <div id={`accordion-default-heading-${index}`} className="govuk-accordion__section-content" aria-labelledby={`accordion-default-heading-${index}`}>
+            <div className="govuk-accordion__section-content" aria-labelledby={`accordion-default-heading-${index}`}>
                 <p className='govuk-body'>{accordionSectionContent}</p>
             </div>
           </div> 
