@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { defaultProps, propTypes } from '../components/ComponentTemplate.react';
+import { defaultProps, propTypes } from '../components/Accordion.react';
 
 class Accordion extends Component {
   constructor(props) {
