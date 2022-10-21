@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+export('govuk'Accordion)
 export('govuk'AutoComplete)
 export('govuk'CheckboxList)
 export('govuk'ComponentTemplate)
@@ -10,6 +11,6 @@ export('govuk'status)
 export('govuk'ComboBox)
 export('govuk'ListBox)
 export('govuk'Popover)
-export('govuk'UkGovDashComponents)
 export(Dropdown)
 export(ExpandableMenuItem)
+export(UkGovDashComponents)

@@ -1,3 +1,4 @@
+from .Accordion import Accordion
 from .AutoComplete import AutoComplete
 from .CheckboxList import CheckboxList
 from .ComponentTemplate import ComponentTemplate
@@ -8,9 +9,9 @@ from .status import status
 from .ComboBox import ComboBox
 from .ListBox import ListBox
 from .Popover import Popover
-from .UkGovDashComponents import UkGovDashComponents
 
 __all__ = [
+    "Accordion",
     "AutoComplete",
     "CheckboxList",
     "ComponentTemplate",
@@ -20,6 +21,5 @@ __all__ = [
     "status",
     "ComboBox",
     "ListBox",
-    "Popover",
-    "UkGovDashComponents"
+    "Popover"
 ]

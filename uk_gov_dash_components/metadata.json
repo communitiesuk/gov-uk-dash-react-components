@@ -1,4 +1,45 @@
 {
+  "src/lib/components/Accordion.react.js": {
+    "description": "Lazy loaded ComponentTemplate\r\n\n@param {\r\n\tid,\r\n accordionHeadings,\r\n children,\r\n} [props={}]\r\n@return {*}",
+    "displayName": "Accordion",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID of this component, used to identify dash components\r\nin callbacks. The ID needs to be unique across all of the\r\ncomponents in an app."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the value changes."
+      },
+      "accordionHeadings": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string"
+          }
+        },
+        "required": false,
+        "description": "Array of accordion headings."
+      },
+      "children": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "node"
+          }
+        },
+        "required": false,
+        "description": "Array of accordion children."
+      }
+    }
+  },
   "src/lib/components/AutoComplete.react.js": {
     "description": "Lazy loaded Autocomplete\r\n\n@param {\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tdefaultValue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n\tstyle,\r\n} [props={}]\r\n@return {*}",
     "displayName": "AutoComplete",
@@ -904,41 +945,6 @@
         },
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
-      }
-    }
-  },
-  "src/lib/components/UkGovDashComponents.react.js": {
-    "description": "ExampleComponent is an example component.\r\nIt takes a property, `label`, and\r\ndisplays it.\r\nIt renders an input with the property `value`\r\nwhich is editable by the user.",
-    "displayName": "UkGovDashComponents",
-    "methods": [],
-    "props": {
-      "id": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The ID used to identify this component in Dash callbacks."
-      },
-      "label": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
-      },
-      "value": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The value displayed in the input."
-      },
-      "setProps": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       }
     }
   }

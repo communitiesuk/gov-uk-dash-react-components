@@ -4,6 +4,7 @@ import ComboBox from './fragments/ComboBox.react'
 import CheckboxList from './fragments/CheckboxList.react'
 import ComponentTemplate from './fragments/ComponentTemplate.react'
 import ExpandableMenuItem from './fragments/ExpandableMenuItem.react'
+import Accordion from './fragments/Accordion.react'
 
 export {
 	AutoComplete,
@@ -12,4 +13,5 @@ export {
 	CheckboxList,
 	ComponentTemplate,
 	ExpandableMenuItem,
+	Accordion
 }
