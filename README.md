@@ -90,11 +90,6 @@ __These are the default instructions__
     ```
     eg. `pip install "D:\Users\user\Desktop\Source Code Store\gov-uk-dash-react-components\dist\uk_gov_dash_components-1.2.1.tar.gz"`
 
-1. For creating new versions of the package:
-    - After merging with master, go [here](https://github.com/communitiesuk/gov-uk-dash-react-components/releases/) to add a new version tag.
-    - Click 'Draft a new release'
-    - Under 'Choose a tag' dropdown, enter 'v&lt;version number&gt;'. Click 'Create new tag'
-    - Give the tag a release title, this should be the same as the tag name.
-    - Give a bullet point list of changes in the "Describe this release" section.
-    - Make sure 'Target' is set to 'master'.
-    - Click 'Publish release'.
+1. When your PR is merged to main, it will be released automatically by the [Release workflow](.github/workflows/release.yml) using the version within [package.json](package.json).
+   You can still merge a PR which doesn't update the version within `package.json`, but the Release workflow will fail.
+   Failure of the Release workflow means that a new release won't have been generated and you won't be able to use the new version of the code in dashboard repos until you update the version in `package.json`.
