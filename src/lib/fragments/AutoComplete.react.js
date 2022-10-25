@@ -331,7 +331,6 @@ const AutoComplete = (props) => {
 				setHover(null);
 			})
 		} else if (isMenuOpen) {
-
 			const isNotAtBottom = selected !== options.length - 1
 			if (isNotAtBottom || selectElement) {
 				handleOptionFocus(selected + 1, autoselect)
@@ -455,7 +454,7 @@ const AutoComplete = (props) => {
 						setOptions(options);
 						setSelected((autoselect && optionsAvailable) ? 0 : -1);
 						setValidChoiceMade(false);
-						setFocus(selectElement ? (optionsAvailable ? 0 : -1) : isFocus)
+						setFocus(selectElement ? (optionsAvailable ? 0 : -1) : -1)
 					})
 				} else if (!newQuery.length || !queryLongEnough) {
 					setMenuOpen(false);
@@ -471,8 +470,8 @@ const AutoComplete = (props) => {
 			const newQuery = event.target.value
 			dataSource('', (options) => {
 				const currentSelectionIndex = options.indexOf(newQuery)
-				setMenuOpen(true);
 				setOptions(options);
+				setMenuOpen(true);
 				setFocus(currentSelectionIndex);
 				setSelected(currentSelectionIndex);
 				setHover(null);
