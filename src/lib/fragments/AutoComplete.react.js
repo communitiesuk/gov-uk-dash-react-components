@@ -545,23 +545,25 @@ const AutoComplete = (props) => {
 		'aria-describedby': assistiveHintID
 	} : null
 
-	const prevFocus = useRef()
+	
+
+	const highlightTextInInput = () => {
+		const inputElement = elementReferences[-1];
+		inputElement.setSelectionRange(0, inputElement.value.length);
+	}
+
+	const previousFocus = useRef();
 
 	useEffect(() => {
-		
-		if (componentIsFocused) {
-			elementReferences[isFocus].focus()
-			const componentGainedFocus = prevFocus.current === null
-			console.log("isFocus: ",isFocus)
-			const selectAllText = componentGainedFocus
-			console.log("prevFocus.current" +prevFocus.current)
-			console.log("selectAllText"+selectAllText)
-			if (selectAllText) {
-				const inputElement = elementReferences[-1]
-				inputElement.setSelectionRange(0, inputElement.value.length)
+		if (isFocus !== null) {
+			const componentGainedFocus = previousFocus.current === null;
+
+			if (componentGainedFocus) {
+				highlightTextInInput();
 			}
 		}
-		prevFocus.current = isFocus
+			
+		previousFocus.current = isFocus
 	}, [isFocus])
 
 
