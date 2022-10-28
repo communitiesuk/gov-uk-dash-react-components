@@ -1,5 +1,5 @@
 /* eslint-disable no-undefined */
-import React, { useState, useEffect, render } from 'react';
+import React, { useState, useEffect, render, useRef } from 'react';
 import { useInterval } from 'usehooks-ts'
 import { defaultProps, propTypes } from '../components/AutoComplete.react';
 import { isIOSDevice } from '../helper/isIOS';
@@ -90,11 +90,11 @@ const AutoComplete = (props) => {
 		return res?.label || res?.name || res
 	}
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
-	const [ isFocus, setFocus ] = useState(null);
-	const [ isHover, setHover ] = useState(null);
+	const [isFocus, setFocus] = useState(null);
+	const [isHover, setHover] = useState(null);
 	const [isMenuOpen, setMenuOpen] = useState(false);
 
-	const [validChoiceMade, setValidChoiceMade ] = useState(false);
+	const [validChoiceMade, setValidChoiceMade] = useState(false);
 	const [selected, setSelected] = useState(null);
 	const [ariaHint, setAriaHint] = useState(true);
 
@@ -286,11 +286,11 @@ const AutoComplete = (props) => {
 
 				let index = query && realOpt.indexOf(query) > 0 ? realOpt.indexOf(query) - 1 : options.length - 1
 
-					if (index < 0) {
-						index = options.length - 1
-					}
+				if (index < 0) {
+					index = options.length - 1
+				}
 
-					handleOptionFocus(index, true)
+				handleOptionFocus(index, true)
 			})
 		} else {
 			const isNotAtTop = selected !== -1
@@ -437,7 +437,7 @@ const AutoComplete = (props) => {
 				}, true)
 
 				break
-			default: {				
+			default: {
 				const autoselect = hasAutoselect()
 				const newQuery = event.target.value
 				const queryChanged = query !== newQuery
@@ -545,9 +545,25 @@ const AutoComplete = (props) => {
 		'aria-describedby': assistiveHintID
 	} : null
 
+	const prevFocus = useRef()
+
 	useEffect(() => {
-		if (componentIsFocused){elementReferences[isFocus].focus()}
+		
+		if (componentIsFocused) {
+			elementReferences[isFocus].focus()
+			const componentGainedFocus = prevFocus.current === null
+			console.log("isFocus: ",isFocus)
+			const selectAllText = componentGainedFocus
+			console.log("prevFocus.current" +prevFocus.current)
+			console.log("selectAllText"+selectAllText)
+			if (selectAllText) {
+				const inputElement = elementReferences[-1]
+				inputElement.setSelectionRange(0, inputElement.value.length)
+			}
+		}
+		prevFocus.current = isFocus
 	}, [isFocus])
+
 
 	let dropdownArrow
 
@@ -586,8 +602,8 @@ const AutoComplete = (props) => {
 				aria-expanded={isMenuOpen ? 'true' : 'false'}
 				{
 				...(optionFocused) ? {
-						'aria-activedescendant': `${id}__option--${isFocus}`
-					} : null
+					'aria-activedescendant': `${id}__option--${isFocus}`
+				} : null
 				}
 				aria-owns={`${id}__listbox`}
 				aria-autocomplete={(hasAutoselect()) ? 'both' : 'list'}
@@ -675,7 +691,7 @@ AutoComplete.enhanceSelectElement = (configurationOptions) => {
 		const requestedOption = [].filter.call(configurationOptions.selectElement.options, option => (option.textContent || option.innerText) === query)[0]
 		if (requestedOption) { requestedOption.selected = true }
 		// trigger change event on original select element
-		const event = new Event('change', { bubbles: true, cancelable: false})
+		const event = new Event('change', { bubbles: true, cancelable: false })
 		configurationOptions.selectElement.dispatchEvent(event)
 	})
 
