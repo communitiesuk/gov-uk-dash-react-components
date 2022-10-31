@@ -547,7 +547,7 @@ const AutoComplete = (props) => {
 
 	
 
-	const highlightTextInInput = () => {
+	const selectAllTextInInput = () => {
 		const inputElement = elementReferences[-1];
 		inputElement.setSelectionRange(0, inputElement.value.length);
 	}
@@ -556,10 +556,15 @@ const AutoComplete = (props) => {
 
 	useEffect(() => {
 		if (isFocus !== null) {
+			const componentLostFocus = isFocus === null;
 			const componentGainedFocus = previousFocus.current === null;
+			const focusChangedWithinComponent = !componentLostFocus && !componentGainedFocus;
 
+			if (focusChangedWithinComponent) {
+				elementReferences[isFocus].focus();
+			}
 			if (componentGainedFocus) {
-				highlightTextInInput();
+				selectAllTextInInput();
 			}
 		}
 			
