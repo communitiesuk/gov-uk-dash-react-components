@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers: 0 */
-import React, { useState } from 'react';
+import React, { useState }  from 'react';
 
 import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
 
