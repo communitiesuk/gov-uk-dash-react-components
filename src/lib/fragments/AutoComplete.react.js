@@ -145,7 +145,9 @@ const AutoComplete = (props) => {
 		setMenuOpen(newState.menuOpen || false);
 		setQuery(newQuery);
 		setSelected(null);
-		setValidChoiceMade(isQueryAnOption(newQuery, options))
+		const validQuery = isQueryAnOption(newQuery, options);
+		setValidChoiceMade(validQuery)
+
 	}
 
 	const handleListMouseLeave = () => {
@@ -443,7 +445,9 @@ const AutoComplete = (props) => {
 				const queryChanged = query !== newQuery
 				const queryLongEnough = newQuery.length >= minLength
 
-				setQuery(newQuery)
+				const validOption = options.find(option => option.label === newQuery);	
+				setQuery(validOption ? validOption.value : newQuery)
+
 				setAriaHint(newQuery.length === 0)
 
 				const searchForOptions = showAllValues || (newQuery.length && queryChanged && queryLongEnough)
