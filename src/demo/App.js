@@ -21,6 +21,21 @@ const App = () => {
                         { label: "Local authorities", value: "Hello LOL" },
                         { label: "Regional", value: "Hello LOL2" },
                         { label: "Local authority type", value: "LOL" },
+                        { label: "Local authorities2", value: "Hello LOL222" },
+                        { label: "Regional2", value: "Hello LOL222" },
+                        { label: "Local authority type2", value: "LOL222" },
+                        { label: "Local authorities3", value: "Hello LOL3" },
+                        { label: "Regional3", value: "Hello LOL3" },
+                        { label: "Local authority type3", value: "LOL3" },
+                        { label: "Local authorities", value: "Hello LOLa" },
+                        { label: "Regional", value: "Hello LOL2a" },
+                        { label: "Local authority type", value: "LOa" },
+                        { label: "Local authorities2", value: "Hello LOL22a2" },
+                        { label: "Regional2", value: "Hello LOL22a2" },
+                        { label: "Local authority type2", value: "LOLa222" },
+                        { label: "Local authorities3", value: "Hello aLOL3" },
+                        { label: "Regional3", value: "Hello LaOL3" },
+                        { label: "Local authority type3", value: "LOaL3" },
                     ]}
                     id="autocomplete-default"
                     placeholder="Select Option"

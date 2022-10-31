@@ -545,6 +545,10 @@ const AutoComplete = (props) => {
 		'aria-describedby': assistiveHintID
 	} : null
 
+	useEffect(() => {
+		if (componentIsFocused){elementReferences[isFocus].focus()}
+	}, [isFocus])
+
 	let dropdownArrow
 
 	// we only need a dropdown arrow if showAllValues is set to a truthy value
