@@ -555,17 +555,15 @@ const AutoComplete = (props) => {
 	const previousFocus = useRef();
 
 	useEffect(() => {
-		if (isFocus !== null) {
-			const componentLostFocus = isFocus === null;
-			const componentGainedFocus = previousFocus.current === null;
-			const focusChangedWithinComponent = !componentLostFocus && !componentGainedFocus;
+		const componentLostFocus = isFocus === null;
+		const componentGainedFocus = previousFocus.current === null;
+		const focusChangedWithinComponent = !componentLostFocus && !componentGainedFocus;
 
-			if (focusChangedWithinComponent) {
-				elementReferences[isFocus].focus();
-			}
-			if (componentGainedFocus) {
-				selectAllTextInInput();
-			}
+		if (focusChangedWithinComponent) {
+			elementReferences[isFocus].focus();
+		}
+		if (componentGainedFocus) {
+			selectAllTextInInput();
 		}
 			
 		previousFocus.current = isFocus
