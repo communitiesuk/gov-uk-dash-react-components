@@ -102,6 +102,8 @@ const AutoComplete = (props) => {
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
 	const [query, setQuery] = useState(startValue || value || '');
 
+	const[showErrorMessage, setShowErrorMessage] = useState(false);
+
 	if (!Array.isArray(source)) {
 		dataSource('', (options) => {
 			const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, options) || '') : '';
@@ -147,6 +149,8 @@ const AutoComplete = (props) => {
 		setSelected(null);
 		const validQuery = isQueryAnOption(newQuery, options);
 		setValidChoiceMade(validQuery)
+		
+		setShowErrorMessage(!validQuery)
 
 	}
 
@@ -606,6 +610,7 @@ const AutoComplete = (props) => {
 			{hintValue && (
 				<span><input className={hintClassName} readonly tabIndex='-1' value={hintValue} /></span>
 			)}
+			{showErrorMessage && (<p class="govuk-error-message">Invalid value entered</p>)}
 
 			<input
 				aria-expanded={isMenuOpen ? 'true' : 'false'}
