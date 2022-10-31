@@ -2,7 +2,7 @@
 name = "UkGovDashComponents"
 uuid = "1b08a953-4be3-4667-9a23-4555a746522d"
 authors = ["DLUHC GovUk <pythonvisualisations@levellingup.gov.uk>"]
-version = "1.6.5"
+version = "1.6.3"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"
