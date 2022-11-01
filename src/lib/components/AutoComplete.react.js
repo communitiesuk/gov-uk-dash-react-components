@@ -30,6 +30,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	tStatusSelectedOption,
  * 	tStatusResults,
  * 	style,
+ *  errorMessage,
  * } [props={}]
  * @return {*}
  */
@@ -58,6 +59,7 @@ AutoComplete.defaultProps = {
 	tAssistiveHint: () => 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.',
 	dropdownArrow: DropdownArrowDown,
 	alwaysDisplayArrow: true,
+	errorMessage: 'Invalid value entered',
 };
 
 export const basePropTypes = {
@@ -177,6 +179,11 @@ export const basePropTypes = {
 	 * Override the css style of the wrapper
 	 */
 	style: PropTypes.any,
+
+	/**
+	 * Error message to display when invalid input entered in dropdown
+	 */
+	errorMessage: PropTypes.string,
 };
 
 AutoComplete.propTypes = {

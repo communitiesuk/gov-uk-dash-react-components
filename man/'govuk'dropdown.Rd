@@ -6,16 +6,16 @@
 \title{Dropdown component}
 
 \description{
-@param {{ 	label: string, 	id, 	autoselect, 	cssNamespace, 	value, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, }} [props={}]  @return {*}
+@param {{ 	label: string, 	id, 	autoselect, 	cssNamespace, 	value, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults,  errorMessage, }} [props={}]  @return {*}
 }
 
 \usage{
 'govuk'Dropdown(id=NULL, autoselect=NULL, confirmOnBlur=NULL,
-cssNamespace=NULL, dropdownArrow=NULL, label=NULL,
-minLength=NULL, name=NULL, onConfirm=NULL, placeholder=NULL,
-required=NULL, selectElement=NULL, showNoOptionsFound=NULL,
-source=NULL, style=NULL, tAssistiveHint=NULL,
-tNoResults=NULL, tStatusNoResults=NULL,
+cssNamespace=NULL, dropdownArrow=NULL, errorMessage=NULL,
+label=NULL, minLength=NULL, name=NULL, onConfirm=NULL,
+placeholder=NULL, required=NULL, selectElement=NULL,
+showNoOptionsFound=NULL, source=NULL, style=NULL,
+tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
 tStatusSelectedOption=NULL, templates=NULL, value=NULL,
 wrapperRef=NULL)
@@ -31,6 +31,8 @@ wrapperRef=NULL)
 \item{cssNamespace}{Character. cssNamespace}
 
 \item{dropdownArrow}{Logical | numeric | character | named list | unnamed list. React component for dropdown arrow}
+
+\item{errorMessage}{Character. Error message to display when invalid input entered in dropdown}
 
 \item{label}{Character. Label text}
 

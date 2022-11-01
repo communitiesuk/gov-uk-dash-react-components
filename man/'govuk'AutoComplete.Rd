@@ -6,15 +6,15 @@
 \title{AutoComplete component}
 
 \description{
-Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style, } [props={}] @return {*}
+Lazy loaded Autocomplete  @param { 	id, 	autoselect, 	cssNamespace, 	defaultValue, 	displayMenu, 	minLength, 	name, 	placeholder, 	onConfirm, 	confirmOnBlur, 	showNoOptionsFound, 	showAllValues, 	required, 	tNoResults, 	tAssistiveHint, 	source, 	templates, 	dropdownArrow: dropdownArrowFactory, 	tStatusQueryTooShort, 	tStatusNoResults, 	tStatusSelectedOption, 	tStatusResults, 	style,  errorMessage, } [props={}] @return {*}
 }
 
 \usage{
 'govuk'AutoComplete(id=NULL, alwaysDisplayArrow=NULL, ariaLabelledBy=NULL,
 autoselect=NULL, confirmOnBlur=NULL, cssNamespace=NULL,
-displayMenu=NULL, dropdownArrow=NULL, minLength=NULL,
-name=NULL, onConfirm=NULL, placeholder=NULL, required=NULL,
-selectElement=NULL, showAllValues=NULL,
+displayMenu=NULL, dropdownArrow=NULL, errorMessage=NULL,
+minLength=NULL, name=NULL, onConfirm=NULL, placeholder=NULL,
+required=NULL, selectElement=NULL, showAllValues=NULL,
 showNoOptionsFound=NULL, source=NULL, style=NULL,
 tAssistiveHint=NULL, tNoResults=NULL, tStatusNoResults=NULL,
 tStatusQueryTooShort=NULL, tStatusResults=NULL,
@@ -38,6 +38,8 @@ wrapperRef=NULL)
 \item{displayMenu}{Character. No Description}
 
 \item{dropdownArrow}{Logical | numeric | character | named list | unnamed list. React component for dropdown arrow}
+
+\item{errorMessage}{Character. Error message to display when invalid input entered in dropdown}
 
 \item{minLength}{Numeric. No Description}
 

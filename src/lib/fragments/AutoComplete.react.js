@@ -33,6 +33,7 @@ import './autocomplete.css';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  errorMessage,
  * }=defaultProps]
  * @return {*}
  */
@@ -65,6 +66,7 @@ const AutoComplete = (props) => {
 		selectElement,
 		alwaysDisplayArrow,
 		style,
+		errorMessage,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -101,6 +103,8 @@ const AutoComplete = (props) => {
 	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
 	const [query, setQuery] = useState(startValue || value || '');
+
+	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 	if (!Array.isArray(source)) {
 		dataSource('', (options) => {
@@ -145,7 +149,10 @@ const AutoComplete = (props) => {
 		setMenuOpen(newState.menuOpen || false);
 		setQuery(newQuery);
 		setSelected(null);
-		setValidChoiceMade(isQueryAnOption(newQuery, options))
+		
+		const validQuery = isQueryAnOption(newQuery, options);
+		setValidChoiceMade(validQuery);
+		setShowErrorMessage(!validQuery);
 	}
 
 	const handleListMouseLeave = () => {
@@ -443,7 +450,7 @@ const AutoComplete = (props) => {
 				const queryChanged = query !== newQuery
 				const queryLongEnough = newQuery.length >= minLength
 
-				setQuery(newQuery)
+				setQuery(newQuery);
 				setAriaHint(newQuery.length === 0)
 
 				const searchForOptions = showAllValues || (newQuery.length && queryChanged && queryLongEnough)
@@ -499,6 +506,7 @@ const AutoComplete = (props) => {
 	useEffect(() => {
 		// Set query and options when new value passed in
 		setOptions(source);
+		setShowErrorMessage(false);
 
 		if (!value) {
 			setQuery("");
@@ -583,95 +591,98 @@ const AutoComplete = (props) => {
 	}
 
 	return (
-		<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
-			<Status
-				id={id}
-				length={options?.length}
-				queryLength={query?.length}
-				minQueryLength={minLength}
-				selectedOption={templateInputValue(options?.[selected])}
-				selectedOptionIndex={selected}
-				validChoiceMade={validChoiceMade}
-				isInFocus={isFocus !== null}
-				tQueryTooShort={tStatusQueryTooShort}
-				tNoResults={tStatusNoResults}
-				tSelectedOption={tStatusSelectedOption}
-				tResults={tStatusResults}
-			/>
+		<div>
+			{showErrorMessage && (<p className="govuk-error-message">{errorMessage}</p>)}
 
-			{hintValue && (
-				<span><input className={hintClassName} readonly tabIndex='-1' value={hintValue} /></span>
-			)}
+			<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
 
-			<input
-				aria-expanded={isMenuOpen ? 'true' : 'false'}
-				{
-				...(optionFocused) ? {
-					'aria-activedescendant': `${id}__option--${isFocus}`
-				} : null
-				}
-				aria-owns={`${id}__listbox`}
-				aria-autocomplete={(hasAutoselect()) ? 'both' : 'list'}
-				aria-labelledby={ariaLabelledBy}
-				{...ariaDescribedProp}
-				autoComplete='off'
-				className={`${inputClassName}${inputModifierFocused}${inputModifierType}`}
-				id={id}
-				onClick={handleInputClick}
-				onBlur={handleInputBlur}
-				onChange={handleInputChange}
-				onFocus={handleInputFocus}
-				name={name}
-				placeholder={placeholder}
-				ref={(inputElement) => { elementReferences[-1] = inputElement; }}
-				type='text'
-				role='combobox'
-				required={required}
-				value={getOptionLabelFromValue(query, options) ?? query}
-			/>
-			{dropdownArrow}
-			<ul
-				className={`${menuClassName} ${menuModifierDisplayMenu} ${menuModifierVisibility}`}
-				onMouseLeave={(event) => handleListMouseLeave(event)}
-				id={`${id}__listbox`}
-				role='listbox'
-			>
-				{options?.map((option, index) => {
-					const showFocused = isFocus === -1 ? selected === index : isFocus === index
-					const optionModifierFocused = showFocused && isHover === null ? ` ${optionClassName}--focused` : ''
-					const optionModifierOdd = (index % 2) ? ` ${optionClassName}--odd` : ''
-					const iosPosinsetHtml = (isIOSDevice())
-						? `<span id=${id}__option-suffix--${index} style="border:0;clip:rect(0 0 0 0);height:1px;` +
-						'marginBottom:-1px;marginRight:-1px;overflow:hidden;padding:0;position:absolute;' +
-						'whiteSpace:nowrap;width:1px">' + ` ${index + 1} of ${options?.length}</span>`
-						: ''
-
-					return (
-						<li
-							aria-selected={isFocus === index ? 'true' : 'false'}
-							className={`${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
-							dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
-							id={`${id}__option--${index}`}
-							key={index}
-							onBlur={(event) => handleOptionBlur(event, index)}
-							onClick={(event) => handleOptionClick(event, index, false)}
-							onMouseDown={handleOptionMouseDown}
-							onMouseEnter={() => handleOptionMouseEnter(index)}
-							ref={(optionEl) => { elementReferences[index] = optionEl; }}
-							role='option'
-							tabIndex='-1'
-							aria-posinset={index + 1}
-							aria-setsize={options.length}
-						/>
-					)
-				})}
-				{showNoOptionsFoundRender && (
-					<li className={`${optionClassName} ${optionClassName}--no-results`}>{tNoResults()}</li>
+				<Status
+					id={id}
+					length={options?.length}
+					queryLength={query?.length}
+					minQueryLength={minLength}
+					selectedOption={templateInputValue(options?.[selected])}
+					selectedOptionIndex={selected}
+					validChoiceMade={validChoiceMade}
+					isInFocus={isFocus !== null}
+					tQueryTooShort={tStatusQueryTooShort}
+					tNoResults={tStatusNoResults}
+					tSelectedOption={tStatusSelectedOption}
+					tResults={tStatusResults}
+				/>
+				{hintValue && (
+					<span><input className={hintClassName} readonly tabIndex='-1' value={hintValue} /></span>
 				)}
-			</ul>
+				<input
+					aria-expanded={isMenuOpen ? 'true' : 'false'}
+					{
+					...(optionFocused) ? {
+						'aria-activedescendant': `${id}__option--${isFocus}`
+					} : null
+					}
+					aria-owns={`${id}__listbox`}
+					aria-autocomplete={(hasAutoselect()) ? 'both' : 'list'}
+					aria-labelledby={ariaLabelledBy}
+					{...ariaDescribedProp}
+					autoComplete='off'
+					className={`${inputClassName}${inputModifierFocused}${inputModifierType}`}
+					id={id}
+					onClick={handleInputClick}
+					onBlur={handleInputBlur}
+					onChange={handleInputChange}
+					onFocus={handleInputFocus}
+					name={name}
+					placeholder={placeholder}
+					ref={(inputElement) => { elementReferences[-1] = inputElement; }}
+					type='text'
+					role='combobox'
+					required={required}
+					value={getOptionLabelFromValue(query, options) ?? query}
+				/>
+				{dropdownArrow}
+				<ul
+					className={`${menuClassName} ${menuModifierDisplayMenu} ${menuModifierVisibility}`}
+					onMouseLeave={(event) => handleListMouseLeave(event)}
+					id={`${id}__listbox`}
+					role='listbox'
+				>
+					{options?.map((option, index) => {
+						const showFocused = isFocus === -1 ? selected === index : isFocus === index
+						const optionModifierFocused = showFocused && isHover === null ? ` ${optionClassName}--focused` : ''
+						const optionModifierOdd = (index % 2) ? ` ${optionClassName}--odd` : ''
+						const iosPosinsetHtml = (isIOSDevice())
+							? `<span id=${id}__option-suffix--${index} style="border:0;clip:rect(0 0 0 0);height:1px;` +
+							'marginBottom:-1px;marginRight:-1px;overflow:hidden;padding:0;position:absolute;' +
+							'whiteSpace:nowrap;width:1px">' + ` ${index + 1} of ${options?.length}</span>`
+							: ''
 
-			<span id={assistiveHintID} style={{ display: 'none' }}>{tAssistiveHint()}</span>
+						return (
+							<li
+								aria-selected={isFocus === index ? 'true' : 'false'}
+								className={`${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
+								dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
+								id={`${id}__option--${index}`}
+								key={index}
+								onBlur={(event) => handleOptionBlur(event, index)}
+								onClick={(event) => handleOptionClick(event, index, false)}
+								onMouseDown={handleOptionMouseDown}
+								onMouseEnter={() => handleOptionMouseEnter(index)}
+								ref={(optionEl) => { elementReferences[index] = optionEl; }}
+								role='option'
+								tabIndex='-1'
+								aria-posinset={index + 1}
+								aria-setsize={options.length}
+							/>
+						)
+					})}
+					{showNoOptionsFoundRender && (
+						<li className={`${optionClassName} ${optionClassName}--no-results`}>{tNoResults()}</li>
+					)}
+				</ul>
 
+				<span id={assistiveHintID} style={{ display: 'none' }}>{tAssistiveHint()}</span>
+
+			</div>
 		</div>
 	)
 }

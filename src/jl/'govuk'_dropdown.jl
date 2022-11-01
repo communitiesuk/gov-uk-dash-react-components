@@ -28,6 +28,7 @@ A Dropdown component.
 	tStatusNoResults,
 	tStatusSelectedOption,
 	tStatusResults,
+ errorMessage,
 }} [props={}]
 
 @return {*}
@@ -37,6 +38,7 @@ Keyword arguments:
 - `confirmOnBlur` (Bool; optional): No Description
 - `cssNamespace` (String; optional): cssNamespace
 - `dropdownArrow` (Bool | Real | String | Dict | Array; optional): React component for dropdown arrow
+- `errorMessage` (String; optional): Error message to display when invalid input entered in dropdown
 - `label` (String; optional): Label text
 - `minLength` (Real; optional): No Description
 - `name` (String; optional): No Description
@@ -53,7 +55,7 @@ Keyword arguments:
 - `wrapperRef` (Bool | Real | String | Dict | Array; optional): wrapperRef
 """
 function 'govuk'_dropdown(; kwargs...)
-        available_props = Symbol[:id, :autoselect, :confirmOnBlur, :cssNamespace, :dropdownArrow, :label, :minLength, :name, :placeholder, :required, :selectElement, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
+        available_props = Symbol[:id, :autoselect, :confirmOnBlur, :cssNamespace, :dropdownArrow, :errorMessage, :label, :minLength, :name, :placeholder, :required, :selectElement, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
         wild_props = Symbol[]
         return Component("'govuk'_dropdown", "Dropdown", "uk_gov_dash_components", available_props, wild_props; kwargs...)
 end
