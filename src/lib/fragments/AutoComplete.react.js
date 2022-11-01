@@ -104,7 +104,7 @@ const AutoComplete = (props) => {
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
 	const [query, setQuery] = useState(startValue || value || '');
 
-	const[showErrorMessage, setShowErrorMessage] = useState(false);
+	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 	if (!Array.isArray(source)) {
 		dataSource('', (options) => {
@@ -149,11 +149,10 @@ const AutoComplete = (props) => {
 		setMenuOpen(newState.menuOpen || false);
 		setQuery(newQuery);
 		setSelected(null);
-		const validQuery = isQueryAnOption(newQuery, options);
-		setValidChoiceMade(validQuery)
 		
-		setShowErrorMessage(!validQuery)
-
+		const validQuery = isQueryAnOption(newQuery, options);
+		setValidChoiceMade(validQuery);
+		setShowErrorMessage(!validQuery);
 	}
 
 	const handleListMouseLeave = () => {
