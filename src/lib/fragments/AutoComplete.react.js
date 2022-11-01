@@ -510,6 +510,7 @@ const AutoComplete = (props) => {
 
 		if (!value) {
 			setQuery("");
+			setShowErrorMessage(false);
 		} else {
 			setQuery(value);
 		}
