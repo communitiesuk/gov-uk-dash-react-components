@@ -451,7 +451,7 @@ const AutoComplete = (props) => {
 				const queryChanged = query !== newQuery
 				const queryLongEnough = newQuery.length >= minLength
 
-				const validOption = options.find(option => option.label === newQuery);	
+				const validOption =  getValueFromQuery(newQuery, options);
 				setQuery(validOption ? validOption.value : newQuery)
 
 				setAriaHint(newQuery.length === 0)
