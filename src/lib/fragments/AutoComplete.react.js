@@ -451,9 +451,7 @@ const AutoComplete = (props) => {
 				const queryChanged = query !== newQuery
 				const queryLongEnough = newQuery.length >= minLength
 
-				const validOption =  getValueFromQuery(newQuery, options);
-				setQuery(validOption ? validOption.value : newQuery)
-
+				setQuery(newQuery);
 				setAriaHint(newQuery.length === 0)
 
 				const searchForOptions = showAllValues || (newQuery.length && queryChanged && queryLongEnough)
@@ -509,10 +507,10 @@ const AutoComplete = (props) => {
 	useEffect(() => {
 		// Set query and options when new value passed in
 		setOptions(source);
+		setShowErrorMessage(false);
 
 		if (!value) {
 			setQuery("");
-			setShowErrorMessage(false);
 		} else {
 			setQuery(value);
 		}
