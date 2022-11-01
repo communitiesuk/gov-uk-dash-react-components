@@ -21,5 +21,5 @@ __all__ = [
     "status",
     "ComboBox",
     "ListBox",
-    "Popover"
+    "Popover",
 ]
