@@ -31,7 +31,7 @@ or for a specific version:
 pip install uk-gov-dash-components~=6.7.0
 ```
 
-For installation using conda, paste the following code into the environment configuration file:
+For installation into a conda environment, paste the following code into the environment configuration file:
 ```yml
  - pip:
      - uk-gov-dash-components~=6.7.0
