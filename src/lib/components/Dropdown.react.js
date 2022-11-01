@@ -30,6 +30,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  errorMessage,
  * }} [props={}]
  *
  * @return {*}
@@ -150,6 +151,11 @@ export const dropdownPropTypes = {
 	 * Override the css style of the wrapper
 	 */
 	style: PropTypes.any,
+
+	/**
+	 * Error message to display when invalid input entered in dropdown
+	 */
+	errorMessage: PropTypes.string,
 
 }
 

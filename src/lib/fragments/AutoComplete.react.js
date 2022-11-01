@@ -33,6 +33,7 @@ import './autocomplete.css';
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  errorMessage,
  * }=defaultProps]
  * @return {*}
  */
@@ -65,6 +66,7 @@ const AutoComplete = (props) => {
 		selectElement,
 		alwaysDisplayArrow,
 		style,
+		errorMessage,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -593,7 +595,7 @@ const AutoComplete = (props) => {
 
 	return (
 		<div>
-			{showErrorMessage && (<p class="govuk-error-message">Invalid value entered</p>)}
+			{showErrorMessage && (<p class="govuk-error-message">{errorMessage}</p>)}
 
 			<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
 

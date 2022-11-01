@@ -32,6 +32,7 @@ Lazy loaded Autocomplete
 	tStatusSelectedOption,
 	tStatusResults,
 	style,
+ errorMessage,
 } [props={}]
 @return {*}
 Keyword arguments:
@@ -43,6 +44,7 @@ Keyword arguments:
 - `cssNamespace` (String; optional): cssNamespace
 - `displayMenu` (String; optional): No Description
 - `dropdownArrow` (Bool | Real | String | Dict | Array; optional): React component for dropdown arrow
+- `errorMessage` (String; optional): Error message to display when invalid input entered in dropdown
 - `minLength` (Real; optional): No Description
 - `name` (String; optional): No Description
 - `placeholder` (String; optional): No Description
@@ -59,7 +61,7 @@ Keyword arguments:
 - `wrapperRef` (Bool | Real | String | Dict | Array; optional): wrapperRef
 """
 function 'govuk'_autocomplete(; kwargs...)
-        available_props = Symbol[:id, :alwaysDisplayArrow, :ariaLabelledBy, :autoselect, :confirmOnBlur, :cssNamespace, :displayMenu, :dropdownArrow, :minLength, :name, :placeholder, :required, :selectElement, :showAllValues, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
+        available_props = Symbol[:id, :alwaysDisplayArrow, :ariaLabelledBy, :autoselect, :confirmOnBlur, :cssNamespace, :displayMenu, :dropdownArrow, :errorMessage, :minLength, :name, :placeholder, :required, :selectElement, :showAllValues, :showNoOptionsFound, :source, :style, :tStatusNoResults, :tStatusResults, :templates, :value, :wrapperRef]
         wild_props = Symbol[]
         return Component("'govuk'_autocomplete", "AutoComplete", "uk_gov_dash_components", available_props, wild_props; kwargs...)
 end

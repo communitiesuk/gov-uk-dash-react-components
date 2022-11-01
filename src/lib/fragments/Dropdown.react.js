@@ -32,6 +32,7 @@ import {
  * 	tStatusNoResults,
  * 	tStatusSelectedOption,
  * 	tStatusResults,
+ *  errorMessage,
  * }} [props={}]
  *
  * @return {*}

@@ -41,7 +41,7 @@
     }
   },
   "src/lib/components/AutoComplete.react.js": {
-    "description": "Lazy loaded Autocomplete\r\n\n@param {\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tdefaultValue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n\tstyle,\r\n} [props={}]\r\n@return {*}",
+    "description": "Lazy loaded Autocomplete\r\n\n@param {\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tdefaultValue,\r\n\tdisplayMenu,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\tshowAllValues,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n\tstyle,\r\n errorMessage,\r\n} [props={}]\r\n@return {*}",
     "displayName": "AutoComplete",
     "methods": [],
     "props": {
@@ -298,6 +298,17 @@
         "required": false,
         "description": "Override the css style of the wrapper"
       },
+      "errorMessage": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Error message to display when invalid input entered in dropdown",
+        "defaultValue": {
+          "value": "'Invalid value entered'",
+          "computed": false
+        }
+      },
       "ariaLabelledBy": {
         "type": {
           "name": "string"
@@ -450,7 +461,7 @@
     }
   },
   "src/lib/components/Dropdown.react.js": {
-    "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n}} [props={}]\r\n\n@return {*}",
+    "description": "@param {{\r\n\tlabel: string,\r\n\tid,\r\n\tautoselect,\r\n\tcssNamespace,\r\n\tvalue,\r\n\tminLength,\r\n\tname,\r\n\tplaceholder,\r\n\tonConfirm,\r\n\tconfirmOnBlur,\r\n\tshowNoOptionsFound,\r\n\trequired,\r\n\ttNoResults,\r\n\ttAssistiveHint,\r\n\tsource,\r\n\ttemplates,\r\n\tdropdownArrow: dropdownArrowFactory,\r\n\ttStatusQueryTooShort,\r\n\ttStatusNoResults,\r\n\ttStatusSelectedOption,\r\n\ttStatusResults,\r\n errorMessage,\r\n}} [props={}]\r\n\n@return {*}",
     "displayName": "Dropdown",
     "methods": [],
     "props": {
@@ -628,6 +639,13 @@
         },
         "required": false,
         "description": "Override the css style of the wrapper"
+      },
+      "errorMessage": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Error message to display when invalid input entered in dropdown"
       }
     }
   },
