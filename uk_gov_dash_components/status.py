@@ -5,7 +5,8 @@ from dash.development.base_component import Component, _explicitize_args
 
 class status(Component):
     """A status component.
-    Display ststus
+    Display status
+
 
     @export
     @class Status
