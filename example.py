@@ -42,7 +42,7 @@ side_menu = [
         ],
         expandedClass="EXPANDED",
         collapsedClass="COLLAPSED",
-        ariaLabel="Clickable Li item example"
+        ariaLabel="Clickable Li item example",
     ),
 ]
 
