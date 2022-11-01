@@ -3,7 +3,7 @@ module UkGovDashComponents
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "1.6.3"
+const version = "1.6.5"
 
 include("jl/'govuk'_accordion.jl")
 include("jl/'govuk'_autocomplete.jl")
@@ -26,14 +26,14 @@ function __init__()
             [
                 DashBase.Resource(
     relative_package_path = "async-UkGovDashComponents.js",
-    external_url = "https://unpkg.com/uk_gov_dash_components@1.6.3/uk_gov_dash_components/async-UkGovDashComponents.js",
+    external_url = "https://unpkg.com/uk_gov_dash_components@1.6.5/uk_gov_dash_components/async-UkGovDashComponents.js",
     dynamic = nothing,
     async = :true,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-UkGovDashComponents.js.map",
-    external_url = "https://unpkg.com/uk_gov_dash_components@1.6.3/uk_gov_dash_components/async-UkGovDashComponents.js.map",
+    external_url = "https://unpkg.com/uk_gov_dash_components@1.6.5/uk_gov_dash_components/async-UkGovDashComponents.js.map",
     dynamic = true,
     async = nothing,
     type = :js
