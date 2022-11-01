@@ -19,6 +19,24 @@ If you have selected install_dependencies during the prompt, you can skip this p
     conda env create -f environment.yml 
     ```
 
+## Using the package
+
+For installation using pip:
+```sh
+pip install uk-gov-dash-components
+```
+
+or for a specific version:
+```sh
+pip install uk-gov-dash-components~=6.7.0
+```
+
+For installation using conda, paste the following code into the environment configuration file:
+```yml
+ - pip:
+     - uk-gov-dash-components~=6.7.0
+```
+
 ## Create a new component
 
 Use the `ComponentTemplate` component as a template.
@@ -92,4 +110,4 @@ __These are the default instructions__
 
 1. When your PR is merged to main, it will be released automatically by the [Release workflow](.github/workflows/release.yml) using the version within [package.json](package.json).
    You can still merge a PR which doesn't update the version within `package.json`, but the Release workflow will fail.
-   Failure of the Release workflow means that a new release won't have been generated and you won't be able to use the new version of the code in dashboard repos until you update the version in `package.json`.
+   Failure of the Release workflow means that a new release won't have been generated, the changes made to the package will not have been uploaded to PyPI and you won't be able to use the new version of the code in dashboard repos until you update the version in `package.json`. 
