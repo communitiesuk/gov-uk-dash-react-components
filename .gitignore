@@ -278,3 +278,9 @@ GitHub.sublime-settings
 # Julia manifest file names
 Manifest.toml
 JuliaManifest.toml
+
+# Julia build artifacts
+deps/
+src/*.jl
+src/jl
+Project.toml
