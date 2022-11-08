@@ -27,7 +27,7 @@ const App = () => {
                         { label: "Local authority type2", value: "LOL222", disabled:true },
 
                         { label: "Local authorities3", value: "Hello LOL3" },
-                        { label: "Regional3", value: "Hello LOL3" },
+                        { label: "Regional3", value: "Hello LOL3 HATS" },
                         { label: "Local authority type3", value: "LOL3", disabled:true },
 
                         { label: "Local authorities4", value: "Hello LOLa" },

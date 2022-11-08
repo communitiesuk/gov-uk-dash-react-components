@@ -248,14 +248,17 @@ const AutoComplete = (props) => {
 
 
 	const handleOptionClick = (event, index, menuOpen = false) => {
-		const selectedOption = options[index]
-		const newQuery = templateInputValue(selectedOption)
-		onConfirm(selectedOption?.value ?? selectedOption)
-
 		// Do not remove this, otherwise the input can receive the event and
 		// keep the menu open unintentionally
 		event.preventDefault()
 		event.stopPropagation()
+
+		const selectedOption = options[index]
+		if (selectedOption.disabled === true) {
+			return
+		}
+		const newQuery = templateInputValue(selectedOption)
+		onConfirm(selectedOption?.value ?? selectedOption)
 
 		setFocus(-1);
 		setHover(null);
