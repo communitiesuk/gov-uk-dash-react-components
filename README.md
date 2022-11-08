@@ -1,25 +1,17 @@
-# UK Gov dash components
+# UK Gov Dash components
 
-UK Gov dash components is a Dash component library.
+UK Gov Dash components is a Dash component library which provides [GOV.UK styled][design-system] components for:
 
-Plotly Dash have written some documentation on
-[React for Python Developers](https://dash.plotly.com/react-for-python-developers)
-which acts as good starting point.
+- Accordion
+- AutoComplete Dropdown
+- Checklist
 
-## Install dependencies
+[design-system]: https://design-system.service.gov.uk/
 
-If you have selected install_dependencies during the prompt, you can skip this part.
+⚠️ We intentionally only provide support for Python Dash projects.
+If you are interested in Julia or R support please contact the team <PythonVisualisations@levellingup.gov.uk>.
 
-1. Install npm packages
-    ```
-    npm install
-    ```
-2. Create conda environment 
-    ```
-    conda env create -f environment.yml 
-    ```
-
-## Using the package
+## Using the package from Python
 
 For installation using pip:
 ```sh
@@ -37,7 +29,26 @@ For installation into a conda environment, paste the following code into the env
      - uk-gov-dash-components~=6.7.0
 ```
 
-## Create a new component
+## Contributing to this package
+
+Plotly Dash have written some documentation on
+[React for Python Developers](https://dash.plotly.com/react-for-python-developers)
+which acts as good starting point.
+
+### Install dependencies
+
+If you have selected install_dependencies during the prompt, you can skip this part.
+
+1. Install npm packages
+    ```
+    npm install
+    ```
+2. Create conda environment 
+    ```
+    conda env create -f environment.yml 
+    ```
+
+### Create a new component
 
 Use the `ComponentTemplate` component as a template.
 This component is class based, while other components in this repository are functions.
@@ -52,7 +63,7 @@ You can read more about [function components in the React documentation](https:/
     1. Open http://localhost:55555 in your browser.
     1. If nothing apears on the page, then open up the browser console to see the error(s).
 
-## Test your code within a Dash Application
+### Test your code within a Dash Application
 
 If you've previously been running `npm start` you've been running your component within a pure React environment separate to Dash.
 
@@ -67,7 +78,7 @@ If you've previously been running `npm start` you've been running your component
 3. Visit http://localhost:8050 in your web browser
 4. Add your component to `example.py` using the existing Python as a template.
 
-## Write tests for your component.
+### Write tests for your component.
 
 __These are the default instructions__
 
@@ -75,7 +86,7 @@ __These are the default instructions__
 - Run the tests with `pytest tests`.
 - The Dash team uses these types of integration tests extensively. Browse the Dash component code on GitHub for more examples of testing (e.g. https://github.com/plotly/dash-core-components)
 
-## Add custom styles to your component
+### Add custom styles to your component
 
 __These are the default instructions__
 
@@ -84,7 +95,7 @@ __These are the default instructions__
     - Make sure the stylesheets are added to the `_css_dist` dict in `uk_gov_dash_components/__init__.py` so dash will serve them automatically when the component suite is requested.
 - [Review your code](./review_checklist.md)
 
-## Create a production build and publish:
+### Create a production build and publish:
 1. Update the `version` property of the `package.json` file in the syle of Major.Minor.Patch, e.g. 1.2.3
     - Major - any breaking changes to previous functionality.
     - Minor - additional functionality that doesn't effect backward compatibility. When updated the patch version should be reset to zero. eg. 2.3.1 goes to 2.4.0 for minor update.
