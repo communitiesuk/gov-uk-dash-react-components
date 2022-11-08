@@ -369,7 +369,8 @@ const AutoComplete = (props) => {
 		if (isMenuOpen) {
 			event.preventDefault()
 			const hasSelectedOption = selected >= 0
-			if (hasSelectedOption) {
+			
+			if (hasSelectedOption && !options[selected].disabled) {
 				handleOptionClick(event, selected, false)
 			}
 		} else if (selectElement) {
