@@ -279,6 +279,14 @@ GitHub.sublime-settings
 Manifest.toml
 JuliaManifest.toml
 
+# R build artifacts
+inst
+man
+R/*
+DESCRIPTION
+NAMESPACE
+
+
 # Julia build artifacts
 deps/
 src/*.jl
