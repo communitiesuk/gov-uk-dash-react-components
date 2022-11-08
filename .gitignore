@@ -278,3 +278,10 @@ GitHub.sublime-settings
 # Julia manifest file names
 Manifest.toml
 JuliaManifest.toml
+
+# R build artifacts
+inst
+man
+R/*
+DESCRIPTION
+NAMESPACE
