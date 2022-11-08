@@ -343,7 +343,14 @@ const AutoComplete = (props) => {
 		} else if (isMenuOpen) {
 			const isNotAtBottom = selected !== options.length - 1
 			if (isNotAtBottom || selectElement) {
-				handleOptionFocus(selected + 1, autoselect)
+				let i = 1;
+				let nextValidOption = options[selected + i];
+				while (nextValidOption.disabled === true){
+					i++
+					nextValidOption = options[selected + i]
+				}
+				console.log(i, nextValidOption)
+				handleOptionFocus(selected + i, autoselect)
 			}
 		}
 	}
@@ -369,7 +376,7 @@ const AutoComplete = (props) => {
 		if (isMenuOpen) {
 			event.preventDefault()
 			const hasSelectedOption = selected >= 0
-			
+
 			if (hasSelectedOption && !options[selected].disabled) {
 				handleOptionClick(event, selected, false)
 			}
