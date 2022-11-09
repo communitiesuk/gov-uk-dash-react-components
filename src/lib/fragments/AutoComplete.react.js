@@ -306,23 +306,23 @@ const AutoComplete = (props) => {
 			const isNotAtTop = selected !== -1
 			const allowMoveUp = isNotAtTop && isMenuOpen
 
-			// if (allowMoveUp || selectElement) {
-			// 	handleOptionFocus(selected - 1, autoselect)
-			// }
-
-			if (isNotAtTop) {
-				let i = 1;
-				let nextValidOption = options[selected - i];
-				while (selected - i !== -1 && nextValidOption?.disabled === true){
-					i++
-					nextValidOption = options[selected - i]
-				}
-				if (selected - i === -1 || nextValidOption.disabled !== true || selectElement) {
-					handleOptionFocus(selected - i, autoselect)
-				}
+			if (allowMoveUp || selectElement) {
+				const indexOfPreviousValidOption = getIndexOfPreviousValidOption()
+				handleOptionFocus(indexOfPreviousValidOption, autoselect)
 			}
 		}
 	}
+
+	const getIndexOfPreviousValidOption = () => {
+		let i = 1;
+		let nextValidOption = options[selected - i];
+		while (selected - i !== -1 && nextValidOption?.disabled === true){
+			i++
+			nextValidOption = options[selected - i]
+		}
+		return selected - i
+	}
+	
 
 	const handleDownArrow = (event) => {
 		event.preventDefault()
