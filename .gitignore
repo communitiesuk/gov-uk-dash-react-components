@@ -168,6 +168,8 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+uk_gov_dash_components/*
+!uk_gov_dash_components/__init__.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -278,3 +280,17 @@ GitHub.sublime-settings
 # Julia manifest file names
 Manifest.toml
 JuliaManifest.toml
+
+# R build artifacts
+inst
+man
+R/*
+DESCRIPTION
+NAMESPACE
+
+
+# Julia build artifacts
+deps/
+src/*.jl
+src/jl
+Project.toml
