@@ -691,7 +691,7 @@ const AutoComplete = (props) => {
 						return (
 							<li
 								aria-selected={isFocus === index ? 'true' : 'false'}
-								className={option.disabled === true ? `${optionClassName} ${optionClassName}--no-results`: `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
+								className={option.disabled === true ? `${optionClassName} ${optionClassName}--disabled`: `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
 								dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
 								id={`${id}__option--${index}`}
 								key={index}
@@ -708,7 +708,7 @@ const AutoComplete = (props) => {
 						)
 					})}
 					{showNoOptionsFoundRender && (
-						<li className={`${optionClassName} ${optionClassName}--no-results`}>{tNoResults()}</li>
+						<li className={`${optionClassName} ${optionClassName}--disabled`}>{tNoResults()}</li>
 					)}
 				</ul>
 
