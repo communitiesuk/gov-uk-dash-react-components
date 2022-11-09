@@ -342,15 +342,16 @@ const AutoComplete = (props) => {
 			})
 		} else if (isMenuOpen) {
 			const isNotAtBottom = selected !== options.length - 1
-			if (isNotAtBottom || selectElement) {
+			if (isNotAtBottom) {
 				let i = 1;
 				let nextValidOption = options[selected + i];
-				while (nextValidOption.disabled === true){
+				while (nextValidOption.disabled === true && selected + i !== options.length - 1){
 					i++
 					nextValidOption = options[selected + i]
 				}
-				console.log(i, nextValidOption)
-				handleOptionFocus(selected + i, autoselect)
+				if (nextValidOption.disabled !== true || selectElement) {
+					handleOptionFocus(selected + i, autoselect)
+				}
 			}
 		}
 	}

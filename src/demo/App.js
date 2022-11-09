@@ -40,7 +40,7 @@ const App = () => {
 
                         { label: "Local authorities6", value: "Hello aLOL3" },
                         { label: "Regional6", value: "Hello LaOL3" },
-                        { label: "Local authority type6", value: "LOaL3" },
+                        { label: "Local authority type6", value: "LOaL3", disabled:true },
                     ]}
                     id="autocomplete-default"
                     placeholder="Select Option"
