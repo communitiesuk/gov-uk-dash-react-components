@@ -354,7 +354,7 @@ const AutoComplete = (props) => {
 			})
 		} else if (isMenuOpen) {
 			const nextValidOptionIndex = getIndexOfNextValidOption()
-			if (nextValidOptionIndex || selectElement) {
+			if (nextValidOptionIndex !== null || selectElement) {
 				handleOptionFocus(nextValidOptionIndex, autoselect);
 			}
 		}
