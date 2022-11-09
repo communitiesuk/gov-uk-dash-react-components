@@ -307,20 +307,20 @@ const AutoComplete = (props) => {
 			const allowMoveUp = isNotAtTop && isMenuOpen
 
 			if (allowMoveUp || selectElement) {
-				const indexOfPreviousValidOption = getIndexOfPreviousValidOption()
-				handleOptionFocus(indexOfPreviousValidOption, autoselect)
+				const indexOfPreviousValidOption = getIndexOfPreviousValidOption();
+				handleOptionFocus(indexOfPreviousValidOption, autoselect);
 			}
 		}
 	}
 
 	const getIndexOfPreviousValidOption = () => {
 		let i = 1;
-		let nextValidOption = options[selected - i];
-		while (selected - i !== -1 && nextValidOption?.disabled === true){
-			i++
-			nextValidOption = options[selected - i]
+		let previousOption = options[selected - i];
+		while (selected - i !== -1 && previousOption?.disabled === true) {
+			i++;
+			previousOption = options[selected - i];
 		}
-		return selected - i
+		return selected - i;
 	}
 	
 
@@ -355,22 +355,22 @@ const AutoComplete = (props) => {
 		} else if (isMenuOpen) {
 			const nextValidOptionIndex = getIndexOfNextValidOption()
 			if (nextValidOptionIndex || selectElement) {
-				handleOptionFocus(nextValidOptionIndex, autoselect)
+				handleOptionFocus(nextValidOptionIndex, autoselect);
 			}
 		}
 	}
 
 	const getIndexOfNextValidOption = () => {
-		const isAtBottom = selected === options.length - 1
-		if (isAtBottom) return null
+		const isAtBottom = selected === options.length - 1;
+		if (isAtBottom) return null;
 
-		const subsequentOptions = options.slice(selected + 1)
-		const subsequentOptionsIndex = subsequentOptions.findIndex((option)=> option.disabled !== true)
-		if (subsequentOptionsIndex === -1) return null
+		const subsequentOptions = options.slice(selected + 1);
+		const subsequentOptionsIndex = subsequentOptions.findIndex((option)=> option.disabled !== true);
+		if (subsequentOptionsIndex === -1) return null;
 		
-		const offsetOfNextValidOption = subsequentOptionsIndex + 1
+		const offsetOfNextValidOption = subsequentOptionsIndex + 1;
 		
-		return selected + offsetOfNextValidOption
+		return selected + offsetOfNextValidOption;
 	}
 
 	const handleSpace = (event) => {
