@@ -468,22 +468,24 @@ var AutoComplete = function AutoComplete(props) {
         setHover(null);
       });
     } else if (isMenuOpen) {
-      var isNotAtBottom = selected !== options.length - 1;
+      var nextValidOptionIndex = getIndexOfNextValidOption();
 
-      if (isNotAtBottom) {
-        var i = 1;
-        var nextValidOption = options[selected + i];
-
-        while (nextValidOption.disabled === true && selected + i !== options.length - 1) {
-          i++;
-          nextValidOption = options[selected + i];
-        }
-
-        if (nextValidOption.disabled !== true || selectElement) {
-          handleOptionFocus(selected + i, autoselect);
-        }
+      if (nextValidOptionIndex || selectElement) {
+        handleOptionFocus(nextValidOptionIndex, autoselect);
       }
     }
+  };
+
+  var getIndexOfNextValidOption = function getIndexOfNextValidOption() {
+    var isAtBottom = selected === options.length - 1;
+    if (isAtBottom) return null;
+    var subsequentOptions = options.slice(selected + 1);
+    var subsequentOptionsIndex = subsequentOptions.findIndex(function (option) {
+      return option.disabled !== true;
+    });
+    if (subsequentOptionsIndex === -1) return null;
+    var offsetOfNextValidOption = subsequentOptionsIndex + 1;
+    return selected + offsetOfNextValidOption;
   };
 
   var handleSpace = function handleSpace(event) {

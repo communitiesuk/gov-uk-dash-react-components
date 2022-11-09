@@ -353,19 +353,24 @@ const AutoComplete = (props) => {
 				setHover(null);
 			})
 		} else if (isMenuOpen) {
-			const isNotAtBottom = selected !== options.length - 1
-			if (isNotAtBottom) {
-				let i = 1;
-				let nextValidOption = options[selected + i];
-				while (nextValidOption.disabled === true && selected + i !== options.length - 1){
-					i++
-					nextValidOption = options[selected + i]
-				}
-				if (nextValidOption.disabled !== true || selectElement) {
-					handleOptionFocus(selected + i, autoselect)
-				}
+			const nextValidOptionIndex = getIndexOfNextValidOption()
+			if (nextValidOptionIndex || selectElement) {
+				handleOptionFocus(nextValidOptionIndex, autoselect)
 			}
 		}
+	}
+
+	const getIndexOfNextValidOption = () => {
+		const isAtBottom = selected === options.length - 1
+		if (isAtBottom) return null
+
+		const subsequentOptions = options.slice(selected + 1)
+		const subsequentOptionsIndex = subsequentOptions.findIndex((option)=> option.disabled !== true)
+		if (subsequentOptionsIndex === -1) return null
+		
+		const offsetOfNextValidOption = subsequentOptionsIndex + 1
+		
+		return selected + offsetOfNextValidOption
 	}
 
 	const handleSpace = (event) => {
