@@ -314,13 +314,13 @@ const AutoComplete = (props) => {
 	}
 
 	const getIndexOfPreviousValidOption = () => {
-		let i = 1;
-		let previousOption = options[selected - i];
-		while (selected - i !== -1 && previousOption?.disabled === true) {
-			i++;
-			previousOption = options[selected - i];
+		let offsetFromSelected = 1;
+		let previousOption = options[selected - offsetFromSelected];
+		while (selected - offsetFromSelected !== -1 && previousOption?.disabled === true) {
+			offsetFromSelected++;
+			previousOption = options[selected - offsetFromSelected];
 		}
-		return selected - i;
+		return selected - offsetFromSelected;
 	}
 	
 
