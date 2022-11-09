@@ -353,14 +353,17 @@ const AutoComplete = (props) => {
 				setHover(null);
 			})
 		} else if (isMenuOpen) {
-			const nextValidOptionIndex = getIndexOfNextValidOption()
-			if (nextValidOptionIndex !== null || selectElement) {
+			const nextValidOptionIndex = getIndexOfNextValidOption(selected)
+			if (nextValidOptionIndex !== null) {
 				handleOptionFocus(nextValidOptionIndex, autoselect);
+			} else if (selectElement) {
+				const firstValidOptionIndex = getIndexOfNextValidOption(-1)
+				handleOptionFocus(firstValidOptionIndex, autoselect)
 			}
 		}
 	}
 
-	const getIndexOfNextValidOption = () => {
+	const getIndexOfNextValidOption = (selected) => {
 		const isAtBottom = selected === options.length - 1;
 		if (isAtBottom) return null;
 
