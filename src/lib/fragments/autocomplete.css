@@ -144,7 +144,7 @@
 	}
 }
 
-.autocomplete__option--no-results {
+.autocomplete__option--disabled {
 	background-color: #FAFAFA;
 	color: #646b6f;
 	cursor: not-allowed;

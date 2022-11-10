@@ -248,14 +248,17 @@ const AutoComplete = (props) => {
 
 
 	const handleOptionClick = (event, index, menuOpen = false) => {
-		const selectedOption = options[index]
-		const newQuery = templateInputValue(selectedOption)
-		onConfirm(selectedOption?.value ?? selectedOption)
-
 		// Do not remove this, otherwise the input can receive the event and
 		// keep the menu open unintentionally
 		event.preventDefault()
 		event.stopPropagation()
+
+		const selectedOption = options[index]
+		if (selectedOption.disabled === true) {
+			return
+		}
+		const newQuery = templateInputValue(selectedOption)
+		onConfirm(selectedOption?.value ?? selectedOption)
 
 		setFocus(-1);
 		setHover(null);
@@ -303,11 +306,25 @@ const AutoComplete = (props) => {
 			const isNotAtTop = selected !== -1
 			const allowMoveUp = isNotAtTop && isMenuOpen
 
-			if (allowMoveUp || selectElement) {
-				handleOptionFocus(selected - 1, autoselect)
-			}
+			if (allowMoveUp) {
+				const indexOfPreviousValidOption = getIndexOfPreviousValidOption();
+				handleOptionFocus(indexOfPreviousValidOption, autoselect);
+			} else if (selectElement) {
+                handleOptionFocus(selected - 1, autoselect);
+            }
 		}
 	}
+
+	const getIndexOfPreviousValidOption = () => {
+		let offsetFromSelected = 1;
+		let previousOption = options[selected - offsetFromSelected];
+		while (selected - offsetFromSelected !== -1 && previousOption?.disabled === true) {
+			offsetFromSelected++;
+			previousOption = options[selected - offsetFromSelected];
+		}
+		return selected - offsetFromSelected;
+	}
+	
 
 	const handleDownArrow = (event) => {
 		event.preventDefault()
@@ -338,11 +355,26 @@ const AutoComplete = (props) => {
 				setHover(null);
 			})
 		} else if (isMenuOpen) {
-			const isNotAtBottom = selected !== options.length - 1
-			if (isNotAtBottom || selectElement) {
-				handleOptionFocus(selected + 1, autoselect)
+			const nextValidOptionIndex = getIndexOfNextValidOption(selected)
+			if (nextValidOptionIndex !== null) {
+				handleOptionFocus(nextValidOptionIndex, autoselect);
+			} else if (selectElement) {
+				handleOptionFocus(selected + 1, autoselect);
 			}
 		}
+	}
+
+	const getIndexOfNextValidOption = (selected) => {
+		const isAtBottom = selected === options.length - 1;
+		if (isAtBottom) return null;
+
+		const subsequentOptions = options.slice(selected + 1);
+		const subsequentOptionsIndex = subsequentOptions.findIndex((option)=> option.disabled !== true);
+		if (subsequentOptionsIndex === -1) return null;
+		
+		const offsetOfNextValidOption = subsequentOptionsIndex + 1;
+		
+		return selected + offsetOfNextValidOption;
 	}
 
 	const handleSpace = (event) => {
@@ -366,7 +398,8 @@ const AutoComplete = (props) => {
 		if (isMenuOpen) {
 			event.preventDefault()
 			const hasSelectedOption = selected >= 0
-			if (hasSelectedOption) {
+
+			if (hasSelectedOption && !options[selected].disabled) {
 				handleOptionClick(event, selected, false)
 			}
 		} else if (selectElement) {
@@ -659,7 +692,7 @@ const AutoComplete = (props) => {
 						return (
 							<li
 								aria-selected={isFocus === index ? 'true' : 'false'}
-								className={`${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
+								className={option.disabled === true ? `${optionClassName} ${optionClassName}--disabled`: `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
 								dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
 								id={`${id}__option--${index}`}
 								key={index}
@@ -676,7 +709,7 @@ const AutoComplete = (props) => {
 						)
 					})}
 					{showNoOptionsFoundRender && (
-						<li className={`${optionClassName} ${optionClassName}--no-results`}>{tNoResults()}</li>
+						<li className={`${optionClassName} ${optionClassName}--disabled`}>{tNoResults()}</li>
 					)}
 				</ul>
 

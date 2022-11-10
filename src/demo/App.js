@@ -18,17 +18,17 @@ const App = () => {
                     label="Hello world"
                     style={{minWidth: '50%'}}
                     source={[
-                        { label: "Local authorities", value: "Hello LOL" },
-                        { label: "Regional", value: "Hello LOL2" },
-                        { label: "Local authority type", value: "LOL" },
+                        { label: "Local authorities", value: "Hello LOL", disabled:true },
+                        { label: "Regional", value: "Hello LOL2", disabled:true },
+                        { label: "Local authority type", value: "LOL", disabled:true },
 
-                        { label: "Local authorities2", value: "Hello LOL222" },
-                        { label: "Regional2", value: "Hello LOL222" },
-                        { label: "Local authority type2", value: "LOL222" },
+                        { label: "Local authorities2", value: "Hello LOL222", disabled:true },
+                        { label: "Regional2", value: "Hello LOL222", disabled:true },
+                        { label: "Local authority type2", value: "LOL222", disabled:true },
 
                         { label: "Local authorities3", value: "Hello LOL3" },
-                        { label: "Regional3", value: "Hello LOL3" },
-                        { label: "Local authority type3", value: "LOL3" },
+                        { label: "Regional3", value: "Hello LOL3 HATS" },
+                        { label: "Local authority type3", value: "LOL3", disabled:true },
 
                         { label: "Local authorities4", value: "Hello LOLa" },
                         { label: "Regional4", value: "Hello LOL2a" },
@@ -40,7 +40,7 @@ const App = () => {
 
                         { label: "Local authorities6", value: "Hello aLOL3" },
                         { label: "Regional6", value: "Hello LaOL3" },
-                        { label: "Local authority type6", value: "LOaL3" },
+                        { label: "Local authority type6", value: "LOaL3", disabled:true },
                     ]}
                     id="autocomplete-default"
                     placeholder="Select Option"
