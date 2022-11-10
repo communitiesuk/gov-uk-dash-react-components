@@ -306,10 +306,12 @@ const AutoComplete = (props) => {
 			const isNotAtTop = selected !== -1
 			const allowMoveUp = isNotAtTop && isMenuOpen
 
-			if (allowMoveUp || selectElement) {
+			if (allowMoveUp) {
 				const indexOfPreviousValidOption = getIndexOfPreviousValidOption();
 				handleOptionFocus(indexOfPreviousValidOption, autoselect);
-			}
+			} else if (selectElement) {
+                handleOptionFocus(selected - 1, autoselect);
+            }
 		}
 	}
 
@@ -357,8 +359,7 @@ const AutoComplete = (props) => {
 			if (nextValidOptionIndex !== null) {
 				handleOptionFocus(nextValidOptionIndex, autoselect);
 			} else if (selectElement) {
-				const firstValidOptionIndex = getIndexOfNextValidOption(-1)
-				handleOptionFocus(firstValidOptionIndex, autoselect)
+				handleOptionFocus(selected + 1, autoselect);
 			}
 		}
 	}
