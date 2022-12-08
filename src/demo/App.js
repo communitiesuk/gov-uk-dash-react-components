@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState }  from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion, autocomplete } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');

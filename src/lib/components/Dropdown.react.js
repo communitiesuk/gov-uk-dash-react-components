@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
 	defaultProps,
-} from './AutoComplete.react';
+} from './autocomplete';
 import { Dropdown as RealComponent } from '../LazyLoader';
 
 
