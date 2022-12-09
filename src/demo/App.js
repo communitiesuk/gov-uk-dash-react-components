@@ -1,7 +1,41 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState }  from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
+// this was installed via 'npm i react-multi-select-component'
+import { MultiSelect } from "react-multi-select-component";
+
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion, MultiSelectDropdown } from '../lib';
+
+const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango" },
+    { label: "Apple 🥭", value: "apple" },
+    { label: "Pear 🥭", value: "pear" },
+    { label: "Banana 🥭", value: "banana" },
+    { label: "Kiwi 🥭", value: "kiwi" },
+    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+  ];
+  
+  const Example = () => {
+    const [selected, setSelected] = useState([]);
+    const maxAllowedSelections = 3
+
+  
+    return (
+      <div>
+        <h1>Select Fruits</h1>
+        {/* <pre>{JSON.stringify(selected)}</pre> */}
+        <MultiSelect
+          options={options}
+          value={selected.length <= maxAllowedSelections ? selected: selected.slice(0,maxAllowedSelections)}
+          onChange={setSelected}
+          labelledBy="Select"
+          hasSelectAll={false}
+        />
+      </div>
+    );
+  };
+
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -9,6 +43,7 @@ const App = () => {
         setValue(props.value)
         console.log('props', props);
         console.log('value', value);
+          
     }
     return (
         <>
@@ -87,6 +122,9 @@ const App = () => {
                 </li>
             </ul>
             <Accordion id="accordion" accordionHeadings={["Test", "HATS!!!!!"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Accordion>
+                        
+        {Example()}
+
         </>
     )
 }
