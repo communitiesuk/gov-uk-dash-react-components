@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState }  from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion, MultiSelectDropdown } from '../lib';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -86,7 +86,12 @@ const App = () => {
                     </a>
                 </li>
             </ul>
-            <Accordion id="accordion" accordionHeadings={["Test", "HATS!!!!!"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Accordion>
+            {/* <Accordion id="accordion" accordionHeadings={["Test", "HATS!!!!!"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Accordion> */}
+                    <div><MultiSelectDropdown source={[
+                        { label: "Local authorities", value: "Hello LOL"},
+                        { label: "Regional", value: "Hello LOL2"},
+                        { label: "Local authority type", value: "LOL"}]}></MultiSelectDropdown></div>
+                    {/* <div><Dropdown></div> */}
         </>
     )
 }
