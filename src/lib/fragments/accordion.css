@@ -1,0 +1,11 @@
+.accordion-button:focus,
+input[type=submit]:focus,
+input[type=reset]:focus {
+  background-color: #F3F2F1 !important;
+  outline: transparent !important;
+  /* border-bottom-color: transparent !important;
+  box-shadow: unset !important;
+  text-decoration: none !important; */
+}
+
+
