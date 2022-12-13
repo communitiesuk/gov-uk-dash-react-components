@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import xtype from 'xtypejs';
 
 import { defaultProps, propTypes } from '../components/Accordion.react';
+import './accordion.css';
 
 class Accordion extends Component {
   constructor(props) {
@@ -24,6 +26,13 @@ class Accordion extends Component {
 
 
   render() {
+    let accordionContent 
+    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
+      accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
+    }
+    else { 
+      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+    }
     return (
       <div className="app-example-page js-enabled">
         <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
@@ -33,7 +42,7 @@ class Accordion extends Component {
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
-          {this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))}
+          {accordionContent};
         </div>
       </div>
     )
