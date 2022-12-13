@@ -42,7 +42,7 @@ class Accordion extends Component {
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
-          {accordionContent};
+          {accordionContent}
         </div>
       </div>
     )
