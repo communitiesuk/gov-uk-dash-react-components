@@ -35,7 +35,7 @@ class Accordion extends Component {
     }
     return (
       <div className="app-example-page js-enabled">
-        <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
           <div className='govuk-accordion__controls'>
             <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
