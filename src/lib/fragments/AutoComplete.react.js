@@ -34,6 +34,7 @@ import './autocomplete.css';
  * 	tStatusSelectedOption,
  * 	tStatusResults,
  *  errorMessage,
+ *  errorMessageWhenEmpty,
  * }=defaultProps]
  * @return {*}
  */
@@ -67,6 +68,7 @@ const AutoComplete = (props) => {
 		alwaysDisplayArrow,
 		style,
 		errorMessage,
+		errorMessageWhenEmpty,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -152,9 +154,14 @@ const AutoComplete = (props) => {
 		
 		const validQuery = isQueryAnOption(newQuery, options);
 		setValidChoiceMade(validQuery);
-		setShowErrorMessage(!validQuery);
+		const queryLength = query ? query.trim().length : 0
+		if (queryLength !== 0 || errorMessageWhenEmpty === true) {
+			setShowErrorMessage(!validQuery);
+		}
+		if (queryLength === 0 && errorMessageWhenEmpty === false) {
+			setShowErrorMessage(false)
+		}
 	}
-
 	const handleListMouseLeave = () => {
 		setHover(null);
 	}

@@ -294,3 +294,6 @@ deps/
 src/*.jl
 src/jl
 Project.toml
+
+# CSS from the package repo
+*dashboard.css

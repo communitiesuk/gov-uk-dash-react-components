@@ -31,6 +31,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	tStatusResults,
  * 	style,
  *  errorMessage,
+ *  errorMessageWhenEmpty,
  * } [props={}]
  * @return {*}
  */
@@ -60,6 +61,7 @@ AutoComplete.defaultProps = {
 	dropdownArrow: DropdownArrowDown,
 	alwaysDisplayArrow: true,
 	errorMessage: 'Invalid value entered',
+	errorMessageWhenEmpty: false,
 };
 
 export const basePropTypes = {
@@ -184,6 +186,11 @@ export const basePropTypes = {
 	 * Error message to display when invalid input entered in dropdown
 	 */
 	errorMessage: PropTypes.string,
+
+	/**
+	 * Whether to display error message when query is empty in dropdown
+	 */
+	 errorMessageWhenEmpty: PropTypes.bool,
 };
 
 AutoComplete.propTypes = {
