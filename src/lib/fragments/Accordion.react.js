@@ -54,7 +54,7 @@ class Accordion extends Component {
           <div className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
-                <button className="accordion-button govuk-accordion__section-button"type="button" aria-controls={`accordion-default-content-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
+                <button className="accordion-button govuk-accordion__section-button" type="button" aria-controls={`accordion-default-content-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
                   <span className="govuk-accordion__section-heading-text" >
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
                     </span>
