@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import xtype from 'xtypejs';
 
 import { defaultProps, propTypes } from '../components/Accordion.react';
+import './accordion.css';
 
 class Accordion extends Component {
   constructor(props) {
@@ -24,16 +26,23 @@ class Accordion extends Component {
 
 
   render() {
+    let accordionContent 
+    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
+      accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
+    }
+    else { 
+      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+    }
     return (
       <div className="app-example-page js-enabled">
-        <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
           <div className='govuk-accordion__controls'>
             <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
-          {this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))}
+          {accordionContent}
         </div>
       </div>
     )
@@ -45,7 +54,7 @@ class Accordion extends Component {
           <div className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
-                <button type="button" aria-controls={`accordion-default-content-${index}`} className="govuk-accordion__section-button" aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
+                <button className="accordion-button govuk-accordion__section-button" type="button" aria-controls={`accordion-default-content-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
                   <span className="govuk-accordion__section-heading-text" >
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
                     </span>
@@ -57,7 +66,7 @@ class Accordion extends Component {
                       </span>
                     </span>
                     <span className= {sectionIsOpen ?  "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                    <span className="govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"} 
+                    <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"} 
                       <span className="govuk-visually-hidden"> this section</span>
                     </span>
                   </span>
