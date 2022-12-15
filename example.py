@@ -6,7 +6,11 @@ from dash import html, dcc
 app = dash.Dash(__name__)
 
 unique_las = ["LA1", "LA2", "LA3"]
-unique_las_dicts = [{"label": "LA1", "value": "LA1"}, {"label": "LA2", "value": "LA2", "disabled": True}, {"label": "LA3", "value": "LA3"}]
+unique_las_dicts = [
+    {"label": "LA1", "value": "LA1"},
+    {"label": "LA2", "value": "LA2", "disabled": True},
+    {"label": "LA3", "value": "LA3"},
+]
 la_lookups = {
     "LA1": ["SUBLA1", "SUBLA2", "SUBLA3"],
     "LA2": ["SUBLA4", "SUBLA5", "SUBLA6"],

@@ -33,7 +33,8 @@
     "@react-aria/overlays": "^3.8.1",
     "@react-stately/combobox": "^3.0.4",
     "ramda": "^0.26.1",
-    "usehooks-ts": "2.1.1"
+    "usehooks-ts": "2.1.1",
+    "xtypejs": "^0.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
