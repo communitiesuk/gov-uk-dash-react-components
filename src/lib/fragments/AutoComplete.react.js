@@ -6,7 +6,6 @@ import { isIOSDevice } from '../helper/isIOS';
 import { isPrintableKeyCode, keyCodes } from '../helper/keys';
 import Status from '../components/status'
 import './autocomplete.css';
-import './dashboard.css';
 
 /**
  * Autocomplete to GOV GDS
