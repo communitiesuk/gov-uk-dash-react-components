@@ -6,6 +6,7 @@ import { isIOSDevice } from '../helper/isIOS';
 import { isPrintableKeyCode, keyCodes } from '../helper/keys';
 import Status from '../components/status'
 import './autocomplete.css';
+import './dashboard.css';
 
 /**
  * Autocomplete to GOV GDS
@@ -630,153 +631,178 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	return (
-		<div>
-			{showErrorMessage && (<p className="govuk-error-message">{errorMessage}</p>)}
+{/* <div class="govuk-form-group govuk-form-group--error">
+  <label class="govuk-label" for="national-insurance-number">
+    National Insurance number
+  </label>
 
-			<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
+  <p id="national-insurance-number-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> Enter a National Insurance number in the correct format
+  </p>
+  <input class="govuk-input govuk-input--error" id="national-insurance-number" name="national-insurance-number" type="text" aria-describedby="national-insurance-number-hint national-insurance-number-error">
+</div> */}
 
-				<Status
-					id={id}
-					length={options?.length}
-					queryLength={query?.length}
-					minQueryLength={minLength}
-					selectedOption={templateInputValue(options?.[selected])}
-					selectedOptionIndex={selected}
-					validChoiceMade={validChoiceMade}
-					isInFocus={isFocus !== null}
-					tQueryTooShort={tStatusQueryTooShort}
-					tNoResults={tStatusNoResults}
-					tSelectedOption={tStatusSelectedOption}
-					tResults={tStatusResults}
-				/>
-				{hintValue && (
-					<span><input className={hintClassName} readonly tabIndex='-1' value={hintValue} /></span>
+
+return (
+	<div className={showErrorMessage ? 'govuk-form-group govuk-form-group--error' : ''}>
+
+		{showErrorMessage && (<p className="govuk-error-message">{errorMessage}</p>)}
+
+		<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
+
+			<Status
+				id={id}
+				length={options?.length}
+				queryLength={query?.length}
+				minQueryLength={minLength}
+				// selectedOptions = {optionList}
+
+				selectedOption={templateInputValue(options?.[selected])}
+				selectedOptionIndex={selected}
+				validChoiceMade={validChoiceMade}
+				isInFocus={isFocus !== null}
+				tQueryTooShort={tStatusQueryTooShort}
+				tNoResults={tStatusNoResults}
+				tSelectedOption={tStatusSelectedOption}
+				tResults={tStatusResults}
+			/>
+			{hintValue && (
+				<span><input className={hintClassName} readonly tabIndex='-1' value={hintValue} /></span>
+			)}
+			<input
+				aria-expanded={isMenuOpen ? 'true' : 'false'}
+				{
+				...(optionFocused) ? {
+					'aria-activedescendant': `${id}__option--${isFocus}`
+				} : null
+				}
+				aria-owns={`${id}__listbox`}
+				aria-autocomplete={(hasAutoselect()) ? 'both' : 'list'}
+				aria-labelledby={ariaLabelledBy}
+				{...ariaDescribedProp}
+				autoComplete='off'
+				// className={`${inputClassName}${inputModifierFocused}${inputModifierType}`}
+				className={showErrorMessage ? 'govuk-input govuk-input--error' : `${inputClassName}${inputModifierFocused}${inputModifierType}`}
+				id={id}
+				onClick={handleInputClick}
+				onBlur={handleInputBlur}
+				onChange={handleInputChange}
+				onFocus={handleInputFocus}
+				name={name}
+				placeholder={placeholder}
+				ref={(inputElement) => { elementReferences[-1] = inputElement; }}
+				type='text'
+				role='combobox'
+				required={required}
+				value={getOptionLabelFromValue(query, options) ?? query}
+			/>
+			{dropdownArrow}
+			<ul
+				className={`${menuClassName} ${menuModifierDisplayMenu} ${menuModifierVisibility}`}
+				onMouseLeave={(event) => handleListMouseLeave(event)}
+				id={`${id}__listbox`}
+				role='listbox'
+			>
+				{options?.map((option, index) => {
+					const showFocused = isFocus === -1 ? selected === index : isFocus === index
+					const optionModifierFocused = showFocused && isHover === null ? ` ${optionClassName}--focused` : ''
+					const optionModifierOdd = (index % 2) ? ` ${optionClassName}--odd` : ''
+					const iosPosinsetHtml = (isIOSDevice())
+						? `<span id=${id}__option-suffix--${index} style="border:0;clip:rect(0 0 0 0);height:1px;` +
+						'marginBottom:-1px;marginRight:-1px;overflow:hidden;padding:0;position:absolute;' +
+						'whiteSpace:nowrap;width:1px">' + ` ${index + 1} of ${options?.length}</span>`
+						: ''
+
+					return (
+						<li
+							aria-selected={isFocus === index ? 'true' : 'false'}
+							className={`${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
+							dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
+							id={`${id}__option--${index}`}
+							key={index}
+							onBlur={(event) => handleOptionBlur(event, index)}
+							onClick={(event) => handleOptionClick(event, index, false)}
+							onMouseDown={handleOptionMouseDown}
+							onMouseEnter={() => handleOptionMouseEnter(index)}
+							ref={(optionEl) => { elementReferences[index] = optionEl; }}
+							role='option'
+							tabIndex='-1'
+							aria-posinset={index + 1}
+							aria-setsize={options.length}
+						/>
+					)
+				})}
+
+				{showNoOptionsFoundRender && (
+					<li className={`${optionClassName} ${optionClassName}--no-results`}>{tNoResults()}</li>
+
+
+				
+
+
+
+
+
 				)}
-				<input
-					aria-expanded={isMenuOpen ? 'true' : 'false'}
-					{
-					...(optionFocused) ? {
-						'aria-activedescendant': `${id}__option--${isFocus}`
-					} : null
-					}
-					aria-owns={`${id}__listbox`}
-					aria-autocomplete={(hasAutoselect()) ? 'both' : 'list'}
-					aria-labelledby={ariaLabelledBy}
-					{...ariaDescribedProp}
-					autoComplete='off'
-					className={`${inputClassName}${inputModifierFocused}${inputModifierType}`}
-					id={id}
-					onClick={handleInputClick}
-					onBlur={handleInputBlur}
-					onChange={handleInputChange}
-					onFocus={handleInputFocus}
-					name={name}
-					placeholder={placeholder}
-					ref={(inputElement) => { elementReferences[-1] = inputElement; }}
-					type='text'
-					role='combobox'
-					required={required}
-					value={getOptionLabelFromValue(query, options) ?? query}
-				/>
-				{dropdownArrow}
-				<ul
-					className={`${menuClassName} ${menuModifierDisplayMenu} ${menuModifierVisibility}`}
-					onMouseLeave={(event) => handleListMouseLeave(event)}
-					id={`${id}__listbox`}
-					role='listbox'
-				>
-					{options?.map((option, index) => {
-						const showFocused = isFocus === -1 ? selected === index : isFocus === index
-						const optionModifierFocused = showFocused && isHover === null ? ` ${optionClassName}--focused` : ''
-						const optionModifierOdd = (index % 2) ? ` ${optionClassName}--odd` : ''
-						const iosPosinsetHtml = (isIOSDevice())
-							? `<span id=${id}__option-suffix--${index} style="border:0;clip:rect(0 0 0 0);height:1px;` +
-							'marginBottom:-1px;marginRight:-1px;overflow:hidden;padding:0;position:absolute;' +
-							'whiteSpace:nowrap;width:1px">' + ` ${index + 1} of ${options?.length}</span>`
-							: ''
+			</ul>
 
-						return (
-							<li
-								aria-selected={isFocus === index ? 'true' : 'false'}
-								className={option.disabled === true ? `${optionClassName} ${optionClassName}--disabled`: `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
-								dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
-								id={`${id}__option--${index}`}
-								key={index}
-								onBlur={(event) => handleOptionBlur(event, index)}
-								onClick={(event) => handleOptionClick(event, index, false)}
-								onMouseDown={handleOptionMouseDown}
-								onMouseEnter={() => handleOptionMouseEnter(index)}
-								ref={(optionEl) => { elementReferences[index] = optionEl; }}
-								role='option'
-								tabIndex='-1'
-								aria-posinset={index + 1}
-								aria-setsize={options.length}
-							/>
-						)
-					})}
-					{showNoOptionsFoundRender && (
-						<li className={`${optionClassName} ${optionClassName}--disabled`}>{tNoResults()}</li>
-					)}
-				</ul>
+			<span id={assistiveHintID} style={{ display: 'none' }}>{tAssistiveHint()}</span>
 
-				<span id={assistiveHintID} style={{ display: 'none' }}>{tAssistiveHint()}</span>
-
-			</div>
 		</div>
-	)
+	</div>
+)
 }
 /**
- * ExampleComponent is an example component.
- * It takes a property, `label`, and
- * displays it.
- * It renders an input with the property `value`
- * which is editable by the user.
- */
+* ExampleComponent is an example component.
+* It takes a property, `label`, and
+* displays it.
+* It renders an input with the property `value`
+* which is editable by the user.
+*/
 export default AutoComplete;
 
 AutoComplete.enhanceSelectElement = (configurationOptions) => {
-	if (!configurationOptions.selectElement) { throw new Error('selectElement is not defined') }
+if (!configurationOptions.selectElement) { throw new Error('selectElement is not defined') }
 
-	// Set defaults.
-	if (!configurationOptions.source) {
-		const availableOptions = [].filter.call(configurationOptions.selectElement.options, option => (option.value || configurationOptions.preserveNullOptions))
-		configurationOptions.source = availableOptions.map(option => option.textContent || option.innerText)
+// Set defaults.
+if (!configurationOptions.source) {
+	const availableOptions = [].filter.call(configurationOptions.selectElement.options, option => (option.value || configurationOptions.preserveNullOptions))
+	configurationOptions.source = availableOptions.map(option => option.textContent || option.innerText)
+}
+configurationOptions.onConfirm = configurationOptions.onConfirm || (query => {
+	const requestedOption = [].filter.call(configurationOptions.selectElement.options, option => (option.textContent || option.innerText) === query)[0]
+	if (requestedOption) { requestedOption.selected = true }
+	// trigger change event on original select element
+	const event = new Event('change', { bubbles: true, cancelable: false })
+	configurationOptions.selectElement.dispatchEvent(event)
+})
+
+if (configurationOptions.selectElement.value || configurationOptions.value === undefined) {
+	const option = configurationOptions.selectElement.options[configurationOptions.selectElement.options.selectedIndex]
+	configurationOptions.value = option.textContent || option.innerText
+}
+
+if (configurationOptions.name === undefined) { configurationOptions.name = '' }
+if (configurationOptions.id === undefined) {
+	if (configurationOptions.selectElement.id === undefined) {
+		configurationOptions.id = ''
+	} else {
+		configurationOptions.id = configurationOptions.selectElement.id
 	}
-	configurationOptions.onConfirm = configurationOptions.onConfirm || (query => {
-		const requestedOption = [].filter.call(configurationOptions.selectElement.options, option => (option.textContent || option.innerText) === query)[0]
-		if (requestedOption) { requestedOption.selected = true }
-		// trigger change event on original select element
-		const event = new Event('change', { bubbles: true, cancelable: false })
-		configurationOptions.selectElement.dispatchEvent(event)
-	})
+}
+if (configurationOptions.autoselect === undefined) { configurationOptions.autoselect = true }
 
-	if (configurationOptions.selectElement.value || configurationOptions.value === undefined) {
-		const option = configurationOptions.selectElement.options[configurationOptions.selectElement.options.selectedIndex]
-		configurationOptions.value = option.textContent || option.innerText
-	}
+const element = document.createElement('div')
 
-	if (configurationOptions.name === undefined) { configurationOptions.name = '' }
-	if (configurationOptions.id === undefined) {
-		if (configurationOptions.selectElement.id === undefined) {
-			configurationOptions.id = ''
-		} else {
-			configurationOptions.id = configurationOptions.selectElement.id
-		}
-	}
-	if (configurationOptions.autoselect === undefined) { configurationOptions.autoselect = true }
+configurationOptions.selectElement.parentNode.insertBefore(element, configurationOptions.selectElement)
 
-	const element = document.createElement('div')
+// eslint-disable-next-line new-cap
+render(AutoComplete({
+	...configurationOptions,
+}), element)
 
-	configurationOptions.selectElement.parentNode.insertBefore(element, configurationOptions.selectElement)
-
-	// eslint-disable-next-line new-cap
-	render(AutoComplete({
-		...configurationOptions,
-	}), element)
-
-	configurationOptions.selectElement.style.display = 'none'
-	configurationOptions.selectElement.id = configurationOptions.selectElement.id + '-select'
+configurationOptions.selectElement.style.display = 'none'
+configurationOptions.selectElement.id = configurationOptions.selectElement.id + '-select'
 }
 
 AutoComplete.defaultProps = defaultProps;
