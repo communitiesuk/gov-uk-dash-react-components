@@ -631,18 +631,6 @@ const AutoComplete = (props) => {
 		}
 	}
 
-{/* <div class="govuk-form-group govuk-form-group--error">
-  <label class="govuk-label" for="national-insurance-number">
-    National Insurance number
-  </label>
-
-  <p id="national-insurance-number-error" class="govuk-error-message">
-    <span class="govuk-visually-hidden">Error:</span> Enter a National Insurance number in the correct format
-  </p>
-  <input class="govuk-input govuk-input--error" id="national-insurance-number" name="national-insurance-number" type="text" aria-describedby="national-insurance-number-hint national-insurance-number-error">
-</div> */}
-
-
 return (
 	<div className={showErrorMessage ? 'govuk-form-group govuk-form-group--error' : ''}>
 

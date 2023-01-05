@@ -96,7 +96,7 @@ __These are the default instructions__
 - [Review your code](./review_checklist.md)
 
 ### Create a production build and publish:
-1. Update the `version` property of the `package.json` file in the syle of Major.Minor.Patch, e.g. 1.2.3
+1. Update the `version` property of the `package.json` file in the style of Major.Minor.Patch, e.g. 1.2.3
     - Major - any breaking changes to previous functionality.
     - Minor - additional functionality that doesn't effect backward compatibility. When updated the patch version should be reset to zero. eg. 2.3.1 goes to 2.4.0 for minor update.
     - Patch - bug fixes that don't effect backward compatibility.
