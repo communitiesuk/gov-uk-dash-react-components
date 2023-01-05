@@ -741,57 +741,57 @@ return (
 )
 }
 /**
-* ExampleComponent is an example component.
-* It takes a property, `label`, and
-* displays it.
-* It renders an input with the property `value`
-* which is editable by the user.
-*/
-export default AutoComplete;
+ * ExampleComponent is an example component.
+ * It takes a property, `label`, and
+ * displays it.
+ * It renders an input with the property `value`
+ * which is editable by the user.
+ */
+ export default AutoComplete;
 
-AutoComplete.enhanceSelectElement = (configurationOptions) => {
-if (!configurationOptions.selectElement) { throw new Error('selectElement is not defined') }
-
-// Set defaults.
-if (!configurationOptions.source) {
-	const availableOptions = [].filter.call(configurationOptions.selectElement.options, option => (option.value || configurationOptions.preserveNullOptions))
-	configurationOptions.source = availableOptions.map(option => option.textContent || option.innerText)
-}
-configurationOptions.onConfirm = configurationOptions.onConfirm || (query => {
-	const requestedOption = [].filter.call(configurationOptions.selectElement.options, option => (option.textContent || option.innerText) === query)[0]
-	if (requestedOption) { requestedOption.selected = true }
-	// trigger change event on original select element
-	const event = new Event('change', { bubbles: true, cancelable: false })
-	configurationOptions.selectElement.dispatchEvent(event)
-})
-
-if (configurationOptions.selectElement.value || configurationOptions.value === undefined) {
-	const option = configurationOptions.selectElement.options[configurationOptions.selectElement.options.selectedIndex]
-	configurationOptions.value = option.textContent || option.innerText
-}
-
-if (configurationOptions.name === undefined) { configurationOptions.name = '' }
-if (configurationOptions.id === undefined) {
-	if (configurationOptions.selectElement.id === undefined) {
-		configurationOptions.id = ''
-	} else {
-		configurationOptions.id = configurationOptions.selectElement.id
-	}
-}
-if (configurationOptions.autoselect === undefined) { configurationOptions.autoselect = true }
-
-const element = document.createElement('div')
-
-configurationOptions.selectElement.parentNode.insertBefore(element, configurationOptions.selectElement)
-
-// eslint-disable-next-line new-cap
-render(AutoComplete({
-	...configurationOptions,
-}), element)
-
-configurationOptions.selectElement.style.display = 'none'
-configurationOptions.selectElement.id = configurationOptions.selectElement.id + '-select'
-}
-
-AutoComplete.defaultProps = defaultProps;
-AutoComplete.propTypes = propTypes;
+ AutoComplete.enhanceSelectElement = (configurationOptions) => {
+	 if (!configurationOptions.selectElement) { throw new Error('selectElement is not defined') }
+ 
+	 // Set defaults.
+	 if (!configurationOptions.source) {
+		 const availableOptions = [].filter.call(configurationOptions.selectElement.options, option => (option.value || configurationOptions.preserveNullOptions))
+		 configurationOptions.source = availableOptions.map(option => option.textContent || option.innerText)
+	 }
+	 configurationOptions.onConfirm = configurationOptions.onConfirm || (query => {
+		 const requestedOption = [].filter.call(configurationOptions.selectElement.options, option => (option.textContent || option.innerText) === query)[0]
+		 if (requestedOption) { requestedOption.selected = true }
+		 // trigger change event on original select element
+		 const event = new Event('change', { bubbles: true, cancelable: false })
+		 configurationOptions.selectElement.dispatchEvent(event)
+	 })
+ 
+	 if (configurationOptions.selectElement.value || configurationOptions.value === undefined) {
+		 const option = configurationOptions.selectElement.options[configurationOptions.selectElement.options.selectedIndex]
+		 configurationOptions.value = option.textContent || option.innerText
+	 }
+ 
+	 if (configurationOptions.name === undefined) { configurationOptions.name = '' }
+	 if (configurationOptions.id === undefined) {
+		 if (configurationOptions.selectElement.id === undefined) {
+			 configurationOptions.id = ''
+		 } else {
+			 configurationOptions.id = configurationOptions.selectElement.id
+		 }
+	 }
+	 if (configurationOptions.autoselect === undefined) { configurationOptions.autoselect = true }
+ 
+	 const element = document.createElement('div')
+ 
+	 configurationOptions.selectElement.parentNode.insertBefore(element, configurationOptions.selectElement)
+ 
+	 // eslint-disable-next-line new-cap
+	 render(AutoComplete({
+		 ...configurationOptions,
+	 }), element)
+ 
+	 configurationOptions.selectElement.style.display = 'none'
+	 configurationOptions.selectElement.id = configurationOptions.selectElement.id + '-select'
+ }
+ 
+ AutoComplete.defaultProps = defaultProps;
+ AutoComplete.propTypes = propTypes;
