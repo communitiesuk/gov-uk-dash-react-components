@@ -631,7 +631,7 @@ const AutoComplete = (props) => {
 	}
 
 	return (
-		<div>
+		<div className={showErrorMessage ? 'govuk-form-group govuk-form-group--error' : ''}>
 			{showErrorMessage && (<p className="govuk-error-message">{errorMessage}</p>)}
 
 			<div className={wrapperClassName} onKeyDown={handleKeyDown} style={style}>
