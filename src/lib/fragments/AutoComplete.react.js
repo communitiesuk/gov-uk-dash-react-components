@@ -401,6 +401,23 @@ const AutoComplete = (props) => {
 		}
 	}
 
+	const handleBackSpace = (event) => {
+		if ((selectElement && isMenuOpen) {
+			if (query.trim().length === 0) {
+				event.preventDefault()
+			}
+			dataSource('', (options) => {
+				const realOpt = getRealOptions(options);
+				const index = query && realOpt.indexOf(query) > -1 ? realOpt.indexOf(query) : 0
+				setMenuOpen(true);
+				setOptions(options);
+				setFocus(index);
+				setSelected(index);
+			})
+			return;
+		}
+	}
+
 	const handleEnter = (event) => {
 		if (isMenuOpen) {
 			event.preventDefault()
@@ -443,6 +460,9 @@ const AutoComplete = (props) => {
 				break
 			case 'down':
 				handleDownArrow(event)
+				break
+			case 'Backspace'
+				handleBackSpace(event)
 				break
 			case 'space':
 				handleSpace(event)
