@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import xtype from 'xtypejs';
 
 import { defaultProps, propTypes } from '../components/Tabs.react';
-// import './accordion.css';
+import './tab.css';
 
 class Tabs extends Component {
   constructor(props) {
@@ -14,26 +14,9 @@ class Tabs extends Component {
     }
   }
 
-  setSelectedTabIndex = (index) => {
-    let tabSelected = [...this.state.tabSelected];
-    this.setState(tabSelected = index);
-  }
-
-//   openOrCloseAccordionSection = (index) => {
-//     let sectionsOpen = [...this.state.sectionsOpen];
-//     sectionsOpen[index] = !sectionsOpen[index];
-//     this.setState({sectionsOpen: sectionsOpen, allSectionsAreOpen: sectionsOpen.every(sectionIsOpen => sectionIsOpen)});
-//   }
-
-//   showOrHideAllAccordionSections = () => {
-//     let sectionsOpen = new Array(this.state.sectionsOpen.length).fill(this.state.allSectionsAreOpen ? false : true);
-//     this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen : !this.state.allSectionsAreOpen});
-//   } 
-
-// let tabContent 
-// tabHeadings =  this.props.tabHeadings
-// tabContent = this.props.children[index]
-
+setSelectedTabIndex = (index) => {
+    this.setState({ tabSelected: index });
+  } 
 
 render() {
     let tabsContent 
@@ -58,15 +41,19 @@ render() {
     tabHeading = this.props.tabHeadings[index]
     let tabIsSelected;
     tabIsSelected = (index === this.state.tabSelected) ? true: false
+    console.log("index", index)
+    console.log("tabIsSelected", tabIsSelected)
       return (   
           <div className={tabIsSelected ? "govuk-tabs__list-item govuk-tabs__list-item--selected" : "govuk-tabs__list-item"}>
-            <button className="accordion-button govuk-accordion__section-button" type="button" onClick={() => this.setSelectedTabIndex(index)}>
-            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                <a class="govuk-tabs__tab">
+            {/* <button className="accordion-button govuk-accordion__section-button" type="button" onClick={() => this.setSelectedTabIndex(index)}> */}
+            <li className="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                <a className={tabIsSelected ? "tab-link govuk-tabs__tab" : "govuk-tabs__tab"} onClick={() => this.setSelectedTabIndex(index)}>
                     {tabHeading}
+
+                    
                 </a>
             </li>
-            </button>
+            {/* </button> */}
 
                 {/* {individualTabContent} */}
             </div>
