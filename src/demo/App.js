@@ -1,7 +1,9 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState }  from 'react';
+import './dashboard.css';
 
-import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
+import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion, Tab2 } from '../lib';
+import Tabs from '../lib/fragments/Tab2.react';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -87,6 +89,7 @@ const App = () => {
                 </li>
             </ul>
             <Accordion id="accordion" accordionHeadings={["Test", "HATS!!!!!"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Accordion>
+            <Tabs id="tabs" tabHeadings={["Tab1", "Tab2"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Tabs>
         </>
     )
 }
