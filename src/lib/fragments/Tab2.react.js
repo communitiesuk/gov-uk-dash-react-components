@@ -55,8 +55,11 @@ render() {
             </li>
             </button>
 
-                {/* {individualTabContent} */}
+
+                
+                <div className={tabIsSelected ? "govuk-tabs__panel":"govuk-tabs__panel govuk-tabs__panel--hidden"}>{individualTabContent}</div>
             </div>
+            
         )
     }
   }
