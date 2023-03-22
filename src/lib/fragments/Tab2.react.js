@@ -45,15 +45,15 @@ render() {
     console.log("tabIsSelected", tabIsSelected)
       return (   
           <div className={tabIsSelected ? "govuk-tabs__list-item govuk-tabs__list-item--selected" : "govuk-tabs__list-item"}>
-            {/* <button className="accordion-button govuk-accordion__section-button" type="button" onClick={() => this.setSelectedTabIndex(index)}> */}
+            <button className="accordion-button govuk-accordion__section-button" type="button" onClick={() => this.setSelectedTabIndex(index)}>
             <li className="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                <a className={tabIsSelected ? "tab-link govuk-tabs__tab" : "govuk-tabs__tab"} onClick={() => this.setSelectedTabIndex(index)}>
+                <a className={tabIsSelected ? "tab-link govuk-tabs__tab" : "govuk-tabs__tab"}>
                     {tabHeading}
 
                     
                 </a>
             </li>
-            {/* </button> */}
+            </button>
 
                 {/* {individualTabContent} */}
             </div>
