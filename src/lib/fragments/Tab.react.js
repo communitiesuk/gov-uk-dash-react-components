@@ -31,30 +31,66 @@ class Tab extends Component {
 
   render() {
     let tabContent 
-    tabContent = this.renderTab(index, this.props.children, this.state.tabSelected)
-    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
-      accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
-    }
+    tabContent = this.renderTab(this.props.children, this.state.tabSelected)
+    // if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
+    //   accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
+    // }
     // else { 
     //   tabContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
     // }
     return (
       <div className="app-example-page js-enabled">
-        <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
-          <div className='govuk-accordion__controls'>
+        <div className="govuk-tabs" data-module="govuk-tabs" id={this.props.id}>
+            <h2 class="govuk-tabs__title"> Contents </h2>
+            <ul class="govuk-tabs__list">
+                <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                    <a class="govuk-tabs__tab" href="#past-day">
+                        Past day
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#past-week">
+                    Past week
+                </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#past-month">
+                    Past month
+                </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#past-year">
+                    Past year
+                </a>
+                </li>
+        </ul>
+
+
             <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
-          {accordionContent}
+          {tabContent}
         </div>
       </div>
     )
   }
 
-  renderAccordionSection(index, accordionSectionContent, sectionIsOpen) {
-    const accordionHeading = this.props.accordionHeadings[index]
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+
+
+
+
+
+
+
+
+
+  renderTab(tabContent, tabIsSelected) {
+    const tabSelected = tabIsSelected
       return (
           <div className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}>
             <div className="govuk-accordion__section-header">
