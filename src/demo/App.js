@@ -1,6 +1,5 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState }  from 'react';
-import './dashboard.css';
 
 import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion, Tab2 } from '../lib';
 import Tabs from '../lib/fragments/Tabs.react';
