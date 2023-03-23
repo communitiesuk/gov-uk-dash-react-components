@@ -3,7 +3,7 @@ import React, { useState }  from 'react';
 import './dashboard.css';
 
 import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion, Tab2 } from '../lib';
-import Tabs from '../lib/fragments/Tab2.react';
+import Tabs from '../lib/fragments/Tabs.react';
 
 const App = () => {
     const [value, setValue] = useState('');
@@ -89,7 +89,7 @@ const App = () => {
                 </li>
             </ul>
             <Accordion id="accordion" accordionHeadings={["Test", "HATS!!!!!"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Accordion>
-            <Tabs id="tabs" tabHeadings={["Display jitter plots", "Display time series plots"]} children={[<h1>I am a jitter plot</h1>,<h1>I am a time series plot</h1>]}></Tabs>
+            <Tabs id="tabs" tabHeadings={["Display jitter plots", "Display time series plots"]} defaultTab={0} children={[<h1>I am a jitter plot</h1>,<h1>I am a time series plot</h1>]}></Tabs>
         </>
     )
 }
