@@ -5,7 +5,7 @@ import CheckboxList from './fragments/CheckboxList.react'
 import ComponentTemplate from './fragments/ComponentTemplate.react'
 import ExpandableMenuItem from './fragments/ExpandableMenuItem.react'
 import Accordion from './fragments/Accordion.react'
-import YourComponent from './components/YourComponent.react'
+import YourComponent from './fragments/YourComponent.react'
 
 export {
 	AutoComplete,

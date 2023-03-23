@@ -57,7 +57,7 @@ const App = () => {
             <ComponentTemplate id="a-great-component-id" setProps={setProps} />
             <h2>ExpandableMenuItem</h2>
             <h2>YourComponent</h2>
-            <YourComponent></YourComponent>
+            <YourComponent id="a-great-component-id2"></YourComponent>
             <ul>
                 <li>
                     <a>
