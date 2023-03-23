@@ -29,7 +29,7 @@ render() {
       <div className="app-example-page js-enabled">
         <div className="govuk-tabs" data-module="govuk-tabs" id={this.props.id}>
             <h2 class="govuk-tabs__title"> Contents </h2>
-            <ul class="govuk-tabs__list"> {tabHeaders} </ul>    
+            <ul class="govuk-tabs__list" role="tablist"> {tabHeaders} </ul>    
             <div className="govuk-tabs__panel">{selectedTabContent} </div>        
         </div>
       </div>
@@ -41,8 +41,8 @@ render() {
     let tabIsSelected;
     tabIsSelected = (index === this.state.tabSelected) ? true: false
       return (   
-          <li className={tabIsSelected ? "tab-selected-underline govuk-tabs__list-item govuk-tabs__list-item--selected" : " tab-underline govuk-tabs__list-item"}>
-            <button className={tabIsSelected ? "tab-button-selected govuk-tabs__tab":  "tab-button govuk-tabs__tab"} type="button" onClick={() => this.setSelectedTabIndex(index)}> {tabHeader} 
+          <li className={tabIsSelected ? "tab-selected-underline govuk-tabs__list-item govuk-tabs__list-item--selected" : " tab-underline govuk-tabs__list-item"} role="presentation">
+            <button className={tabIsSelected ? "tab-button-selected govuk-tabs__tab":  "tab-button govuk-tabs__tab"} role = "tab" type="button" aria-controls={tabHeader}   aria-labelledby={tabHeader} aria-selected={tabIsSelected ? 'true':'false'} onClick={() => this.setSelectedTabIndex(index)}> {tabHeader} 
             </button>
           </li>            
         )
