@@ -6,6 +6,7 @@ import CheckboxList from './components/CheckboxList.react';
 import ComponentTemplate from './components/ComponentTemplate.react';
 import ExpandableMenuItem from './components/ExpandableMenuItem.react';
 import Accordion from './components/Accordion.react';
+import YourComponent from './components/YourComponent.react';
 
 export {
     AutoComplete,
@@ -15,4 +16,5 @@ export {
     ComponentTemplate,
     ExpandableMenuItem,
     Accordion,
+    YourComponent
 };
