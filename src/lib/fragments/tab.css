@@ -1,17 +1,54 @@
-.tab-link {
-    /* outline: 3px solid transparent;
-    color: #0b0c0c; */
-    background-color: #ffdd00;
-    /* box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-    text-decoration: none; */
-  }
-
-
-.tab-link:hover {
-/* outline: 3px solid transparent;
-color: #0b0c0c; */
-background-color: #ffdd00;
-/* box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-text-decoration: none; */
+.tab-selected-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.3em;    
 }
+
+.tab-underline {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+}
+
+.tab-underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.3em;      
+}
+
+
+.tab-button:hover {
+    cursor: pointer;
+    }
+
+.tab-button {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* font-weight: 700;
+    font-size: 18px;
+    font-size: 1.125rem;  */
+    line-height: 1.1111111111;
+    color: #0b0c0c;
+    display: block;
+    margin-bottom: 0;
+    padding-top: 15px;
+    }
+
+.tab-button-selected {
+        background-color:  #ffdd00 !important;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* font-weight: 700;
+        font-size: 18px; 
+        font-size: 1.125rem;  */
+        line-height: 1.1111111111;
+        color: #0b0c0c;
+        display: block;
+        margin-bottom: 0;
+        padding-top: 15px;
+
+      }
+
 

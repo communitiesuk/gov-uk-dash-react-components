@@ -8,6 +8,7 @@ import { Tabs as RealComponent } from '../LazyLoader';
  * @param {
  * 	id,
  *  tabHeadings,
+ *  defaultTab,
  *  children,
  * } [props={}]
  * @return {*}
@@ -50,7 +51,12 @@ Tabs.propTypes = {
     /**
      * Array of accordion headings.
      */
-     tabHeadings: PropTypes.arrayOf(PropTypes.string),
+    tabHeadings: PropTypes.arrayOf(PropTypes.string),
+
+    /**
+     * The default active tab
+     */
+     defaultTab: PropTypes.number,
 
      /**
       * Array of accordion children.
