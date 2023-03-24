@@ -57,9 +57,9 @@
 margin-top:0;   
 }
 
-.cases .govuk-tabs__list-item .govuk-tabs__tab:link {
+/* .cases .govuk-tabs__list-item .govuk-tabs__tab:link {
     color: #0b0c0c !important;
-  }
+  } */
 
 .js-enabled .govuk-tabs__list-item--selected .govuk-tabs__tab {
     text-decoration: none;

@@ -26,7 +26,7 @@ render() {
       tabHeaders = this.props.tabHeadings.map((tabHeader,index) => this.renderTabHeader(index, tabHeader))
     }
     return (
-      <div className="app-example-page js-enabled">
+      <div className="js-enabled">
         <div className="govuk-tabs" data-module="govuk-tabs" id={this.props.id}>
             <h2 class="govuk-tabs__title"> Contents </h2>
             <ul class="govuk-tabs__list" role="tablist"> {tabHeaders} </ul>    
