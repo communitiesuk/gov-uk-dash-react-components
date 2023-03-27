@@ -53,12 +53,14 @@ side_menu = [
 
 app.layout = html.Div(
     [
+        html.Div("",id="menu_open"),
         uk_gov_dash_components.Dropdown(
             label="Something",
             id="local_authority",
             source=unique_las_dicts,
             value="",
             style={"minWidth": "50%"},
+            dropdownMenuOpen="False",
         ),
         uk_gov_dash_components.Dropdown(
             label="Comparison",
@@ -69,14 +71,14 @@ app.layout = html.Div(
         ),
         html.Div(id="output"),
         html.Nav(side_menu),
-        uk_gov_dash_components.Tabs(
-            children=[
-                html.Div([html.H1("I am a jitter plot")]),
-                html.Div([html.H1("I am a time series plot")]),
-            ],
-            defaultTab=0,
-            tabHeadings=["Display jitter plots", "Display time series plots"]
-        ),
+        # uk_gov_dash_components.Tabs(
+        #     children=[
+        #         html.Div([html.H1("I am a jitter plot")]),
+        #         html.Div([html.H1("I am a time series plot")]),
+        #     ],
+        #     defaultTab=0,
+        #     tabHeadings=["Display jitter plots", "Display time series plots"]
+        # ),
     ]
 )
 
@@ -90,6 +92,16 @@ def update_comparison(value):
     if value is None or value == "":
         return [[], None]
     return [la_lookups[value], None]
+
+@app.callback(
+    Output("menu_open", "children"),
+    [Input("local_authority", "dropdownMenuOpen")],
+)
+def update_comparison(dropdownMenuOpen):
+    if dropdownMenuOpen:
+        return "menu is open"
+    else:
+        return "menu is closed"
 
 
 if __name__ == "__main__":
