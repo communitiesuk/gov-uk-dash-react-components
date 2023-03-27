@@ -60,7 +60,7 @@ app.layout = html.Div(
             source=unique_las_dicts,
             value="",
             style={"minWidth": "50%"},
-            dropdownMenuOpen="False",
+            dropdownMenuOpen=False,
         ),
         uk_gov_dash_components.Dropdown(
             label="Comparison",

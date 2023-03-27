@@ -196,6 +196,8 @@ export const basePropTypes = {
 	 * Whether to display error message when query is empty in dropdown
 	 */
 	 errorMessageWhenEmpty: PropTypes.bool,
+
+	 dropdownMenuOpen: PropTypes.bool,
 };
 
 AutoComplete.propTypes = {

@@ -32,6 +32,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * 	tStatusResults,
  *  errorMessage,
  *  errorMessageWhenEmpty,
+ * dropdownMenuOpen,
  * }} [props={}]
  *
  * @return {*}
@@ -163,6 +164,8 @@ export const dropdownPropTypes = {
 	 * Whether to display error message when query is empty in dropdown
 	 */
 	 errorMessageWhenEmpty: PropTypes.bool,
+
+	 dropdownMenuOpen: PropTypes.bool,
 }
 
 Dropdown.propTypes = dropdownPropTypes;
