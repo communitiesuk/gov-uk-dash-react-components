@@ -32,6 +32,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	style,
  *  errorMessage,
  *  errorMessageWhenEmpty,
+ *  dropdownMenuOpen,
  * } [props={}]
  * @return {*}
  */
@@ -62,6 +63,7 @@ AutoComplete.defaultProps = {
 	alwaysDisplayArrow: true,
 	errorMessage: 'Invalid value entered',
 	errorMessageWhenEmpty: false,
+	dropdownMenuOpen: false,
 };
 
 export const basePropTypes = {
@@ -160,7 +162,10 @@ export const basePropTypes = {
 	 * The value displayed in the input.
 	 */
 	value: PropTypes.string,
-
+	/**
+	 * Whether the dropdown menu is open
+	 */
+	 dropdownMenuOpen: PropTypes.bool,
 	/**
 		 * Dash-assigned callback that should be called to report property changes
 		 * to Dash, to make them available for callbacks.

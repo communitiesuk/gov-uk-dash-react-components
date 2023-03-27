@@ -35,6 +35,7 @@ import './autocomplete.css';
  * 	tStatusResults,
  *  errorMessage,
  *  errorMessageWhenEmpty,
+ *  dropdownMenuOpen,
  * }=defaultProps]
  * @return {*}
  */
@@ -69,6 +70,7 @@ const AutoComplete = (props) => {
 		style,
 		errorMessage,
 		errorMessageWhenEmpty,
+		dropdownMenuOpen,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -531,6 +533,15 @@ const AutoComplete = (props) => {
 			handleInputChange(event)
 		}
 	}
+
+	useEffect(() => {
+		console.log("dropdownMenuOpen", dropdownMenuOpen)
+		if (typeof setProps === 'function') {
+				const dropdownMenuOpen = isMenuOpen;
+				setProps({ dropdownMenuOpen })
+				console.log("dropdownMenuOpen", dropdownMenuOpen)
+		}
+	}, [isMenuOpen])	
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
