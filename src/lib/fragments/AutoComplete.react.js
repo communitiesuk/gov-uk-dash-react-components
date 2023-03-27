@@ -557,11 +557,9 @@ const AutoComplete = (props) => {
 	}, [value])
 
 	useEffect(() => {
-		console.log("dropdownMenuOpen", dropdownMenuOpen)
 		if (typeof setProps === 'function') {
 				const dropdownMenuOpen = isMenuOpen;
 				setProps({ dropdownMenuOpen })
-				console.log("dropdownMenuOpen", dropdownMenuOpen)
 		}
 	}, [isMenuOpen])
 
