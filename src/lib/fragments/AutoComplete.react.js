@@ -69,6 +69,7 @@ const AutoComplete = (props) => {
 		style,
 		errorMessage,
 		errorMessageWhenEmpty,
+		dropdownMenuOpen,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -554,6 +555,15 @@ const AutoComplete = (props) => {
 			setQuery(value);
 		}
 	}, [value])
+
+	useEffect(() => {
+		console.log("dropdownMenuOpen", dropdownMenuOpen)
+		if (typeof setProps === 'function') {
+				const dropdownMenuOpen = isMenuOpen;
+				setProps({ dropdownMenuOpen })
+				console.log("dropdownMenuOpen", dropdownMenuOpen)
+		}
+	}, [isMenuOpen])
 
 	const autoselectRend = hasAutoselect()
 

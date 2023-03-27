@@ -53,6 +53,7 @@ side_menu = [
 
 app.layout = html.Div(
     [
+        html.Div([], id="menu-open"),
         uk_gov_dash_components.Dropdown(
             label="Something",
             id="local_authority",
@@ -83,6 +84,15 @@ def update_comparison(value):
         return [[], None]
     return [la_lookups[value], None]
 
+@app.callback(
+    Output("menu-open", "children"),
+    [Input("local_authority", "dropdownMenuOpen")],
+)
+def update_comparison(dropdownMenuOpen):
+    if dropdownMenuOpen:
+        return "menu is open"
+    else:
+        return "menu is closed"
 
 if __name__ == "__main__":
     app.run_server(debug=True)
