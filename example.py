@@ -69,6 +69,14 @@ app.layout = html.Div(
         ),
         html.Div(id="output"),
         html.Nav(side_menu),
+        uk_gov_dash_components.Tabs(
+            children=[
+                html.Div([html.H1("I am a jitter plot")]),
+                html.Div([html.H1("I am a time series plot")]),
+            ],
+            defaultTab=0,
+            tabHeadings=["Display jitter plots", "Display time series plots"]
+        ),
     ]
 )
 

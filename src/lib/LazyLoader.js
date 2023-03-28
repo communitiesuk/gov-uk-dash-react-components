@@ -5,6 +5,7 @@ import CheckboxList from './fragments/CheckboxList.react'
 import ComponentTemplate from './fragments/ComponentTemplate.react'
 import ExpandableMenuItem from './fragments/ExpandableMenuItem.react'
 import Accordion from './fragments/Accordion.react'
+import Tabs from './fragments/Tabs.react'
 
 export {
 	AutoComplete,
@@ -13,5 +14,6 @@ export {
 	CheckboxList,
 	ComponentTemplate,
 	ExpandableMenuItem,
-	Accordion
+	Accordion,
+	Tabs
 }
