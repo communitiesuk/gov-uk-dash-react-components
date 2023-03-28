@@ -1,6 +1,6 @@
 {
   "name": "uk_gov_dash_components",
-  "version": "1.11.0",
+  "version": "1.11.2",
   "description": "Dash components for Gov UK",
   "repository": {
     "type": "git",
@@ -19,7 +19,11 @@
     "build:backends": "dash-generate-components ./src/lib/components uk_gov_dash_components -p package-info.json --r-prefix 'govuk' --jl-prefix 'govuk' --ignore \\.test\\.",
     "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
     "build": "npm run build:js && npm run build:backends",
-    "build:activated": "npm run build:js && npm run build:backends-activated"
+    "build:activated": "npm run build:js && npm run build:backends-activated",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "glob-parent": "^6.0.1"
   },
   "author": "DLUHC GovUk <pythonvisualisations@levellingup.gov.uk>",
   "license": "MIT",
