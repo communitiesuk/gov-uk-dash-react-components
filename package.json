@@ -1,6 +1,6 @@
 {
   "name": "uk_gov_dash_components",
-  "version": "1.11.9",
+  "version": "1.11.10",
   "description": "Dash components for Gov UK",
   "repository": {
     "type": "git",
@@ -62,6 +62,10 @@
     "webpack": "4.36.1",
     "webpack-cli": "^3.3.12",
     "webpack-serve": "3.1.0"
+  },
+  "overrides": {
+    "chokidar": "3.5.3",
+    "glob-parent": "6.0.2"
   },
   "engines": {
     "node": ">=8.11.0",
