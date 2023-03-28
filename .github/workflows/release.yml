@@ -41,6 +41,7 @@ jobs:
         auto-update-conda: true
         activate-environment: dash_react_components
         environment-file: environment.yml
+    - name: Generate python files
       run: npm --no-audit install && npm run build
     - name: Build a binary wheel and a source tarball
       run: >-
