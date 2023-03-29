@@ -125,7 +125,8 @@ __These are the default instructions__
 
 ### Dependencies and the Release workflow:
 
-Troubleshooting
+#### Troubleshooting
+
 
 Dependencies are specified in the `package.json` file and installed via `npm install`. 
 Sometimes dependencies will need updating and we will get vulnerability warnings/errors.
