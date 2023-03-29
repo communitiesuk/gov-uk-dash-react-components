@@ -32,7 +32,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * 	tStatusResults,
  *  errorMessage,
  *  errorMessageWhenEmpty,
- *  dropdownMenuOpen,
+ *  menu_open,
  * }} [props={}]
  *
  * @return {*}
@@ -168,7 +168,7 @@ export const dropdownPropTypes = {
 	 * Whether the dropdown menu is open. Used to fire a callback  
 	 * when the menu is opened.
 	 */
-	dropdownMenuOpen: PropTypes.bool,
+	 menu_open: PropTypes.bool,
 }
 
 Dropdown.propTypes = dropdownPropTypes;

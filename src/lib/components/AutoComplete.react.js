@@ -32,7 +32,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * 	style,
  *  errorMessage,
  *  errorMessageWhenEmpty,
- *  dropdownMenuOpen, 
+ *  menu_open, 
  * } [props={}]
  * @return {*}
  */
@@ -63,7 +63,7 @@ AutoComplete.defaultProps = {
 	alwaysDisplayArrow: true,
 	errorMessage: 'Invalid value entered',
 	errorMessageWhenEmpty: false,
-	dropdownMenuOpen: false,
+	menu_open: false,
 };
 
 export const basePropTypes = {
@@ -197,7 +197,7 @@ export const basePropTypes = {
 	 * Whether the dropdown menu is open. Used to fire a callback  
 	 * when the menu is opened.
 	 */
-	dropdownMenuOpen: PropTypes.bool,
+	 menu_open: PropTypes.bool,
 
 };
 

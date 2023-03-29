@@ -34,7 +34,7 @@ import {
  * 	tStatusResults,
  *  errorMessage,
  *  errorMessageWhenEmpty,
- *  dropdownMenuOpen,
+ *  menu_open,
  * }} [props={}]
  *
  * @return {*}

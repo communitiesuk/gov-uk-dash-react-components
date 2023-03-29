@@ -69,7 +69,7 @@ const AutoComplete = (props) => {
 		style,
 		errorMessage,
 		errorMessageWhenEmpty,
-		dropdownMenuOpen,
+		menu_open,
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -558,8 +558,8 @@ const AutoComplete = (props) => {
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
-				const dropdownMenuOpen = isMenuOpen;
-				setProps({ dropdownMenuOpen })
+				const menu_open = isMenuOpen;
+				setProps({ menu_open })
 		}
 	}, [isMenuOpen])
 
