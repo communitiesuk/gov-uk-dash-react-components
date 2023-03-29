@@ -34,7 +34,7 @@ class Accordion extends Component {
       accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
     }
     return (
-      <div className="app-example-page js-enabled">
+      <div className="js-enabled">
         <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
           <div className='govuk-accordion__controls'>
             <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>

@@ -1,0 +1,69 @@
+
+/* This css was added as part of the Spike to be able to switch between kitter and time series plots so may need altered when desired functionality confirmed  */ 
+
+/* .tab-selected-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.3em;    
+} */
+
+.tab-underline {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+}
+
+.tab-underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.3em;      
+}
+
+
+.tab-button:hover {
+    cursor: pointer;
+    }
+
+.tab-button {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.1111111111;
+    color: #0b0c0c;
+    display: block;
+    margin-bottom: 0;
+    padding-top: 15px;
+    }
+
+.tab-button-selected {
+        /* background-color:  #ffdd00 !important; */
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.1111111111;
+        color: #0b0c0c;
+        display: block;
+        margin-bottom: 0;
+        padding-top: 15px;
+      }
+
+.tab-button-selected:focus {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.3em;   
+}
+
+.govuk-tabs__panel * {
+margin-top:0;   
+}
+
+/* .cases .govuk-tabs__list-item .govuk-tabs__tab:link {
+    color: #0b0c0c !important;
+  } */
+
+.js-enabled .govuk-tabs__list-item--selected .govuk-tabs__tab {
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 2px;
+    border-bottom:  #0b0c0c;
+  }
