@@ -140,6 +140,7 @@ Here are some troubleshooting steps to take by running locally or adding to the 
   }` 
   and then running `npm update` (note: need to add `npm update` to the workflow file if running github actions).
 
-Node version 
+#### Node version 
+
 
 As of 29 Mar 2023 we are installing a downgraded version of Node - version 16 - in the release workflow (we now install v16 in the `release.yml`). This is because we got an `err_ossl_evp_unsupported` error when running `npm install`. We got the error because we were using Node v17+ and the application uses an algorithm which is not supported with OpenSSL 3.0. We need to upgrade Node to v17+ before November 2023 - there is a ticket to fix this. 
