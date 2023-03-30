@@ -44,6 +44,8 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
+    - name: Run npm audit fix 
+      run: npm audit fix
     - name: Generate python files
       run: npm install && npm run build
     - name: Build a binary wheel and a source tarball
