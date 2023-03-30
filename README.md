@@ -122,3 +122,25 @@ __These are the default instructions__
 1. When your PR is merged to main, it will be released automatically by the [Release workflow](.github/workflows/release.yml) using the version within [package.json](package.json).
    You can still merge a PR which doesn't update the version within `package.json`, but the Release workflow will fail.
    Failure of the Release workflow means that a new release won't have been generated, the changes made to the package will not have been uploaded to PyPI and you won't be able to use the new version of the code in dashboard repos until you update the version in `package.json`. 
+
+### Dependencies and the Release workflow:
+
+#### Troubleshooting
+
+
+Dependencies are specified in the `package.json` file and installed via `npm install`. 
+Sometimes dependencies will need updating and we will get vulnerability warnings/errors.
+Here are some troubleshooting steps to take by running locally or adding to the github actions workflow file (`release.yml`):
+1. run `npm audit fix` 
+1. If that doesn't work try deleting the `node_modules` folder and the `package-lock.json` file and running `npm install` again
+1. If that doesn't work take a closer look at the affected dependency by running for example `npm ls glob-parent` where `glob-parent` is the dependency that has the vulnerability warning. This will print out the dependencies in a tree-like fashion. You can try updating the top-level dependency or the dependency itself. For example if we want to update glob-parent to version 6.0.2 we run `npm install glob-parent@6.0.2` followed by `npm update` to update all packages to their latest versions. Another alternative if `glob-parent` is being installed by another package we can overide the version by adding the following to the package.json file 
+  `"overrides": {
+    "chokidar": "3.5.3",
+    "glob-parent": "6.0.2"
+  }` 
+  and then running `npm update` (note: need to add `npm update` to the workflow file if running github actions).
+
+#### Node version 
+
+
+As of 29 Mar 2023 we are installing a downgraded version of Node - version 16 - in the release workflow (we now install v16 in the `release.yml`). This is because we got an `err_ossl_evp_unsupported` error when running `npm install`. We got the error because we were using Node v17+ and the application uses an algorithm which is not supported with OpenSSL 3.0. We need to upgrade Node to v17+ before November 2023 - there is a ticket to fix this. 
