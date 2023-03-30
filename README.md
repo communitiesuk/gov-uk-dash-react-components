@@ -132,7 +132,7 @@ Sometimes dependencies will need updating and we will get vulnerability warnings
 Here are some troubleshooting steps to take by running locally or adding to the github actions workflow file (`release.yml`):
 1. run `npm audit fix` 
 1. If that doesn't work try deleting the `node_modules` folder and the `package-lock.json` file and running `npm install` again
-1. If that doesn't work take a closer look at the affected dependency by running for example `npm ls glob-parent` where `glob-parent` is the dependency that has the vulnerability warning. This will print out the dependencies in a tree-like fashion. You can try updating the top-level dependency or the dependency itself. For example if we want to update glob-parent to version we run `npm install glob-parent@6.0.2` followed by `npm update` to update all packages to their latest versions. Another alternative if `glob-parent` is being installed by another package we can overide the version by adding the following to the package.json file 
+1. If that doesn't work take a closer look at the affected dependency by running for example `npm ls glob-parent` where `glob-parent` is the dependency that has the vulnerability warning. This will print out the dependencies in a tree-like fashion. You can try updating the top-level dependency or the dependency itself. For example if we want to update glob-parent to version 6.0.2 we run `npm install glob-parent@6.0.2` followed by `npm update` to update all packages to their latest versions. Another alternative if `glob-parent` is being installed by another package we can overide the version by adding the following to the package.json file 
   `"overrides": {
     "chokidar": "3.5.3",
     "glob-parent": "6.0.2"
