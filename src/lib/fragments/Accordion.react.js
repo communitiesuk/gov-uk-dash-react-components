@@ -37,7 +37,12 @@ class Accordion extends Component {
       <div className="js-enabled">
         <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
           <div className='govuk-accordion__controls'>
-            <button type='button' className='govuk-accordion__show-all' onClick={this.showOrHideAllAccordionSections}>
+            <button 
+                type='button' 
+                className='govuk-accordion__show-all' 
+                onClick={this.showOrHideAllAccordionSections} 
+                aria-label={`Accordion with ${this.props.accordionHeadings.length} sections, press enter to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
+            >
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
@@ -50,11 +55,23 @@ class Accordion extends Component {
 
   renderAccordionSection(index, accordionSectionContent, sectionIsOpen) {
     const accordionHeading = this.props.accordionHeadings[index]
-      return (
+    const contentId = `accordion-default-content-${index}`;
+    return (
           <div className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}>
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
-                <button className="accordion-button govuk-accordion__section-button" type="button" aria-controls={`accordion-default-content-${index}`} aria-expanded={sectionIsOpen} onClick={() => this.openOrCloseAccordionSection(index)}>
+                <button 
+                    className="accordion-button govuk-accordion__section-button" 
+                    type="button" 
+                    aria-controls={contentId} 
+                    // aria-expanded={sectionIsOpen} not needed now we read all the info in the aria-label?
+                    aria-label={
+                      sectionIsOpen
+                        ? `Accordion heading at level ${index} is ${accordionHeading},,,, Section is open, press Enter to close`
+                        : `Accordion heading at level ${index} is ${accordionHeading},,,, Section is closed, press Enter to open`
+                    }
+                    onClick={() => this.openOrCloseAccordionSection(index)}
+                >
                   <span className="govuk-accordion__section-heading-text" >
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
                     </span>
@@ -67,13 +84,17 @@ class Accordion extends Component {
                     </span>
                     <span className= {sectionIsOpen ?  "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
                     <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"} 
-                      <span className="govuk-visually-hidden"> this section</span>
+                      {/* <span className="govuk-visually-hidden"> this section</span> */}
                     </span>
                   </span>
                 </button>
               </h2>
             </div>
-            <div className="govuk-accordion__section-content" aria-labelledby={`accordion-default-heading-${index}`}>
+            <div 
+                className="govuk-accordion__section-content" 
+                id={contentId} 
+                aria-label={`Accordion at level ${index} content is`}
+            >
                 <p className='govuk-body'>{accordionSectionContent}</p>
             </div>
           </div> 
