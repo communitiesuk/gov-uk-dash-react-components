@@ -1,3 +1,4 @@
+import { transduce } from 'ramda';
 import React, { Component } from 'react';
 import xtype from 'xtypejs';
 
@@ -24,6 +25,64 @@ class Accordion extends Component {
     this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen : !this.state.allSectionsAreOpen});
   } 
 
+  handleUpArrow = (event, index) => {
+// need to implement
+  }
+
+// instead of index === -1 for show all sections headings implement a class for the 3 places the event can come from ? (show all sections heading, section heading and section content?)
+// actually can use if (event.target.className === "govuk-accordion__section-content") etc  instead of line above and using keyEventFromHeading param?
+  handleDownArrow = (event, index, keyEventFromHeading) => {
+
+    let newIndex = index;
+    const numberSections = this.props.accordionHeadings.length;
+    console.log("numberSections", numberSections)
+    if (index === -1){ 
+      //go to first heading in accordion
+      newIndex = 0;
+    }
+    if (keyEventFromHeading === true){
+      // go to child content in the accordion if the child content is open otherwise go to  the next heading if there is one
+      const sectionIsOpen = this.state.sectionsOpen[index];
+      console.log("section open", sectionIsOpen);
+      console.log("index", index);
+      if (!sectionIsOpen){
+        newIndex = (index + 1) % numberSections;
+        
+      }
+      // else {
+        // go to content of accordion at current index if acc section is open 
+      // }
+    // else {
+      // the key event comes from the content of an accordion 
+      // so go to the next heading if there is one 
+    // }
+    console.log("newIndex", newIndex);
+    // 
+    // if (newIndex >= 0 && newIndex < numberSections) {
+    //     console.log("newIndex1", newIndex);
+    //     const button = document.querySelector(
+    //       `.govuk-accordion__section:nth-child(${newIndex + 1}) .govuk-accordion__section-button`
+    //     );
+    //     if (button) {
+    //       console.log("button exists")
+    //       button.focus();
+    //     }
+    //   }    
+    
+
+    }
+  }
+
+
+  handleKeyEvent = (event, index, keyEventFromHeading) => {
+    console.log("Key event from heading", keyEventFromHeading)
+    if (event.key === 'ArrowDown') {
+      this.handleDownArrow(event, index,keyEventFromHeading)
+    }
+    if (event.key === 'ArrowUp') {
+    }
+  }
+ 
 
   render() {
     let accordionContent 
@@ -37,10 +96,11 @@ class Accordion extends Component {
       <div className="js-enabled">
         <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
           <div className='govuk-accordion__controls'>
-            <button 
+            <button
                 type='button' 
                 className='govuk-accordion__show-all' 
                 onClick={this.showOrHideAllAccordionSections} 
+                onKeyDown={(event) => this.handleKeyEvent(event,-1, true)}
                 aria-label={`Accordion with ${this.props.accordionHeadings.length} sections, press enter to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
             >
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
@@ -71,6 +131,7 @@ class Accordion extends Component {
                         : `Accordion heading at level ${index} is ${accordionHeading},,,, Section is closed, press Enter to open`
                     }
                     onClick={() => this.openOrCloseAccordionSection(index)}
+                    onKeyDown={(event) => this.handleKeyEvent(event,index,true)}
                 >
                   <span className="govuk-accordion__section-heading-text" >
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
@@ -93,6 +154,8 @@ class Accordion extends Component {
             <div 
                 className="govuk-accordion__section-content" 
                 id={contentId} 
+                onKeyDown={(event) => this.handleKeyEvent(event, index, false)}
+                tabIndex="-1" //set this to make the content focusable for arrow key events
                 aria-label={`Accordion at level ${index} content is`}
             >
                 <p className='govuk-body'>{accordionSectionContent}</p>
