@@ -76,7 +76,7 @@ class Accordion extends Component {
         break;
     }
 
-    // In here we focus the heading at level newIndex
+    // focus the heading at level newIndex
     const headingToFocus = document.querySelector(`[data-section-index="${newIndex}"] .govuk-accordion__section-heading .govuk-accordion__section-button`);
     if (headingToFocus) {
       headingToFocus.focus();
