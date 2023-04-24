@@ -5,6 +5,12 @@ import xtype from 'xtypejs';
 import { defaultProps, propTypes } from '../components/Accordion.react';
 import './accordion.css';
 
+const EventOrigin = {
+  SECTION_CONTENT: "section content",
+  SECTION_HEADING: "section heading",
+  SHOW_ALL_BUTTON: "show all button",
+};
+
 class Accordion extends Component {
   constructor(props) {
     super(props);
@@ -24,66 +30,164 @@ class Accordion extends Component {
     let sectionsOpen = new Array(this.state.sectionsOpen.length).fill(this.state.allSectionsAreOpen ? false : true);
     this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen : !this.state.allSectionsAreOpen});
   } 
-
-  handleUpArrow = (event, index) => {
-// need to implement
-  }
-
-// instead of index === -1 for show all sections headings implement a class for the 3 places the event can come from ? (show all sections heading, section heading and section content?)
-// actually can use if (event.target.className === "govuk-accordion__section-content") etc  instead of line above and using keyEventFromHeading param?
-  handleDownArrow = (event, index, keyEventFromHeading) => {
-
-    let newIndex = index;
+  
+  // This method handles the Up or Left arrow key event for an accordion component
+  // depending on the origin of the event (Show All button, section heading, or section content).
+  handleUpOrLeftArrow = (index, eventOrigin) => {
     const numberSections = this.props.accordionHeadings.length;
-    console.log("numberSections", numberSections)
-    if (index === -1){ 
-      //go to first heading in accordion
-      newIndex = 0;
-    }
-    if (keyEventFromHeading === true){
-      // go to child content in the accordion if the child content is open otherwise go to  the next heading if there is one
-      const sectionIsOpen = this.state.sectionsOpen[index];
-      console.log("section open", sectionIsOpen);
-      console.log("index", index);
-      if (!sectionIsOpen){
-        newIndex = (index + 1) % numberSections;
-        
-      }
-      // else {
-        // go to content of accordion at current index if acc section is open 
-      // }
-    // else {
-      // the key event comes from the content of an accordion 
-      // so go to the next heading if there is one 
-    // }
-    console.log("newIndex", newIndex);
-    // 
-    // if (newIndex >= 0 && newIndex < numberSections) {
-    //     console.log("newIndex1", newIndex);
-    //     const button = document.querySelector(
-    //       `.govuk-accordion__section:nth-child(${newIndex + 1}) .govuk-accordion__section-button`
-    //     );
-    //     if (button) {
-    //       console.log("button exists")
-    //       button.focus();
-    //     }
-    //   }    
-    
+    let newIndex = index;
 
+    switch (eventOrigin) {
+      case EventOrigin.SHOW_ALL_BUTTON: // go to previous element on page
+        const currentElement = document.querySelector('.govuk-accordion__show-all');
+        const previousElement = this.findFocusableElement(currentElement, "previous");
+        if (previousElement) {
+          previousElement.focus();
+        }
+        return;
+
+      case EventOrigin.SECTION_HEADING: 
+        if (index === 0){  // if the index of the section heading is 0 focus the show all button
+          const showAllElement = document.querySelector('.govuk-accordion__show-all');
+          if (showAllElement) {
+            showAllElement.focus();
+            return;
+          }
+        } else if (index > 0) { // focus the content of the previous accordion section if it is open
+          const previousIndex = index - 1;
+          const previousSectionIsOpen = this.state.sectionsOpen[previousIndex];
+          if (previousSectionIsOpen) {
+            const contentAtPreviousIndex = document.querySelector(`#accordion-default-content-${previousIndex}`);
+            if (contentAtPreviousIndex) {
+              contentAtPreviousIndex.focus();
+              return;
+            }
+          } else { // previous section is closed so focus the previous heading
+            newIndex = index - 1;
+          }
+        }
+        break;
+
+      case EventOrigin.SECTION_CONTENT: // focus the heading at the same level as the content
+        newIndex = index;
+        break;
+
+      default:
+        break;
+    }
+
+    // In here we focus the heading at level newIndex
+    const headingToFocus = document.querySelector(`[data-section-index="${newIndex}"] .govuk-accordion__section-heading .govuk-accordion__section-button`);
+    if (headingToFocus) {
+      headingToFocus.focus();
     }
   }
 
-
-  handleKeyEvent = (event, index, keyEventFromHeading) => {
-    console.log("Key event from heading", keyEventFromHeading)
-    if (event.key === 'ArrowDown') {
-      this.handleDownArrow(event, index,keyEventFromHeading)
+  // This method handles the Down or Right arrow key event for an accordion component
+  // depending on the origin of the event (Show All button, section heading, or section content).
+  handleDownOrRightArrow = (index, eventOrigin) => {
+    const numberSections = this.props.accordionHeadings.length;
+    let newIndex = index;
+  
+    switch (eventOrigin) {
+      case EventOrigin.SHOW_ALL_BUTTON:
+        newIndex = 0; // go to accordion heading 0
+        break;
+      case EventOrigin.SECTION_HEADING:
+        const sectionIsOpen = this.state.sectionsOpen[index];
+        if (sectionIsOpen) {
+          const content = document.querySelector(`#accordion-default-content-${index}`);
+          if (content) {
+            content.focus();
+            return;
+          }
+        } else { // section is closed, go to next heading if there is one
+          newIndex = index + 1;
+        }
+        break;
+      case EventOrigin.SECTION_CONTENT:
+        newIndex = index + 1; // go to next heading if there is one
+        break;
+      default:
+        break;
     }
-    if (event.key === 'ArrowUp') {
+  
+    if (newIndex >= 0 && newIndex < numberSections) {
+      const nextHeading = document.querySelector(
+        `[data-section-index="${newIndex}"] .govuk-accordion__section-heading .govuk-accordion__section-button`
+      );
+      if (nextHeading) {
+        nextHeading.focus();
+        return;
+      }
+    } else if (newIndex >= numberSections) {
+      const currentHeading = document.querySelector(
+        `[data-section-index="${index}"] .govuk-accordion__section-heading .govuk-accordion__section-button`
+      );
+      const nextElement = this.findFocusableElement(currentHeading, "next");
+      if (nextElement) {
+        nextElement.focus();
+      }
+    }
+  }  
+  
+  handleKeyEvent = (event, index) => {
+    let eventOrigin;
+  
+    if (index === -1) {
+      eventOrigin = EventOrigin.SHOW_ALL_BUTTON;
+    } else if (event.target.className === "govuk-accordion__section-content") {
+      eventOrigin = EventOrigin.SECTION_CONTENT;
+    } else if (event.target.className === "accordion-button govuk-accordion__section-button") {
+      eventOrigin = EventOrigin.SECTION_HEADING;
+    } else {
+      return;
+    }
+  
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        event.preventDefault(); 
+        this.handleDownOrRightArrow(index, eventOrigin);
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        event.preventDefault(); 
+        this.handleUpOrLeftArrow(index, eventOrigin);
+        break;
+      default:
+        // handle other keys if needed
+        break;
     }
   }
  
-
+  findFocusableElement(element, direction) {
+    if (!element){
+      return
+    }
+    const focusableElements = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+    const focusable = Array.from(document.querySelectorAll(focusableElements));
+    console.log("focusable Array", focusable)
+    const currentIndex = focusable.indexOf(element);
+    console.log("******", currentIndex)
+    if (currentIndex === -1) {
+      console.warn("Element not found in the list of focusable elements.");
+      return null;
+    }
+  
+    let targetIndex;
+  
+    if (direction === "next") {
+      targetIndex = currentIndex + 1;
+    } else if (direction === "previous") {
+      targetIndex = currentIndex - 1;
+    } else {
+      throw new Error("Invalid direction. Must be either 'next' or 'previous'.");
+    }
+  
+    return focusable[targetIndex] || null;
+  }
+    
   render() {
     let accordionContent 
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
@@ -100,8 +204,8 @@ class Accordion extends Component {
                 type='button' 
                 className='govuk-accordion__show-all' 
                 onClick={this.showOrHideAllAccordionSections} 
-                onKeyDown={(event) => this.handleKeyEvent(event,-1, true)}
-                aria-label={`Accordion with ${this.props.accordionHeadings.length} sections, press enter to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
+                onKeyDown={(event) => this.handleKeyEvent(event,-1)}
+                aria-label={`Accordion with ${this.props.accordionHeadings.length} sections, all sections are ${this.state.allSectionsAreOpen ? "open" : "closed"} select to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
             >
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
@@ -117,7 +221,10 @@ class Accordion extends Component {
     const accordionHeading = this.props.accordionHeadings[index]
     const contentId = `accordion-default-content-${index}`;
     return (
-          <div className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}>
+          <div 
+            className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}
+            data-section-index={index}
+          >
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
                 <button 
@@ -127,11 +234,11 @@ class Accordion extends Component {
                     // aria-expanded={sectionIsOpen} not needed now we read all the info in the aria-label?
                     aria-label={
                       sectionIsOpen
-                        ? `Accordion heading at level ${index} is ${accordionHeading},,,, Section is open, press Enter to close`
-                        : `Accordion heading at level ${index} is ${accordionHeading},,,, Section is closed, press Enter to open`
+                        ? `Accordion heading at level ${index} is ${accordionHeading},,,, Section is open, select to close`
+                        : `Accordion heading at level ${index} is ${accordionHeading},,,, Section is closed, select to open`
                     }
                     onClick={() => this.openOrCloseAccordionSection(index)}
-                    onKeyDown={(event) => this.handleKeyEvent(event,index,true)}
+                    onKeyDown={(event) => this.handleKeyEvent(event,index)}
                 >
                   <span className="govuk-accordion__section-heading-text" >
                     <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
@@ -154,7 +261,7 @@ class Accordion extends Component {
             <div 
                 className="govuk-accordion__section-content" 
                 id={contentId} 
-                onKeyDown={(event) => this.handleKeyEvent(event, index, false)}
+                onKeyDown={(event) => this.handleKeyEvent(event, index)}
                 tabIndex="-1" //set this to make the content focusable for arrow key events
                 aria-label={`Accordion at level ${index} content is`}
             >
@@ -164,10 +271,7 @@ class Accordion extends Component {
         )
     }
   }
-
-
-
-
+  
 Accordion.defaultProps = defaultProps;
 Accordion.propTypes = propTypes;
 
