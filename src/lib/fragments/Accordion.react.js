@@ -33,7 +33,7 @@ class Accordion extends Component {
   
   // This method handles the Up or Left arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
-  handleUpOrLeftArrow = (index, eventOrigin) => {
+  handleUpArrow = (index, eventOrigin) => {
     const numberSections = this.props.accordionHeadings.length;
     let newIndex = index;
 
@@ -85,7 +85,7 @@ class Accordion extends Component {
 
   // This method handles the Down or Right arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
-  handleDownOrRightArrow = (index, eventOrigin) => {
+  handleDownArrow = (index, eventOrigin) => {
     const numberSections = this.props.accordionHeadings.length;
     let newIndex = index;
   
@@ -146,14 +146,12 @@ class Accordion extends Component {
   
     switch (event.key) {
       case 'ArrowDown':
-      case 'ArrowRight':
         event.preventDefault(); 
-        this.handleDownOrRightArrow(index, eventOrigin);
+        this.handleDownArrow(index, eventOrigin);
         break;
       case 'ArrowUp':
-      case 'ArrowLeft':
         event.preventDefault(); 
-        this.handleUpOrLeftArrow(index, eventOrigin);
+        this.handleUpArrow(index, eventOrigin);
         break;
       default:
         // handle other keys if needed
