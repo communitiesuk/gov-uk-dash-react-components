@@ -203,7 +203,7 @@ class Accordion extends Component {
                 className='govuk-accordion__show-all' 
                 onClick={this.showOrHideAllAccordionSections} 
                 onKeyDown={(event) => this.handleKeyEvent(event,-1)}
-                aria-label={`Accordion with ${this.props.accordionHeadings.length} sections, all sections are ${this.state.allSectionsAreOpen ? "open" : "closed"} select to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
+                aria-label={`Expandable section with ${this.props.accordionHeadings.length} sections, select to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
             >
             <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
             <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
@@ -229,11 +229,10 @@ class Accordion extends Component {
                     className="accordion-button govuk-accordion__section-button" 
                     type="button" 
                     aria-controls={contentId} 
-                    // aria-expanded={sectionIsOpen} not needed now we read all the info in the aria-label?
                     aria-label={
                       sectionIsOpen
-                        ? `Accordion heading at level ${index} is ${accordionHeading},,,, Section is open, select to close`
-                        : `Accordion heading at level ${index} is ${accordionHeading},,,, Section is closed, select to open`
+                        ? `Heading at level ${index} is ${accordionHeading},,,, Section is open, select to close`
+                        : `Heading at level ${index} is ${accordionHeading},,,, Section is closed, select to open`
                     }
                     onClick={() => this.openOrCloseAccordionSection(index)}
                     onKeyDown={(event) => this.handleKeyEvent(event,index)}
@@ -261,7 +260,7 @@ class Accordion extends Component {
                 id={contentId} 
                 onKeyDown={(event) => this.handleKeyEvent(event, index)}
                 tabIndex="-1" //set this to make the content focusable for arrow key events
-                aria-label={`Accordion at level ${index} content is`}
+                aria-label={`Content at level ${index}`}
             >
                 <p className='govuk-body'>{accordionSectionContent}</p>
             </div>
