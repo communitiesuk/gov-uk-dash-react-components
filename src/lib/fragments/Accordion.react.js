@@ -31,7 +31,7 @@ class Accordion extends Component {
     this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen : !this.state.allSectionsAreOpen});
   } 
   
-  // This method handles the Up or Left arrow key event for an accordion component
+  // This method handles the Up arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
   handleUpArrow = (index, eventOrigin) => {
     const numberSections = this.props.accordionHeadings.length;
@@ -83,7 +83,7 @@ class Accordion extends Component {
     }
   }
 
-  // This method handles the Down or Right arrow key event for an accordion component
+  // This method handles the Down arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
   handleDownArrow = (index, eventOrigin) => {
     const numberSections = this.props.accordionHeadings.length;
