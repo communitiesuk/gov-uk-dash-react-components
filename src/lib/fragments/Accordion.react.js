@@ -46,7 +46,6 @@ class Accordion extends Component {
           previousElement.focus();
         }
         return;
-
       case EventOrigin.SECTION_HEADING:
         if (index === 0) {  // if the index of the section heading is 0 focus the show all button
           const expandCollapseAllButtonElement = this.expandCollapseAllButtonRef.current;
@@ -68,11 +67,9 @@ class Accordion extends Component {
           }
         }
         break;
-
       case EventOrigin.SECTION_CONTENT: // focus the heading at the same level as the content
         newIndex = index;
         break;
-
       default:
         break;
     }
@@ -152,7 +149,6 @@ class Accordion extends Component {
         this.handleUpArrow(index, eventOrigin);
         break;
       default:
-        // handle other keys if needed
         break;
     }
   }
@@ -170,7 +166,6 @@ class Accordion extends Component {
     }
 
     let targetIndex;
-
     if (direction === "next") {
       targetIndex = currentIndex + 1;
     } else if (direction === "previous") {
@@ -178,7 +173,6 @@ class Accordion extends Component {
     } else {
       throw new Error("Invalid direction. Must be either 'next' or 'previous'.");
     }
-
     return focusable[targetIndex] || null;
   }
 
@@ -251,7 +245,6 @@ class Accordion extends Component {
                 </span>
                 <span className={sectionIsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
                 <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"}
-                  {/* <span className="govuk-visually-hidden"> this section</span> */}
                 </span>
               </span>
             </button>
