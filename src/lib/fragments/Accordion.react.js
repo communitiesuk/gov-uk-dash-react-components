@@ -17,7 +17,6 @@ class Accordion extends Component {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(false),
       allSectionsAreOpen: false,
     }
-    console.log(this.props.accordionHeadings.length);
     this.expandCollapseAllButtonRef = React.createRef();
     this.contentRefs = this.props.accordionHeadings.map(() => React.createRef());
     this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
@@ -99,7 +98,6 @@ class Accordion extends Component {
         const sectionIsOpen = this.state.sectionsOpen[index];
         if (sectionIsOpen) {
           const content = this.contentRefs[index].current;
-          console.log("event from section heading, content =", content)
           if (content) {
             content.focus();
             return;
@@ -117,7 +115,6 @@ class Accordion extends Component {
 
     if (newIndex >= 0 && newIndex < numberSections) {
       const nextHeading = this.headerRefs[newIndex].current;
-      console.log("NEXT HEADING:", nextHeading)
       if (nextHeading) {
         nextHeading.focus();
         return;
@@ -186,7 +183,6 @@ class Accordion extends Component {
   }
 
   render() {
-    console.log("children", this.props.children)
     let accordionContent
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
