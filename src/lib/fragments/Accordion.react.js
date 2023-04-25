@@ -18,19 +18,20 @@ class Accordion extends Component {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(false),
       allSectionsAreOpen: false,
     }
+    this.refs = [React.createRef(), React.createRef()]
   }
 
   openOrCloseAccordionSection = (index) => {
     let sectionsOpen = [...this.state.sectionsOpen];
     sectionsOpen[index] = !sectionsOpen[index];
-    this.setState({sectionsOpen: sectionsOpen, allSectionsAreOpen: sectionsOpen.every(sectionIsOpen => sectionIsOpen)});
+    this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen: sectionsOpen.every(sectionIsOpen => sectionIsOpen) });
   }
 
   showOrHideAllAccordionSections = () => {
     let sectionsOpen = new Array(this.state.sectionsOpen.length).fill(this.state.allSectionsAreOpen ? false : true);
-    this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen : !this.state.allSectionsAreOpen});
-  } 
-  
+    this.setState({ sectionsOpen: sectionsOpen, allSectionsAreOpen: !this.state.allSectionsAreOpen });
+  }
+
   // This method handles the Up arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
   handleUpArrow = (index, eventOrigin) => {
@@ -46,8 +47,8 @@ class Accordion extends Component {
         }
         return;
 
-      case EventOrigin.SECTION_HEADING: 
-        if (index === 0){  // if the index of the section heading is 0 focus the show all button
+      case EventOrigin.SECTION_HEADING:
+        if (index === 0) {  // if the index of the section heading is 0 focus the show all button
           const showAllElement = document.querySelector('.govuk-accordion__show-all');
           if (showAllElement) {
             showAllElement.focus();
@@ -92,7 +93,7 @@ class Accordion extends Component {
     // accordRefchildComponents has number of sections + 1 elements - div with the show/hide button plus a div for each accordion section
     let accordRefchildComponents = this.accordRef.current.children
     let newIndex = index;
-  
+
     switch (eventOrigin) {
       case EventOrigin.SHOW_ALL_BUTTON:
         newIndex = 0; // go to accordion heading 0
@@ -100,8 +101,8 @@ class Accordion extends Component {
       case EventOrigin.SECTION_HEADING:
         const sectionIsOpen = this.state.sectionsOpen[index];
         if (sectionIsOpen) {
-          const content = accordRefchildComponents[index + 1].children[1]; // [index + 1] as have to add  1 to account for the show/hide all button and children[1] as the content is the second element 
-          console.log("event from section heading, content =", content)
+          const content = this.refs1[index].current;
+          console.log("event from section heading, content =", content1)
           if (content) {
             content.focus();
             return;
@@ -116,7 +117,7 @@ class Accordion extends Component {
       default:
         break;
     }
-  
+
     if (newIndex >= 0 && newIndex < numberSections) {
       // const nextHeading = accordRefchildComponents[newIndex + 1].querySelector(':nth-child(3)'); // The accordion heading is at index 0
 
@@ -134,11 +135,11 @@ class Accordion extends Component {
         nextElement.focus();
       }
     }
-  }  
-  
+  }
+
   handleKeyEvent = (event, index) => {
     let eventOrigin;
-  
+
     if (index === -1) {
       eventOrigin = EventOrigin.SHOW_ALL_BUTTON;
     } else if (event.target.className === "govuk-accordion__section-content") {
@@ -148,14 +149,14 @@ class Accordion extends Component {
     } else {
       return;
     }
-  
+
     switch (event.key) {
       case 'ArrowDown':
-        event.preventDefault(); 
+        event.preventDefault();
         this.handleDownArrow(index, eventOrigin);
         break;
       case 'ArrowUp':
-        event.preventDefault(); 
+        event.preventDefault();
         this.handleUpArrow(index, eventOrigin);
         break;
       default:
@@ -163,9 +164,9 @@ class Accordion extends Component {
         break;
     }
   }
- 
+
   findFocusableElement(element, direction) {
-    if (!element){
+    if (!element) {
       return
     }
     const focusableElements = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
@@ -175,9 +176,9 @@ class Accordion extends Component {
       console.warn("Element not found in the list of focusable elements.");
       return null;
     }
-  
+
     let targetIndex;
-  
+
     if (direction === "next") {
       targetIndex = currentIndex + 1;
     } else if (direction === "previous") {
@@ -185,37 +186,44 @@ class Accordion extends Component {
     } else {
       throw new Error("Invalid direction. Must be either 'next' or 'previous'.");
     }
-  
+
     return focusable[targetIndex] || null;
   }
-    
+
   render() {
     console.log("children", this.props.children)
-    let accordionContent 
-    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
+    let accordionContent
+    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
-    else { 
-      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+    else {
+      const zippedAccordionContent = this.props.children.map((accordionSectionContent, index) => {
+        return {
+          content: accordionSectionContent,
+          ref: this.refs1[index],
+        };
+      });
+
+      accordionContent = zippedAccordionContent.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
     }
     return (
       <div className="js-enabled">
-        <div 
-          className="govuk-accordion" 
-          data-module="govuk-accordion" 
+        <div
+          className="govuk-accordion"
+          data-module="govuk-accordion"
           id={this.props.id}
           ref={this.accordRef}
         >
           <div className='govuk-accordion__controls'>
             <button
-                type='button' 
-                className='govuk-accordion__show-all' 
-                onClick={this.showOrHideAllAccordionSections} 
-                onKeyDown={(event) => this.handleKeyEvent(event,-1)}
-                aria-label={`Expandable section with ${this.props.accordionHeadings.length} sections, select to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
+              type='button'
+              className='govuk-accordion__show-all'
+              onClick={this.showOrHideAllAccordionSections}
+              onKeyDown={(event) => this.handleKeyEvent(event, -1)}
+              aria-label={`Expandable section with ${this.props.accordionHeadings.length} sections, select to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
             >
-            <span className= {this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-            <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
+              <span className={this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
+              <span className="govuk-accordion__section-toggle-text"> {this.state.allSectionsAreOpen ? "Hide all sections" : "Show all sections"} </span>
             </button>
           </div>
           {accordionContent}
@@ -228,56 +236,57 @@ class Accordion extends Component {
     const accordionHeading = this.props.accordionHeadings[index]
     const contentId = `accordion-default-content-${index}`;
     return (
-          <div 
-            className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}
-            data-section-index={index}
-          >
-            <div className="govuk-accordion__section-header">
-              <h2 className="govuk-accordion__section-heading">
-                <button 
-                    className="accordion-button govuk-accordion__section-button" 
-                    type="button" 
-                    aria-controls={contentId} 
-                    aria-label={
-                      sectionIsOpen
-                        ? `Heading at level ${index} is ${accordionHeading},,,, Section is open, select to close`
-                        : `Heading at level ${index} is ${accordionHeading},,,, Section is closed, select to open`
-                    }
-                    onClick={() => this.openOrCloseAccordionSection(index)}
-                    onKeyDown={(event) => this.handleKeyEvent(event,index)}
-                >
-                  <span className="govuk-accordion__section-heading-text" >
-                    <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading} 
-                    </span>
-                  </span> 
-                  <span className="govuk-visually-hidden govuk-accordion__section-heading-divider"></span>
-                  <span className="govuk-accordion__section-toggle" data-nosnippet>
-                    <span className="govuk-accordion__section-toggle-focus">
-                      <span className="moj-side-navigation__item--collapsed">
-                      </span>
-                    </span>
-                    <span className= {sectionIsOpen ?  "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                    <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"} 
-                      {/* <span className="govuk-visually-hidden"> this section</span> */}
-                    </span>
-                  </span>
-                </button>
-              </h2>
-            </div>
-            <div 
-                className="govuk-accordion__section-content" 
-                id={contentId} 
-                onKeyDown={(event) => this.handleKeyEvent(event, index)}
-                tabIndex="-1" //set this to make the content focusable for arrow key events
-                aria-label={`Content at level ${index}`}
+      <div
+        className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}
+        data-section-index={index}
+      >
+        <div className="govuk-accordion__section-header">
+          <h2 className="govuk-accordion__section-heading">
+            <button
+              className="accordion-button govuk-accordion__section-button"
+              type="button"
+              aria-controls={contentId}
+              aria-label={
+                sectionIsOpen
+                  ? `Heading at level ${index} is ${accordionHeading},,,, Section is open, select to close`
+                  : `Heading at level ${index} is ${accordionHeading},,,, Section is closed, select to open`
+              }
+              onClick={() => this.openOrCloseAccordionSection(index)}
+              onKeyDown={(event) => this.handleKeyEvent(event, index)}
             >
-                <p className='govuk-body'>{accordionSectionContent}</p>
-            </div>
-          </div> 
-        )
-    }
+              <span className="govuk-accordion__section-heading-text" >
+                <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading}
+                </span>
+              </span>
+              <span className="govuk-visually-hidden govuk-accordion__section-heading-divider"></span>
+              <span className="govuk-accordion__section-toggle" data-nosnippet>
+                <span className="govuk-accordion__section-toggle-focus">
+                  <span className="moj-side-navigation__item--collapsed">
+                  </span>
+                </span>
+                <span className={sectionIsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
+                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"}
+                  {/* <span className="govuk-visually-hidden"> this section</span> */}
+                </span>
+              </span>
+            </button>
+          </h2>
+        </div>
+        <div
+          className="govuk-accordion__section-content"
+          id={contentId}
+          onKeyDown={(event) => this.handleKeyEvent(event, index)}
+          tabIndex="-1" //set this to make the content focusable for arrow key events
+          aria-label={`Content at level ${index}`}
+          ref={accordionSectionContent.ref}
+        >
+          <p className='govuk-body'>{accordionSectionContent.content}</p>
+        </div>
+      </div>
+    )
   }
-  
+}
+
 Accordion.defaultProps = defaultProps;
 Accordion.propTypes = propTypes;
 
