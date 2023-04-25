@@ -18,7 +18,7 @@ class Accordion extends Component {
       allSectionsAreOpen: false,
     }
     this.expandCollapseAllButtonRef = React.createRef();
-    this.contentRefs = this.props.accordionHeadings.map(() => React.createRef());
+    this.contentRefs = this.props.children.map(() => React.createRef());
     this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
   }
 
