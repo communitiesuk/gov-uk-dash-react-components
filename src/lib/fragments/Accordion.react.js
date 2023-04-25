@@ -1,4 +1,3 @@
-import { transduce } from 'ramda';
 import React, { Component } from 'react';
 import xtype from 'xtypejs';
 
@@ -14,6 +13,7 @@ const EventOrigin = {
 class Accordion extends Component {
   constructor(props) {
     super(props);
+    this.accordRef = React.createRef();
     this.state = {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(false),
       allSectionsAreOpen: false,
@@ -86,7 +86,11 @@ class Accordion extends Component {
   // This method handles the Down arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
   handleDownArrow = (index, eventOrigin) => {
+    console.log("accordRef**********", this.accordRef.current.children)
+
     const numberSections = this.props.accordionHeadings.length;
+    // accordRefchildComponents has number of sections + 1 elements - div with the show/hide button plus a div for each accordion section
+    let accordRefchildComponents = this.accordRef.current.children
     let newIndex = index;
   
     switch (eventOrigin) {
@@ -96,7 +100,8 @@ class Accordion extends Component {
       case EventOrigin.SECTION_HEADING:
         const sectionIsOpen = this.state.sectionsOpen[index];
         if (sectionIsOpen) {
-          const content = document.querySelector(`#accordion-default-content-${index}`);
+          const content = accordRefchildComponents[index + 1].children[1]; // [index + 1] as have to add  1 to account for the show/hide all button and children[1] as the content is the second element 
+          console.log("event from section heading, content =", content)
           if (content) {
             content.focus();
             return;
@@ -113,17 +118,17 @@ class Accordion extends Component {
     }
   
     if (newIndex >= 0 && newIndex < numberSections) {
-      const nextHeading = document.querySelector(
-        `[data-section-index="${newIndex}"] .govuk-accordion__section-heading .govuk-accordion__section-button`
-      );
+      // const nextHeading = accordRefchildComponents[newIndex + 1].querySelector(':nth-child(3)'); // The accordion heading is at index 0
+
+      const nextHeading = accordRefchildComponents[newIndex + 1].children[0] // The accordion heading is at index 0
+      console.log("NEXT HEADING:", nextHeading)
       if (nextHeading) {
         nextHeading.focus();
+
         return;
       }
-    } else if (newIndex >= numberSections) {
-      const currentHeading = document.querySelector(
-        `[data-section-index="${index}"] .govuk-accordion__section-heading .govuk-accordion__section-button`
-      );
+    } else if (newIndex >= numberSections) { // focus on the next element on the page
+      const currentHeading = accordRefchildComponents[index + 1].children[0]
       const nextElement = this.findFocusableElement(currentHeading, "next");
       if (nextElement) {
         nextElement.focus();
@@ -165,9 +170,7 @@ class Accordion extends Component {
     }
     const focusableElements = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
     const focusable = Array.from(document.querySelectorAll(focusableElements));
-    console.log("focusable Array", focusable)
     const currentIndex = focusable.indexOf(element);
-    console.log("******", currentIndex)
     if (currentIndex === -1) {
       console.warn("Element not found in the list of focusable elements.");
       return null;
@@ -187,6 +190,7 @@ class Accordion extends Component {
   }
     
   render() {
+    console.log("children", this.props.children)
     let accordionContent 
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array'){                     
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
@@ -196,7 +200,12 @@ class Accordion extends Component {
     }
     return (
       <div className="js-enabled">
-        <div className="govuk-accordion" data-module="govuk-accordion" id={this.props.id}>
+        <div 
+          className="govuk-accordion" 
+          data-module="govuk-accordion" 
+          id={this.props.id}
+          ref={this.accordRef}
+        >
           <div className='govuk-accordion__controls'>
             <button
                 type='button' 
