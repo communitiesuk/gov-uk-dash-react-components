@@ -18,7 +18,9 @@ class Accordion extends Component {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(false),
       allSectionsAreOpen: false,
     }
-    this.refs = [React.createRef(), React.createRef()]
+    console.log(this.props.accordionHeadings.length);
+    this.contentRefs = this.props.accordionHeadings.map(() => React.createRef());
+    this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
   }
 
   openOrCloseAccordionSection = (index) => {
@@ -101,8 +103,8 @@ class Accordion extends Component {
       case EventOrigin.SECTION_HEADING:
         const sectionIsOpen = this.state.sectionsOpen[index];
         if (sectionIsOpen) {
-          const content = this.refs1[index].current;
-          console.log("event from section heading, content =", content1)
+          const content = this.contentRefs[index].current;
+          console.log("event from section heading, content =", content)
           if (content) {
             content.focus();
             return;
@@ -119,17 +121,15 @@ class Accordion extends Component {
     }
 
     if (newIndex >= 0 && newIndex < numberSections) {
-      // const nextHeading = accordRefchildComponents[newIndex + 1].querySelector(':nth-child(3)'); // The accordion heading is at index 0
-
-      const nextHeading = accordRefchildComponents[newIndex + 1].children[0] // The accordion heading is at index 0
+      const nextHeading = this.headerRefs[newIndex].current;
       console.log("NEXT HEADING:", nextHeading)
       if (nextHeading) {
         nextHeading.focus();
-
         return;
       }
     } else if (newIndex >= numberSections) { // focus on the next element on the page
-      const currentHeading = accordRefchildComponents[index + 1].children[0]
+      const currentHeading = this.headerRefs[index].current;
+
       const nextElement = this.findFocusableElement(currentHeading, "next");
       if (nextElement) {
         nextElement.focus();
@@ -197,14 +197,7 @@ class Accordion extends Component {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
     else {
-      const zippedAccordionContent = this.props.children.map((accordionSectionContent, index) => {
-        return {
-          content: accordionSectionContent,
-          ref: this.refs1[index],
-        };
-      });
-
-      accordionContent = zippedAccordionContent.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
     }
     return (
       <div className="js-enabled">
@@ -253,6 +246,7 @@ class Accordion extends Component {
               }
               onClick={() => this.openOrCloseAccordionSection(index)}
               onKeyDown={(event) => this.handleKeyEvent(event, index)}
+              ref={this.headerRefs[index]}
             >
               <span className="govuk-accordion__section-heading-text" >
                 <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading}
@@ -278,9 +272,9 @@ class Accordion extends Component {
           onKeyDown={(event) => this.handleKeyEvent(event, index)}
           tabIndex="-1" //set this to make the content focusable for arrow key events
           aria-label={`Content at level ${index}`}
-          ref={accordionSectionContent.ref}
+          ref={this.contentRefs[index]}
         >
-          <p className='govuk-body'>{accordionSectionContent.content}</p>
+          <p className='govuk-body'>{accordionSectionContent}</p>
         </div>
       </div>
     )
