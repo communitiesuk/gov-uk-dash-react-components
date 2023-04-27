@@ -200,7 +200,7 @@ class Accordion extends Component {
               className='govuk-accordion__show-all'
               onClick={this.showOrHideAllAccordionSections}
               onKeyDown={(event) => this.handleKeyEvent(event, -1)}
-              aria-label={`Expandable section with ${this.props.accordionHeadings.length} sections, select to ${this.state.allSectionsAreOpen ? "close" : "open"} all sections`}
+              aria-label={`Toggle ${this.props.accordionHeadings.length} panels, ${this.state.allSectionsAreOpen ? "collapse" : "expand"} all`}
               ref={this.expandCollapseAllButtonRef}
             >
               <span className={this.state.allSectionsAreOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
@@ -219,7 +219,6 @@ class Accordion extends Component {
     return (
       <div
         className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}
-        data-section-index={index}
       >
         <div className="govuk-accordion__section-header">
           <h2 className="govuk-accordion__section-heading">
