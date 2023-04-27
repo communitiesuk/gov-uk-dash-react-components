@@ -256,11 +256,12 @@ class Accordion extends Component {
           className={AccordionContentClassName}
           id={contentId}
           onKeyDown={(event) => this.handleKeyEvent(event, index)}
-          tabIndex="-1" //set this to make the content focusable for arrow key events
+          tabIndex="0" //set this to make the content focusable for arrow key events
           aria-label={`Content at level ${index}`}
           ref={this.contentRefs[index]}
         >
-          <p className='govuk-body'>{accordionSectionContent}</p>
+          <p className='govuk-body'>{accordionSectionContent}
+          </p>
         </div>
       </div>
     )
