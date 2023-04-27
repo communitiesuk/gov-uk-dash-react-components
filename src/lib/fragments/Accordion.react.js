@@ -56,18 +56,8 @@ class Accordion extends Component {
             expandCollapseAllButtonElement.focus();
             return;
           }
-        } else if (index > 0) { // focus the content of the previous accordion section if it is open
-          const previousIndex = index - 1;
-          const previousSectionIsOpen = this.state.sectionsOpen[previousIndex];
-          if (previousSectionIsOpen) {
-            const contentAtPreviousIndex = this.contentRefs[previousIndex].current;
-            if (contentAtPreviousIndex) {
-              contentAtPreviousIndex.focus();
-              return;
-            }
-          } else { // previous section is closed so focus the previous heading
-            newIndex = index - 1;
-          }
+        } else { // previous section is closed so focus the previous heading
+          newIndex = index - 1;
         }
         break;
       case EventOrigin.SECTION_CONTENT: // focus the heading at the same level as the content
@@ -95,21 +85,7 @@ class Accordion extends Component {
         newIndex = 0; // go to accordion heading 0
         break;
       case EventOrigin.SECTION_HEADING:
-        const sectionIsOpen = this.state.sectionsOpen[index];
-        if (sectionIsOpen) {
-          const content = this.contentRefs[index].current;
-          if (content) {
-            content.focus();
-            return;
-          }
-        } else { // section is closed, go to next heading if there is one
-          newIndex = index + 1;
-        }
-        break;
-      case EventOrigin.SECTION_CONTENT:
-        newIndex = index + 1; // go to next heading if there is one
-        break;
-      default:
+        newIndex = index + 1;
         break;
     }
 
@@ -121,11 +97,6 @@ class Accordion extends Component {
       }
     } else if (newIndex >= numberSections) { // focus on the next element on the page
       const currentHeading = this.headerRefs[index].current;
-
-      const nextElement = this.findFocusableElement(currentHeading, "next");
-      if (nextElement) {
-        nextElement.focus();
-      }
     }
   }
 
