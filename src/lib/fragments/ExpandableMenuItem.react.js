@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { v4 as uuid } from 'uuid';
 import { defaultProps, propTypes } from '../components/ExpandableMenuItem.react';
 
 class ExpandableMenuItem extends Component {
@@ -32,7 +31,7 @@ class ExpandableMenuItem extends Component {
         <a className={titleClass} href="#" data-expandable-control="expandable-link">
           {title}
         </a>
-        <div id={"expandable-menu-contents-" + uuid()} hidden={this.state.hidden}>
+        <div id={"expandable-menu-contents-" + id} hidden={this.state.hidden}>
           {children && <nav className={subMenuClass}>
             {children}
           </nav>}
