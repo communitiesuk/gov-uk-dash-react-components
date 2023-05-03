@@ -206,10 +206,6 @@ class Accordion extends Component {
               onKeyDown={(event) => this.handleKeyEvent(event, index)}
               ref={this.headerRefs[index]}
             >
-              <span className="govuk-accordion__section-heading-text" >
-                <span className="govuk-accordion__section-heading-text-focus"> {accordionHeading}
-                </span>
-              </span>
               <span className="govuk-visually-hidden govuk-accordion__section-heading-divider"></span>
               <span className="govuk-accordion__section-toggle" data-nosnippet>
                 <span className="govuk-accordion__section-toggle-focus">
@@ -217,7 +213,7 @@ class Accordion extends Component {
                   </span>
                 </span>
                 <span className={sectionIsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide" : "Show"}
+                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide " + accordionHeading : "Show " + accordionHeading}
                 </span>
               </span>
             </button>
