@@ -97,16 +97,15 @@ class Accordion extends Component {
       }
     } else if (newIndex >= numberSections) { // focus on the next element on the page
       let currentElement;
-      if (this.state.sectionsOpen[index]){ 
-        currentElement = this.contentRefs[newIndex].current;
-      }
-      else {
+      if (this.state.sectionsOpen[index]) {
+        currentElement = this.contentRefs[index].current;
+      } else {
         currentElement = this.headerRefs[index].current;
       }
       const nextElement = this.findFocusableElement(currentElement, "next");
-        if (nextElement) {
-          nextElement.focus();
-        }
+      if (nextElement) {
+        nextElement.focus();
+      }
     }
   }
 
