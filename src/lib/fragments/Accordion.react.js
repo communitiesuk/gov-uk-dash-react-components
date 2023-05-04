@@ -213,7 +213,7 @@ class Accordion extends Component {
                   </span>
                 </span>
                 <span className={sectionIsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? "Hide " + accordionHeading : "Show " + accordionHeading}
+                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? `Hide ${accordionHeading}` : `Show ${accordionHeading}`}
                 </span>
               </span>
             </button>
