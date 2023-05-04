@@ -96,7 +96,17 @@ class Accordion extends Component {
         return;
       }
     } else if (newIndex >= numberSections) { // focus on the next element on the page
-      const currentHeading = this.headerRefs[index].current;
+      let currentElement;
+      if (this.state.sectionsOpen[index]){ 
+        currentElement = this.contentRefs[newIndex].current;
+      }
+      else {
+        currentElement = this.headerRefs[index].current;
+      }
+      const nextElement = this.findFocusableElement(currentElement, "next");
+        if (nextElement) {
+          nextElement.focus();
+        }
     }
   }
 
@@ -226,7 +236,6 @@ class Accordion extends Component {
         <div
           className={AccordionContentClassName}
           id={contentId}
-          onKeyDown={(event) => this.handleKeyEvent(event, index)}
           tabIndex="0" //set this to make the content focusable for arrow key events
           aria-label={`Content at level ${index}`}
           ref={this.contentRefs[index]}
