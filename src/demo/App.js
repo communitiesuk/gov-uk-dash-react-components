@@ -5,6 +5,8 @@ import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordio
 
 import Tabs from '../lib/fragments/Tabs.react';
 
+import './dashboard.css';
+
 const App = () => {
     const [value, setValue] = useState('');
     const setProps = (props) => {
