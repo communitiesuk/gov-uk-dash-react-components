@@ -31,7 +31,7 @@ class ExpandableMenuItem extends Component {
         <a className={titleClass} href="#" data-expandable-control="expandable-link">
           {title}
         </a>
-        <div id="expandable-menu-contents" hidden={this.state.hidden}>
+        <div id={"expandable-menu-contents-" + id} hidden={this.state.hidden}>
           {children && <nav className={subMenuClass}>
             {children}
           </nav>}
