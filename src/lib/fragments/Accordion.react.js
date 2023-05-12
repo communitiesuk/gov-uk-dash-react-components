@@ -203,8 +203,8 @@ class Accordion extends Component {
               aria-controls={contentId}
               aria-label={
                 sectionIsOpen
-                  ? `Heading at level ${index} is ${accordionHeading},,,, section is open, select to close`
-                  : `Heading at level ${index} is ${accordionHeading},,,, section is closed, select to open`
+                  ? `Heading at level ${index} is ${accordionHeading}, section is open, select to close`
+                  : `Heading at level ${index} is ${accordionHeading}, section is closed, select to open`
               }
               onClick={() => this.openOrCloseAccordionSection(index)}
               onKeyDown={(event) => this.handleKeyEvent(event, index)}
