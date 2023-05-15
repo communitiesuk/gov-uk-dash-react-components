@@ -76,7 +76,7 @@ app.layout = html.Div(
                 html.Div([html.H1("I am a time series plot")]),
             ],
             defaultTab=0,
-            tabHeadings=["Display jitter plots", "Display time series plots"]
+            tabHeadings=["Display jitter plots", "Display time series plots"],
         ),
     ]
 )
@@ -92,15 +92,16 @@ def update_comparison(value):
         return [[], None]
     return [la_lookups[value], None]
 
+
 @app.callback(
-    Output("menu-open", "children"),
-    [Input("local_authority", "menu_open")],
+    Output("menu-open", "children"), [Input("local_authority", "menu_open")],
 )
 def update_comparison(menu_open):
     if menu_open:
         return "menu is open"
     else:
         return "menu is closed"
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
