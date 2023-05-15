@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Accordion as RealComponent } from '../LazyLoader';
 
 /**
@@ -56,6 +56,12 @@ Accordion.propTypes = {
      * Array of accordion children.
      */
     children: PropTypes.arrayOf(PropTypes.node),
+
+    /**
+     * Indexes on elements to jump to.
+     */
+    links: PropTypes.arrayOf(PropTypes.string),
+
 };
 
 export const defaultProps = Accordion.defaultProps;

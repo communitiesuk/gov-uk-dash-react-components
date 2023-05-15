@@ -18,7 +18,7 @@ class Accordion extends Component {
     super(props);
     this.state = {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(true),
-      
+
     }
     this.contentRefs = this.props.children.map(() => React.createRef());
     this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
@@ -27,7 +27,8 @@ class Accordion extends Component {
   openOrCloseAccordionSection = (index) => {
     let sectionsOpen = [...this.state.sectionsOpen];
     sectionsOpen[index] = !sectionsOpen[index];
-    this.setState({ sectionsOpen: sectionsOpen, 
+    this.setState({
+      sectionsOpen: sectionsOpen,
     });
   }
 
@@ -39,10 +40,10 @@ class Accordion extends Component {
     switch (eventOrigin) {
       case EventOrigin.SECTION_HEADING:
         if (index === 0) {  // if the index of the section heading is 0 focus the show all button
-        const expandCollapseAllButtonElement = this.contentRefs[0].current;
+          const expandCollapseAllButtonElement = this.contentRefs[0].current;
           const previousElement = this.findFocusableElement(expandCollapseAllButtonElement, "previous", 2);
           if (previousElement) {
-              previousElement.focus();
+            previousElement.focus();
             return;
           }
         } else { // previous section is closed so focus the previous heading
@@ -115,7 +116,19 @@ class Accordion extends Component {
     }
   }
 
-  findFocusableElement(element, direction, distance=1) { //distance is how many elements away the element you want to focus on is. 
+  jumpToAccordionContentSection(index) {
+    console.log('going to ', this.contentRefs[index])
+    if (this.contentRefs[index]) {
+      this.contentRefs[index].current.focus()
+
+      this.setState({
+        sectionsOpen: this.state.sectionsOpen.map((item, i) => (i === index ? true : item)),
+      });
+
+    }
+  }
+
+  findFocusableElement(element, direction, distance = 1) { //distance is how many elements away the element you want to focus on is. 
     if (!element) {
       return
     }
@@ -144,7 +157,7 @@ class Accordion extends Component {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
     else {
-      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.links[index]))
     }
     return (
       <div className="js-enabled">
@@ -159,9 +172,18 @@ class Accordion extends Component {
     )
   }
 
-  renderAccordionSection(index, accordionSectionContent, sectionIsOpen) {
+  renderAccordionSection(index, accordionSectionContent, sectionIsOpen, link) {
     const accordionHeading = this.props.accordionHeadings[index]
+    const linkHeading = this.props.accordionHeadings[link]
     const contentId = `accordion-default-content-${index}`;
+    const styles = {
+      background: 'white',
+      color: '#1d70b8',
+      margin: '0 1rem 0 0',
+      lineHeight: 'initial',
+    };
+
+
     return (
       <div
         className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}
@@ -200,7 +222,16 @@ class Accordion extends Component {
           tabIndex="0" //set this to make the content focusable for default tab key navigation events
           aria-label={`Content at level ${index}`}
           ref={this.contentRefs[index]}
-        >
+        > <div>
+            {link != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(link)}>
+              <p className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+                <strong className="govuk-tag" style={styles}>
+                  Jump to {linkHeading}
+                </strong>
+                {/* alt text here if wanted */}
+              </p>
+            </div> : null}
+          </div>
           <p className='govuk-body'>{accordionSectionContent}
           </p>
         </div>
