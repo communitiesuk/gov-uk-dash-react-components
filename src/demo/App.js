@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: 0 */
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 
-import { Dropdown, CheckboxList, ComponentTemplate, ExpandableMenuItem, Accordion } from '../lib';
+import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem } from '../lib';
 
 import Tabs from '../lib/fragments/Tabs.react';
 
@@ -20,19 +20,19 @@ const App = () => {
             <div>
                 <Dropdown
                     label="Hello world"
-                    style={{minWidth: '50%'}}
+                    style={{ minWidth: '50%' }}
                     source={[
-                        { label: "Local authorities", value: "Hello LOL", disabled:true },
-                        { label: "Regional", value: "Hello LOL2", disabled:true },
-                        { label: "Local authority type", value: "LOL", disabled:true },
+                        { label: "Local authorities", value: "Hello LOL", disabled: true },
+                        { label: "Regional", value: "Hello LOL2", disabled: true },
+                        { label: "Local authority type", value: "LOL", disabled: true },
 
-                        { label: "Local authorities2", value: "Hello LOL222", disabled:true },
-                        { label: "Regional2", value: "Hello LOL222", disabled:true },
-                        { label: "Local authority type2", value: "LOL222", disabled:true },
+                        { label: "Local authorities2", value: "Hello LOL222", disabled: true },
+                        { label: "Regional2", value: "Hello LOL222", disabled: true },
+                        { label: "Local authority type2", value: "LOL222", disabled: true },
 
                         { label: "Local authorities3", value: "Hello LOL3" },
                         { label: "Regional3", value: "Hello LOL3 HATS" },
-                        { label: "Local authority type3", value: "LOL3", disabled:true },
+                        { label: "Local authority type3", value: "LOL3", disabled: true },
 
                         { label: "Local authorities4", value: "Hello LOLa" },
                         { label: "Regional4", value: "Hello LOL2a" },
@@ -44,7 +44,7 @@ const App = () => {
 
                         { label: "Local authorities6", value: "Hello aLOL3" },
                         { label: "Regional6", value: "Hello LaOL3" },
-                        { label: "Local authority type6", value: "LOaL3", disabled:true },
+                        { label: "Local authority type6", value: "LOaL3", disabled: true },
                     ]}
                     id="autocomplete-default"
                     placeholder="Select Option"
@@ -71,27 +71,27 @@ const App = () => {
                         Core income time series
                     </a>
                 </li>
-                <ExpandableMenuItem id="side-nav-id" setProps={setProps} title = "Compare Local Authorities" children = {
+                <ExpandableMenuItem id="side-nav-id" setProps={setProps} title="Compare Local Authorities" children={
                     [
                         <li key={0}>
-                            <a href = "https://github.com/communitiesuk/">
+                            <a href="https://github.com/communitiesuk/">
                                 Children and Vulnerable People
                             </a>
                         </li>,
                         <li key={1}>
-                            <a href = "https://github.com/communitiesuk/gov-uk-dash-react-components/blob/master/README.md">
+                            <a href="https://github.com/communitiesuk/gov-uk-dash-react-components/blob/master/README.md">
                                 Cleaner, Safer Communities
                             </a>
                         </li>
-                    ]}/>
+                    ]} />
                 <li>
                     <a>
                         Local authority map
                     </a>
                 </li>
             </ul>
-            <Accordion id="accordion" accordionHeadings={["Test", "HATS!!!!!"]} children={[<h1>I am a child</h1>,<h1>I am a hat</h1>]}></Accordion>
-            <Tabs id="tabs" tabHeadings={["Display jitter plots", "Display time series plots"]} defaultTab={0} children={[<div><h1>I am a jitter plot</h1></div>,<div><h1>I am a time series plot</h1></div>]}></Tabs>
+            <Accordion id="accordion" accordionHeadings={["charts", "data!!!!!"]} children={[<h1>I am a child</h1>, <h1>I am a hat</h1>]} links={[2, 0]}></Accordion>
+            <Tabs id="tabs" tabHeadings={["Display jitter plots", 'data', "Display time series pl}ots"]} defaultTab={0} children={[<div><h1>I am a jitter plot</h1></div>, <div><h1>I am a jitter plot</h1></div>, <div><h1>I am a time series plot</h1></div>]}></Tabs>
         </>
     )
 }
