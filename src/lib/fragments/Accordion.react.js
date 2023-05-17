@@ -153,11 +153,17 @@ class Accordion extends Component {
 
   render() {
     let accordionContent
+    let links = this.props.links;
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
     else {
-      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.links[index]))
+      if (links) {
+        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.links[index]))
+      }
+      else {
+        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+      }
     }
     return (
       <div className="js-enabled">
@@ -225,9 +231,9 @@ class Accordion extends Component {
         > <div>
             {link != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(link)}>
               <p className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-                <strong className="govuk-tag" style={styles}>
+                <div className="govuk-button" style={styles}>
                   Jump to {linkHeading}
-                </strong>
+                </div>
                 {/* alt text here if wanted */}
               </p>
             </div> : null}
