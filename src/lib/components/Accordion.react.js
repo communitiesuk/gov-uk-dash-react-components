@@ -60,7 +60,7 @@ Accordion.propTypes = {
     /**
      * Indexes on elements to jump to.
      */
-    links: PropTypes.arrayOf(PropTypes.string),
+    links: PropTypes.arrayOf(PropTypes.number),
 
 };
 
