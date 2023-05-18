@@ -91,7 +91,8 @@ const App = () => {
                 </li>
             </ul>
             <Accordion id="accordion" accordionHeadings={["charts", "data!!!!!"]} children={[<h1>I am a child</h1>, <h1>I am a hat</h1>]} links={[1, 0]}></Accordion>
-            <Tabs id="tabs" tabHeadings={["Display jitter plots", 'data', "Display time series pl}ots"]} defaultTab={0} children={[<div><h1>I am a jitter plot</h1></div>, <div><h1>I am a jitter plot</h1></div>, <div><h1>I am a time series plot</h1></div>]}></Tabs>
+            <Tabs id="tabs" tabHeadings={["Display jitter plots", 'data', "Display time series plots"]} defaultTab={0} children={[<div><h1>I am a jitter plot</h1></div>, <div><h1>I am a jitter plot</h1></div>, <div><h1>I am a time series plot</h1></div>]}></Tabs>
+
         </>
     )
 }
