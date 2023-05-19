@@ -117,7 +117,6 @@ class Accordion extends Component {
   }
 
   jumpToAccordionContentSection(index) {
-    console.log('going to ', this.contentRefs[index])
     if (this.contentRefs[index]) {
       this.contentRefs[index].current.focus()
 
@@ -153,13 +152,13 @@ class Accordion extends Component {
 
   render() {
     let accordionContent
-    let links = this.props.links;
+    let bannerSections = this.props.bannerSections;
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
     else {
-      if (links) {
-        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.links[index]))
+      if (bannerSections) {
+        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.bannerSections[index]))
       }
       else {
         accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
@@ -178,16 +177,11 @@ class Accordion extends Component {
     )
   }
 
-  renderAccordionSection(index, accordionSectionContent, sectionIsOpen, link) {
+  renderAccordionSection(index, accordionSectionContent, sectionIsOpen, bannerSection) {
     const accordionHeading = this.props.accordionHeadings[index]
-    const linkHeading = this.props.accordionHeadings[link]
+    const bannerSectionHeading = this.props.accordionHeadings[bannerSection]
     const contentId = `accordion-default-content-${index}`;
-    const styles = {
-      background: 'white',
-      color: '#1d70b8',
-      margin: '0 1rem 0 0',
-      lineHeight: 'initial',
-    };
+
 
 
     return (
@@ -229,10 +223,10 @@ class Accordion extends Component {
           aria-label={`Content at level ${index}`}
           ref={this.contentRefs[index]}
         > <div>
-            {link != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(link)}>
+            {bannerSection != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(bannerSection)}>
               <p className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-                <div className="govuk-button" style={styles}>
-                  Jump to {linkHeading}
+                <div className="govuk-button " >
+                  Jump to {bannerSectionHeading}
                 </div>
                 {/* alt text here if wanted */}
               </p>

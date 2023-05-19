@@ -6,3 +6,11 @@ input[type=reset]:focus {
 }
 
 
+.accordion-button,
+input[type=submit],
+input[type=reset] {
+  background-color: white;
+  color: #1d70b8;
+  margin: 0 1rem 0 0;
+  line-height: initial;
+}
