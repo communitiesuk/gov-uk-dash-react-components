@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Accordion as RealComponent } from '../LazyLoader';
 
 /**
@@ -56,6 +56,19 @@ Accordion.propTypes = {
      * Array of accordion children.
      */
     children: PropTypes.arrayOf(PropTypes.node),
+
+    /**
+     * Array that determines the creation of banners for each section.
+     * Each item in the array corresponds to a section on the page.
+     * If an item is an integer, a banner with a button is created. 
+     * The button focuses on the child content with the corresponding index.
+     * If an item is null, no banner is created for that section.
+     */
+    bannerSections: PropTypes.arrayOf(PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf([null]),
+    ])),
+
 };
 
 export const defaultProps = Accordion.defaultProps;

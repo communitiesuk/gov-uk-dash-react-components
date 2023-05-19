@@ -18,7 +18,7 @@ class Accordion extends Component {
     super(props);
     this.state = {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(true),
-      
+
     }
     this.contentRefs = this.props.children.map(() => React.createRef());
     this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
@@ -27,7 +27,8 @@ class Accordion extends Component {
   openOrCloseAccordionSection = (index) => {
     let sectionsOpen = [...this.state.sectionsOpen];
     sectionsOpen[index] = !sectionsOpen[index];
-    this.setState({ sectionsOpen: sectionsOpen, 
+    this.setState({
+      sectionsOpen: sectionsOpen,
     });
   }
 
@@ -39,10 +40,10 @@ class Accordion extends Component {
     switch (eventOrigin) {
       case EventOrigin.SECTION_HEADING:
         if (index === 0) {  // if the index of the section heading is 0 focus the show all button
-        const expandCollapseAllButtonElement = this.contentRefs[0].current;
+          const expandCollapseAllButtonElement = this.contentRefs[0].current;
           const previousElement = this.findFocusableElement(expandCollapseAllButtonElement, "previous", 2);
           if (previousElement) {
-              previousElement.focus();
+            previousElement.focus();
             return;
           }
         } else { // previous section is closed so focus the previous heading
@@ -115,7 +116,18 @@ class Accordion extends Component {
     }
   }
 
-  findFocusableElement(element, direction, distance=1) { //distance is how many elements away the element you want to focus on is. 
+  jumpToAccordionContentSection(index) {
+    if (this.contentRefs[index]) {
+      this.contentRefs[index].current.focus()
+
+      this.setState({
+        sectionsOpen: this.state.sectionsOpen.map((item, i) => (i === index ? true : item)),
+      });
+
+    }
+  }
+
+  findFocusableElement(element, direction, distance = 1) { //distance is how many elements away the element you want to focus on is. 
     if (!element) {
       return
     }
@@ -140,11 +152,17 @@ class Accordion extends Component {
 
   render() {
     let accordionContent
+    let bannerSections = this.props.bannerSections;
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
     else {
-      accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+      if (bannerSections) {
+        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.bannerSections[index]))
+      }
+      else {
+        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
+      }
     }
     return (
       <div className="js-enabled">
@@ -159,9 +177,13 @@ class Accordion extends Component {
     )
   }
 
-  renderAccordionSection(index, accordionSectionContent, sectionIsOpen) {
+  renderAccordionSection(index, accordionSectionContent, sectionIsOpen, bannerSection) {
     const accordionHeading = this.props.accordionHeadings[index]
+    const bannerSectionHeading = this.props.accordionHeadings[bannerSection]
     const contentId = `accordion-default-content-${index}`;
+
+
+
     return (
       <div
         className={sectionIsOpen ? "govuk-accordion__section govuk-accordion__section--expanded" : "govuk-accordion__section"}
@@ -200,9 +222,19 @@ class Accordion extends Component {
           tabIndex="0" //set this to make the content focusable for default tab key navigation events
           aria-label={`Content at level ${index}`}
           ref={this.contentRefs[index]}
-        >
-          <p className='govuk-body'>{accordionSectionContent}
-          </p>
+        > <div>
+            {bannerSection != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(bannerSection)}>
+              <div className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+                <div id='accordion-button' className="govuk-button accordion-button"
+                >
+                  Jump to {bannerSectionHeading}
+                </div>
+                {/* alt text here if wanted */}
+              </div>
+            </div> : null}
+          </div>
+          <div className='govuk-body'>{accordionSectionContent}
+          </div>
         </div>
       </div>
     )
