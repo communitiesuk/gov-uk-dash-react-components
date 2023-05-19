@@ -224,16 +224,17 @@ class Accordion extends Component {
           ref={this.contentRefs[index]}
         > <div>
             {bannerSection != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(bannerSection)}>
-              <p className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-                <div className="govuk-button " >
+              <div className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+                <div id='accordion-button' className="govuk-button accordion-button"
+                >
                   Jump to {bannerSectionHeading}
                 </div>
                 {/* alt text here if wanted */}
-              </p>
+              </div>
             </div> : null}
           </div>
-          <p className='govuk-body'>{accordionSectionContent}
-          </p>
+          <div className='govuk-body'>{accordionSectionContent}
+          </div>
         </div>
       </div>
     )
