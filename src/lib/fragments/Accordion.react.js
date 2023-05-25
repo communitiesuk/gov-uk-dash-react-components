@@ -20,8 +20,14 @@ class Accordion extends Component {
       sectionsOpen: new Array(this.props.accordionHeadings.length).fill(true),
 
     }
-    this.contentRefs = this.props.children.map(() => React.createRef());
-    this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
+    if (this.props.children.length === 1){
+      this.contentRefs = new Array(React.createRef());
+      this.headerRefs = new Array(React.createRef());
+    }
+    else {
+      this.contentRefs = this.props.children.map(() => React.createRef());
+      this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
+    }
   }
 
   openOrCloseAccordionSection = (index) => {
@@ -117,7 +123,7 @@ class Accordion extends Component {
   }
 
   jumpToAccordionContentSection(index) {
-    if (this.contentRefs[index]) {
+    if (this.contentRefs[index] & this.state.sectionsOpen !== 1) {
       this.contentRefs[index].current.focus()
 
       this.setState({
