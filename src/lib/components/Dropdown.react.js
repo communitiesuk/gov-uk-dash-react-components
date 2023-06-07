@@ -10,6 +10,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
 /**
  * @param {{
  * 	label: string,
+ *  labelStyle,
  * 	id,
  * 	autoselect,
  * 	cssNamespace,
@@ -53,6 +54,11 @@ export const dropdownPropTypes = {
 	 * Label text
 	 */
 	label: PropTypes.string,
+
+	/**
+	 * Override the css style of the dropdown label text
+	 */
+	labelStyle: PropTypes.any,
 
 	/**
 	 * Should auto select

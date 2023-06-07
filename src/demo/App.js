@@ -20,6 +20,7 @@ const App = () => {
             <div>
                 <Dropdown
                     label="Hello world"
+                    labelStyle={{ "font-size": "1.5rem" , "font-weight": "bold" }}
                     style={{ minWidth: '50%' }}
                     source={[
                         { label: "Local authorities", value: "Hello LOL", disabled: true },

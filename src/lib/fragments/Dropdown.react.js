@@ -12,6 +12,7 @@ import {
 /**
  * @param {{
  * 	label,
+ *  labelStyle,
  * 	id,
  * 	autoselect,
  * 	cssNamespace,
@@ -40,11 +41,11 @@ import {
  * @return {*}
  */
 const Dropdown = (props = {}) => {	
-	const { label, ...autoComplete } = props;
+	const { label, labelStyle, ...autoComplete } = props;
 	const { labelProps, fieldProps } = useLabel(props);
 	return (
 		<div className="govuk-form-group" style={props.style}>
-			<label className="govuk-label" {...labelProps}>{label}</label>
+			<label className="govuk-label" style={labelStyle} {...labelProps}>{label}</label>
 			<AutoComplete
 				ariaLabelledBy={fieldProps['aria-labelledby']}
 				displayMenu="overlay"
