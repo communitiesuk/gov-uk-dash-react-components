@@ -10,7 +10,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
 /**
  * @param {{
  * 	label: string,
- *  labelStyle,
+ * 	labelStyle,
  * 	id,
  * 	autoselect,
  * 	cssNamespace,

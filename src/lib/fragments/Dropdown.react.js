@@ -12,7 +12,7 @@ import {
 /**
  * @param {{
  * 	label,
- *  labelStyle,
+ * 	labelStyle,
  * 	id,
  * 	autoselect,
  * 	cssNamespace,
