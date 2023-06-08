@@ -69,6 +69,13 @@ Accordion.propTypes = {
         PropTypes.oneOf([null]),
     ])),
 
+    /**
+     * Array of booleans that determines the initial open/closed state of each section in the component.
+     * Each item in the array corresponds to a section. If an item is true, the corresponding section is open 
+     * by default when the component is first rendered. If an item is false, the corresponding section is closed by default.
+     */
+    defaultSectionsOpen: PropTypes.arrayOf(PropTypes.bool),
+
 };
 
 export const defaultProps = Accordion.defaultProps;
