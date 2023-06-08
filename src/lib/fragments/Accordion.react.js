@@ -154,7 +154,6 @@ class Accordion extends Component {
   }
 
   render() {  
-    console.log(this.state.sectionsOpen)
     let accordionContent
     const bannerSections = this.props.bannerSections;
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
