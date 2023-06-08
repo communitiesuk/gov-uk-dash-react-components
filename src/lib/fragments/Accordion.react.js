@@ -10,14 +10,19 @@ const EventOrigin = {
   SHOW_ALL_BUTTON: "show all button",
 };
 
-const AccordionContentClassName = "govuk-accordion__section-content";
+// const AccordionContentClassName = "govuk-accordion__section-content";
 const AccordionButtonClassName = "accordion-button govuk-accordion__section-button";
 
 class Accordion extends Component {
   constructor(props) {
     super(props);
+    // Check if sectionsOpenDefault prop exists and is an array, otherwise generate a default array
+    const defaultSectionsOpen = Array.isArray(this.props.defaultSectionsOpen)
+      ? this.props.defaultSectionsOpen
+      : Array.from({ length: this.props.accordionHeadings.length }, () => true);
+
     this.state = {
-      sectionsOpen: new Array(this.props.accordionHeadings.length).fill(true),
+      sectionsOpen: defaultSectionsOpen
 
     }
     this.contentRefs = this.props.children.map(() => React.createRef());
@@ -25,11 +30,9 @@ class Accordion extends Component {
   }
 
   openOrCloseAccordionSection = (index) => {
-    let sectionsOpen = [...this.state.sectionsOpen];
-    sectionsOpen[index] = !sectionsOpen[index];
-    this.setState({
-      sectionsOpen: sectionsOpen,
-    });
+    this.setState(prevState => ({
+      sectionsOpen: prevState.sectionsOpen.map((isOpen, i) => i === index ? !isOpen : isOpen),
+    }));
   }
 
   // This method handles the Up arrow key event for an accordion component
@@ -150,9 +153,9 @@ class Accordion extends Component {
     return focusable[targetIndex] || null;
   }
 
-  render() {
+  render() {  
     let accordionContent
-    let bannerSections = this.props.bannerSections;
+    const bannerSections = this.props.bannerSections;
     if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
       accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
     }
@@ -217,7 +220,7 @@ class Accordion extends Component {
           </h2>
         </div>
         <div
-          className={AccordionContentClassName}
+          // className={AccordionContentClassName}
           id={contentId}
           tabIndex="0" //set this to make the content focusable for default tab key navigation events
           aria-label={`Content at level ${index}`}
