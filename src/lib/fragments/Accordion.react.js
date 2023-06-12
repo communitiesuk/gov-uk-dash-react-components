@@ -10,7 +10,7 @@ const EventOrigin = {
   SHOW_ALL_BUTTON: "show all button",
 };
 
-// const AccordionContentClassName = "govuk-accordion__section-content";
+const AccordionContentClassName = "govuk-accordion__section-content";
 const AccordionButtonClassName = "accordion-button govuk-accordion__section-button";
 
 class Accordion extends Component {
@@ -220,7 +220,7 @@ class Accordion extends Component {
           </h2>
         </div>
         <div
-          // className={AccordionContentClassName}
+          className={AccordionContentClassName}
           id={contentId}
           tabIndex="0" //set this to make the content focusable for default tab key navigation events
           aria-label={`Content at level ${index}`}
