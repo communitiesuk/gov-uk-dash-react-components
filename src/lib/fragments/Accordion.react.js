@@ -10,7 +10,7 @@ const EventOrigin = {
   SHOW_ALL_BUTTON: "show all button",
 };
 
-const AccordionContentClassName = "govuk-accordion__section-content";
+const AccordionContentClassName = "govuk-accordion__section-content accordion-padding";
 const AccordionButtonClassName = "accordion-button govuk-accordion__section-button";
 
 class Accordion extends Component {
