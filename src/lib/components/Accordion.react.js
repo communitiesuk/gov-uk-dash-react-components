@@ -55,8 +55,10 @@ Accordion.propTypes = {
     /**
      * Array of accordion children.
      */
-    children: PropTypes.arrayOf(PropTypes.node),
-
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+      ]),
     /**
      * Array that determines the creation of banners for each section.
      * Each item in the array corresponds to a section on the page.

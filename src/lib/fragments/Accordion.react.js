@@ -25,7 +25,11 @@ class Accordion extends Component {
       sectionsOpen: defaultSectionsOpen
 
     }
-    this.contentRefs = this.props.children.map(() => React.createRef());
+    if (typeof this.props.children === Array){
+    this.contentRefs = this.props.children.map(() => React.createRef());}
+    else{
+      this.contentRefs = [React.createRef()];
+    }
     this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
   }
 
