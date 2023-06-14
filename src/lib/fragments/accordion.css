@@ -12,3 +12,14 @@ input[type=reset]:focus {
   margin: 0 1rem 0 0;
   line-height: initial;
 }
+
+.js-enabled .govuk-accordion__section-content.accordion-padding {
+  padding-bottom: 5px; 
+}
+
+@media (min-width: 40.0625em) {
+  .js-enabled .govuk-accordion__section-content.accordion-padding {
+    padding-bottom: 10px; /* override for larger screens */
+  }
+}
+
