@@ -25,7 +25,7 @@ class Accordion extends Component {
       sectionsOpen: defaultSectionsOpen
 
     }
-    if (typeof this.props.children === Array){
+    if (this.props.children.length > 1){
     this.contentRefs = this.props.children.map(() => React.createRef());}
     else{
       this.contentRefs = [React.createRef()];
@@ -125,16 +125,18 @@ class Accordion extends Component {
 
   jumpToAccordionContentSection(index) {
     if (this.contentRefs[index]) {
-      this.contentRefs[index].current.focus()
-
       this.setState({
         sectionsOpen: this.state.sectionsOpen.map((item, i) => (i === index ? true : item)),
+      }, () => {
+        // The callback function will be called after state is updated
+        this.contentRefs[index].current.focus();
       });
 
     }
   }
 
-  findFocusableElement(element, direction, distance = 1) { //distance is how many elements away the element you want to focus on is. 
+  findFocusableElement(element, direction, distance = 1) { 
+    // distance is how many elements away the element you want to focus on is. 
     if (!element) {
       return
     }
