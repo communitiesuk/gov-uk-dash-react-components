@@ -51,7 +51,7 @@ const CheckboxList = (props)=>{
         >
             {sanitizeOptions(options).map((option, index) => {
                 return (
-                    <div className="govuk-checkboxes__item" key={option.value}>
+                    <div className="govuk-checkboxes__item" key={option.value} style={{paddingBottom:"10px"}}> 
                         <input checked={includes(option.value, value)} className="govuk-checkboxes__input" 
                             type="checkbox" id={`${id}_option_${index}`} value={option.value}
                             onChange={() => {                                
