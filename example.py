@@ -94,7 +94,8 @@ def update_comparison(value):
 
 
 @app.callback(
-    Output("menu-open", "children"), [Input("local_authority", "menu_open")],
+    Output("menu-open", "children"),
+    [Input("local_authority", "menu_open")],
 )
 def update_comparison(menu_open):
     if menu_open:
