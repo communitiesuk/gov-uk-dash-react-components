@@ -5,10 +5,8 @@ input[type=reset]:focus {
   outline: transparent !important;
 }
 
-
-#accordion-button {
-  background-color: white;
-  color: #1d70b8;
+#accordion-jump-to-button {
+  color: #000000; 
   margin: 0 1rem 0 0;
   line-height: initial;
 }
