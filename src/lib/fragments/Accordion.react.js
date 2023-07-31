@@ -234,7 +234,7 @@ class Accordion extends Component {
         > <div>
             {bannerSection != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(bannerSection)}>
               <div className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-                <button id='accordion-button' role="button" className="govuk-button govuk-button--secondary"
+                <button id='accordion-button' role="button" className="govuk-button govuk-button--secondary" style={{backgroundColor:'white', color: '#1d70b8'}}
                 >
                   Jump to {bannerSectionHeading}
                 </button>
