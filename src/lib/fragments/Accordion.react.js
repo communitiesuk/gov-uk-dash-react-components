@@ -130,6 +130,7 @@ class Accordion extends Component {
       }, () => {
         // The callback function will be called after state is updated
         this.contentRefs[index].current.focus();
+        this.contentRefs[index].current.scrollIntoView(true);
       });
 
     }
@@ -231,8 +232,7 @@ class Accordion extends Component {
           tabIndex="0" //set this to make the content focusable for default tab key navigation events
           aria-label={`Content at level ${index}`}
           ref={this.contentRefs[index]}
-        > <div>
-            {bannerSection != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(bannerSection)}>
+        >  {bannerSection != null ? <div className="change-log-banner govuk-!-margin-bottom-2" onClick={() => this.jumpToAccordionContentSection(bannerSection)} tabIndex={0}>
               <div className="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
                 <button id='accordion-jump-to-button' role="button" className="govuk-button govuk-button--secondary"
                 >
@@ -241,8 +241,7 @@ class Accordion extends Component {
                 {/* alt text here if wanted */}
               </div>
             </div> : null}
-          </div>
-          <div className='govuk-body'>{accordionSectionContent}
+          <div className='govuk-body' tabIndex={0}>{accordionSectionContent}
           </div>
         </div>
       </div>
