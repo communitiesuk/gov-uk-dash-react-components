@@ -1,7 +1,6 @@
 {
   "name": "uk_gov_dash_components",
-  "version": "1.19.6",
-
+  "version": "1.19.7",
   "description": "Dash components for Gov UK",
   "repository": {
     "type": "git",
@@ -13,13 +12,13 @@
   "homepage": "https://github.com/communitiesuk/uk-gov-dash-components",
   "main": "build/index.js",
   "scripts": {
-    "start": "webpack-serve --config ./webpack.serve.config.js --open",
+    "start": "webpack-serve --config ./webpack.serve.config.js --open  -- --openssl-legacy-provider",
     "validate-init": "python _validate_init.py",
     "prepublishOnly": "npm run validate-init",
     "build:js": "webpack --mode production",
     "build:backends": "dash-generate-components ./src/lib/components uk_gov_dash_components -p package-info.json --r-prefix 'govuk' --jl-prefix 'govuk' --ignore \\.test\\.",
     "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
-    "build": "npm run build:js && npm run build:backends",
+    "build": "npm run build:js && npm run build:backends react-scripts --openssl-legacy-provider build",
     "build:activated": "npm run build:js && npm run build:backends-activated"
   },
   "author": "DLUHC GovUk <pythonvisualisations@levellingup.gov.uk>",
@@ -33,6 +32,7 @@
     "@react-aria/listbox": "^3.4.4",
     "@react-aria/overlays": "^3.8.1",
     "@react-stately/combobox": "^3.0.4",
+    // "node": "^20.5.0",
     "ramda": "^0.26.1",
     "usehooks-ts": "2.1.1",
     "xtypejs": "^0.7.1"
@@ -69,7 +69,7 @@
     "glob-parent": "6.0.2"
   },
   "engines": {
-    "node": ">=8.11.0",
+    "node": ">=17",
     "npm": ">=6.1.0"
   }
 }
