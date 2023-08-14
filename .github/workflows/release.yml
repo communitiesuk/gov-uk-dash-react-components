@@ -41,8 +41,9 @@ jobs:
         auto-update-conda: true
         activate-environment: dash_react_components
         environment-file: environment.yml
-    - name: Run npm update
-      run: npm update
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
     - name: Generate python files
       run: npm install && npm run build
     - name: Build a binary wheel and a source tarball

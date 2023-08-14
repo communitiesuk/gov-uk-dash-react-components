@@ -1,6 +1,6 @@
 {
   "name": "uk_gov_dash_components",
-  "version": "1.19.8",
+  "version": "1.19.4",
   "description": "Dash components for Gov UK",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "homepage": "https://github.com/communitiesuk/uk-gov-dash-components",
   "main": "build/index.js",
   "scripts": {
-    "start": "NODE_OPTIONS='--openssl-legacy-provider' webpack-serve --config ./webpack.serve.config.js --open",
+    "start": "webpack-serve --config ./webpack.serve.config.js --open",
     "validate-init": "python _validate_init.py",
     "prepublishOnly": "npm run validate-init",
     "build:js": "webpack --mode production",
@@ -68,7 +68,7 @@
     "glob-parent": "6.0.2"
   },
   "engines": {
-    "node": ">=17",
+    "node": ">=8.11.0 <=16.16.0",
     "npm": ">=6.1.0"
   }
 }
