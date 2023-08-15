@@ -47,7 +47,9 @@ jobs:
         node-version: 17
     - name: upgrade Webpack
       run: npm install webpack@latest webpack-cli@latest
+    - name: Install npm-check-updates
       run: npm install -g npm-check-updates
+    - name: Update package.json to latest dependencies
       run: ncu -u
     - name: Generate python files
       run: npm install && npm run build
