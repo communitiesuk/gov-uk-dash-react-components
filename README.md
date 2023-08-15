@@ -142,5 +142,9 @@ Here are some troubleshooting steps to take by running locally or adding to the 
 
 #### Node version 
 
-
-As of 29 Mar 2023 we are installing a downgraded version of Node - version 16 - in the release workflow (we now install v16 in the `release.yml`). This is because we got an `err_ossl_evp_unsupported` error when running `npm install`. We got the error because we were using Node v17+ and the application uses an algorithm which is not supported with OpenSSL 3.0. We need to upgrade Node to v17+ before November 2023 - there is a ticket to fix this. 
+15/08/2023
+We upgraded to Node version 20 and rectified the `err_ossl_evp_unsupported` error by adding a workaround to the package.json file as follows: 
+` "build:js": "node --openssl-legacy-provider ./node_modules/webpack/bin/webpack.js --mode production", `
+We are now running Node with the `--openssl-legacy-provider` flag which means it will continue to use the legacy provider of the OpenSSL library. 
+This may not be neccessary in future as more libraries start to use use the more up to date version of OpenSSL. 
+It should also be noted that it is a possiblilty Node will stop supporting this flag in future. 
