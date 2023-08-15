@@ -47,6 +47,8 @@ jobs:
         node-version: 17
     - name: upgrade Webpack
       run: npm install webpack@latest webpack-cli@latest
+      run: npm install -g npm-check-updates
+      run: ncu -u
     - name: Generate python files
       run: npm install && npm run build
     - name: Build a binary wheel and a source tarball
