@@ -45,6 +45,8 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 17
+    - name: upgrade Webpack
+      run: npm install webpack@latest webpack-cli@latest
     - name: Generate python files
       run: npm install && npm run build
     - name: Build a binary wheel and a source tarball
