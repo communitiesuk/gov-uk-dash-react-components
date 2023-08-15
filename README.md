@@ -145,6 +145,6 @@ Here are some troubleshooting steps to take by running locally or adding to the 
 15/08/2023
 We upgraded to Node version 20 and rectified the `err_ossl_evp_unsupported` error by adding a workaround to the package.json file as follows: 
 ` "build:js": "node --openssl-legacy-provider ./node_modules/webpack/bin/webpack.js --mode production", `
-We are now running node with the `--openssl-legacy-provider` flag which means is will continue to use the legacy provider of the OpenSSL library. 
+We are now running Node with the `--openssl-legacy-provider` flag which means it will continue to use the legacy provider of the OpenSSL library. 
 This may not be neccessary in future as more libraries start to use use the more up to date version of OpenSSL. 
 It should also be noted that it is a possiblilty Node will stop supporting this flag in future. 
