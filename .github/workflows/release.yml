@@ -51,8 +51,6 @@ jobs:
       run: npm install -g npm-check-updates
     - name: Update package.json to latest dependencies
       run: ncu -u
-    - name: force use of prev ver of webpack so that webpack serve works
-      run: npm install webpack@4.29.0
     - name: Generate python files
       run: npm install && npm run build
     - name: Build a binary wheel and a source tarball
