@@ -28,8 +28,9 @@ jobs:
   #             generate_release_notes: true,
   #           });
   build-and-publish:
-    needs: Release
-    name: Build and publish package to PyPI and TestPyPI
+    # needs: Release
+    # name: Build and publish package to PyPI and TestPyPI
+    name: test node
     runs-on: ubuntu-latest
     defaults:
       run:
