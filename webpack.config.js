@@ -94,24 +94,8 @@ module.exports = (env, argv) => {
                 })
             ],
             splitChunks: {
-                name: true,
-                cacheGroups: {
-                    async: {
-                        chunks: 'async',
-                        minSize: 0,
-                        name(module, chunks, cacheGroupKey) {
-                            return `${cacheGroupKey}-${chunks[0].name}`;
-                        }
-                    },
-                    shared: {
-                        chunks: 'all',
-                        minSize: 0,
-                        minChunks: 2,
-                        name: 'uk_gov_dash_components-shared'
-                    }
-                }
-            }
-        },
+                chunks: 'all'
+            },
         plugins: [
             new WebpackDashDynamicImport(),
             new webpack.SourceMapDevToolPlugin({
