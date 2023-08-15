@@ -96,6 +96,7 @@ module.exports = (env, argv) => {
             splitChunks: {
                 chunks: 'all'
             },
+        },
         plugins: [
             new WebpackDashDynamicImport(),
             new webpack.SourceMapDevToolPlugin({
