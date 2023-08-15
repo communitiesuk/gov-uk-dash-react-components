@@ -49,7 +49,7 @@ module.exports = (env, argv) => {
         entry,
         output: {
             path: path.resolve(__dirname, dashLibraryName),
-            chunkFilename: '[name].js',
+            chunkFilename: '[name].[contenthash].js',   // Ensuring unique naming
             filename,
             library: dashLibraryName,
             libraryTarget: 'window',
