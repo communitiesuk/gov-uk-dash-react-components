@@ -43,7 +43,7 @@ jobs:
         environment-file: environment.yml
     - uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 20
     - name: Generate python files
       run: npm install && npm run build
     - name: Build a binary wheel and a source tarball
