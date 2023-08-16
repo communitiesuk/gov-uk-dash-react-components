@@ -5,6 +5,8 @@ import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuIte
 
 import Tabs from '../lib/fragments/Tabs.react';
 
+import CookieBanner from "components/CookieBanner";
+
 import './dashboard.css';
 
 const App = () => {
@@ -16,6 +18,7 @@ const App = () => {
     }
     return (
         <>
+         <CookieBanner/>
             <h2>Autocomplete</h2>
             <div>
                 <Dropdown
