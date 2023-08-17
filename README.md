@@ -60,7 +60,7 @@ You can read more about [function components in the React documentation](https:/
 1. Add both an import and export of `YourComponent` to both `src/lib/index.js` and `src/lib/LazyLoader.js`
 1. Add `YourComponent` to the import at the top of the `src/demo/App.js` file, and add `<YourComponent>` to the App.render() function.
     1. Run `npm start` to start the demo server.
-    1. Open http://localhost:55555 in your browser.
+    1. Open http://localhost:8000 in your browser.
     1. If nothing apears on the page, then open up the browser console to see the error(s).
 
 ### Test your code within a Dash Application
