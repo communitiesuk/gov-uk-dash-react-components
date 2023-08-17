@@ -32,6 +32,7 @@
     "@react-aria/listbox": "^3.4.4",
     "@react-aria/overlays": "^3.8.1",
     "@react-stately/combobox": "^3.0.4",
+    "js-cookie": "^3.0.1",
     "ramda": "^0.26.1",
     "usehooks-ts": "2.1.1",
     "xtypejs": "^0.7.1"
@@ -52,6 +53,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-react": "^7.14.2",
+    "js-cookie": "^3.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-docgen": "^4.1.1",
