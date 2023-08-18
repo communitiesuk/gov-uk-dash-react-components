@@ -108,6 +108,10 @@ const AutoComplete = (props) => {
 	const [query, setQuery] = useState(startValue || value || '');
 
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
+	const [interaction, setInteraction] = useState(''); 
+	const handleMouseDown = () => {
+		setInteraction('click');
+	};
 
 	if (!Array.isArray(source)) {
 		dataSource('', (options) => {
@@ -193,15 +197,11 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	const handleInputFocus = () => {
-		if (selectElement || showAllValues) {
-			return
-		}
-		const shouldReopenMenu = !validChoiceMade && query?.length >= minLength && options?.length > 0
-		setFocus(-1);
-		if (shouldReopenMenu) {
-			setMenuOpen(shouldReopenMenu || isMenuOpen);
-			setSelected(-1)
+	const handleInputFocus = (event) => {
+		if (interaction === 'click') {
+			setInteraction(''); 
+		} else { 
+			updateMenuForInput(event.target.value);	
 		}
 	}
 
@@ -515,16 +515,8 @@ const AutoComplete = (props) => {
 
 	const handleInputClick = (event) => {
 		if ((selectElement || showAllValues) && isMenuOpen === false) {
-			const newQuery = event.target.value
-			dataSource('', (options) => {
-				const currentSelectionIndex = options.indexOf(newQuery)
-				setOptions(options);
-				setMenuOpen(true);
-				setFocus(currentSelectionIndex);
-				setSelected(currentSelectionIndex);
-				setHover(null);
-			})
-		} else if (selectElement || showAllValues) {
+			updateMenuForInput(event.target.value);
+			} else if (selectElement || showAllValues) {
 			handleComponentBlur({
 				menuOpen: false
 			}, true)
@@ -532,6 +524,17 @@ const AutoComplete = (props) => {
 			handleInputChange(event)
 		}
 	}
+
+	const updateMenuForInput = (newQuery) => {
+		dataSource('', (options) => {
+			const currentSelectionIndex = options.indexOf(newQuery);
+			setOptions(options);
+			setMenuOpen(true);
+			setFocus(currentSelectionIndex);
+			setSelected(currentSelectionIndex);
+			setHover(null);
+		});
+	};
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
@@ -679,6 +682,7 @@ const AutoComplete = (props) => {
 					onBlur={handleInputBlur}
 					onChange={handleInputChange}
 					onFocus={handleInputFocus}
+					onMouseDown={handleMouseDown}
 					name={name}
 					placeholder={placeholder}
 					ref={(inputElement) => { elementReferences[-1] = inputElement; }}
