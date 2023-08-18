@@ -212,14 +212,13 @@ const AutoComplete = (props) => {
 				setSelected(currentSelectionIndex);
 				setHover(null);
 			});
-			lastKeyPressedWasTab = false; // reset the flag
+			lastKeyPressedWasTab = false;
 			return;
 		} 
 	
 		if (selectElement || showAllValues) {
 			return;
 		}
-		console.log("********** MENU OPEN", isMenuOpen)
 		const shouldReopenMenu = !validChoiceMade && query?.length >= minLength && options?.length > 0;
 		setFocus(-1);
 		if (shouldReopenMenu) {
@@ -227,50 +226,7 @@ const AutoComplete = (props) => {
 			setSelected(-1);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-
-	// const handleInputFocus = () => {
-	// 	if (selectElement || showAllValues) {
-	// 		return
-	// 	}
-	// 	const shouldReopenMenu = !validChoiceMade && query?.length >= minLength && options?.length > 0
-	// 	setFocus(-1);
-	// 	if (shouldReopenMenu) {
-	// 		setMenuOpen(shouldReopenMenu || isMenuOpen);
-	// 		setSelected(-1)
-	// 	}
-	// }
-
-	// const handleInputFocus = (event) => {
-	// 	const isTabEvent = event.relatedTarget && (event.relatedTarget instanceof HTMLElement);
-	
-	// 	if ((selectElement || showAllValues) && isTabEvent) {
-	// 		const newQuery = event.target.value;
-	// 		dataSource('', (options) => {
-	// 			const currentSelectionIndex = options.indexOf(newQuery);
-	// 			setOptions(options);
-	// 			setMenuOpen(true);
-	// 			setFocus(currentSelectionIndex);
-	// 			setSelected(currentSelectionIndex);
-	// 			setHover(null);
-	// 		});
-	// 	} else {
-	// 		const shouldReopenMenu = !validChoiceMade && query?.length >= minLength && options?.length > 0;
-	// 		setFocus(-1);
-	// 		if (shouldReopenMenu) {
-	// 			setMenuOpen(shouldReopenMenu || isMenuOpen);
-	// 			setSelected(-1);
-	// 		}
-	// 	}
-	// }
-	
-	
+		
 	const wrapAround = (index) => {
 		const selectOptions = selectElement.options
 		const queryLength = query ? query.trim().length : 0
