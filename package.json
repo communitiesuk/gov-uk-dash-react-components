@@ -12,7 +12,7 @@
     "homepage": "https://github.com/communitiesuk/uk-gov-dash-components",
     "main": "build/index.js",
     "scripts": {
-        "start": "export NODE_OPTIONS=--openssl-legacy-provider && webpack-serve --config ./webpack.serve.config.js --open --port 8000",
+        "start": "webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
         "build:js": "export NODE_OPTIONS=--openssl-legacy-provider &&  ./node_modules/webpack/bin/webpack.js --mode production",
@@ -32,6 +32,7 @@
         "@react-aria/listbox": "^3.4.4",
         "@react-aria/overlays": "^3.8.1",
         "@react-stately/combobox": "^3.0.4",
+        "dash": "^3.24.21",
         "ramda": "^0.26.1",
         "usehooks-ts": "2.1.1",
         "xtypejs": "^0.7.1"
@@ -61,7 +62,7 @@
         "terser-webpack-plugin": "^2.3.0",
         "webpack": "4.36.1",
         "webpack-cli": "^3.3.12",
-        "webpack-serve": "3.1.0"
+        "webpack-serve": "^3.2.0"
     },
     "overrides": {
         "chokidar": "3.5.3",
