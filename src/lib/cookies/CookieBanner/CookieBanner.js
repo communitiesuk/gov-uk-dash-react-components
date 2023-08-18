@@ -1,13 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-// @flow
 
 import React, { useState, useEffect } from 'react';
 import { ComponentType } from 'react';
 import { Link } from "react-router-dom";
 
-import { Props } from './CookieBanner.types.js';
+import { Props } from './CookieBanner.types';
 
-import { setCookies, deleteCookies, handleCookieAccept } from "common/utils/cookies";
+import { setCookies, deleteCookies, handleCookieAccept } from '../utils/Cookie';
 
 import Cookies from "js-cookie";
 
@@ -51,8 +49,7 @@ const CookieBanner = ({ ...props }) => {
                 const cookiePolicy = JSON.parse(cookiePolicyRaw);
 
                 if ( cookiePolicy.usage === false || !cookiePolicy.usage ) {
-                    window['ga-disable-UA-161400643-2'] = true;
-                    window['ga-disable-UA-145652997-1'] = true;
+                    window['ga-disable-G-GB63W72KDE'] = true;
                     deleteCookies();
                     console.info("Cookies are disabled.");
                 }
@@ -82,8 +79,8 @@ const CookieBanner = ({ ...props }) => {
                 <div className="gem-c-cookie-banner__confirmation govuk-width-container" tabIndex="-1">
                     <p className="gem-c-cookie-banner__confirmation-message govuk-body">
                         You’ve { cookieAccepted ? "accepted" : "rejected" } additional cookies.
-                        You can <Link to="/details/cookies" className="govuk-link">change
-                        your cookie settings</Link> at any time.
+                        {/* You can <Link to="/details/cookies" className="govuk-link">change
+                        your cookie settings</Link> at any time. */}
                     </p>
                     <button className="gem-c-cookie-banner__hide-button govuk-link" data-hide-cookie-banner="true"
                             data-module="track-click" data-track-category="cookieBanner"
@@ -97,13 +94,13 @@ const CookieBanner = ({ ...props }) => {
 
 
     if ( !cookieStateIsSet ) {
-        return <div className="govuk-cookie-banner " role="region" aria-label="Cookies on the UK Coronavirus Dashboard">
+        return <div className="govuk-cookie-banner " role="region" aria-label="Cookies for the OFLOG Dashboard">
             <div className={ "govuk-width-container" }>
                 <div className="govuk-cookie-banner__message govuk-!-width-two-thirds">
                     <div className="govuk-grid-row">
                         <div className="govuk-grid-column-two-thirds">
                             <h2 className="govuk-cookie-banner__heading govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-left-1">
-                                Cookies on the UK Coronavirus Dashboard
+                                Cookies for the OFLOG Dashboard
                             </h2>
 
                             <div className="govuk-cookie-banner__content">
@@ -130,7 +127,7 @@ const CookieBanner = ({ ...props }) => {
                               data-track-category="cookieBanner" onClick={ () => setCookieAccepted(false) }>
                             Reject additional cookies
                         </button>
-                        <Link to="/details/cookies" className="govuk-link govuk-body">View cookies</Link>
+                        {/* <Link to="/details/cookies" className="govuk-link govuk-body">View cookies</Link> */}
                     </div>
                 </div>
             </div>

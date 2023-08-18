@@ -17,8 +17,7 @@ export const stripPIIUri = function (str) {
 export const setCookies = () => {
     console.info("Cookies accepted - setting up GA.");
 
-    window['ga-disable-G-GB63W72KDE-1'] = false;
-    window['ga-disable-G-GB63W72KDE-2'] = false;
+    window['ga-disable-G-GB63W72KDE'] = false;
 
     window.dataLayer = window.dataLayer || [];
 
@@ -30,35 +29,11 @@ export const setCookies = () => {
 
     try {
         gtag('js', new Date());
-        gtag(
-            'config',
-            'G-GB63W72KDE-2',
-            {
-                'anonymize_ip': true,
-                'allowAdFeatures': false,
-                'allow_google_signals': false,
-                'allowLinker': true,
-                'allow_ad_personalization_signals': false,
-                'send_page_view': false,
-            }
-        );
-
         // GovUK tracker
-        gtag(
-            'config',
-            'G-GB63W72KDE-1',
-            {
-                'anonymize_ip': true,
-                'allowAdFeatures': false,
-                'allowLinker': true,
-                'allow_google_signals': false,
-                'allow_ad_personalization_signals': false,
-                'send_page_view': false,
-                'linker': {
-                    'domains': ["www.gov.uk", "coronavirus.data.gov.uk", "data.gov.uk", "gov.uk"]
-                }
-            }
-        );
+        gtag('config', 'G-GB63W72KDE',{
+            cookie_domain: 'none'
+          });
+
 
         console.info("GA successfully set up.");
 
@@ -72,11 +47,10 @@ export const setCookies = () => {
 export const deleteCookies = () => {
     Cookies.remove("_ga");
     Cookies.remove("_gid");
-    Cookies.remove("_gat_gtag_G-GB63W72KDE_2");
-    Cookies.remove("_gat_gtag_G-GB63W72KDE_1");
+    Cookies.remove("_gat_gtag_G-GB63W72KDE");
 
-    window['ga-disable-G-GB63W72KDE-2'] = true;
-    window['ga-disable-G-GB63W72KDE-1'] = true;
+    window['ga-disable-G-GB63W72KDE'] = true;
+
 
     console.info("Removed cookies and disabled tracking.");
 };
