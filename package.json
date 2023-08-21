@@ -32,7 +32,7 @@
         "@react-aria/listbox": "^3.4.4",
         "@react-aria/overlays": "^3.8.1",
         "@react-stately/combobox": "^3.0.4",
-        "dash": "^3.24.21",
+        "dash": "^3.24.23",
         "js-cookie": "^3.0.5",
         "ramda": "^0.26.1",
         "react-router-dom": "^6.15.0",
