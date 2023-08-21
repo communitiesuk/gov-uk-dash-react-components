@@ -6,8 +6,8 @@ import ComponentTemplate from './fragments/ComponentTemplate.react'
 import ExpandableMenuItem from './fragments/ExpandableMenuItem.react'
 import Accordion from './fragments/Accordion.react'
 import Tabs from './fragments/Tabs.react'
-import CookieBanner from './cookies/CookieBanner/CookieBanner';
-import CookiesPage from './cookies/CookiePages/Cookies';
+import CookieBanner from './fragments/CookieBanner.react';
+import CookiesPage from './fragments/CookiePages/CookiesPage';
 import Cookies from 'js-cookie';
 
 export {

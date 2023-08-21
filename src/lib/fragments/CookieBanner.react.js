@@ -1,11 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { ComponentType } from 'react';
-import { Link } from "react-router-dom";
 
-import { Props } from './CookieBanner.types';
-
-import { setCookies, deleteCookies, handleCookieAccept } from '../utils/Cookie';
+import { setCookies, deleteCookies, handleCookieAccept } from '../components/cookies/utils/Cookie';
 
 import Cookies from "js-cookie";
 

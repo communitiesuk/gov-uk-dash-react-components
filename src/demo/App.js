@@ -9,8 +9,8 @@ import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuIte
 import Tabs from '../lib/fragments/Tabs.react';
 
 
-import CookieBanner from '../lib/cookies/CookieBanner/CookieBanner';
-import CookiesPage from '../lib/cookies/CookiePages/Cookies';
+import CookieBanner from '../lib/fragments/CookieBanner.react';
+import CookiesPage from '../lib/fragments/CookiePages/CookiesPage';
 
 import './dashboard.css';
 
