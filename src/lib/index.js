@@ -7,6 +7,9 @@ import ComponentTemplate from './components/ComponentTemplate.react';
 import ExpandableMenuItem from './components/ExpandableMenuItem.react';
 import Accordion from './components/Accordion.react';
 import Tabs from './components/Tabs.react';
+import CookieBanner from './cookies/CookieBanner/CookieBanner';
+import CookiesPage from './cookies/CookiePages/Cookies';
+import Cookies from 'js-cookie';
 
 export {
     AutoComplete,
@@ -16,5 +19,9 @@ export {
     ComponentTemplate,
     ExpandableMenuItem,
     Accordion,
-    Tabs
+    Tabs,
+    CookieBanner,
+    CookiesPage,
+    Cookies
+
 };
