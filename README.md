@@ -148,3 +148,9 @@ We upgraded to Node version 20 and rectified the `err_ossl_evp_unsupported` erro
 We are now running Node with the `--openssl-legacy-provider` flag which means it will continue to use the legacy provider of the OpenSSL library. 
 This may not be neccessary in future as more libraries start to use use the more up to date version of OpenSSL. 
 It should also be noted that it is a possiblilty Node will stop supporting this flag in future. 
+
+18/08/2023 TEMPORARY FIX to build the package locally and test on dashboard repo:
+We are running Node version 16 locally and are unable to upgrade in the DAP. A request has been sent to David W. to upgrade on 18/08/23. 
+
+As a temporary measure in the `package.json` file replace the following line `"build:js": "export NODE_OPTIONS=--openssl-legacy-provider &&  ./node_modules/webpack/bin/webpack.js --mode production",` with `"build:js": "webpack --mode production",`.
+To run the demo app locally replace the line `"start": "export NODE_OPTIONS=--openssl-legacy-provider && webpack-serve --config ./webpack.serve.config.js --open --port 8000",` with `"start": "webpack-serve --config ./webpack.serve.config.js --open",`
