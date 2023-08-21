@@ -1,70 +1,60 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-    Article,
-    Heading
-} from './Cookies.styles';
+import { Article, Heading } from './Cookies.styles';
 
-import { handleCookieAccept } from "common/utils/cookies";
+import { handleCookieAccept } from '../utils/Cookie';
 
 import Cookies from "js-cookie";
 
-import { Props } from "./Cookies.types";
-import { ComponentType } from 'react';
 
 
-const SuccessNotification: ComponentType<Props> = () => {
-
-    return <div className={ "govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-1" }
-                role="alert" aria-labelledby="govuk-notification-banner-title"
-                data-module="govuk-notification-banner">
-        <div className={ "govuk-notification-banner__header" }>
-            <h2 className={ "govuk-notification-banner__title" } id="govuk-notification-banner-title">
-                Success
-            </h2>
-        </div>
-        <div className={ "govuk-notification-banner__content" }>
-            <p className={ "govuk-notification-banner__heading" }>
-                You’ve updated your cookie preferences.
-            </p>
-        </div>
+const SuccessNotification = (props) => {
+  return (
+    <div className="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-1"
+         role="alert" aria-labelledby="govuk-notification-banner-title"
+         data-module="govuk-notification-banner">
+      <div className="govuk-notification-banner__header">
+        <h2 className="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div className="govuk-notification-banner__content">
+        <p className="govuk-notification-banner__heading">
+          You’ve updated your cookie preferences.
+        </p>
+      </div>
     </div>
+  );
+};
 
-};  // SuccessNotification
-
-
-const CookiesPage: ComponentType<Props> = ({}: Props) => {
-
-    // const [preferenceSet, ]
+const CookiesPage = () => {
     const [cookieState, setCookieState] = useState(null);
     const [updateState, setUpdateState] = useState(false);
-
+  
     const handleButtonClick = (cookieState) => {
-        setUpdateState(true);
-        handleCookieAccept(cookieState);
-        window.scrollTo(0, 0);
-    }
-
+      setUpdateState(true);
+      handleCookieAccept(cookieState);
+      window.scrollTo(0, 0);
+    };
+  
     useEffect(() => {
-        const cookiePreference = Cookies.get('cookies_preferences_set_21_3');
-
-        if ( cookiePreference === 'true' ) {
-            const cookiePolicyRaw = Cookies.get('cookies_policy_21_3');
-
-            if ( !cookiePolicyRaw ) {
-                Cookies.remove("cookies_preferences_set_21_3");
-                setCookieState(true)
-            }
-            else {
-                const cookiePolicy = JSON.parse(cookiePolicyRaw);
-                setCookieState(cookiePolicy.usage);
-            }
+      const cookiePreference = Cookies.get('cookies_preferences_set_21_3');
+  
+      if (cookiePreference === 'true') {
+        const cookiePolicyRaw = Cookies.get('cookies_policy_21_3');
+  
+        if (!cookiePolicyRaw) {
+          Cookies.remove('cookies_preferences_set_21_3');
+          setCookieState(true);
+        } else {
+          const cookiePolicy = JSON.parse(cookiePolicyRaw);
+          setCookieState(cookiePolicy.usage);
         }
-        else {
-            setCookieState(true)
-        }
+      } else {
+        setCookieState(true);
+      }
     }, []);
-
+  
     return <>
         <Article>
 
@@ -74,7 +64,7 @@ const CookiesPage: ComponentType<Props> = ({}: Props) => {
                 Cookies are files saved on your phone, tablet or computer when you visit a website.
             </p>
             <p className={"govuk-body govuk-!-margin-bottom-8"}>
-                We use cookies to store information about how you use the coronavirus.data.gov.uk website,
+                We use cookies to store information about how you use the oflog.data.gov.uk website,
                 such as the pages you visit.
             </p>
 

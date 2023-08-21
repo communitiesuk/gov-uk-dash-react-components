@@ -1,1 +1,1 @@
-export type Props = {||};
+export const Props = {};

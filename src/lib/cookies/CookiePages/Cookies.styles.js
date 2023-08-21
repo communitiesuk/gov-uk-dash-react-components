@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { ComponentType } from 'react';
+import{ ComponentType } from 'react';
 
 
-export const Article: ComponentType<*> = (() =>
+export const Article = (() =>
     styled.article`
         max-width: 50em;
     `
