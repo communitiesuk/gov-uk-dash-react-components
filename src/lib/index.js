@@ -8,7 +8,7 @@ import ExpandableMenuItem from './components/ExpandableMenuItem.react';
 import Accordion from './components/Accordion.react';
 import Tabs from './components/Tabs.react';
 import CookieBanner from './components/CookieBanner.react';
-import CookiesPages from './components/CookiesPage.react';
+import CookiesPage from './components/CookiesPage.react';
 import Cookies from 'js-cookie';
 
 export {

@@ -35,7 +35,7 @@ export const setCookies = () => {
           });
 
 
-        console.info("GA successfully set up.");
+        console.info("GA successfully set up.", gtag);
 
     } catch (error) {
         console.warn("Cookies accepted, but tracking is blocked by the browser.")

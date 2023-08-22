@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { CookiesPage as RealComponent } from '../LazyLoader';
 
 /**
- * Lazy loaded CookieBanner
+ * Lazy loaded CookiesPage
  *
  * @param {
  * 	id,
