@@ -14,7 +14,7 @@ const ChangeLogBanner = ({ updates = defaultProps.updates, LinkComponent = 'a' }
                         const linkProps = LinkComponent === 'a' ? { href: update.link } : { to: update.link }
                         return (
                             <ChangeLogBannerSTY key={index}>
-                                <div className={"govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0"}>
+                                <div className={"govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-width-container"}>
                                     <ChangeLogBannerTag>
                                         {update.type}
                                     </ChangeLogBannerTag>

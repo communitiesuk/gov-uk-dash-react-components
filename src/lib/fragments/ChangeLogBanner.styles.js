@@ -188,7 +188,6 @@ export const ChangeLogBannerContainer =
 export const ChangeLogBannerSTY =
     styled
         .div`
-            display: grid;
             padding: 0.7rem;
             justify-content: center;
             background-color: #1d70b8;
