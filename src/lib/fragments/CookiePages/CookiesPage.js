@@ -85,7 +85,7 @@ const CookiesPage = () => {
             <div className={"govuk-body"}>
                 <ul className="govuk-list govuk-list--bullet">
                     <li>how you got to the site</li>
-                    <li>the pages you visit on coronavirus.data.gov.uk, and how long you spend on each page</li>
+                    <li>the pages you visit on Oflog.data.gov.uk, and how long you spend on each page</li>
                     <li>what you click on while you're visiting the site</li>
                 </ul>
             </div>
