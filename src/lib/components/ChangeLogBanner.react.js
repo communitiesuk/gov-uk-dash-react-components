@@ -34,8 +34,10 @@ ChangeLogBanner.propTypes = {
 };
 
 ChangeLogBanner.defaultProps = {
-    updates: [],
+    updates: null,
     LinkComponent: 'a'
 };
+export const propTypes = ChangeLogBanner.propTypes;
+export const defaultProps = ChangeLogBanner.defaultProps;
 
 export default ChangeLogBanner;
