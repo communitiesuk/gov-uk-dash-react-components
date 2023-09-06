@@ -10,19 +10,30 @@ const AdditionalDetails = (props) => {
 
 AdditionalDetails.propTypes = {
     /**
+     * Id of component
+     */
+    id: PropTypes.string.isRequired,
+
+    /**
      * Text to be shown as a summary
      */
-    summaryText: PropTypes.string.isRequired,
+    summaryText: PropTypes.string,
 
     /**
      * Detailed text to be shown when expanded
      */
-    detailsText: PropTypes.string.isRequired,
+    detailsText: PropTypes.string,
+
+     /**
+     * Whether the component renders or not
+     */
+    hidden: PropTypes.bool,
 };
 
 AdditionalDetails.defaultProps = {
     summaryText: "Add summary text",
     detailsText: "Add details text",
+    hidden: false
 };
 
 export const propTypes = AdditionalDetails.propTypes;

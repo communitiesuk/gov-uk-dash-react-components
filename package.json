@@ -1,7 +1,7 @@
 {
     "name": "uk_gov_dash_components",
-    "version": "1.20.1",
-    "description": "Dash components for Gov UK",
+    "version": "1.22.0",
+    "description": "ash components for Gov UK",
     "repository": {
         "type": "git",
         "url": "git://github.com/communitiesuk/uk-gov-dash-components.git"
@@ -15,7 +15,7 @@
         "start": "webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
-        "build:js": "export NODE_OPTIONS=--openssl-legacy-provider &&  ./node_modules/webpack/bin/webpack.js --mode production",
+        "build:js": "webpack --mode production",
         "build:backends": "dash-generate-components ./src/lib/components uk_gov_dash_components -p package-info.json --r-prefix 'govuk' --jl-prefix 'govuk' --ignore \\.test\\.",
         "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
         "build": "npm run build:js && npm run build:backends",
