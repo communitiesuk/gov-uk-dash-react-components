@@ -1,7 +1,7 @@
 {
     "name": "uk_gov_dash_components",
     "version": "1.22.0",
-    "description": "ash components for Gov UK",
+    "description": "Dash components for Gov UK",
     "repository": {
         "type": "git",
         "url": "git://github.com/communitiesuk/uk-gov-dash-components.git"
