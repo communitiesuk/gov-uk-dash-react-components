@@ -106,6 +106,7 @@ const AutoComplete = (props) => {
 	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
 	const [query, setQuery] = useState(startValue || value || '');
+	const [hiddenQuery, setHiddenQuery] = useState(startValue || value || '');
 
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
 	const [interaction, setInteraction] = useState(''); 
@@ -272,6 +273,7 @@ const AutoComplete = (props) => {
 		setHover(null);
 		setMenuOpen(menuOpen);
 		setQuery(newQuery)
+		setHiddenQuery(newQuery)
 		if (confirmOnBlur) {
 			setSelected(-1);
 		}

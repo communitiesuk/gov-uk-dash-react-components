@@ -17,6 +17,7 @@ import {
  * 	autoselect,
  * 	cssNamespace,
  * 	value,
+ *  hiddenValue,
  * 	minLength,
  * 	name,
  * 	placeholder,

@@ -15,6 +15,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * 	autoselect,
  * 	cssNamespace,
  * 	value,
+ *  hiddenValue,
  * 	minLength,
  * 	name,
  * 	placeholder,
@@ -143,6 +144,12 @@ export const dropdownPropTypes = {
 	 * The value displayed in the input.
 	 */
 	value: PropTypes.string,
+
+	/**
+	 * The value that isn't displayed in the input. Stored to maintain consistency
+	 * regardless of rendering.
+	 */
+	hiddenValue: PropTypes.string,
 
 	/**
 		 * Dash-assigned callback that should be called to report property changes
