@@ -20,7 +20,7 @@ const ChangeLogBanner = ({ updates = defaultProps.updates }) => {
                                 <time dateTime={update.date}>
                                     {format(new Date(update.date), 'd MMMM yyyy')}
                                 </time> &mdash; {update.heading}
-                                <a className={"govuk-link govuk-link--no-visited-state govuk-!-margin-left-1"}>
+                                <a className={"govuk-link-white govuk-!-margin-left-1"} href={update.link}>
                                     {update.linkTitle ? update.linkTitle : 'More'}
                                 </a>
                             </div>

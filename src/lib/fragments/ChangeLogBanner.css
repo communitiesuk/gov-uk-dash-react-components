@@ -14,7 +14,11 @@
     color: #fff;
     line-height: 25px;
 }
-
+.change-log-banner-style,
+.change-log-banner-style .govuk-link-white {
+    color: #fff;
+    line-height: 25px;
+}
 .change-log-banner-tag.govuk-tag {
     background: white;
     color: #1d70b8;

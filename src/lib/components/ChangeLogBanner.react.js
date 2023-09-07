@@ -22,20 +22,11 @@ ChangeLogBanner.propTypes = {
         })
     ),  // Marked as required because the component uses it directly
 
-    /**
-     * Custom Link component or 'a'. 
-     * If it's a custom component, it should accept 'to' prop instead of 'href'.
-     */
-    LinkComponent: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.func,
-        PropTypes.object
-    ]),
+   
 };
 
 ChangeLogBanner.defaultProps = {
     updates: null,
-    LinkComponent: 'a'
 };
 export const propTypes = ChangeLogBanner.propTypes;
 export const defaultProps = ChangeLogBanner.defaultProps;
