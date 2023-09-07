@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import Accordion from './components/Accordion.react';
+import AdditionalDetails from './components/AdditionalDetails.react';
 import AutoComplete from './components/AutoComplete.react';
 import ChangeLogBanner from './components/ChangeLogBanner.react';
 import CheckboxList from './components/CheckboxList.react';
@@ -10,6 +11,6 @@ import Tabs from './components/Tabs.react';
 import ComboBox from './components/ui/ComboBox.react';
 
 export {
-    Accordion, AutoComplete, ChangeLogBanner, CheckboxList, ComboBox, ComponentTemplate, Dropdown, ExpandableMenuItem, Tabs
+    Accordion, AdditionalDetails, AutoComplete, ChangeLogBanner, CheckboxList, ComboBox, ComponentTemplate, Dropdown, ExpandableMenuItem, Tabs
 };
 
