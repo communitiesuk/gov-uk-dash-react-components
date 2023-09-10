@@ -102,6 +102,11 @@ const AutoComplete = (props) => {
 	const [validChoiceMade, setValidChoiceMade] = useState(false);
 	const [selected, setSelected] = useState(null);
 	const [ariaHint, setAriaHint] = useState(true);
+	
+	// const startLabel = Array.isArray(source) ? getOptionLabelFromValue(value, source) : ''; 
+	// const [query, setQuery] = useState(startLabel || '');
+	// const [selectedValue, setSelectedValue] = useState(value || null);
+	// const [options, setOptions] = useState(Array.isArray(source) ? source : []);
 
 	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
@@ -267,6 +272,10 @@ const AutoComplete = (props) => {
 		}
 		const newQuery = templateInputValue(selectedOption)
 		onConfirm(selectedOption?.value ?? selectedOption)
+
+		// set display label and underlying value
+		// setQuery(selectedOption?.label ?? newQuery);
+		// setSelectedValue(selectedOption?.value ?? null);
 
 		setFocus(-1);
 		setHover(null);
@@ -552,9 +561,10 @@ const AutoComplete = (props) => {
 		if (!value) {
 			setQuery("");
 		} else {
-			setQuery(value);
+			const newLabel = getOptionLabelFromValue(value, source) || value || '';
+			setQuery(newLabel);
 		}
-	}, [value])
+	}, [value, source])
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
