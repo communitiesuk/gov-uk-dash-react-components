@@ -7,6 +7,8 @@ import ComponentTemplate from './components/ComponentTemplate.react';
 import ExpandableMenuItem from './components/ExpandableMenuItem.react';
 import Accordion from './components/Accordion.react';
 import Tabs from './components/Tabs.react';
+import ChangeLogBanner from './components/ChangeLogBanner.react';
+import AdditionalDetails from './components/AdditionalDetails.react';
 
 export {
     AutoComplete,
@@ -16,5 +18,7 @@ export {
     ComponentTemplate,
     ExpandableMenuItem,
     Accordion,
-    Tabs
+    Tabs,
+    ChangeLogBanner,
+    AdditionalDetails
 };

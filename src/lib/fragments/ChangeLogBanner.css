@@ -1,0 +1,27 @@
+.change-log-banner-container {
+    margin-top: -10px;
+}
+
+.change-log-banner-style {
+    padding: 0.7rem 0.7rem 0.7rem 0;
+    justify-content: center;
+    background-color: #1d70b8;
+    margin-bottom: 1px;
+}
+
+.change-log-banner-style,
+.change-log-banner-style .govuk-body-s {
+    color: #fff;
+    line-height: 25px;
+}
+.change-log-banner-style,
+.change-log-banner-style .govuk-link-white {
+    color: #fff;
+    line-height: 25px;
+}
+.change-log-banner-tag.govuk-tag {
+    background: white;
+    color: #1d70b8;
+    margin: 0 1rem 0 0;
+    line-height: initial;
+}
