@@ -143,9 +143,13 @@ const AutoComplete = (props) => {
 		return suggestionTemplate ? suggestionTemplate(value) : (value ? value.label || value.name || value.value || value : value)
 	}
 
+	// returns true if either the label or value matches the query
 	const isQueryAnOption = (query, options) => {
-		return options.map(entry => templateInputValue(entry).toLowerCase()).indexOf(query.toLowerCase()) !== -1
-	}
+		return options.some(entry => {
+			return (entry.label && entry.label.toLowerCase() === query.toLowerCase()) ||
+				   (entry.value && entry.value.toLowerCase() === query.toLowerCase());
+		});
+	};
 
 	const handleComponentBlur = (newState, escape) => {
 		const focusOnBlur = escape && (selectElement) ? -1 : null
@@ -272,10 +276,6 @@ const AutoComplete = (props) => {
 		}
 		const newQuery = templateInputValue(selectedOption)
 		onConfirm(selectedOption?.value ?? selectedOption)
-
-		// set display label and underlying value
-		// setQuery(selectedOption?.label ?? newQuery);
-		// setSelectedValue(selectedOption?.value ?? null);
 
 		setFocus(-1);
 		setHover(null);
