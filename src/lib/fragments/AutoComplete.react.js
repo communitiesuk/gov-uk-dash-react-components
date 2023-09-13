@@ -102,11 +102,6 @@ const AutoComplete = (props) => {
 	const [validChoiceMade, setValidChoiceMade] = useState(false);
 	const [selected, setSelected] = useState(null);
 	const [ariaHint, setAriaHint] = useState(true);
-	
-	// const startLabel = Array.isArray(source) ? getOptionLabelFromValue(value, source) : ''; 
-	// const [query, setQuery] = useState(startLabel || '');
-	// const [selectedValue, setSelectedValue] = useState(value || null);
-	// const [options, setOptions] = useState(Array.isArray(source) ? source : []);
 
 	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
