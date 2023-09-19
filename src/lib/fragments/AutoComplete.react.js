@@ -1,10 +1,9 @@
 /* eslint-disable no-undefined */
-import React, { useState, useEffect, render, useRef } from 'react';
-import { useInterval } from 'usehooks-ts'
+import React, { render, useEffect, useRef, useState } from 'react';
 import { defaultProps, propTypes } from '../components/AutoComplete.react';
+import Status from '../components/status';
 import { isIOSDevice } from '../helper/isIOS';
 import { isPrintableKeyCode, keyCodes } from '../helper/keys';
-import Status from '../components/status'
 import './autocomplete.css';
 
 /**
@@ -108,18 +107,27 @@ const AutoComplete = (props) => {
 	const [query, setQuery] = useState(startValue || value || '');
 
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
-	const [interaction, setInteraction] = useState(''); 
+	const [interaction, setInteraction] = useState('');
 	const handleMouseDown = () => {
 		setInteraction('click');
 	};
 
-	if (!Array.isArray(source)) {
-		dataSource('', (options) => {
-			const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, options) || '') : '';
-			setOptions(options);
+	useEffect(() => {
+		// If source is an array
+		if (Array.isArray(source)) {
+			const startValue = getOptionLabelFromValue(value, source) || '';
+			setOptions(source);
 			setQuery(startValue);
-		})
-	}
+		}
+		// If source is a function for fetching data
+		else {
+			dataSource('', (options) => {
+				const startValue = getOptionLabelFromValue(value, options) || '';
+				setOptions(options);
+				setQuery(startValue);
+			});
+		}
+	}, [source, value]);
 	const elementReferences = {};
 
 	const getRealOptions = (options) => {
@@ -156,7 +164,7 @@ const AutoComplete = (props) => {
 		setMenuOpen(newState.menuOpen || false);
 		setQuery(newQuery);
 		setSelected(null);
-		
+
 		const validQuery = isQueryAnOption(newQuery, options);
 		setValidChoiceMade(validQuery);
 		const queryLength = query ? query.trim().length : 0
@@ -199,9 +207,9 @@ const AutoComplete = (props) => {
 
 	const handleInputFocus = (event) => {
 		if (interaction === 'click') {
-			setInteraction(''); 
-		} else { 
-			updateMenuForInput(event.target.value);	
+			setInteraction('');
+		} else {
+			updateMenuForInput(event.target.value);
 		}
 	}
 
@@ -318,8 +326,8 @@ const AutoComplete = (props) => {
 				const indexOfPreviousValidOption = getIndexOfPreviousValidOption();
 				handleOptionFocus(indexOfPreviousValidOption, autoselect);
 			} else if (selectElement) {
-                handleOptionFocus(selected - 1, autoselect);
-            }
+				handleOptionFocus(selected - 1, autoselect);
+			}
 		}
 	}
 
@@ -332,7 +340,7 @@ const AutoComplete = (props) => {
 		}
 		return selected - offsetFromSelected;
 	}
-	
+
 
 	const handleDownArrow = (event) => {
 		event.preventDefault()
@@ -377,11 +385,11 @@ const AutoComplete = (props) => {
 		if (isAtBottom) return null;
 
 		const subsequentOptions = options.slice(selected + 1);
-		const subsequentOptionsIndex = subsequentOptions.findIndex((option)=> option.disabled !== true);
+		const subsequentOptionsIndex = subsequentOptions.findIndex((option) => option.disabled !== true);
 		if (subsequentOptionsIndex === -1) return null;
-		
+
 		const offsetOfNextValidOption = subsequentOptionsIndex + 1;
-		
+
 		return selected + offsetOfNextValidOption;
 	}
 
@@ -516,7 +524,7 @@ const AutoComplete = (props) => {
 	const handleInputClick = (event) => {
 		if ((selectElement || showAllValues) && isMenuOpen === false) {
 			updateMenuForInput(event.target.value);
-			} else if (selectElement || showAllValues) {
+		} else if (selectElement || showAllValues) {
 			handleComponentBlur({
 				menuOpen: false
 			}, true)
@@ -561,8 +569,8 @@ const AutoComplete = (props) => {
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
-				const menu_open = isMenuOpen;
-				setProps({ menu_open })
+			const menu_open = isMenuOpen;
+			setProps({ menu_open })
 		}
 	}, [isMenuOpen])
 
@@ -604,7 +612,7 @@ const AutoComplete = (props) => {
 		'aria-describedby': assistiveHintID
 	} : null
 
-	
+
 
 	const selectAllTextInInput = () => {
 		const inputElement = elementReferences[-1];
@@ -624,7 +632,7 @@ const AutoComplete = (props) => {
 		if (componentGainedFocus) {
 			selectAllTextInInput();
 		}
-			
+
 		previousFocus.current = isFocus
 	}, [isFocus])
 
@@ -711,7 +719,7 @@ const AutoComplete = (props) => {
 						return (
 							<li
 								aria-selected={isFocus === index ? 'true' : 'false'}
-								className={option.disabled === true ? `${optionClassName} ${optionClassName}--disabled`: `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
+								className={option.disabled === true ? `${optionClassName} ${optionClassName}--disabled` : `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
 								dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
 								id={`${id}__option--${index}`}
 								key={index}
