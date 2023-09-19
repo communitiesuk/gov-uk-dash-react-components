@@ -72,7 +72,7 @@ const AutoComplete = (props) => {
 	} = { ...defaultProps, ...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
-	console.log(source[0].label)
+
 	const createSimpleEngine = (values) => (query, syncResults) => {
 
 		if (values.length && typeof values[0] === 'object') {
