@@ -12,7 +12,7 @@
     "homepage": "https://github.com/communitiesuk/uk-gov-dash-components",
     "main": "build/index.js",
     "scripts": {
-        "start": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-serve --config ./webpack.serve.config.js --open --port 8000",
+        "start": "dotenv -- webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "start-mac": "export NODE_OPTIONS=--openssl-legacy-provider && webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
@@ -53,6 +53,7 @@
         "babel-loader": "^8.0.6",
         "copyfiles": "^2.1.1",
         "css-loader": "^3.0.0",
+        "dotenv": "^16.3.1",
         "eslint": "^6.0.1",
         "eslint-config-prettier": "^6.0.0",
         "eslint-plugin-import": "^2.18.0",
