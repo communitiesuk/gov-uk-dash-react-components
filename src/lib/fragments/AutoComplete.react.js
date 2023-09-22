@@ -122,21 +122,21 @@ const AutoComplete = (props) => {
 
 
 	useEffect(() => {
-		console.log("useEffect running with Source:", source, "and Value:", value);
-	
-		// Update the options
+		// If source is an array
 		if (Array.isArray(source)) {
+			const startValue = getOptionLabelFromValue(value, source) || '';
 			setOptions(source);
-		} else {
-			dataSource('', setOptions);
+			setQuery(startValue);
 		}
-	}, [source]);
-	
-	useEffect(() => {
-		// Get the label associated with the value
-		const startValue = getOptionLabelFromValue(value, source) || '';
-		setQuery(startValue);
-	}, [value, source]);
+		// If source is a function for fetching data
+		else {
+			dataSource('', (options) => {
+				const startValue = getOptionLabelFromValue(value, options) || '';
+				setOptions(options);
+				setQuery(startValue);
+			});
+		}
+	}, [source, value]);
 	
 	
 	const elementReferences = {};
