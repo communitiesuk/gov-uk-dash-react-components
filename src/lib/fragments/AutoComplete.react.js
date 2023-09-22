@@ -85,14 +85,22 @@ const AutoComplete = (props) => {
 		return options.find(opt => (opt.value || opt)?.toLowerCase() === query?.toLowerCase());
 	}
 
+	const getOptionFromLabel = (query, options) => {
+		const matchedOption = options.find(opt => (opt.label || opt)?.toLowerCase() === query?.toLowerCase());
+		return matchedOption;
+	}
+	
 	const getValueFromQuery = (query, options) => {
 		return options.find(r => (r ? r.label || r.name || r.value || r : r)?.toLowerCase() === query?.toLowerCase());
 	}
 
-	const getOptionLabelFromValue = (query, options) => {
-		const res = getOptionFromValue(query, options);
-		return res?.label || res?.name || res
+	const getOptionLabelFromValue = (value, options) => {
+		const matchedOption = options.find(opt => opt.value === value);
+		if (matchedOption && !matchedOption.disabled) {
+			return matchedOption.label;
+		}
 	}
+	
 	const dataSource = Array.isArray(source) ? createSimpleEngine(source) : source;
 	const [isFocus, setFocus] = useState(null);
 	const [isHover, setHover] = useState(null);
@@ -104,7 +112,7 @@ const AutoComplete = (props) => {
 
 	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
-	const [query, setQuery] = useState(startValue || value || '');
+	const [query, setQuery] = useState('');
 
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
 	const [interaction, setInteraction] = useState('');
@@ -112,22 +120,25 @@ const AutoComplete = (props) => {
 		setInteraction('click');
 	};
 
+
 	useEffect(() => {
-		// If source is an array
+		console.log("useEffect running with Source:", source, "and Value:", value);
+	
+		// Update the options
 		if (Array.isArray(source)) {
-			const startValue = getOptionLabelFromValue(value, source) || '';
 			setOptions(source);
-			setQuery(startValue);
+		} else {
+			dataSource('', setOptions);
 		}
-		// If source is a function for fetching data
-		else {
-			dataSource('', (options) => {
-				const startValue = getOptionLabelFromValue(value, options) || '';
-				setOptions(options);
-				setQuery(startValue);
-			});
-		}
-	}, [source, value]);
+	}, [source]);
+	
+	useEffect(() => {
+		// Get the label associated with the value
+		const startValue = getOptionLabelFromValue(value, source) || '';
+		setQuery(startValue);
+	}, [value, source]);
+	
+	
 	const elementReferences = {};
 
 	const getRealOptions = (options) => {
@@ -546,9 +557,10 @@ const AutoComplete = (props) => {
 
 	useEffect(() => {
 		if (typeof setProps === 'function') {
-			const opt = getOptionFromValue(query, options) || getValueFromQuery(query, options)
+			const opt = getOptionFromLabel(query, options) || getValueFromQuery(query, options)
 			const value = opt?.value || opt;
-			if (value) {
+			const disabled = opt?.disabled || false
+			if (value && !disabled) {
 				setProps({ value })
 			}
 		}

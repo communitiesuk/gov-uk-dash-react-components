@@ -26,12 +26,13 @@ const App = () => {
                         { label: "Local authorities", value: "Hello LOL", disabled: true },
                         { label: "Regional", value: "Hello LOL2", disabled: true },
                         { label: "Local authority type", value: "LOL", disabled: true },
-
+                        { label: "Cumberland (no data available)", value: "Cumberland", disabled: true },
+                        { label: "Westmorland (no data available)", value: "Westmorland", disabled: true },
                         { label: "Local authorities2", value: "Hello LOL222", disabled: true },
                         { label: "Regional2", value: "Hello LOL222", disabled: true },
                         { label: "Local authority type2", value: "LOL222", disabled: true },
 
-                        { label: "Local authorities3", value: "Hello LOL3" },
+                        { label: "Local authorities3", value: "Hello LOL3"},
                         { label: "Regional3", value: "Hello LOL3 HATS" },
                         { label: "Local authority type3", value: "LOL3", disabled: true },
 
@@ -49,7 +50,7 @@ const App = () => {
                     ]}
                     id="autocomplete-default"
                     placeholder="Select Option"
-                    value="Hello LOL2"
+                    value="Hello LaOL3"
                     setProps={setProps}
                 />
                 <span>The output value is {value}</span>
