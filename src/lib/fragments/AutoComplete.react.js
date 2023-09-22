@@ -112,7 +112,7 @@ const AutoComplete = (props) => {
 
 	const startValue = Array.isArray(source) ? (getOptionLabelFromValue(value, source) || '') : null
 	const [options, setOptions] = useState(startValue !== '' ? source : []);
-	const [query, setQuery] = useState('');
+	const [query, setQuery] = useState(startValue || value || '');
 
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
 	const [interaction, setInteraction] = useState('');
@@ -136,7 +136,7 @@ const AutoComplete = (props) => {
 				setQuery(startValue);
 			});
 		}
-	}, [source, value]);
+	}, [value]);
 	
 	
 	const elementReferences = {};
