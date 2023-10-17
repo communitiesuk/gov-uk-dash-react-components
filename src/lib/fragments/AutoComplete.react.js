@@ -148,8 +148,6 @@ const AutoComplete = (props) => {
 
 	const isQueryAnOption = (query, options) => {
 		return options.some(entry => {
-			// return (entry.label && entry.label.toLowerCase() === query.toLowerCase()) ||
-			// 	   (entry.value && entry.value.toLowerCase() === query.toLowerCase());
 			return (entry.value === query);
 		});
 	};
