@@ -147,8 +147,12 @@ const AutoComplete = (props) => {
 	}
 
 	const isQueryAnOption = (query, options) => {
-		return options.map(entry => templateInputValue(entry).toLowerCase()).indexOf(query.toLowerCase()) !== -1
-	}
+		return options.some(entry => {
+			// return (entry.label && entry.label.toLowerCase() === query.toLowerCase()) ||
+			// 	   (entry.value && entry.value.toLowerCase() === query.toLowerCase());
+			return (entry.value === query);
+		});
+	};
 
 	const handleComponentBlur = (newState, escape) => {
 		const focusOnBlur = escape && (selectElement) ? -1 : null
