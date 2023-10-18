@@ -148,7 +148,7 @@ const AutoComplete = (props) => {
 
 	const isQueryAnOption = (query, options) => {
 		return options.some(entry => {
-			return (entry.value === query);
+			return (entry.value === getValueFromQuery(query, options).value);
 		});
 	};
 
