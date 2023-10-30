@@ -41,7 +41,7 @@ jobs:
         auto-update-conda: true
         activate-environment: dash_react_components
         environment-file: environment.yml
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
         node-version: 20
     - name: Generate python files
