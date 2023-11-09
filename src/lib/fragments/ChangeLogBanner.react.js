@@ -17,12 +17,16 @@ const ChangeLogBanner = ({ updates = defaultProps.updates }) => {
                                 <strong className="govuk-tag change-log-banner-tag">
                                     {update.type}
                                 </strong>
-                                <time dateTime={update.date}>
-                                    {format(new Date(update.date), 'd MMMM yyyy')}
-                                </time> &mdash; {update.heading}
-                                <a className={"govuk-link-white govuk-!-margin-left-1"} href={update.link}>
+                                {update.date && (
+                                    <time dateTime={update.date}>
+                                        {format(new Date(update.date), 'd MMMM yyyy')}
+                                    </time> 
+                                )} &mdash; {update.heading} 
+                                {update.link && (
+                                    <a className={"govuk-link-white govuk-!-margin-left-1"} href={update.link}>
                                     {update.linkTitle ? update.linkTitle : 'More'}
-                                </a>
+                                    </a>
+                                )}
                             </div>
                         </div>
                     )
