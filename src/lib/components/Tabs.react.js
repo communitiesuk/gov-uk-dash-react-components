@@ -59,7 +59,7 @@ Tabs.propTypes = {
      defaultTab: PropTypes.number,
 
      /**
-      * Array of accordion children.
+      * Array of tab children.
       */
      children: PropTypes.arrayOf(PropTypes.node),
 };

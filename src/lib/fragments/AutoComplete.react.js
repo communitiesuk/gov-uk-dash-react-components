@@ -722,6 +722,7 @@ const AutoComplete = (props) => {
 							<li
 								aria-selected={isFocus === index ? 'true' : 'false'}
 								className={option.disabled === true ? `${optionClassName} ${optionClassName}--disabled` : `${optionClassName}${optionModifierFocused}${optionModifierOdd}`}
+								option-value={option.value}
 								dangerouslySetInnerHTML={{ __html: templateSuggestion(option) + iosPosinsetHtml }}
 								id={`${id}__option--${index}`}
 								key={index}
