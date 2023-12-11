@@ -9,6 +9,7 @@ import { Accordion as RealComponent } from '../LazyLoader';
  * 	id,
  *  accordionHeadings,
  *  children,
+ *  showToggleText,
  * } [props={}]
  * @return {*}
  */
@@ -28,6 +29,7 @@ Accordion.defaultProps = {
      * Any default prop values, e.g.
      *   congratulatoryMessage: 'You are amazing'
      */
+    showToggleText: true,
 };
 
 Accordion.propTypes = {
@@ -70,6 +72,10 @@ Accordion.propTypes = {
         PropTypes.number,
         PropTypes.oneOf([null]),
     ])),
+    /**
+	 * Whether to display "Show" / "Hide" text before Accordion heading
+	 */
+	showToggleText: PropTypes.bool,
 
     /**
      * Array of booleans that determines the initial open/closed state of each section in the component.
