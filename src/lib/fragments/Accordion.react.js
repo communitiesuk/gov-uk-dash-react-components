@@ -220,7 +220,13 @@ componentDidMount() {
     const accordionHeading = this.props.accordionHeadings[index]
     const bannerSectionHeading = this.props.accordionHeadings[bannerSection]
     const contentId = `${this.props.id}-default-content-${index}`;
-
+    let toggleText;
+    if (this.props.showToggleText) {
+      toggleText = sectionIsOpen ? `Hide ${accordionHeading}` : `Show ${accordionHeading}`;
+    }
+    else {
+      toggleText = accordionHeading;
+    }
 
     return (
       <div
@@ -248,7 +254,7 @@ componentDidMount() {
                   </span>
                 </span>
                 <span className={sectionIsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? `Hide ${accordionHeading}` : `Show ${accordionHeading}`}
+                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {toggleText}
                 </span>
               </span>
             </button>
