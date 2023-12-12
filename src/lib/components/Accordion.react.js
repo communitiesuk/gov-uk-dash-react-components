@@ -3,21 +3,28 @@ import React from 'react';
 import { Accordion as RealComponent } from '../LazyLoader';
 
 /**
- * Lazy loaded ComponentTemplate
+ * Lazy loaded Accordion Component
  *
- * @param {
- * 	id,
- *  accordionHeadings,
- *  children,
- *  showToggleText,
- * } [props={}]
- * @return {*}
+ * This Accordion component dynamically creates sections based on the provided `accordionHeadings`.
+ * Each section can be independently opened or closed. The `defaultSectionsOpen` array corresponds
+ * to the sections defined by `accordionHeadings`, where each element in the array represents the 
+ * open (true) or closed (false) state of the respective section on initial render.
+ *
+ * @param {{
+ *   id: string,                            // Unique identifier for the accordion component
+ *   accordionHeadings: string[],           // Array of headings for each section of the accordion
+ *   children: React.ReactNode,             // Content to be rendered inside the accordion
+ *   showToggleText: boolean,               // Flag to show or hide toggle text  
+ *   defaultSectionsOpen: boolean[],        // Array indicating the initial open state of each section
+ * }} [props={}]                            // Component props with default empty object
+ * @return {React.ReactElement}             // Returns a React element representing the accordion
  */
 const Accordion = (props = {}) => {
     return (
         <RealComponent {...props} />
     );
 }
+
 
 /**
  * PropTypes is a part of React, see full documenation below.
