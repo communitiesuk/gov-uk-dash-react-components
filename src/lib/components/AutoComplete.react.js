@@ -33,6 +33,7 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  *  errorMessage,
  *  errorMessageWhenEmpty,
  *  menu_open, 
+ *  showOptionHeadings
  * } [props={}]
  * @return {*}
  */
@@ -64,6 +65,7 @@ AutoComplete.defaultProps = {
 	errorMessage: 'Invalid value entered',
 	errorMessageWhenEmpty: false,
 	menu_open: false,
+	showOptionHeadings: false
 };
 
 export const basePropTypes = {
@@ -198,6 +200,11 @@ export const basePropTypes = {
 	 * when the menu is opened.
 	 */
 	 menu_open: PropTypes.bool,
+	/**
+	 * Whether the list of autocomplete options contains headings that
+	 * are unclickable (like when disabled) but not struckthrough
+	 */
+	 showOptionHeadings: PropTypes.bool,
 
 };
 
