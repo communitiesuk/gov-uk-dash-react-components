@@ -35,7 +35,7 @@ const sanitizeOptions = options => {
  * Only one Radio item can be selected at once.
  * Each Radio item is rendered as an input with a surrounding label.
  */
-const Radios = (props)=>{
+const Radios = (props) => {
     const {
         id,
         title,
