@@ -7,6 +7,7 @@ import { Radios as RealComponent } from '../LazyLoader';
  *
  * @param {
  * 	id,
+ *  title,
  *  options,
  *  value,
  * } [props={}]
@@ -102,6 +103,11 @@ Radios.propTypes = {
      * components in an app.
      */
     id: PropTypes.string,
+
+    /**
+     * The title to be displayed above all Radio items.
+     */
+    title: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.

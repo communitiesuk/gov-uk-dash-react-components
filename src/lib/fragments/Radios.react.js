@@ -29,11 +29,16 @@ const sanitizeOptions = options => {
 };
 
 /**
- * Update comment
+ * Radios is a component that encapsulates several radios.
+ * The values and labels of the Radios list are specified in the `options`
+ * property and the selected item is specified with the `value` property.
+ * Only one Radio item can be selected at once.
+ * Each Radio item is rendered as an input with a surrounding label.
  */
 const Radios = (props)=>{
     const {
         id,
+        title,
         options,
         setProps,
         value: propValue,
@@ -50,26 +55,18 @@ const Radios = (props)=>{
     };
 
     return (
-        <div            
-            id={id}
-            className="govuk-radios" 
-            data-module="govuk-radios"
-        >
-            {sanitizeOptions(options).map((option, index) => {
+        <div className='govuk-form-group' id={id}>
+            <fieldset className='govuk-fieldset'>
+                <legend className='govuk-fieldset__legend govuk-fieldset__legend--l'>
+                    <label className="govuk-label">{title}</label>
+                </legend>
+                <div className="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                {sanitizeOptions(options).map((option, index) => {
                 return (
                     <div className="govuk-radios__item" key={option.value}> 
                         <input checked={value==option.value} className="govuk-radios__input" 
-                            type="radio" id={`${id}_option_${index}`} value={option.value} name="myRadioGroup"
-                            // make-prop or use id for name
-                            onChange={() => handleChange(option.value)}
-                            // onChange={() => {                                
-                            //     // let newValue;
-                            // const newValue = option.value
-                            // setProps({value: newValue})
-                            // console.log(value, "***");}}
-
-                            
-                            
+                            type="radio" id={`${id}_option_${index}`} value={option.value} name={id}
+                            onChange={() => handleChange(option.value)} 
                         />
                         <label className="govuk-label govuk-radios__label" htmlFor={`${id}_option_${index}`}>
                             {option.label}
@@ -77,8 +74,10 @@ const Radios = (props)=>{
                     </div>                        
                 );
             })}
+                </div>
+            </fieldset>
         </div>
-    );
+    ) 
 }
 
 Radios.defaultProps = defaultProps;
