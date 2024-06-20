@@ -1,6 +1,6 @@
 import {append, includes, without, type} from 'ramda';
 
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
 import { defaultProps, propTypes } from '../components/Radios.react';
 
@@ -36,10 +36,18 @@ const Radios = (props)=>{
         id,
         options,
         setProps,
-        value,
+        value: propValue,
     } =  { ...defaultProps, ...props };
 
+     // State to manage the selected radio value
+    const [value, setValue] = useState(propValue);
+
     if (!id) { throw new Error('id is not defined') }
+
+    const handleChange = (newValue) => {
+        setValue(newValue); // Update local state
+        setProps({ value: newValue }); // Propagate value to parent component
+    };
 
     return (
         <div            
@@ -50,20 +58,17 @@ const Radios = (props)=>{
             {sanitizeOptions(options).map((option, index) => {
                 return (
                     <div className="govuk-radios__item" key={option.value}> 
-                        <input checked={includes(option.value, value)} className="govuk-radios__input" 
-                            type="radio" id={`${id}_option_${index}`} value={option.value}
-                            onChange={() => {                                
-                                let newValue;
-                                if (includes(option.value, value)) {
-                                    newValue = without(
-                                        [option.value],
-                                        value
-                                    );
-                                } else {
-                                    newValue = append(option.value, value);
-                                }
-                                setProps({value: newValue});
-                            }}
+                        <input checked={value==option.value} className="govuk-radios__input" 
+                            type="radio" id={`${id}_option_${index}`} value={option.value} name="myRadioGroup"
+                            onChange={() => handleChange(option.value)}
+                            // onChange={() => {                                
+                            //     // let newValue;
+                            // const newValue = option.value
+                            // setProps({value: newValue})
+                            // console.log(value, "***");}}
+
+                            
+                            
                         />
                         <label className="govuk-label govuk-radios__label" htmlFor={`${id}_option_${index}`}>
                             {option.label}
