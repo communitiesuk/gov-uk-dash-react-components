@@ -9,6 +9,7 @@ import Accordion from './components/Accordion.react';
 import Tabs from './components/Tabs.react';
 import ChangeLogBanner from './components/ChangeLogBanner.react';
 import AdditionalDetails from './components/AdditionalDetails.react';
+import Radio from './components/Radios.react';
 
 export {
     AutoComplete,
@@ -20,5 +21,6 @@ export {
     Accordion,
     Tabs,
     ChangeLogBanner,
-    AdditionalDetails
+    AdditionalDetails,
+    Radio
 };
