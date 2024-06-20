@@ -82,6 +82,9 @@ app.layout = html.Div(
             defaultTab=0,
             tabHeadings=["Display jitter plots", "Display time series plots"],
         ),
+        uk_gov_dash_components.Radios(
+            options=["a", "b"], value="b", id="test", title="Which do you prefer?"
+        ),
     ]
 )
 
