@@ -46,7 +46,7 @@ const Radios = (props)=>{
 
     const handleChange = (newValue) => {
         setValue(newValue); // Update local state
-        setProps({ value: newValue }); // Propagate value to parent component
+        setProps({ value: [newValue] }); // Propagate value to parent component
     };
 
     return (
@@ -60,6 +60,7 @@ const Radios = (props)=>{
                     <div className="govuk-radios__item" key={option.value}> 
                         <input checked={value==option.value} className="govuk-radios__input" 
                             type="radio" id={`${id}_option_${index}`} value={option.value} name="myRadioGroup"
+                            // make-prop or use id for name
                             onChange={() => handleChange(option.value)}
                             // onChange={() => {                                
                             //     // let newValue;
