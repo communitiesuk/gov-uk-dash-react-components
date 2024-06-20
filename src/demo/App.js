@@ -1,9 +1,7 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem, Radios } from '../lib';
-
-import Tabs from '../lib/fragments/Tabs.react';
+import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem, Radios, Tabs } from '../lib';
 
 import './dashboard.css';
 
