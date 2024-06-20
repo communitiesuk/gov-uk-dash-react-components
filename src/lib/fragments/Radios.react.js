@@ -1,6 +1,6 @@
-import {append, includes, without, type} from 'ramda';
+import { type } from 'ramda';
 
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 
 import { defaultProps, propTypes } from '../components/Radios.react';
 
