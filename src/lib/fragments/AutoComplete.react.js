@@ -722,7 +722,6 @@ const AutoComplete = (props) => {
 
 						const disabledOrHeadingClass = showOptionHeadings ? `${optionClassName}--heading` : `${optionClassName}--disabled`
 						const optionClass = option.disabled === true ? `${optionClassName} ${disabledOrHeadingClass}` : `${optionClassName}${optionModifierFocused}${optionModifierOdd}`
-						console.log(disabledOrHeadingClass, "***")
 						return (
 							<li
 								aria-selected={isFocus === index ? 'true' : 'false'}

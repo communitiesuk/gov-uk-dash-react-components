@@ -202,7 +202,7 @@ export const basePropTypes = {
 	 menu_open: PropTypes.bool,
 	/**
 	 * Whether the list of autocomplete options contains headings that
-	 * are unclickable (like when disabled) but not struckthrough
+	 * are unclickable (like when disabled) but not struckthrough and bolded
 	 */
 	 showOptionHeadings: PropTypes.bool,
 
