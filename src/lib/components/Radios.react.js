@@ -90,13 +90,11 @@ Radios.propTypes = {
     /**
      * The currently selected value
      */
-    value: PropTypes.arrayOf(
-        PropTypes.oneOfType([
+    value: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
             PropTypes.bool,
-        ])
-    ),   
+        ]), 
 
     /**
      * The ID of this component, used to identify dash components

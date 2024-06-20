@@ -46,7 +46,7 @@ const Radios = (props)=>{
 
     const handleChange = (newValue) => {
         setValue(newValue); // Update local state
-        setProps({ value: [newValue] }); // Propagate value to parent component
+        setProps({ value: newValue }); // Propagate value to parent component
     };
 
     return (
