@@ -151,6 +151,13 @@
 	cursor: not-allowed;
 }
 
+.autocomplete__option--heading {
+	background-color: #FAFAFA;
+	color: #000000;
+	font-weight: bold;
+	cursor: not-allowed;
+}
+
 .autocomplete__hint,
 .autocomplete__input,
 .autocomplete__option {

@@ -36,6 +36,7 @@ import {
  *  errorMessage,
  *  errorMessageWhenEmpty,
  *  menu_open,
+ *  showOptionHeadings
  * }} [props={}]
  *
  * @return {*}
