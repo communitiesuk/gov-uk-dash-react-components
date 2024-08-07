@@ -60,6 +60,8 @@ const CookiesPage = () => {
 
             { updateState ? <SuccessNotification/> : null }
 
+            <h1 className={"govuk-heading-l"}>Cookies</h1>
+
             <p className={"govuk-body"}>
                 Cookies are files saved on your phone, tablet or computer when you visit a website.
             </p>

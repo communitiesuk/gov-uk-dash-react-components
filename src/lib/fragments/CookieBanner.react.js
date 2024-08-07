@@ -71,7 +71,7 @@ const CookieBanner = ({ ...props }) => {
         return (
             <div { ...props } id="global-cookie-message" className="govuk-cookie-banner"
                 data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet=""
-                style={ { display: 'block' } }>
+                >
                 <div className="govuk-cookie-banner__message govuk-width-container" role="alert">
                     <div className="govuk-grid-row">
                         <div className="govuk-grid-column-two-thirds">
@@ -111,7 +111,10 @@ const CookieBanner = ({ ...props }) => {
                         </div>
                     </div>
 
-                    <div className="govuk-button-group">
+{/* .govuk-cookie-banner .govuk-button-group {
+  display: block;
+} needs removing from pkg css */}
+                    <div className="govuk-button-group"> 
                         <button className="govuk-button" type="submit"
                                 data-module="track-click" data-accept-cookies="true"
                                 data-track-category="cookieBanner"
