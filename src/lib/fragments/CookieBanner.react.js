@@ -69,20 +69,24 @@ const CookieBanner = ({ ...props }) => {
 
     if ( cookieStateIsSet && cookieAccepted !== null ) {
         return (
-            <div { ...props } id="global-cookie-message" className="gem-c-cookie-banner govuk-clearfix"
-                 data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet=""
-                 style={ { display: 'block' } }>
-                <div className="gem-c-cookie-banner__confirmation govuk-width-container" tabIndex="-1">
-                    <p className="gem-c-cookie-banner__confirmation-message govuk-body">
-                        You’ve { cookieAccepted ? "accepted" : "rejected" } additional cookies.
-                        {/* You can <Link to="/details/cookies" className="govuk-link">change
-                        your cookie settings</Link> at any time. */}
-                    </p>
-                    <button className="gem-c-cookie-banner__hide-button govuk-link" data-hide-cookie-banner="true"
-                            data-module="track-click" data-track-category="cookieBanner"
-                            data-track-action="Hide cookie banner" onClick={ () => setCookieAccepted(null) }>
-                        Hide
-                    </button>
+            <div { ...props } id="global-cookie-message" className="govuk-cookie-banner"
+                data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet=""
+                style={ { display: 'block' } }>
+                <div className="govuk-cookie-banner__message govuk-width-container" role="alert">
+                    <div className="govuk-grid-row">
+                        <div className="govuk-grid-column-two-thirds">
+                            <div className="govuk-cookie-banner__content" tabIndex="-1">
+                                <p className="govuk-body">You've { cookieAccepted ? "accepted" : "rejected" } additional cookies. You can <a class="govuk-link" href="/cookiespage" > change your cookie settings</a> at any time.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="govuk-button-group">
+                        <button type="button" className="govuk-button" data-hide-cookie-banner="true"
+                                data-module="track-click" data-track-category="cookieBanner"
+                                data-track-action="Hide cookie banner" onClick={ () => setCookieAccepted(null) }>
+                            Hide cookie message
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -123,7 +127,7 @@ const CookieBanner = ({ ...props }) => {
                               data-track-category="cookieBanner" onClick={ () => setCookieAccepted(false) }>
                             Reject additional cookies
                         </button>
-                        {/* <Link to="/details/cookies" className="govuk-link govuk-body">View cookies</Link> */}
+                        <a class="govuk-link" href="/cookiespage" >View cookies</a>
                     </div>
                 </div>
             </div>
