@@ -94,15 +94,13 @@ const CookieBanner = ({ ...props }) => {
 
 
     if ( !cookieStateIsSet ) {
-        return <div className="govuk-cookie-banner " role="region" aria-label="Cookies for the OFLOG Dashboard">
-            <div className={ "govuk-width-container" }>
-                <div className="govuk-cookie-banner__message govuk-!-width-two-thirds">
+        return <div className="govuk-cookie-banner " role="region" aria-label="Cookies on Housing Supply in England">
+                <div className={ "govuk-cookie-banner__message govuk-width-container" }>
                     <div className="govuk-grid-row">
                         <div className="govuk-grid-column-two-thirds">
-                            <h2 className="govuk-cookie-banner__heading govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-left-1">
-                                Cookies for the OFLOG Dashboard
+                            <h2 className="govuk-cookie-banner__heading govuk-heading-m">
+                                Cookies on Housing Supply in England
                             </h2>
-
                             <div className="govuk-cookie-banner__content">
                                 <p className={ "govuk-body" }>We use some essential cookies to make this service work.</p>
                                 <p className={ "govuk-body" }>
@@ -131,7 +129,6 @@ const CookieBanner = ({ ...props }) => {
                     </div>
                 </div>
             </div>
-        </div>
     }
 
     return null;
