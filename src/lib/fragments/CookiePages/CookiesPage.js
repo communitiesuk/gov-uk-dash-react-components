@@ -66,7 +66,7 @@ const CookiesPage = () => {
                 Cookies are files saved on your phone, tablet or computer when you visit a website.
             </p>
             <p className={"govuk-body govuk-!-margin-bottom-8"}>
-                We use cookies to store information about how you use the oflog.data.gov.uk website,
+                We use cookies to store information about how you use the Housing Supply in England dashboard,
                 such as the pages you visit.
             </p>
 
@@ -87,7 +87,7 @@ const CookiesPage = () => {
             <div className={"govuk-body"}>
                 <ul className="govuk-list govuk-list--bullet">
                     <li>how you got to the site</li>
-                    <li>the pages you visit on Oflog.data.gov.uk, and how long you spend on each page</li>
+                    <li>the pages you visit on the Housing Supply in England dashboard, and how long you spend on each page</li>
                     <li>what you click on while you're visiting the site</li>
                 </ul>
             </div>
@@ -113,12 +113,21 @@ const CookiesPage = () => {
                     </thead>
                     <tbody className={"govuk-table__body"}>
                         <tr className={"govuk-table__row"}>
-                            <td className={"govuk-table__cell"}>_ga,<br />_gid</td>
+                            <td className={"govuk-table__cell"}><b>_ga</b></td>
                             <td className={"govuk-table__cell"}>
-                                These help us count how many people visit coronavirus.data.gov.uk by
+                                These help us count how many people visit the Housing Supply in England dashboard by
                                 tracking if you’ve visited before.
                             </td>
-                                <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>_ga 2 years,<br />_gid 24 hours
+                            <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>2 years
+                            </td>
+                        </tr>
+                        <tr className={"govuk-table__row"}>
+                            <td className={"govuk-table__cell"}><b>_gid</b></td>
+                            <td className={"govuk-table__cell"}>
+                                These help us count how many people visit the Housing Supply in England dashboard by
+                                tracking if you’ve visited before.
+                            </td>
+                                <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>24 hours
                             </td>
                         </tr>
                     </tbody>
