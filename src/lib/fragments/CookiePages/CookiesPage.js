@@ -51,7 +51,7 @@ const CookiesPage = () => {
           setCookieState(cookiePolicy.usage);
         }
       } else {
-        setCookieState(true);
+        setCookieState(false);
       }
     }, []);
   
@@ -139,7 +139,7 @@ const CookiesPage = () => {
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-0"
                                checked={ cookieState }
-                               className="govuk-radios__input" defaultChecked onClick={() => setCookieState(true)} />
+                               className="govuk-radios__input" onClick={() => setCookieState(true)} />
                         <label htmlFor="radio-c6a408c0-0" className="gem-c-label govuk-label govuk-radios__label">
                             Use cookies that measure my website use
                         </label>
