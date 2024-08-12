@@ -27,13 +27,14 @@ const SuccessNotification = (props) => {
   );
 };
 
-const CookiesPage = () => {
+const CookiesPage = ({ ...props }) => {
     const [cookieState, setCookieState] = useState(null);
     const [updateState, setUpdateState] = useState(false);
-  
+    const { tag } = props;
+
     const handleButtonClick = (cookieState) => {
       setUpdateState(true);
-      handleCookieAccept(cookieState);
+      handleCookieAccept(cookieState, tag);
       window.scrollTo(0, 0);
     };
   

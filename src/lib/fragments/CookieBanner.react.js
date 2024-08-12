@@ -7,10 +7,13 @@ import Cookies from "js-cookie";
 
 
 const CookieBanner = ({ ...props }) => {
-
+    console.log("start of cookiebanner")
+    console.trace()
     const [cookieStateIsSet, setCookieStateIsSet] = useState(null);
     const [cookieAccepted, setCookieAccepted] = useState(null);
-
+    const { tag } = props;
+    console.log(`!!!!${tag}`)
+    console.log(`cookieacepted${cookieAccepted}`)
     useEffect(() => {
 
         if (cookieAccepted) {
@@ -34,7 +37,7 @@ const CookieBanner = ({ ...props }) => {
             console.info("Cookies preferences have been set.");
 
             const cookiePolicyRaw = Cookies.get('cookies_policy_21_3');
-
+            console.log(`????${tag}`)
             if (!cookiePolicyRaw) {
                 Cookies.remove("cookies_preferences_set_21_3");
                 setCookieStateIsSet(false)
@@ -45,12 +48,12 @@ const CookieBanner = ({ ...props }) => {
                 const cookiePolicy = JSON.parse(cookiePolicyRaw);
 
                 if (cookiePolicy.usage === false || !cookiePolicy.usage) {
-                    window['ga-disable-G-SR22PGM0C2'] = true;
-                    deleteCookies();
-                    console.info("Cookies are disabled.");
+                    window[`ga-disable-${tag}`] = true;
+                    deleteCookies(tag);
+                    console.info("Cookies are disabled.", `ga-disable-${tag}`);
                 }
                 else {
-                    setCookies();
+                    setCookies(tag);
                     console.info("Cookies successfully set.");
                 }
 
@@ -94,6 +97,7 @@ const CookieBanner = ({ ...props }) => {
 
 
     if (!cookieStateIsSet) {
+        console.log("!cookiestateisset",`${cookieStateIsSet}`)
         return <div className="govuk-cookie-banner " role="region" aria-label="Cookies on Housing Supply in England">
             <div className={"govuk-cookie-banner__message govuk-width-container"}>
                 <div className="govuk-grid-row">

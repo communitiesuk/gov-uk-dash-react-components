@@ -41,6 +41,11 @@ CookieBanner.propTypes = {
     id: PropTypes.string,
 
     /**
+     * The Google Analytics tag.
+     */
+    tag: PropTypes.string,
+
+    /**
      * Dash-assigned callback that gets fired when the value changes.
      */
     setProps: PropTypes.func,
