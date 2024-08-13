@@ -34,6 +34,7 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  *  errorMessage,
  *  errorMessageWhenEmpty,
  *  menu_open,
+ *  showOptionHeadings
  * }} [props={}]
  *
  * @return {*}
@@ -175,6 +176,11 @@ export const dropdownPropTypes = {
 	 * when the menu is opened.
 	 */
 	 menu_open: PropTypes.bool,
+	/**
+	 * Whether the list of autocomplete options contains headings that
+	 * are unclickable (like when disabled) but not struckthrough and bolded
+	 */
+	 showOptionHeadings: PropTypes.bool,
 }
 
 Dropdown.propTypes = dropdownPropTypes;

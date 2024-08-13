@@ -12,7 +12,11 @@ unique_las_dicts = [
     {"label": "LA3", "value": "LA3"},
 ]
 la_lookups = {
-    "LA1": ["SUBLA1", "SUBLA2", "SUBLA3"],
+    "LA1": [
+        {"label": "SUBLA1", "value": "SUBLA1val"},
+        {"label": "SUBLA2", "value": "SUBLA2val"},
+        {"label": "SUBLA3", "value": "SUBLA3val"},
+    ],
     "LA2": ["SUBLA4", "SUBLA5", "SUBLA6"],
     "LA3": ["SUBLA7", "SUBLA8", "SUBLA9"],
 }
@@ -77,6 +81,9 @@ app.layout = html.Div(
             ],
             defaultTab=0,
             tabHeadings=["Display jitter plots", "Display time series plots"],
+        ),
+        uk_gov_dash_components.Radios(
+            options=["a", "b"], value="b", id="test", title="Which do you prefer?"
         ),
     ]
 )

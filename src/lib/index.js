@@ -7,6 +7,9 @@ import ComponentTemplate from './components/ComponentTemplate.react';
 import ExpandableMenuItem from './components/ExpandableMenuItem.react';
 import Accordion from './components/Accordion.react';
 import Tabs from './components/Tabs.react';
+import ChangeLogBanner from './components/ChangeLogBanner.react';
+import AdditionalDetails from './components/AdditionalDetails.react';
+import Radios from './components/Radios.react';
 import CookieBanner from './components/CookieBanner.react';
 import CookiesPage from './components/CookiesPage.react';
 import Cookies from 'js-cookie';
@@ -20,6 +23,9 @@ export {
     ExpandableMenuItem,
     Accordion,
     Tabs,
+    ChangeLogBanner,
+    AdditionalDetails,
+    Radios,
     CookieBanner,
     CookiesPage,
     Cookies

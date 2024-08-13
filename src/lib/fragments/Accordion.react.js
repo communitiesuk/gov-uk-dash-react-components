@@ -16,28 +16,60 @@ const AccordionButtonClassName = "accordion-button govuk-accordion__section-butt
 class Accordion extends Component {
   constructor(props) {
     super(props);
-    // Check if sectionsOpenDefault prop exists and is an array, otherwise generate a default array
-    const defaultSectionsOpen = Array.isArray(this.props.defaultSectionsOpen)
-      ? this.props.defaultSectionsOpen
-      : Array.from({ length: this.props.accordionHeadings.length }, () => true);
+     // Check if sectionsOpenDefault prop exists and is an array, otherwise generate a default array
+     const defaultSectionsOpen = Array.isArray(this.props.defaultSectionsOpen)
+     ? this.props.defaultSectionsOpen
+     : Array.from({ length: this.props.accordionHeadings.length }, () => true);
 
-    this.state = {
-      sectionsOpen: defaultSectionsOpen
+   this.state = {
+     sectionsOpen: defaultSectionsOpen
+   }
 
-    }
-    if (this.props.children.length > 1){
-    this.contentRefs = this.props.children.map(() => React.createRef());}
-    else{
-      this.contentRefs = [React.createRef()];
-    }
+    this.initializeContentRefs(); 
     this.headerRefs = this.props.accordionHeadings.map(() => React.createRef());
   }
 
-  openOrCloseAccordionSection = (index) => {
-    this.setState(prevState => ({
-      sectionsOpen: prevState.sectionsOpen.map((isOpen, i) => i === index ? !isOpen : isOpen),
-    }));
+  initializeContentRefs = () => {
+    this.contentRefs = React.Children.map(this.props.children, () => React.createRef());
   }
+
+  componentDidUpdate(prevProps) {
+    // check if number of children has changed
+    if (React.Children.count(prevProps.children) !== React.Children.count(this.props.children)) {
+      this.initializeContentRefs();
+      //  reset the open state of sections
+      this.setState({
+        sectionsOpen: Array.from({ length: React.Children.count(this.props.children) }, () => false)
+      });
+    }
+  }
+
+
+  openOrCloseAccordionSection = (index) => {
+    this.setState(prevState => {
+      const newSectionsOpen = prevState.sectionsOpen.map((isOpen, i) => 
+        i === index ? !isOpen : isOpen
+      );
+
+      if (this.contentRefs[index] && this.contentRefs[index].current) {
+        this.contentRefs[index].current.style.display = newSectionsOpen[index] ? 'block' : 'none';
+      }
+
+      return { sectionsOpen: newSectionsOpen };
+    });
+  }
+
+setInitialDisplayStyles = () => {
+  this.contentRefs.forEach((ref, index) => {
+      if (ref.current) {
+          ref.current.style.display = this.state.sectionsOpen[index] ? 'block' : 'none';
+      }
+  });
+}
+
+componentDidMount() {
+  this.setInitialDisplayStyles();
+}
 
   // This method handles the Up arrow key event for an accordion component
   // depending on the origin of the event (Show All button, section heading, or section content).
@@ -160,20 +192,17 @@ class Accordion extends Component {
     return focusable[targetIndex] || null;
   }
 
-  render() {  
-    let accordionContent
-    const bannerSections = this.props.bannerSections;
-    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
-      accordionContent = this.renderAccordionSection(0, this.props.children, this.state.sectionsOpen[0])
-    }
-    else {
-      if (bannerSections) {
-        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index], this.props.bannerSections[index]))
-      }
-      else {
-        accordionContent = this.props.children.map((accordionSectionContent, index) => this.renderAccordionSection(index, accordionSectionContent, this.state.sectionsOpen[index]))
-      }
-    }
+  render() {
+    const accordionContent = React.Children.map(this.props.children, (accordionSectionContent, index) => {
+      return this.renderAccordionSection(
+        index, 
+        accordionSectionContent, 
+        this.state.sectionsOpen[index], 
+        this.props.bannerSections ? this.props.bannerSections[index] : null,
+        `accordion-section-${index}`
+      );
+    });
+
     return (
       <div className="js-enabled">
         <div
@@ -190,9 +219,14 @@ class Accordion extends Component {
   renderAccordionSection(index, accordionSectionContent, sectionIsOpen, bannerSection) {
     const accordionHeading = this.props.accordionHeadings[index]
     const bannerSectionHeading = this.props.accordionHeadings[bannerSection]
-    const contentId = `accordion-default-content-${index}`;
-
-
+    const contentId = `${this.props.id}-default-content-${index}`;
+    let toggleText;
+    if (this.props.showToggleText) {
+      toggleText = sectionIsOpen ? `Hide ${accordionHeading}` : `Show ${accordionHeading}`;
+    }
+    else {
+      toggleText = accordionHeading;
+    }
 
     return (
       <div
@@ -220,7 +254,7 @@ class Accordion extends Component {
                   </span>
                 </span>
                 <span className={sectionIsOpen ? "govuk-accordion-nav__chevron" : "govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"} ></span>
-                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {sectionIsOpen ? `Hide ${accordionHeading}` : `Show ${accordionHeading}`}
+                <span className="govuk-accordion__section-toggle-focus govuk-accordion__section-toggle-text"> {toggleText}
                 </span>
               </span>
             </button>

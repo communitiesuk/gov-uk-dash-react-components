@@ -68,6 +68,7 @@ const App = () => {
                     id="autocomplete-default"
                     placeholder="Select Option"
                     value="Hello LOL2"
+                    showOptionHeadings={true}
                     setProps={setProps}
                 />
                 <span>The output value is {value}</span>
@@ -109,6 +110,10 @@ const App = () => {
                     </a>
                 </li>
             </ul>
+            <h2>Radios</h2>
+            <div>
+                <Radios id="radios" value={"restrict"} options={["restrict", "restrict1"]} setProps={setProps} />
+            </div>
             <Accordion id="accordion" accordionHeadings={["charts", 'empty', "data!!!!!"]} defaultSectionsOpen={[false, false, true]} children={[<p>I am a child<br /></p>, <p>I am a empty</p>, <p>I am a hat</p>]} bannerSections={[2, null, 0]}></Accordion>
             <Tabs id="tabs" tabHeadings={["Display jitter plots", 'data', "Display time series pl}ots"]} defaultTab={0} children={[<div><p>I am a jitter plot</p></div>, <div><p>I am a jitter plot</p></div>, <div><p>I am a time series plot</p></div>]}></Tabs>
 

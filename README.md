@@ -148,3 +148,5 @@ We upgraded to Node version 20 and rectified the `err_ossl_evp_unsupported` erro
 We are now running Node with the `--openssl-legacy-provider` flag which means it will continue to use the legacy provider of the OpenSSL library. 
 This may not be neccessary in future as more libraries start to use use the more up to date version of OpenSSL. 
 It should also be noted that it is a possiblilty Node will stop supporting this flag in future. 
+
+Sept 2023 : Node updated to version 18.17.1 on the DAP - request upgrade to node from DAP team.

@@ -1,6 +1,5 @@
-import {append, includes, without} from 'ramda';
+import {append, includes, without, type} from 'ramda';
 import React from 'react';
-import {type} from 'ramda';
 import { defaultProps, propTypes } from '../components/CheckboxList.react';
 
 const sanitizeOptions = options => {
