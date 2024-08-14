@@ -4,9 +4,13 @@ import { CookiesPage as RealComponent } from '../LazyLoader';
 
 /**
  * Lazy loaded CookiesPage
+ * 
+ * This CookiesPage component tells users about the cookies you’re setting on their device and lets
+ * them accept or reject different types of non-essential cookies.
  *
  * @param {
- * 	id,
+ * id: string,                            // Unique identifier for the cookie component
+ * tag: string                            // Google Analytics tag string
  * } [props={}]
  * @return {*}
  */

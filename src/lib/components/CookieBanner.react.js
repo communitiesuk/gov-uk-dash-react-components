@@ -5,8 +5,14 @@ import { CookieBanner as RealComponent } from '../LazyLoader';
 /**
  * Lazy loaded CookieBanner
  *
+ * This CookieBanner component creates a banner to allow users to accept or reject cookies which
+ * are not essential to making the service work. The banner displays until a user has saved their
+ * cookie preference. Once a user has accepted or rejected cookies, the cookies banner shows a
+ * confirmation message.
+ * 
  * @param {
- * 	id,
+ * id: string,                            // Unique identifier for the cookie component
+ * tag: string                            // Google Analytics tag string
  * } [props={}]
  * @return {*}
  */
