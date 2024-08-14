@@ -114,20 +114,14 @@ const CookieBanner = ({ ...props }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* .govuk-cookie-banner .govuk-button-group {
-  display: block;
-} needs removing from pkg css */}
                 <div className="govuk-button-group">
                     <button className="govuk-button" type="submit"
                         data-module="track-click" data-accept-cookies="true"
                         data-track-category="cookieBanner"
-                        style={{ maxWidth: '50%' }}
                         onClick={() => setCookieAccepted(true)}>
                         Accept additional cookies
                     </button>
                     <button className="govuk-button"
-                        style={{ maxWidth: '50%' }}
                         type="submit" data-module="track-click" data-set-cookie-preferences="true"
                         data-track-category="cookieBanner" onClick={() => setCookieAccepted(false)}>
                         Reject additional cookies
