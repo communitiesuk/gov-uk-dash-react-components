@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 
 const CookieBanner = ({ ...props }) => {
     console.log("start of cookiebanner")
-    console.trace()
     const [cookieStateIsSet, setCookieStateIsSet] = useState(null);
     const [cookieAccepted, setCookieAccepted] = useState(null);
     const { tag } = props;
