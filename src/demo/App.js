@@ -4,13 +4,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 
-import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem } from '../lib';
-
-import Tabs from '../lib/fragments/Tabs.react';
-
-
-import CookieBanner from '../lib/fragments/CookieBanner.react';
-import CookiesPage from '../lib/fragments/CookiePages/CookiesPage';
+import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem, Radios, Tabs, CookieBanner, CookiesPage } from '../lib';
 
 import './dashboard.css';
 
