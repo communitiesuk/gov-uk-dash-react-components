@@ -13,6 +13,7 @@ import { CookieBanner as RealComponent } from '../LazyLoader';
  * @param {
  * id: string,                            // Unique identifier for the cookie component
  * tag: string                            // Google Analytics tag string
+ * appTitle: string                       // Name of the app
  * } [props={}]
  * @return {*}
  */
@@ -50,6 +51,11 @@ CookieBanner.propTypes = {
      * The Google Analytics tag.
      */
     tag: PropTypes.string,
+
+    /**
+     * The name of the app to be referenced in CookieBanner.
+     */
+    appTitle: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.

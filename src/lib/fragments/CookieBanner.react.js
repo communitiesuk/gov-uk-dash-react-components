@@ -12,6 +12,7 @@ const CookieBanner = ({ ...props }) => {
     const [cookieStateIsSet, setCookieStateIsSet] = useState(null);
     const [cookieAccepted, setCookieAccepted] = useState(null);
     const { tag } = props;
+    const {appTitle} = props;
     console.log(`!!!!${tag}`)
     console.log(`cookieacepted${cookieAccepted}`)
     useEffect(() => {
@@ -98,12 +99,12 @@ const CookieBanner = ({ ...props }) => {
 
     if (!cookieStateIsSet) {
         console.log("!cookiestateisset",`${cookieStateIsSet}`)
-        return <div className="govuk-cookie-banner " role="region" aria-label="Cookies on Housing Supply in England">
+        return <div className="govuk-cookie-banner " role="region" aria-label={`Cookies on ${appTitle}`}>
             <div className={"govuk-cookie-banner__message govuk-width-container"}>
                 <div className="govuk-grid-row">
                     <div className="govuk-grid-column-two-thirds">
                         <h2 className="govuk-cookie-banner__heading govuk-heading-m">
-                            Cookies on Housing Supply in England
+                            Cookies on {appTitle}
                         </h2>
                         <div className="govuk-cookie-banner__content">
                             <p className={"govuk-body"}>We use some essential cookies to make this service work.</p>

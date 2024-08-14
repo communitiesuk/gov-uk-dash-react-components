@@ -31,6 +31,7 @@ const CookiesPage = ({ ...props }) => {
     const [cookieState, setCookieState] = useState(null);
     const [updateState, setUpdateState] = useState(false);
     const { tag } = props;
+    const {appTitle} = props;
 
     const handleButtonClick = (cookieState) => {
       setUpdateState(true);
@@ -67,7 +68,7 @@ const CookiesPage = ({ ...props }) => {
                 Cookies are files saved on your phone, tablet or computer when you visit a website.
             </p>
             <p className={"govuk-body govuk-!-margin-bottom-8"}>
-                We use cookies to store information about how you use the Housing Supply in England dashboard,
+                We use cookies to store information about how you use the {appTitle} dashboard,
                 such as the pages you visit.
             </p>
 
@@ -88,7 +89,7 @@ const CookiesPage = ({ ...props }) => {
             <div className={"govuk-body"}>
                 <ul className="govuk-list govuk-list--bullet">
                     <li>how you got to the site</li>
-                    <li>the pages you visit on the Housing Supply in England dashboard, and how long you spend on each page</li>
+                    <li>the pages you visit on the {appTitle} dashboard, and how long you spend on each page</li>
                     <li>what you click on while you're visiting the site</li>
                 </ul>
             </div>
@@ -116,7 +117,7 @@ const CookiesPage = ({ ...props }) => {
                         <tr className={"govuk-table__row"}>
                             <td className={"govuk-table__cell"}><b>_ga</b></td>
                             <td className={"govuk-table__cell"}>
-                                These help us count how many people visit the Housing Supply in England dashboard by
+                                These help us count how many people visit the {appTitle} dashboard by
                                 tracking if you’ve visited before.
                             </td>
                             <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>2 years
@@ -125,7 +126,7 @@ const CookiesPage = ({ ...props }) => {
                         <tr className={"govuk-table__row"}>
                             <td className={"govuk-table__cell"}><b>_gid</b></td>
                             <td className={"govuk-table__cell"}>
-                                These help us count how many people visit the Housing Supply in England dashboard by
+                                These help us count how many people visit the {appTitle} dashboard by
                                 tracking if you’ve visited before.
                             </td>
                                 <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>24 hours
