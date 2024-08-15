@@ -8,9 +8,25 @@ import ComponentTemplate from './fragments/ComponentTemplate.react'
 import Dropdown from './fragments/Dropdown.react'
 import ExpandableMenuItem from './fragments/ExpandableMenuItem.react'
 import Tabs from './fragments/Tabs.react'
+import CookieBanner from './fragments/CookieBanner.react';
+import CookiesPage from './fragments/CookiePages/CookiesPage';
+import Cookies from 'js-cookie';
 import Radios from './fragments/Radios.react'
-
 export {
-	Accordion, AdditionalDetails, AutoComplete, ChangeLogBanner, CheckboxList, ComboBox, ComponentTemplate, Dropdown, ExpandableMenuItem, Tabs, Radios
-}
+	Accordion,
+	AdditionalDetails,
+	AutoComplete,
+	ChangeLogBanner,
+	CheckboxList,
+	ComboBox,
+	ComponentTemplate,
+	Dropdown,
+	ExpandableMenuItem,
+	Tabs,
+	Radios,
+	CookieBanner,
+    CookiesPage,
+    Cookies
+};
+
 

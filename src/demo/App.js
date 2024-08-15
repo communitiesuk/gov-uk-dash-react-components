@@ -1,7 +1,10 @@
 /* eslint no-magic-numbers: 0 */
 import React, { useState } from 'react';
 
-import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem, Radios, Tabs } from '../lib';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+
+import { Accordion, CheckboxList, ComponentTemplate, Dropdown, ExpandableMenuItem, Radios, Tabs, CookieBanner, CookiesPage } from '../lib';
 
 import './dashboard.css';
 
@@ -13,8 +16,19 @@ const App = () => {
         console.log('value', value);
     }
     return (
-        <>
-            <h2>Autocomplete</h2>
+    <Router>
+        <div>
+        <CookieBanner/>
+
+        <nav>
+          <ul>
+            <li>
+              <Link to="/cookies">Cookies</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <h2>Autocomplete</h2>
             <div>
                 <Dropdown
                     label="Hello world"
@@ -96,7 +110,12 @@ const App = () => {
             </div>
             <Accordion id="accordion" accordionHeadings={["charts", 'empty', "data!!!!!"]} defaultSectionsOpen={[false, false, true]} children={[<p>I am a child<br /></p>, <p>I am a empty</p>, <p>I am a hat</p>]} bannerSections={[2, null, 0]}></Accordion>
             <Tabs id="tabs" tabHeadings={["Display jitter plots", 'data', "Display time series pl}ots"]} defaultTab={0} children={[<div><p>I am a jitter plot</p></div>, <div><p>I am a jitter plot</p></div>, <div><p>I am a time series plot</p></div>]}></Tabs>
-        </>
+
+        <Routes>
+        <Route path="/cookies" element={<CookiesPage />} />
+        </Routes>  
+    </div>
+    </Router> 
     )
 }
 

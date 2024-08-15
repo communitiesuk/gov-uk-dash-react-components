@@ -10,6 +10,9 @@ import Tabs from './components/Tabs.react';
 import ChangeLogBanner from './components/ChangeLogBanner.react';
 import AdditionalDetails from './components/AdditionalDetails.react';
 import Radios from './components/Radios.react';
+import CookieBanner from './components/CookieBanner.react';
+import CookiesPage from './components/CookiesPage.react';
+import Cookies from 'js-cookie';
 
 export {
     AutoComplete,
@@ -22,5 +25,9 @@ export {
     Tabs,
     ChangeLogBanner,
     AdditionalDetails,
-    Radios
+    Radios,
+    CookieBanner,
+    CookiesPage,
+    Cookies
+
 };
