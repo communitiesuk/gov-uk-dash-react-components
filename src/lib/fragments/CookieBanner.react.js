@@ -1,15 +1,15 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { setCookies, deleteCookies, handleCookieAccept } from '../components/cookies/utils/Cookie';
+import { CookieContext } from '../components/cookies/utils/CookieContext';
 
 import Cookies from "js-cookie";
 
 
 const CookieBanner = ({ ...props }) => {
     console.log("start of cookiebanner")
-    const [cookieStateIsSet, setCookieStateIsSet] = useState(null);
-    const [cookieAccepted, setCookieAccepted] = useState(null);
+    const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
     const { tag } = props;
     const {appTitle} = props;
     console.log(`!!!!${tag}`)

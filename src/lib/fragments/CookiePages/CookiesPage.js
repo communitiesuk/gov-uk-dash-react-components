@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import { handleCookieAccept } from '../../components/cookies/utils/Cookie';
 
 import Cookies from "js-cookie";
+import { CookieContext } from '../../components/cookies/utils/CookieContext';
 
 
 
@@ -26,13 +27,14 @@ const SuccessNotification = (props) => {
 };
 
 const CookiesPage = ({ ...props }) => {
-    const [cookieState, setCookieState] = useState(null);
-    const [updateState, setUpdateState] = useState(false);
+    console.log("before context")
+    const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
+    console.log(cookieStateIsSet, "cookiesstateisset")
     const { tag } = props;
     const {appTitle} = props;
 
     const handleButtonClick = (cookieState) => {
-      setUpdateState(true);
+      setCookieAccepted(true);
       handleCookieAccept(cookieState, tag);
       window.scrollTo(0, 0);
     };
@@ -45,20 +47,20 @@ const CookiesPage = ({ ...props }) => {
   
         if (!cookiePolicyRaw) {
           Cookies.remove('cookies_preferences_set_21_3');
-          setCookieState(true);
+          setCookieStateIsSet(true);
         } else {
           const cookiePolicy = JSON.parse(cookiePolicyRaw);
-          setCookieState(cookiePolicy.usage);
+          setCookieStateIsSet(cookiePolicy.usage);
         }
       } else {
-        setCookieState(false);
+        setCookieStateIsSet(false);
       }
     }, []);
   
     return <>
         <article style={{maxWidth: "50em"}}>
 
-            { updateState ? <SuccessNotification/> : null }
+            { cookieAccepted ? <SuccessNotification/> : null }
 
             <h1 className={"govuk-heading-l"}>Cookies</h1>
 
@@ -138,17 +140,17 @@ const CookiesPage = ({ ...props }) => {
                 <div className="govuk-radios">
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-0"
-                               checked={ cookieState }
-                               className="govuk-radios__input" onClick={() => setCookieState(true)} />
+                               checked={ cookieStateIsSet }
+                               className="govuk-radios__input" onClick={() => setCookieStateIsSet(true)} />
                         <label htmlFor="radio-c6a408c0-0" className="gem-c-label govuk-label govuk-radios__label">
                             Use cookies that measure my website use
                         </label>
                     </div>
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-1"
-                               checked={ cookieState === false }
+                               checked={ cookieStateIsSet === false }
                                className="govuk-radios__input"
-                               onClick={() => setCookieState(false)} />
+                               onClick={() => setCookieStateIsSet(false)} />
                         <label htmlFor="radio-c6a408c0-1" className="gem-c-label govuk-label govuk-radios__label">
                             Do not use cookies that measure my website use
                         </label>
@@ -170,7 +172,7 @@ const CookiesPage = ({ ...props }) => {
                 <button className="gem-c-button govuk-button"
                     type="submit" data-module="track-click"
                     data-accept-cookies="true" data-track-category="cookies"
-                    onClick={ () => handleButtonClick(cookieState)}>
+                    onClick={ () => handleButtonClick(cookieStateIsSet)}>
                     Save changes
                 </button>
             </p>

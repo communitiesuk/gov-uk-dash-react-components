@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CookiesPage as RealComponent } from '../LazyLoader';
+import { CookieProvider } from './cookies/utils/CookieContext';
 
 /**
  * Lazy loaded CookiesPage
@@ -17,7 +18,9 @@ import { CookiesPage as RealComponent } from '../LazyLoader';
  */
 const CookiesPage = (props = {}) => {
     return (
+        <CookieProvider>
         <RealComponent {...props} />
+        </CookieProvider>
     );
 }
 
