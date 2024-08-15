@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { Article } from './Cookies.styles';
-
 import { handleCookieAccept } from '../../components/cookies/utils/Cookie';
 
 import Cookies from "js-cookie";
@@ -58,7 +56,7 @@ const CookiesPage = ({ ...props }) => {
     }, []);
   
     return <>
-        <Article>
+        <article style={{maxWidth: "50em"}}>
 
             { updateState ? <SuccessNotification/> : null }
 
@@ -176,7 +174,7 @@ const CookiesPage = ({ ...props }) => {
                     Save changes
                 </button>
             </p>
-        </Article>
+        </article>
     </>
 };
 
