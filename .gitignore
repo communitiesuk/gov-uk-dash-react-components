@@ -3,6 +3,7 @@
 .build_cache
 ### VisualStudioCode template
 .vscode/*
+!.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 ### JetBrains template
