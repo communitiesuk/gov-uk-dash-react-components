@@ -94,7 +94,7 @@ module.exports = (env, argv) => {
                 })
             ],
             splitChunks: {
-                name: false,
+                name: true,
                 cacheGroups: {
                     async: {
                         chunks: 'async',
