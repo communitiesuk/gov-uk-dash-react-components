@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Article, Heading } from './Cookies.styles';
+import { Article } from './Cookies.styles';
 
 import { handleCookieAccept } from '../../components/cookies/utils/Cookie';
 
@@ -72,13 +72,13 @@ const CookiesPage = ({ ...props }) => {
                 such as the pages you visit.
             </p>
 
-            <Heading>Cookie settings</Heading>
+            <h2 className={"govuk-heading-m"}>Cookie settings</h2>
 
             <p className={"govuk-body govuk-!-margin-bottom-8"}>
                 We use 2 types of cookie. You can choose which cookies you're happy for us to use.
             </p>
 
-            <Heading>Cookies that measure website use</Heading>
+            <h2 className={"govuk-heading-m"}>Cookies that measure website use</h2>
 
             <p className={"govuk-body"}>
                 We use Google Analytics to measure how you use the website so we can
@@ -158,7 +158,7 @@ const CookiesPage = ({ ...props }) => {
                 </div>
             </div>
 
-            <Heading>Strictly necessary cookies</Heading>
+            <h2 className={"govuk-heading-m"}>Strictly necessary cookies</h2>
 
             <p className={"govuk-body"}>
                 These essential cookies do things like remember your cookie preferences, so we don't ask for them again.

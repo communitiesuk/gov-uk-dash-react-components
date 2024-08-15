@@ -8,8 +8,3 @@ export const Article = (() =>
         max-width: 50em;
     `
 )();
-
-
-export const Heading = ({ className = '', ...props }) => (
-    <h2 className={ `govuk-heading-m ${className}` } { ...props }/>
-);
