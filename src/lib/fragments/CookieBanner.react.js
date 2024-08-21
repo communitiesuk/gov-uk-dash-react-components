@@ -79,7 +79,7 @@ const CookieBanner = ({ ...props }) => {
                     <div className="govuk-grid-row">
                         <div className="govuk-grid-column-two-thirds">
                             <div className="govuk-cookie-banner__content" tabIndex="-1">
-                                <p className="govuk-body">You've {cookieAccepted ? "accepted" : "rejected"} additional cookies. You can <a class="govuk-link" href="/cookiespage" > change your cookie settings</a> at any time.</p>
+                                <p className="govuk-body">You've {cookieAccepted ? "accepted" : "rejected"} additional cookies. You can <a className="govuk-link" href="/cookiespage" > change your cookie settings</a> at any time.</p>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@ const CookieBanner = ({ ...props }) => {
                         data-track-category="cookieBanner" onClick={() => setCookieAccepted(false)}>
                         Reject additional cookies
                     </button>
-                    <a class="govuk-link" href="/cookiespage" >View cookies</a>
+                    <a className="govuk-link" href="/cookiespage" >View cookies</a>
                 </div>
             </div>
         </div>

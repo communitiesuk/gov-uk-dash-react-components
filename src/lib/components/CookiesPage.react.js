@@ -12,7 +12,8 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * @param {
  * id: string,                            // Unique identifier for the cookie component
  * tag: string                            // Google Analytics tag string
- * appTitle: string                       // Name of the app
+ * appTitle: string  
+ * previousPage: string                     // Name of the app
  * } [props={}]
  * @return {*}
  */
@@ -57,6 +58,11 @@ CookiesPage.propTypes = {
      * The name of the app to be referenced in CookiesPage.
      */
     appTitle: PropTypes.string,
+
+    /**
+     * The name of the app to be referenced in CookiesPage.
+     */
+     previousPage: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.

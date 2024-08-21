@@ -7,7 +7,9 @@ import { CookieContext } from '../../components/cookies/utils/CookieContext';
 
 
 
-const SuccessNotification = (props) => {
+const SuccessNotification = ({...props}) => {
+    const {previousPage} = props
+    
   return (
     <div className="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-1"
          role="alert" aria-labelledby="govuk-notification-banner-title"
@@ -19,7 +21,7 @@ const SuccessNotification = (props) => {
       </div>
       <div className="govuk-notification-banner__content">
         <p className="govuk-notification-banner__heading">
-          You’ve updated your cookie preferences.
+          You’ve updated your cookie preferences. <a class="govuk-notification-banner__link" href={previousPage}>Go back to the page you were looking at</a>
         </p>
       </div>
     </div>
@@ -31,7 +33,7 @@ const CookiesPage = ({ ...props }) => {
     const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
     console.log(cookieStateIsSet, "cookiesstateisset")
     const { tag } = props;
-    const {appTitle} = props;
+    const { appTitle } = props;
 
     const handleButtonClick = (cookieState) => {
       setCookieAccepted(true);
@@ -56,11 +58,11 @@ const CookiesPage = ({ ...props }) => {
         setCookieStateIsSet(false);
       }
     }, []);
-  
+
     return <>
         <article style={{maxWidth: "50em"}}>
 
-            { cookieAccepted ? <SuccessNotification/> : null }
+            { cookieAccepted ? <SuccessNotification {...props} /> : null }
 
             <h1 className={"govuk-heading-l"}>Cookies</h1>
 
