@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect } from 'react';
 
-import { setCookies, deleteCookies, handleCookieAccept, handleInitialCookie } from '../components/cookies/utils/Cookie';
+import { setCookies, deleteCookies, handleCookieAccept, handleCookiesInitialLoad } from '../components/cookies/utils/Cookie';
 import { CookieContext } from '../components/cookies/utils/CookieContext';
 
 import Cookies from "js-cookie";
@@ -9,15 +9,15 @@ import Cookies from "js-cookie";
 
 const CookieBanner = ({ ...props }) => {
     console.log("start of cookiebanner")
-    const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
+    const { cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted } = useContext(CookieContext);
     const { tag } = props;
-    const {appTitle} = props;
+    const { appTitle } = props;
     console.log(`!!!!${tag}`)
     console.log(`cookieacepted${cookieAccepted}`)
 
     useEffect(() => {
         if (!Cookies.get('cookies_preferences_set')) {
-            handleInitialCookie();
+            handleCookiesInitialLoad();
         }
     }, [cookieStateIsSet, setCookieStateIsSet]);
 
@@ -39,7 +39,7 @@ const CookieBanner = ({ ...props }) => {
     useEffect(() => {
 
         const cookiePreference = Cookies.get('cookies_preferences_set');
-        console.log("*********",cookiePreference) 
+        console.log("*********", cookiePreference)
 
         if (cookiePreference === 'true') {
             console.info("Cookies preferences have been set.");
@@ -75,7 +75,7 @@ const CookieBanner = ({ ...props }) => {
 
     }, [cookieAccepted]);
 
-    console.log("!!!!!!", cookieStateIsSet, cookieAccepted )
+    console.log("!!!!!!", cookieStateIsSet, cookieAccepted)
     if (cookieStateIsSet === null) return null;
 
     if (cookieStateIsSet && cookieAccepted !== null) {
@@ -106,7 +106,7 @@ const CookieBanner = ({ ...props }) => {
 
 
     if (!cookieStateIsSet) {
-        console.log("!cookiestateisset",`${cookieStateIsSet}`)
+        console.log("!cookiestateisset", `${cookieStateIsSet}`)
         return <div className="govuk-cookie-banner " role="region" aria-label={`Cookies on ${appTitle}`}>
             <div className={"govuk-cookie-banner__message govuk-width-container"}>
                 <div className="govuk-grid-row">

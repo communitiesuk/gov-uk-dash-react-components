@@ -47,7 +47,7 @@ export const setCookies = (tag) => {
 export const deleteCookies = (tag) => {
     Cookies.remove("_ga");
     Cookies.remove("_gid");
-    // Cookies.remove(`_ga_${tag.slice(2)}`) # if cookies not set, it cannot delete as doesn't exist?
+    Cookies.remove(`_ga_${tag?.slice(2)}`)
     Cookies.remove(`_gat_gtag_${tag}`);
 
     window[`ga-disable-${tag}`] = true;
@@ -75,11 +75,12 @@ export const handleCookieAccept = (accepted, tag) => {
 
 };
 
-export const handleInitialCookie = () => {
+export const handleCookiesInitialLoad = () => {
     const
         today = new Date(),
         [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
         cookieExpiryDate = new Date(year + 1, month, day).toUTCString();
 
+    document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
     document.cookie = `cookies_preferences_set=false; expires=${cookieExpiryDate}; path=/`
 };
