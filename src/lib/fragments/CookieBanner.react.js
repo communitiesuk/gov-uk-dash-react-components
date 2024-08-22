@@ -31,15 +31,15 @@ const CookieBanner = ({ ...props }) => {
 
     useEffect(() => {
 
-        const cookiePreference = Cookies.get('cookies_preferences_set_21_3');
+        const cookiePreference = Cookies.get('cookies_preferences_set');
 
         if (cookiePreference === 'true') {
             console.info("Cookies preferences have been set.");
 
-            const cookiePolicyRaw = Cookies.get('cookies_policy_21_3');
+            const cookiePolicyRaw = Cookies.get('cookies_policy');
             console.log(`????${tag}`)
             if (!cookiePolicyRaw) {
-                Cookies.remove("cookies_preferences_set_21_3");
+                Cookies.remove("cookies_preferences_set");
                 setCookieStateIsSet(false)
                 console.info("Cookies policy has not been set.");
             }
