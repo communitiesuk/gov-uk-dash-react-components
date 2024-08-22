@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect } from 'react';
 
-import { setCookies, deleteCookies, handleCookieAccept } from '../components/cookies/utils/Cookie';
+import { setCookies, deleteCookies, handleCookieAccept, handleInitialCookie } from '../components/cookies/utils/Cookie';
 import { CookieContext } from '../components/cookies/utils/CookieContext';
 
 import Cookies from "js-cookie";
@@ -14,6 +14,13 @@ const CookieBanner = ({ ...props }) => {
     const {appTitle} = props;
     console.log(`!!!!${tag}`)
     console.log(`cookieacepted${cookieAccepted}`)
+
+    useEffect(() => {
+        if (!Cookies.get('cookies_preferences_set')) {
+            handleInitialCookie();
+        }
+    }, [cookieStateIsSet, setCookieStateIsSet]);
+
     useEffect(() => {
 
         if (cookieAccepted) {
@@ -32,6 +39,7 @@ const CookieBanner = ({ ...props }) => {
     useEffect(() => {
 
         const cookiePreference = Cookies.get('cookies_preferences_set');
+        console.log("*********",cookiePreference) 
 
         if (cookiePreference === 'true') {
             console.info("Cookies preferences have been set.");
@@ -67,10 +75,11 @@ const CookieBanner = ({ ...props }) => {
 
     }, [cookieAccepted]);
 
-
+    console.log("!!!!!!", cookieStateIsSet, cookieAccepted )
     if (cookieStateIsSet === null) return null;
 
     if (cookieStateIsSet && cookieAccepted !== null) {
+        console.log("££££££")
         return (
             <div {...props} id="global-cookie-message" className="govuk-cookie-banner"
                 data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet=""
