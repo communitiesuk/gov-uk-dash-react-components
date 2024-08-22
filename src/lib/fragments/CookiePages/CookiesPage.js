@@ -178,7 +178,7 @@ const CookiesPage = ({ ...props }) => {
                 <div className="govuk-radios">
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-0"
-                               checked={ cookieStateIsSet }
+                               checked={ cookieAccepted }
                                className="govuk-radios__input" onClick={() => setCookieStateIsSet(true)} />
                         <label htmlFor="radio-c6a408c0-0" className="gem-c-label govuk-label govuk-radios__label">
                             Use cookies that measure my website use
@@ -186,7 +186,7 @@ const CookiesPage = ({ ...props }) => {
                     </div>
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-1"
-                               checked={ cookieStateIsSet === false }
+                               checked={ cookieStateIsSet === false || cookieStateIsSet & cookieAccepted===false }
                                className="govuk-radios__input"
                                onClick={() => setCookieStateIsSet(false)} />
                         <label htmlFor="radio-c6a408c0-1" className="gem-c-label govuk-label govuk-radios__label">

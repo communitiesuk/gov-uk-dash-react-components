@@ -75,12 +75,12 @@ export const handleCookieAccept = (accepted, tag) => {
 
 };
 
-export const handleCookiesInitialLoad = () => {
-    const
-        today = new Date(),
-        [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
-        cookieExpiryDate = new Date(year + 1, month, day).toUTCString();
+// export const handleCookiesInitialLoad = () => {
+//     const
+//         today = new Date(),
+//         [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
+//         cookieExpiryDate = new Date(year + 1, month, day).toUTCString();
 
-    document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
-    document.cookie = `cookies_preferences_set=false; expires=${cookieExpiryDate}; path=/`
-};
+//     document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
+//     document.cookie = `cookies_preferences_set=false; expires=${cookieExpiryDate}; path=/`
+// };

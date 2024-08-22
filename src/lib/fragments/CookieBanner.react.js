@@ -15,11 +15,11 @@ const CookieBanner = ({ ...props }) => {
     console.log(`!!!!${tag}`)
     console.log(`cookieacepted${cookieAccepted}`)
 
-    useEffect(() => {
-        if (!Cookies.get('cookies_preferences_set')) {
-            handleCookiesInitialLoad();
-        }
-    }, [cookieStateIsSet, setCookieStateIsSet]);
+    // useEffect(() => {
+    //     if (!Cookies.get('cookies_preferences_set')) {
+    //         handleCookiesInitialLoad();
+    //     }
+    // }, [cookieStateIsSet, setCookieStateIsSet]);
 
     useEffect(() => {
 
@@ -28,7 +28,7 @@ const CookieBanner = ({ ...props }) => {
             console.info("Cookies accepted.");
             setCookieStateIsSet(true);
         }
-        else if (cookieAccepted === false) {
+        else if (cookieAccepted === false && cookieStateIsSet===true) {
             handleCookieAccept(false);
             console.info("Cookies declined.");
             setCookieStateIsSet(true);
@@ -127,12 +127,12 @@ const CookieBanner = ({ ...props }) => {
                     <button className="govuk-button" type="submit"
                         data-module="track-click" data-accept-cookies="true"
                         data-track-category="cookieBanner"
-                        onClick={() => setCookieAccepted(true)}>
+                        onClick={() => {setCookieAccepted(true); setCookieStateIsSet(true)}}>
                         Accept additional cookies
                     </button>
                     <button className="govuk-button"
                         type="submit" data-module="track-click" data-set-cookie-preferences="true"
-                        data-track-category="cookieBanner" onClick={() => setCookieAccepted(false)}>
+                        data-track-category="cookieBanner" onClick={() => {setCookieAccepted(false); setCookieStateIsSet(true)}}>
                         Reject additional cookies
                     </button>
                     <a className="govuk-link" href="/cookiespage" >View cookies</a>
