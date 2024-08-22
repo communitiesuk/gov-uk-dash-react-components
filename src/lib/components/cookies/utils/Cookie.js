@@ -47,6 +47,7 @@ export const setCookies = (tag) => {
 export const deleteCookies = (tag) => {
     Cookies.remove("_ga");
     Cookies.remove("_gid");
+    Cookies.remove(`_ga_${tag.slice(2)}`)
     Cookies.remove(`_gat_gtag_${tag}`);
 
     window[`ga-disable-${tag}`] = true;
