@@ -42,13 +42,13 @@ const CookiesPage = ({ ...props }) => {
     };
   
     useEffect(() => {
-      const cookiePreference = Cookies.get('cookies_preferences_set_21_3');
+      const cookiePreference = Cookies.get('cookies_preferences_set');
   
       if (cookiePreference === 'true') {
-        const cookiePolicyRaw = Cookies.get('cookies_policy_21_3');
+        const cookiePolicyRaw = Cookies.get('cookies_policy');
   
         if (!cookiePolicyRaw) {
-          Cookies.remove('cookies_preferences_set_21_3');
+          Cookies.remove('cookies_preferences_set');
           setCookieStateIsSet(true);
         } else {
           const cookiePolicy = JSON.parse(cookiePolicyRaw);

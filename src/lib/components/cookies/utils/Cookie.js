@@ -60,16 +60,16 @@ export const handleCookieAccept = (accepted, tag) => {
     const
         today = new Date(),
         [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
-        cookieExpiryDate = new Date(year, month + 1, day).toUTCString();
+        cookieExpiryDate = new Date(year + 1, month, day).toUTCString();
 
     if (accepted) {
-        document.cookie = `cookies_policy_21_3=${encodeURIComponent('{"essential":true,"usage":true,"preferences":true}')}; expires=${cookieExpiryDate};`;
+        document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":true,"preferences":true}')}; expires=${cookieExpiryDate};`;
         setCookies(tag);
     } else {
-        document.cookie = `cookies_policy_21_3=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
+        document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
         deleteCookies(tag);
     }
 
-    document.cookie = `cookies_preferences_set_21_3=true; expires=${cookieExpiryDate}; path=/`
+    document.cookie = `cookies_preferences_set=true; expires=${cookieExpiryDate}; path=/`
 
 };
