@@ -80,6 +80,42 @@ const CookiesPage = ({ ...props }) => {
                 We use 2 types of cookie. You can choose which cookies you're happy for us to use.
             </p>
 
+            <h2 className={"govuk-heading-m"}>Essential cookies</h2>
+
+            <p className={"govuk-body"}>
+                Essential cookies keep your information secure while you use the service. We do not need to ask permission to use them.
+            </p>
+
+            <div className={"govuk-body govuk-!-margin-bottom-8"}>
+                <table>
+                    <thead className={"govuk-table__head"}>
+                        <tr className={"govuk-table__row"}>
+                            <th scope={"col"} className={"govuk-table__header"}>Name</th>
+                            <th scope={"col"} className={"govuk-table__header govuk-!-width-two-third"}>Purpose</th>
+                            <th scope={"col"} className={"govuk-table__header"}>Expires</th>
+                        </tr>
+                    </thead>
+                    <tbody className={"govuk-table__body"}>
+                        <tr className={"govuk-table__row"}>
+                            <td className={"govuk-table__cell"}><b>cookies_policy</b></td>
+                            <td className={"govuk-table__cell"}>
+                                Saves your chosen cookies preference for future vists.
+                            </td>
+                            <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>1 year
+                            </td>
+                        </tr>
+                        <tr className={"govuk-table__row"}>
+                            <td className={"govuk-table__cell"}><b>cookies_preferences_set</b></td>
+                            <td className={"govuk-table__cell"}>
+                                Saves whether you've set your cookie preferences to avoid repeat prompts.
+                            </td>
+                                <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>1 year
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <h2 className={"govuk-heading-m"}>Cookies that measure website use</h2>
 
             <p className={"govuk-body"}>
@@ -160,7 +196,7 @@ const CookiesPage = ({ ...props }) => {
                 </div>
             </div>
 
-            <h2 className={"govuk-heading-m"}>Strictly necessary cookies</h2>
+            {/* <h2 className={"govuk-heading-m"}>Strictly necessary cookies</h2>
 
             <p className={"govuk-body"}>
                 These essential cookies do things like remember your cookie preferences, so we don't ask for them again.
@@ -168,7 +204,7 @@ const CookiesPage = ({ ...props }) => {
 
             <p className={"govuk-body govuk-!-margin-bottom-8"}>
                 They always need to be on.
-            </p>
+            </p> */}
             
             <p className={"govuk-body"}>
                 <button className="gem-c-button govuk-button"
