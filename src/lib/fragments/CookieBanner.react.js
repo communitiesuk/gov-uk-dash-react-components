@@ -8,29 +8,18 @@ import Cookies from "js-cookie";
 
 
 const CookieBanner = ({ ...props }) => {
-    console.log("start of cookiebanner")
     const { cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted } = useContext(CookieContext);
     const { tag } = props;
     const { appTitle } = props;
-    console.log(`!!!!${tag}`)
-    console.log(`cookieacepted${cookieAccepted}`)
-
-    // useEffect(() => {
-    //     if (!Cookies.get('cookies_preferences_set')) {
-    //         handleCookiesInitialLoad();
-    //     }
-    // }, [cookieStateIsSet, setCookieStateIsSet]);
 
     useEffect(() => {
 
         if (cookieAccepted) {
             handleCookieAccept(true);
-            console.info("Cookies accepted.");
             setCookieStateIsSet(true);
         }
         else if (cookieAccepted === false) {
             handleCookieAccept(false);
-            console.info("Cookies declined.");
             setCookieStateIsSet(true);
         }
 
@@ -39,31 +28,23 @@ const CookieBanner = ({ ...props }) => {
     useEffect(() => {
 
         const cookiePreference = Cookies.get('cookies_preferences_set');
-        console.log("*********", cookiePreference)
 
         if (cookiePreference === 'true') {
-            console.info("Cookies preferences have been set.");
 
             const cookiePolicyRaw = Cookies.get('cookies_policy');
-            console.log("cookiepolicyraw", cookiePolicyRaw)
-            console.log(`????${tag}`)
             if (!cookiePolicyRaw) {
                 Cookies.remove("cookies_preferences_set");
                 setCookieStateIsSet(false)
-                console.info("Cookies policy has not been set.");
             }
             else {
-                console.info("Cookies policy has been set.");
                 const cookiePolicy = JSON.parse(cookiePolicyRaw);
 
                 if (cookiePolicy.usage === false || !cookiePolicy.usage) {
                     window[`ga-disable-${tag}`] = true;
                     deleteCookies(tag);
-                    console.info("Cookies are disabled.", `ga-disable-${tag}`);
                 }
                 else {
                     setCookies(tag);
-                    console.info("Cookies successfully set.");
                 }
 
                 setCookieStateIsSet(true);
@@ -71,16 +52,13 @@ const CookieBanner = ({ ...props }) => {
         }
         else {
             setCookieStateIsSet(false);
-            console.info("Cookies preferences have not been set.");
         }
 
     }, [cookieAccepted]);
 
-    console.log("!!!!!!", cookieStateIsSet, cookieAccepted)
     if (cookieStateIsSet === null) return null;
 
     if (cookieStateIsSet && cookieAccepted !== null) {
-        console.log("££££££")
         return (
             <div {...props} id="global-cookie-message" className="govuk-cookie-banner"
                 data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet=""
@@ -107,7 +85,6 @@ const CookieBanner = ({ ...props }) => {
 
 
     if (!cookieStateIsSet) {
-        console.log("!cookiestateisset", `${cookieStateIsSet}`)
         return <div className="govuk-cookie-banner " role="region" aria-label={`Cookies on ${appTitle}`}>
             <div className={"govuk-cookie-banner__message govuk-width-container"}>
                 <div className="govuk-grid-row">
@@ -128,12 +105,12 @@ const CookieBanner = ({ ...props }) => {
                     <button className="govuk-button" type="submit"
                         data-module="track-click" data-accept-cookies="true"
                         data-track-category="cookieBanner"
-                        onClick={() => {setCookieAccepted(true); setCookieStateIsSet(true); console.log("!!!!!!!cookieaccepted",cookieAccepted)}}>
+                        onClick={() => {setCookieAccepted(true); setCookieStateIsSet(true)}}>
                         Accept additional cookies
                     </button>
                     <button className="govuk-button"
                         type="submit" data-module="track-click" data-set-cookie-preferences="true"
-                        data-track-category="cookieBanner" onClick={() => {setCookieAccepted(false); console.log("!!!!!!!cookieaccepted",cookieAccepted);setCookieStateIsSet(true)}}>
+                        data-track-category="cookieBanner" onClick={() => {setCookieAccepted(false); setCookieStateIsSet(true)}}>
                         Reject additional cookies
                     </button>
                     <a className="govuk-link" href="/cookiespage" >View cookies</a>

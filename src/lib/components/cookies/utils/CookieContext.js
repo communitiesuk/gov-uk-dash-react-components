@@ -29,17 +29,6 @@ export const CookieProvider = ({ children }) => {
       }
     }, []);
 
-  
-
-  // document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
-  // document.cookie = `cookies_preferences_set=false; expires=${cookieExpiryDate}; path=/`
-
-  // useEffect(() => {
-  //   console.log("cookieStateIsSet:", cookieStateIsSet)
-  //   console.log("cookieAccepted:",cookieAccepted)
-  // }, [cookieStateIsSet, cookieAccepted]);
-
-
   return (
     <CookieContext.Provider value={{ cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted }}>
       {children}

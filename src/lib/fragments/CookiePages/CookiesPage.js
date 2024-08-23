@@ -29,16 +29,13 @@ const SuccessNotification = ({...props}) => {
 };
 
 const CookiesPage = ({ ...props }) => {
-    console.log("before context")
     const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
-    const {cookieThroughCookiePage, setCookieThroughCookiePage}=useState(false)
-    console.log(cookieStateIsSet, "cookiesstateisset")
-    console.log(cookieAccepted, "cookieaccepted")
+    const [cookieThroughCookiePage, setCookieThroughCookiePage] = useState(false)
     const { tag } = props;
     const { appTitle } = props;
 
     const handleButtonClick = (cookieState) => {
-      setCookieAccepted(true);
+      setCookieAccepted(cookieState);
       setCookieThroughCookiePage(true)
       handleCookieAccept(cookieState, tag);
       window.scrollTo(0, 0);
@@ -48,16 +45,10 @@ const CookiesPage = ({ ...props }) => {
       const cookiePreference = Cookies.get('cookies_preferences_set');
       const cookiePolicyRaw = Cookies.get('cookies_policy');
       const cookiePolicy = JSON.parse(cookiePolicyRaw);
-        console.log("cookiepref",cookiePreference)
       if (cookiePreference === 'true') {
-        
-        console.log("cookiepolraw", cookiePolicyRaw)
-        
-        console.log(cookiePolicy.usage, typeof(cookiePolicy.usage), "cookiepolicyusage")
         setCookieStateIsSet(true);
         setCookieAccepted(cookiePolicy.usage)
     } else {
-        console.log("$$$$");
         setCookieStateIsSet(false);
         setCookieAccepted(cookiePolicy.usage)
     }
