@@ -15,8 +15,6 @@ export const stripPIIUri = function (str) {
 
 
 export const setCookies = (tag) => {
-    console.info("Cookies accepted - setting up GA.");
-    console.log(`***${tag}`)
     window[`ga-disable-${tag}`] = false;
 
     window.dataLayer = window.dataLayer || [];
@@ -34,9 +32,6 @@ export const setCookies = (tag) => {
             cookie_domain: 'none'
         });
 
-
-        console.info("GA successfully set up.", gtag);
-
     } catch (error) {
         console.warn("Cookies accepted, but tracking is blocked by the browser.")
         console.warn("Failed to set GA cookies.")
@@ -47,12 +42,10 @@ export const setCookies = (tag) => {
 export const deleteCookies = (tag) => {
     Cookies.remove("_ga");
     Cookies.remove("_gid");
+    Cookies.remove(`_ga_${tag?.slice(2)}`)
     Cookies.remove(`_gat_gtag_${tag}`);
 
     window[`ga-disable-${tag}`] = true;
-
-
-    console.info("Removed cookies and disabled tracking.");
 };
 
 
@@ -60,16 +53,16 @@ export const handleCookieAccept = (accepted, tag) => {
     const
         today = new Date(),
         [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
-        cookieExpiryDate = new Date(year, month + 1, day).toUTCString();
-
+        cookieExpiryDate = new Date(year + 1, month, day).toUTCString();
     if (accepted) {
-        document.cookie = `cookies_policy_21_3=${encodeURIComponent('{"essential":true,"usage":true,"preferences":true}')}; expires=${cookieExpiryDate};`;
+        document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":true,"preferences":true}')}; expires=${cookieExpiryDate};`;
         setCookies(tag);
     } else {
-        document.cookie = `cookies_policy_21_3=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
+        document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
         deleteCookies(tag);
     }
 
-    document.cookie = `cookies_preferences_set_21_3=true; expires=${cookieExpiryDate}; path=/`
+    document.cookie = `cookies_preferences_set=true; expires=${cookieExpiryDate}; path=/`
+    
 
 };

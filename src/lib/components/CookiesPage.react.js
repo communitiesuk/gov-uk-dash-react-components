@@ -13,6 +13,7 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * id: string,                            // Unique identifier for the cookie component
  * tag: string                            // Google Analytics tag string
  * appTitle: string                       // Name of the app
+ * previousPage: string                   // The path to the previous page                   
  * } [props={}]
  * @return {*}
  */
@@ -57,6 +58,12 @@ CookiesPage.propTypes = {
      * The name of the app to be referenced in CookiesPage.
      */
     appTitle: PropTypes.string,
+
+    /**
+     * The path to the previous page, which is used in success banner on CookiesPage when cookies
+     * accepted/rejected.
+     */
+     previousPage: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.
