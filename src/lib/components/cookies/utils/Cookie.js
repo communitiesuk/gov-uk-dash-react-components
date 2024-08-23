@@ -72,6 +72,7 @@ export const handleCookieAccept = (accepted, tag) => {
     }
 
     document.cookie = `cookies_preferences_set=true; expires=${cookieExpiryDate}; path=/`
+    
 
 };
 

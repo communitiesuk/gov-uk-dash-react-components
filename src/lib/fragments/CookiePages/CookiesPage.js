@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 
 import { handleCookieAccept } from '../../components/cookies/utils/Cookie';
 
@@ -31,38 +31,42 @@ const SuccessNotification = ({...props}) => {
 const CookiesPage = ({ ...props }) => {
     console.log("before context")
     const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
+    const {cookieThroughCookiePage, setCookieThroughCookiePage}=useState(false)
     console.log(cookieStateIsSet, "cookiesstateisset")
+    console.log(cookieAccepted, "cookieaccepted")
     const { tag } = props;
     const { appTitle } = props;
 
     const handleButtonClick = (cookieState) => {
       setCookieAccepted(true);
+      setCookieThroughCookiePage(true)
       handleCookieAccept(cookieState, tag);
       window.scrollTo(0, 0);
     };
   
     useEffect(() => {
       const cookiePreference = Cookies.get('cookies_preferences_set');
-  
+      const cookiePolicyRaw = Cookies.get('cookies_policy');
+      const cookiePolicy = JSON.parse(cookiePolicyRaw);
+        console.log("cookiepref",cookiePreference)
       if (cookiePreference === 'true') {
-        const cookiePolicyRaw = Cookies.get('cookies_policy');
-  
-        if (!cookiePolicyRaw) {
-          Cookies.remove('cookies_preferences_set');
-          setCookieStateIsSet(true);
-        } else {
-          const cookiePolicy = JSON.parse(cookiePolicyRaw);
-          setCookieStateIsSet(cookiePolicy.usage);
-        }
-      } else {
+        
+        console.log("cookiepolraw", cookiePolicyRaw)
+        
+        console.log(cookiePolicy.usage, typeof(cookiePolicy.usage), "cookiepolicyusage")
+        setCookieStateIsSet(true);
+        setCookieAccepted(cookiePolicy.usage)
+    } else {
+        console.log("$$$$");
         setCookieStateIsSet(false);
-      }
+        setCookieAccepted(cookiePolicy.usage)
+    }
     }, []);
 
     return <>
         <article style={{maxWidth: "50em"}}>
 
-            { cookieAccepted ? <SuccessNotification {...props} /> : null }
+            { cookieThroughCookiePage ? <SuccessNotification {...props} /> : null }
 
             <h1 className={"govuk-heading-l"}>Cookies</h1>
 
@@ -179,16 +183,16 @@ const CookiesPage = ({ ...props }) => {
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-0"
                                checked={ cookieAccepted }
-                               className="govuk-radios__input" onClick={() => setCookieStateIsSet(true)} />
+                               className="govuk-radios__input" onClick={() => setCookieAccepted(true)} />
                         <label htmlFor="radio-c6a408c0-0" className="gem-c-label govuk-label govuk-radios__label">
                             Use cookies that measure my website use
                         </label>
                     </div>
                     <div className="gem-c-radio govuk-radios__item">
                         <input type="radio" name="cookies-usage" id="radio-c6a408c0-1"
-                               checked={ cookieStateIsSet === false || cookieStateIsSet & cookieAccepted===false }
+                               checked={ !cookieAccepted }
                                className="govuk-radios__input"
-                               onClick={() => setCookieStateIsSet(false)} />
+                               onClick={() => setCookieAccepted(false)} />
                         <label htmlFor="radio-c6a408c0-1" className="gem-c-label govuk-label govuk-radios__label">
                             Do not use cookies that measure my website use
                         </label>
@@ -210,7 +214,7 @@ const CookiesPage = ({ ...props }) => {
                 <button className="gem-c-button govuk-button"
                     type="submit" data-module="track-click"
                     data-accept-cookies="true" data-track-category="cookies"
-                    onClick={ () => handleButtonClick(cookieStateIsSet)}>
+                    onClick={ () => handleButtonClick(cookieAccepted)}>
                     Save changes
                 </button>
             </p>

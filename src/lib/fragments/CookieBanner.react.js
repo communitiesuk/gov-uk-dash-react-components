@@ -28,7 +28,7 @@ const CookieBanner = ({ ...props }) => {
             console.info("Cookies accepted.");
             setCookieStateIsSet(true);
         }
-        else if (cookieAccepted === false && cookieStateIsSet===true) {
+        else if (cookieAccepted === false) {
             handleCookieAccept(false);
             console.info("Cookies declined.");
             setCookieStateIsSet(true);
@@ -45,6 +45,7 @@ const CookieBanner = ({ ...props }) => {
             console.info("Cookies preferences have been set.");
 
             const cookiePolicyRaw = Cookies.get('cookies_policy');
+            console.log("cookiepolicyraw", cookiePolicyRaw)
             console.log(`????${tag}`)
             if (!cookiePolicyRaw) {
                 Cookies.remove("cookies_preferences_set");
@@ -127,12 +128,12 @@ const CookieBanner = ({ ...props }) => {
                     <button className="govuk-button" type="submit"
                         data-module="track-click" data-accept-cookies="true"
                         data-track-category="cookieBanner"
-                        onClick={() => {setCookieAccepted(true); setCookieStateIsSet(true)}}>
+                        onClick={() => {setCookieAccepted(true); setCookieStateIsSet(true); console.log("!!!!!!!cookieaccepted",cookieAccepted)}}>
                         Accept additional cookies
                     </button>
                     <button className="govuk-button"
                         type="submit" data-module="track-click" data-set-cookie-preferences="true"
-                        data-track-category="cookieBanner" onClick={() => {setCookieAccepted(false); setCookieStateIsSet(true)}}>
+                        data-track-category="cookieBanner" onClick={() => {setCookieAccepted(false); console.log("!!!!!!!cookieaccepted",cookieAccepted);setCookieStateIsSet(true)}}>
                         Reject additional cookies
                     </button>
                     <a className="govuk-link" href="/cookiespage" >View cookies</a>
