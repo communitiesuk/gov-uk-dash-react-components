@@ -21,7 +21,7 @@ const SuccessNotification = ({...props}) => {
       </div>
       <div className="govuk-notification-banner__content">
         <p className="govuk-notification-banner__heading">
-          You’ve updated your cookie preferences. <a class="govuk-notification-banner__link" href={previousPage}>Go back to the page you were looking at</a>
+          You’ve updated your cookie preferences. <a className="govuk-notification-banner__link" href={previousPage}>Go back to the page you were looking at</a>
         </p>
       </div>
     </div>
@@ -190,16 +190,6 @@ const CookiesPage = ({ ...props }) => {
                     </div>
                 </div>
             </div>
-
-            {/* <h2 className={"govuk-heading-m"}>Strictly necessary cookies</h2>
-
-            <p className={"govuk-body"}>
-                These essential cookies do things like remember your cookie preferences, so we don't ask for them again.
-            </p>
-
-            <p className={"govuk-body govuk-!-margin-bottom-8"}>
-                They always need to be on.
-            </p> */}
             
             <p className={"govuk-body"}>
                 <button className="gem-c-button govuk-button"
