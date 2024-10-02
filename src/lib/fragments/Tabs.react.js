@@ -40,8 +40,14 @@ class Tabs extends Component {
   renderTabHeader(index, tabHeader) {
     let tabIsSelected;
     tabIsSelected = (index === this.state.tabSelected) ? true : false
+
+    const replaceSpacesWithHyphen = (inputString) => {
+      return inputString.replace(/\s+/g, '-');
+    };
+
+    const idFromTabHeader = replaceSpacesWithHyphen(tabHeader)
     return (
-      <li className={tabIsSelected ? "tab-selected-underline govuk-tabs__list-item govuk-tabs__list-item--selected" : " tab-underline govuk-tabs__list-item"} role="presentation">
+      <li className={tabIsSelected ? "tab-selected-underline govuk-tabs__list-item govuk-tabs__list-item--selected" : " tab-underline govuk-tabs__list-item"} role="presentation" id={idFromTabHeader}>
         <button className={tabIsSelected ? "tab-button-selected govuk-tabs__tab" : "tab-button govuk-tabs__tab"} role="tab" type="button" aria-controls={tabHeader} aria-labelledby={tabHeader} aria-selected={tabIsSelected ? 'true' : 'false'} onClick={() => this.setSelectedTabIndex(index)}> {tabHeader}
         </button>
       </li>
