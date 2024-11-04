@@ -15,11 +15,11 @@ const CookieBanner = ({ ...props }) => {
     useEffect(() => {
 
         if (cookieAccepted) {
-            handleCookieAccept(true);
+            handleCookieAccept(true, tag);
             setCookieStateIsSet(true);
         }
         else if (cookieAccepted === false) {
-            handleCookieAccept(false);
+            handleCookieAccept(false, tag);
             setCookieStateIsSet(true);
         }
 
