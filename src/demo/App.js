@@ -12,8 +12,6 @@ const App = () => {
     const [value, setValue] = useState('');
     const setProps = (props) => {
         setValue(props.value)
-        console.log('props', props);
-        console.log('value', value);
     }
     return (
     <Router>

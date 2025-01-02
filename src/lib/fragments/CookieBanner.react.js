@@ -1,29 +1,25 @@
 
 import React, { useContext, useEffect } from 'react';
 
-import { setCookies, deleteCookies, handleCookieAccept } from '../components/cookies/utils/Cookie';
+import { setCookies, deleteCookies, handleCookieAccept, handleCookiesInitialLoad } from '../components/cookies/utils/Cookie';
 import { CookieContext } from '../components/cookies/utils/CookieContext';
 
 import Cookies from "js-cookie";
 
 
 const CookieBanner = ({ ...props }) => {
-    console.log("start of cookiebanner")
-    const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
+    const { cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted } = useContext(CookieContext);
     const { tag } = props;
-    const {appTitle} = props;
-    console.log(`!!!!${tag}`)
-    console.log(`cookieacepted${cookieAccepted}`)
+    const { appTitle } = props;
+
     useEffect(() => {
 
         if (cookieAccepted) {
-            handleCookieAccept(true);
-            console.info("Cookies accepted.");
+            handleCookieAccept(true, tag);
             setCookieStateIsSet(true);
         }
         else if (cookieAccepted === false) {
-            handleCookieAccept(false);
-            console.info("Cookies declined.");
+            handleCookieAccept(false, tag);
             setCookieStateIsSet(true);
         }
 
@@ -31,30 +27,24 @@ const CookieBanner = ({ ...props }) => {
 
     useEffect(() => {
 
-        const cookiePreference = Cookies.get('cookies_preferences_set_21_3');
+        const cookiePreference = Cookies.get('cookies_preferences_set');
 
         if (cookiePreference === 'true') {
-            console.info("Cookies preferences have been set.");
 
-            const cookiePolicyRaw = Cookies.get('cookies_policy_21_3');
-            console.log(`????${tag}`)
+            const cookiePolicyRaw = Cookies.get('cookies_policy');
             if (!cookiePolicyRaw) {
-                Cookies.remove("cookies_preferences_set_21_3");
+                Cookies.remove("cookies_preferences_set");
                 setCookieStateIsSet(false)
-                console.info("Cookies policy has not been set.");
             }
             else {
-                console.info("Cookies policy has been set.");
                 const cookiePolicy = JSON.parse(cookiePolicyRaw);
 
                 if (cookiePolicy.usage === false || !cookiePolicy.usage) {
                     window[`ga-disable-${tag}`] = true;
                     deleteCookies(tag);
-                    console.info("Cookies are disabled.", `ga-disable-${tag}`);
                 }
                 else {
                     setCookies(tag);
-                    console.info("Cookies successfully set.");
                 }
 
                 setCookieStateIsSet(true);
@@ -62,11 +52,9 @@ const CookieBanner = ({ ...props }) => {
         }
         else {
             setCookieStateIsSet(false);
-            console.info("Cookies preferences have not been set.");
         }
 
     }, [cookieAccepted]);
-
 
     if (cookieStateIsSet === null) return null;
 
@@ -79,7 +67,7 @@ const CookieBanner = ({ ...props }) => {
                     <div className="govuk-grid-row">
                         <div className="govuk-grid-column-two-thirds">
                             <div className="govuk-cookie-banner__content" tabIndex="-1">
-                                <p className="govuk-body">You've {cookieAccepted ? "accepted" : "rejected"} additional cookies. You can <a class="govuk-link" href="/cookiespage" > change your cookie settings</a> at any time.</p>
+                                <p className="govuk-body">You've {cookieAccepted ? "accepted" : "rejected"} additional cookies. You can <a className="govuk-link" href="/cookiespage" > change your cookie settings</a> at any time.</p>
                             </div>
                         </div>
                     </div>
@@ -97,7 +85,6 @@ const CookieBanner = ({ ...props }) => {
 
 
     if (!cookieStateIsSet) {
-        console.log("!cookiestateisset",`${cookieStateIsSet}`)
         return <div className="govuk-cookie-banner " role="region" aria-label={`Cookies on ${appTitle}`}>
             <div className={"govuk-cookie-banner__message govuk-width-container"}>
                 <div className="govuk-grid-row">
@@ -118,15 +105,15 @@ const CookieBanner = ({ ...props }) => {
                     <button className="govuk-button" type="submit"
                         data-module="track-click" data-accept-cookies="true"
                         data-track-category="cookieBanner"
-                        onClick={() => setCookieAccepted(true)}>
+                        onClick={() => {setCookieAccepted(true); setCookieStateIsSet(true)}}>
                         Accept additional cookies
                     </button>
                     <button className="govuk-button"
                         type="submit" data-module="track-click" data-set-cookie-preferences="true"
-                        data-track-category="cookieBanner" onClick={() => setCookieAccepted(false)}>
+                        data-track-category="cookieBanner" onClick={() => {setCookieAccepted(false); setCookieStateIsSet(true)}}>
                         Reject additional cookies
                     </button>
-                    <a class="govuk-link" href="/cookiespage" >View cookies</a>
+                    <a className="govuk-link" href="/cookiespage" >View cookies</a>
                 </div>
             </div>
         </div>
