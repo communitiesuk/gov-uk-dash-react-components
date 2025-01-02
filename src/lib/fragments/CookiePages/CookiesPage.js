@@ -44,13 +44,19 @@ const CookiesPage = ({ ...props }) => {
     useEffect(() => {
       const cookiePreference = Cookies.get('cookies_preferences_set');
       const cookiePolicyRaw = Cookies.get('cookies_policy');
-      const cookiePolicy = JSON.parse(cookiePolicyRaw);
-      if (cookiePreference === 'true') {
-        setCookieStateIsSet(true);
-        setCookieAccepted(cookiePolicy.usage)
-    } else {
+      if (!cookiePolicyRaw) {
         setCookieStateIsSet(false);
-        setCookieAccepted(cookiePolicy.usage)
+        setCookieAccepted(false)
+      } else {
+        const cookiePolicy = JSON.parse(cookiePolicyRaw);
+
+        if (cookiePreference === 'true') {
+            setCookieStateIsSet(true);
+            setCookieAccepted(cookiePolicy.usage)
+        } else {
+            setCookieStateIsSet(false);
+            setCookieAccepted(cookiePolicy.usage)
+        }
     }
     }, []);
 
