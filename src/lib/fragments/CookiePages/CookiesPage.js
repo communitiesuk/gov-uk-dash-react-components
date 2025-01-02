@@ -21,7 +21,7 @@ const SuccessNotification = ({...props}) => {
       </div>
       <div className="govuk-notification-banner__content">
         <p className="govuk-notification-banner__heading">
-          You’ve updated your cookie preferences. <a className="govuk-notification-banner__link" href={previousPage}>Go back to the page you were looking at</a>
+          You’ve updated your cookie preferences. <a className="govuk-notification-banner__link" href={previousPage}>Go back to the page you were looking at</a>.
         </p>
       </div>
     </div>
