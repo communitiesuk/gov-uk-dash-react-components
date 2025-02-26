@@ -11,15 +11,16 @@ const CookieBanner = ({ ...props }) => {
     const { cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted } = useContext(CookieContext);
     const { tag } = props;
     const { appTitle } = props;
+    const { domain } = props;
 
     useEffect(() => {
 
         if (cookieAccepted) {
-            handleCookieAccept(true, tag);
+            handleCookieAccept(true, tag, domain);
             setCookieStateIsSet(true);
         }
         else if (cookieAccepted === false) {
-            handleCookieAccept(false, tag);
+            handleCookieAccept(false, tag, domain);
             setCookieStateIsSet(true);
         }
 
@@ -41,7 +42,7 @@ const CookieBanner = ({ ...props }) => {
 
                 if (cookiePolicy.usage === false || !cookiePolicy.usage) {
                     window[`ga-disable-${tag}`] = true;
-                    deleteCookies(tag);
+                    deleteCookies(tag, domain);
                 }
                 else {
                     setCookies(tag);

@@ -15,6 +15,7 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * id: string,                            // Unique identifier for the cookie component
  * tag: string                            // Google Analytics tag string
  * appTitle: string                       // Name of the app
+ * domain: string                         // Domain of the website
  * } [props={}]
  * @return {*}
  */
@@ -31,7 +32,7 @@ const CookieBanner = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
- CookieBanner.defaultProps = {
+CookieBanner.defaultProps = {
     /**
      * Any default prop values, e.g.
      *   congratulatoryMessage: 'You are amazing'
@@ -59,6 +60,11 @@ CookieBanner.propTypes = {
      * The name of the app to be referenced in CookieBanner.
      */
     appTitle: PropTypes.string,
+
+    /**
+     * The domain of the app to be referenced in the cookies, needed for deletion of cookies.
+     */
+    domain: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.

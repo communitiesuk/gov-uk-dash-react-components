@@ -37,7 +37,7 @@ const CookiesPage = ({ ...props }) => {
     const handleButtonClick = (cookieState) => {
       setCookieAccepted(cookieState);
       setCookieThroughCookiePage(true)
-      handleCookieAccept(cookieState, tag);
+      handleCookieAccept(cookieState, tag, domain);
       window.scrollTo(0, 0);
     };
   
