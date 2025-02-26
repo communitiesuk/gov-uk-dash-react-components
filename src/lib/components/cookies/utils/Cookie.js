@@ -39,17 +39,17 @@ export const setCookies = (tag) => {
 };
 
 
-export const deleteCookies = (tag) => {
-    Cookies.remove("_ga");
-    Cookies.remove("_gid");
-    Cookies.remove(`_ga_${tag?.slice(2)}`)
-    Cookies.remove(`_gat_gtag_${tag}`);
+export const deleteCookies = (tag, domain) => {
+    Cookies.remove("_ga", { path: '/', domain: domain });
+    Cookies.remove("_gid", { path: '/', domain: domain });
+    Cookies.remove(`_ga_${tag?.slice(2)}`, { path: '/', domain: domain })
+    Cookies.remove(`_gat_gtag_${tag}`, { path: '/', domain: domain });
 
     window[`ga-disable-${tag}`] = true;
 };
 
 
-export const handleCookieAccept = (accepted, tag) => {
+export const handleCookieAccept = (accepted, tag, domain) => {
     const
         today = new Date(),
         [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
@@ -59,7 +59,7 @@ export const handleCookieAccept = (accepted, tag) => {
         setCookies(tag);
     } else {
         document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
-        deleteCookies(tag);
+        deleteCookies(tag, domain);
     }
 
     document.cookie = `cookies_preferences_set=true; expires=${cookieExpiryDate}; path=/`
