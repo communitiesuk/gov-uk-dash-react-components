@@ -33,6 +33,7 @@ const CookiesPage = ({ ...props }) => {
     const [cookieThroughCookiePage, setCookieThroughCookiePage] = useState(false)
     const { tag } = props;
     const { appTitle } = props;
+    const { domain } = props;
 
     const handleButtonClick = (cookieState) => {
       setCookieAccepted(cookieState);

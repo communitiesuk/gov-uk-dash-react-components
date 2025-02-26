@@ -63,7 +63,12 @@ CookiesPage.propTypes = {
      * The path to the previous page, which is used in success banner on CookiesPage when cookies
      * accepted/rejected.
      */
-     previousPage: PropTypes.string,
+    previousPage: PropTypes.string,
+
+    /**
+     * The domain of the app to be referenced in the cookies, needed for deletion of cookies.
+     */
+    domain: PropTypes.string,
 
     /**
      * Dash-assigned callback that gets fired when the value changes.
