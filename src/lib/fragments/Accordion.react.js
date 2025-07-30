@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import xtype from 'xtypejs';
 
-import { defaultProps, propTypes } from '../components/Accordion.react';
+import { propTypes } from '../components/Accordion.react';
 import './accordion.css';
 
 const EventOrigin = {
@@ -283,7 +283,6 @@ componentDidMount() {
   }
 }
 
-Accordion.defaultProps = defaultProps;
 Accordion.propTypes = propTypes;
 
 export default Accordion

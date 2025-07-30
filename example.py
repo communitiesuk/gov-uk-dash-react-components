@@ -85,6 +85,14 @@ app.layout = html.Div(
         uk_gov_dash_components.Radios(
             options=["a", "b"], value="b", id="test", title="Which do you prefer?"
         ),
+        uk_gov_dash_components.Accordion(
+            id="simple-accordion",
+            accordionHeadings=["Section A", "Section B"],
+            children=[
+                html.Div("Content for Section A"),
+                html.Div("Content for Section B"),
+            ],
+        ),
     ]
 )
 
