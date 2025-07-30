@@ -3,13 +3,13 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python=3.9
+  - python=3.12
   # latest version of plotly can be found at https://github.com/plotly/plotly.py/releases .
   # Version is hardcoded to ensure uniformity no matter the platform.
-  - plotly=5.9.0
-  - pip=21.3.1
-  - black=22.3.0
-  - python-build=0.9.0
+  - plotly~=6.2.0
+  - pip=25.1.1
+  - black~=25.1.0
+  - python-build~=1.2.2.post1
 # Some packages not available in Conda Forge, so have to be installed through pip.
   - pip:
-    - dash[dev]
+    - dash[dev]~=3.1.1
