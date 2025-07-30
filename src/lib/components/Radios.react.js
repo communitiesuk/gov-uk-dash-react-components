@@ -13,9 +13,21 @@ import { Radios as RealComponent } from '../LazyLoader';
  * } [props={}]
  * @return {*}
  */
-const Radios = (props = {}) => {
+const Radios = ({
+    id,
+    title,
+    options = [],
+    value = [],
+    setProps,
+}) => {
     return (
-        <RealComponent {...props} />
+        <RealComponent
+            id={id}
+            title={title}
+            options={options}
+            value={value}
+            setProps={setProps}
+        />
     );
 }
 
@@ -24,10 +36,6 @@ const Radios = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
-Radios.defaultProps = {
-    options: [],
-    value: [],
-};
 
 Radios.propTypes = {
     /**
@@ -115,7 +123,6 @@ Radios.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = Radios.defaultProps;
 export const propTypes = Radios.propTypes;
 
 export default Radios
