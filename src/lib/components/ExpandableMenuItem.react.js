@@ -18,9 +18,31 @@ import { ExpandableMenuItem as RealComponent } from '../LazyLoader';
  * } [props={}]
  * @return {*}
  */
-const ExpandableMenuItem = (props = {}) => {
+const ExpandableMenuItem = ({
+	id,
+	title,
+	collapsedByDefault = true,
+	children,
+	expandedClass,
+	collapsedClass,
+	ariaLabel,
+	subMenuClass,
+	titleClass,
+	setProps,
+}) => {
     return (
-        <RealComponent {...props} />
+        <RealComponent
+            id={id}
+			title={title}
+			collapsedByDefault={collapsedByDefault}
+			children={children}
+			expandedClass={expandedClass}
+			collapsedClass={collapsedClass}
+			ariaLabel={ariaLabel}
+			subMenuClass={subMenuClass}
+			titleClass={titleClass}
+			setProps={setProps}
+        />
     );
 }
 
@@ -28,10 +50,6 @@ const ExpandableMenuItem = (props = {}) => {
  * PropTypes is a part of React, see full documenation below.
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
-
-ExpandableMenuItem.defaultProps = {
-    collapsedByDefault: true,    
-};
 
 ExpandableMenuItem.propTypes = {
     /**
@@ -78,7 +96,6 @@ ExpandableMenuItem.propTypes = {
     titleClass: PropTypes.string,
 };
 
-export const defaultProps = ExpandableMenuItem.defaultProps;
 export const propTypes = ExpandableMenuItem.propTypes;
 
 export default ExpandableMenuItem

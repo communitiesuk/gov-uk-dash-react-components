@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { defaultProps, propTypes } from '../components/ExpandableMenuItem.react';
+import {  propTypes } from '../components/ExpandableMenuItem.react';
 
 class ExpandableMenuItem extends Component {
   constructor(props) {
@@ -41,7 +41,6 @@ class ExpandableMenuItem extends Component {
   }
 }
 
-ExpandableMenuItem.defaultProps = defaultProps;
 ExpandableMenuItem.propTypes = propTypes;
 
 export default ExpandableMenuItem

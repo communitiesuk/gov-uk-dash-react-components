@@ -73,7 +73,7 @@ app.layout = html.Div(
             style={"minWidth": "50%"},
         ),
         html.Div(id="output"),
-        # html.Nav(side_menu),
+        html.Nav(side_menu),
         # uk_gov_dash_components.Tabs(
         #     children=[
         #         html.Div([html.H1("I am a jitter plot")]),
