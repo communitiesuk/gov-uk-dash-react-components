@@ -59,6 +59,5 @@ const Dropdown = (props = {}) => {
 }
 
 Dropdown.propTypes = dropdownPropTypes;
-Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;

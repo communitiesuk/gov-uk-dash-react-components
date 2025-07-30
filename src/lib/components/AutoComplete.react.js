@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AutoComplete as RealComponent } from '../LazyLoader';
 import DropdownArrowDown from './dropdownArrowDown.react';
+import { AUTO_COMPLETE_DEFAULTS } from '../helper/autocomplete.defaults';
 
 /**
  * Lazy loaded Autocomplete
@@ -37,36 +38,38 @@ import DropdownArrowDown from './dropdownArrowDown.react';
  * } [props={}]
  * @return {*}
  */
-const AutoComplete = (props = {}) => {
-	return (
-			<RealComponent {...props} />
-	);
-}
+const AutoComplete = ({
+	AUTO_COMPLETE_DEFAULTS,
+	...props // in case you pass anything else
+}) => {
+	return <RealComponent
+		autoselect={autoselect}
+		cssNamespace={cssNamespace}
+		value={value}
+		displayMenu={displayMenu}
+		minLength={minLength}
+		name={name}
+		placeholder={placeholder}
+		onConfirm={onConfirm}
+		confirmOnBlur={confirmOnBlur}
+		showNoOptionsFound={showNoOptionsFound}
+		showAllValues={showAllValues}
+		required={required}
+		tNoResults={tNoResults}
+		tAssistiveHint={tAssistiveHint}
+		dropdownArrow={dropdownArrow}
+		alwaysDisplayArrow={alwaysDisplayArrow}
+		errorMessage={errorMessage}
+		errorMessageWhenEmpty={errorMessageWhenEmpty}
+		menu_open={menu_open}
+		showOptionHeadings={showOptionHeadings}
+		{...props}
+	/>;
+};
 
 export default AutoComplete
 
-AutoComplete.defaultProps = {
-	autoselect: false,
-	cssNamespace: 'autocomplete',
-	value: '',
-	displayMenu: 'inline',
-	minLength: 0,
-	name: 'input-autocomplete',
-	placeholder: '',
-	onConfirm: () => { },
-	confirmOnBlur: true,
-	showNoOptionsFound: true,
-	showAllValues: false,
-	required: false,
-	tNoResults: () => 'No results found',
-	tAssistiveHint: () => 'When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.',
-	dropdownArrow: DropdownArrowDown,
-	alwaysDisplayArrow: true,
-	errorMessage: 'Invalid value entered',
-	errorMessageWhenEmpty: false,
-	menu_open: false,
-	showOptionHeadings: false
-};
+
 
 export const basePropTypes = {
 	/**
@@ -217,5 +220,4 @@ AutoComplete.propTypes = {
 };
 
 
-export const defaultProps = AutoComplete.defaultProps;
 export const propTypes = AutoComplete.propTypes;

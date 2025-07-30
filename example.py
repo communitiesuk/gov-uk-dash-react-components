@@ -57,7 +57,7 @@ side_menu = [
 
 app.layout = html.Div(
     [
-        html.Div([], id="menu-open"),
+        # html.Div([], id="menu-open"),
         uk_gov_dash_components.Dropdown(
             label="Something",
             id="local_authority",
@@ -73,18 +73,18 @@ app.layout = html.Div(
             style={"minWidth": "50%"},
         ),
         html.Div(id="output"),
-        html.Nav(side_menu),
-        uk_gov_dash_components.Tabs(
-            children=[
-                html.Div([html.H1("I am a jitter plot")]),
-                html.Div([html.H1("I am a time series plot")]),
-            ],
-            defaultTab=0,
-            tabHeadings=["Display jitter plots", "Display time series plots"],
-        ),
-        uk_gov_dash_components.Radios(
-            options=["a", "b"], value="b", id="test", title="Which do you prefer?"
-        ),
+        # html.Nav(side_menu),
+        # uk_gov_dash_components.Tabs(
+        #     children=[
+        #         html.Div([html.H1("I am a jitter plot")]),
+        #         html.Div([html.H1("I am a time series plot")]),
+        #     ],
+        #     defaultTab=0,
+        #     tabHeadings=["Display jitter plots", "Display time series plots"],
+        # ),
+        # uk_gov_dash_components.Radios(
+        #     options=["a", "b"], value="b", id="test", title="Which do you prefer?"
+        # ),
     ]
 )
 
@@ -100,16 +100,16 @@ def update_comparison(value):
     return [la_lookups[value], None]
 
 
-@app.callback(
-    Output("menu-open", "children"),
-    [Input("local_authority", "menu_open")],
-)
-def update_comparison(menu_open):
-    if menu_open:
-        return "menu is open"
-    else:
-        return "menu is closed"
+# @app.callback(
+#     Output("menu-open", "children"),
+#     [Input("local_authority", "menu_open")],
+# )
+# def update_comparison(menu_open):
+#     if menu_open:
+#         return "menu is open"
+#     else:
+#         return "menu is closed"
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True)
