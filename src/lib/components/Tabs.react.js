@@ -13,9 +13,21 @@ import { Tabs as RealComponent } from '../LazyLoader';
  * } [props={}]
  * @return {*}
  */
-const Tabs = (props = {}) => {
+const Tabs = ({
+    id,
+    tabHeadings,
+    defaultTab,
+    children,
+    setProps
+}) => {
     return (
-        <RealComponent {...props} />
+        <RealComponent 
+            id={id}
+			tabHeadings={tabHeadings}
+			defaultTab={defaultTab}
+			children={children}
+			setProps={setProps}
+        />
     );
 }
 
@@ -24,12 +36,6 @@ const Tabs = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
- Tabs.defaultProps = {
-    /**
-     * Any default prop values, e.g.
-     *   congratulatoryMessage: 'You are amazing'
-     */
-};
 
 Tabs.propTypes = {
     /**
@@ -64,7 +70,6 @@ Tabs.propTypes = {
      children: PropTypes.arrayOf(PropTypes.node),
 };
 
-export const defaultProps = Tabs.defaultProps;
 export const propTypes = Tabs.propTypes;
 
 export default Tabs

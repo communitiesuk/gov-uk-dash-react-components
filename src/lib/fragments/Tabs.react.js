@@ -41,7 +41,11 @@ class Tabs extends Component {
     let tabIsSelected;
     tabIsSelected = (index === this.state.tabSelected) ? true : false
     return (
-      <li className={tabIsSelected ? "tab-selected-underline govuk-tabs__list-item govuk-tabs__list-item--selected" : " tab-underline govuk-tabs__list-item"} role="presentation">
+      <li 
+        key={index}
+        className={tabIsSelected ? "tab-selected-underline govuk-tabs__list-item govuk-tabs__list-item--selected" : " tab-underline govuk-tabs__list-item"}
+        role="presentation"
+      >
         <button className={tabIsSelected ? "tab-button-selected govuk-tabs__tab" : "tab-button govuk-tabs__tab"} role="tab" type="button" aria-controls={tabHeader} aria-labelledby={tabHeader} aria-selected={tabIsSelected ? 'true' : 'false'} onClick={() => this.setSelectedTabIndex(index)}> {tabHeader}
         </button>
       </li>
