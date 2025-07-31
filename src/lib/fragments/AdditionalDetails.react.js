@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { propTypes } from '../components/AdditionalDetails.react';
 
-const AdditionalDetails = ({
-    id,
-    summaryText = "Add summary text",
-    detailsText = "Add details text",
-    hidden = false
-}) => {
+const AdditionalDetails = (props) => {
+    const {
+        id,
+        summaryText,
+        detailsText,
+        hidden,
+    } = props;
     if (hidden) {
         return null;
     }

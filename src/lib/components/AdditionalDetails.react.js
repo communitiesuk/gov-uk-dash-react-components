@@ -2,9 +2,19 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { AdditionalDetails as RealComponent } from '../LazyLoader';
 
-const AdditionalDetails = (props) => {
+const AdditionalDetails = ({
+    summaryText = "Add summary text",
+    detailsText = "Add details text",
+    hidden = false,
+    ...rest
+}) => {
     return (
-        <RealComponent {...props} />
+        <RealComponent
+            summaryText={summaryText}
+            detailsText={detailsText}
+            hidden={hidden}
+            {...rest}
+        />
     );
 };
 
@@ -29,7 +39,6 @@ AdditionalDetails.propTypes = {
      */
     hidden: PropTypes.bool,
 };
-
 
 export const propTypes = AdditionalDetails.propTypes;
 
