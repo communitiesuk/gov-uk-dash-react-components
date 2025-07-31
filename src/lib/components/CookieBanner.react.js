@@ -19,10 +19,10 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * } [props={}]
  * @return {*}
  */
-const CookieBanner = (id, tag, appTitle, domain, setProps) => {
+const CookieBanner = ({id, tag, appTitle, domain}) => {
     return (
         <CookieProvider>
-        <RealComponent id={id} tag={tag} appTitle={appTitle} domain={domain} setProps={setProps}/>
+        <RealComponent id={id} tag={tag} appTitle={appTitle} domain={domain}/>
         </CookieProvider>
     );
 }
