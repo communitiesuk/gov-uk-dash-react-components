@@ -114,8 +114,8 @@ app.layout = html.Div(
         html.Div([], id="checkbox-selection-statement"),
         html.H1("CookieBanner"),
         uk_gov_dash_components.CookieBanner(tag="G-1234",appTitle="Test", domain="www.test.com"),
-        # html.H1("CookiesPage"),
-        # uk_gov_dash_components.CookiesPage(),
+        html.H1("CookiesPage"),
+        uk_gov_dash_components.CookiesPage(tag="G-1234",appTitle="Test", previousPage="/previous"),
     ]
 )
 

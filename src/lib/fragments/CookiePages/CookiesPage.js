@@ -9,7 +9,8 @@ import { CookieContext } from '../../components/cookies/utils/CookieContext';
 
 const SuccessNotification = ({...props}) => {
     const {previousPage} = props
-    
+    console.log(props)
+    console.log(previousPage)
   return (
     <div className="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-1"
          role="alert" aria-labelledby="govuk-notification-banner-title"
@@ -28,12 +29,11 @@ const SuccessNotification = ({...props}) => {
   );
 };
 
-const CookiesPage = ({ ...props }) => {
+const CookiesPage = (props) => {
     const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
+    const [initialised, setInitialised] = useState(false);
     const [cookieThroughCookiePage, setCookieThroughCookiePage] = useState(false)
-    const { tag } = props;
-    const { appTitle } = props;
-    const { domain } = props;
+    const { tag, appTitle, domain } = props;
 
     const handleButtonClick = (cookieState) => {
       setCookieAccepted(cookieState);
@@ -43,22 +43,21 @@ const CookiesPage = ({ ...props }) => {
     };
   
     useEffect(() => {
-      const cookiePreference = Cookies.get('cookies_preferences_set');
-      const cookiePolicyRaw = Cookies.get('cookies_policy');
-      if (!cookiePolicyRaw) {
-        setCookieStateIsSet(false);
-        setCookieAccepted(false)
-      } else {
-        const cookiePolicy = JSON.parse(cookiePolicyRaw);
+    const cookiePreference = Cookies.get('cookies_preferences_set');
+    const cookiePolicyRaw = Cookies.get('cookies_policy');
 
-        if (cookiePreference === 'true') {
-            setCookieStateIsSet(true);
-            setCookieAccepted(cookiePolicy.usage)
-        } else {
-            setCookieStateIsSet(false);
-            setCookieAccepted(cookiePolicy.usage)
-        }
+    if (!cookiePolicyRaw) {
+        setCookieStateIsSet(false);
+        setCookieAccepted(false);
+    } else {
+        const cookiePolicy = JSON.parse(cookiePolicyRaw);
+        const accepted = cookiePolicy.usage;
+
+        setCookieAccepted(accepted);
+        setCookieStateIsSet(cookiePreference === 'true');
     }
+
+    setInitialised(true);
     }, []);
 
     return <>
@@ -176,27 +175,29 @@ const CookiesPage = ({ ...props }) => {
                 </table>
             </div>
 
-            <div className={"govuk-body govuk-!-margin-bottom-8"}>
-                <div className="govuk-radios">
-                    <div className="gem-c-radio govuk-radios__item">
-                        <input type="radio" name="cookies-usage" id="radio-c6a408c0-0"
-                               checked={ cookieAccepted }
-                               className="govuk-radios__input" onClick={() => setCookieAccepted(true)} />
-                        <label htmlFor="radio-c6a408c0-0" className="gem-c-label govuk-label govuk-radios__label">
-                            Use cookies that measure my website use
-                        </label>
-                    </div>
-                    <div className="gem-c-radio govuk-radios__item">
-                        <input type="radio" name="cookies-usage" id="radio-c6a408c0-1"
-                               checked={ !cookieAccepted }
-                               className="govuk-radios__input"
-                               onClick={() => setCookieAccepted(false)} />
-                        <label htmlFor="radio-c6a408c0-1" className="gem-c-label govuk-label govuk-radios__label">
-                            Do not use cookies that measure my website use
-                        </label>
+            { initialised && (
+                <div className={"govuk-body govuk-!-margin-bottom-8"}>
+                    <div className="govuk-radios">
+                        <div className="gem-c-radio govuk-radios__item">
+                            <input type="radio" name="cookies-usage" id="radio-c6a408c0-0"
+                                checked={ cookieAccepted }
+                                className="govuk-radios__input" onChange={() => setCookieAccepted(true)} />
+                            <label htmlFor="radio-c6a408c0-0" className="gem-c-label govuk-label govuk-radios__label">
+                                Use cookies that measure my website use
+                            </label>
+                        </div>
+                        <div className="gem-c-radio govuk-radios__item">
+                            <input type="radio" name="cookies-usage" id="radio-c6a408c0-1"
+                                checked={ !cookieAccepted }
+                                className="govuk-radios__input"
+                                onChange={() => setCookieAccepted(false)} />
+                            <label htmlFor="radio-c6a408c0-1" className="gem-c-label govuk-label govuk-radios__label">
+                                Do not use cookies that measure my website use
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
             
             <p className={"govuk-body"}>
                 <button className="gem-c-button govuk-button"
