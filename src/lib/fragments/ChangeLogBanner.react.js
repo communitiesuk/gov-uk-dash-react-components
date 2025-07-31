@@ -3,7 +3,9 @@ import React from 'react';
 import { propTypes } from '../components/ChangeLogBanner.react';
 import './ChangeLogBanner.css';
 
-const ChangeLogBanner = ({ updates = [] }) => {
+const ChangeLogBanner = (props) => {
+    const { updates } = props;
+
     if (!updates.length) return null;
 
     return (
