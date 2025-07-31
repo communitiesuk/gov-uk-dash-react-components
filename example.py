@@ -57,6 +57,9 @@ side_menu = [
 
 app.layout = html.Div(
     [
+        uk_gov_dash_components.ChangeLogBanner(
+            [{"type": "Update", "date": "2025/10/23", "heading": "Dummy update"}]
+        ),
         html.Div([], id="menu-open"),
         uk_gov_dash_components.Dropdown(
             label="Something",
