@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { propTypes } from '../components/AdditionalDetails.react';
 
-const AdditionalDetails = ({ id, summaryText, detailsText, hidden }) => {
+const AdditionalDetails = ({
+    id,
+    summaryText = "Add summary text",
+    detailsText = "Add details text",
+    hidden = false
+}) => {
     if (hidden) {
         return null;
     }
@@ -15,14 +21,20 @@ const AdditionalDetails = ({ id, summaryText, detailsText, hidden }) => {
     };
 
     useEffect(() => {
-        // Initially sync state with ref's open attribute
         if (detailsRef.current) {
             setIsOpen(detailsRef.current.open);
         }
     }, []);
 
     return (
-        <details ref={detailsRef} id={id} className="govuk-details" data-module="govuk-details" open={isOpen} onClick={handleToggle}>
+        <details
+            ref={detailsRef}
+            id={id}
+            className="govuk-details"
+            data-module="govuk-details"
+            open={isOpen}
+            onClick={handleToggle}
+        >
             <summary className="govuk-details__summary">
                 <span className="govuk-details__summary-text">
                     {summaryText}
@@ -34,5 +46,7 @@ const AdditionalDetails = ({ id, summaryText, detailsText, hidden }) => {
         </details>
     );
 };
+
+AdditionalDetails.propTypes = propTypes
 
 export default AdditionalDetails;

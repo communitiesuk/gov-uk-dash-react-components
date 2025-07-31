@@ -6,7 +6,7 @@ const AdditionalDetails = (props) => {
     return (
         <RealComponent {...props} />
     );
-}
+};
 
 AdditionalDetails.propTypes = {
     /**
@@ -24,19 +24,13 @@ AdditionalDetails.propTypes = {
      */
     detailsText: PropTypes.string,
 
-     /**
+    /**
      * Whether the component renders or not
      */
     hidden: PropTypes.bool,
 };
 
-AdditionalDetails.defaultProps = {
-    summaryText: "Add summary text",
-    detailsText: "Add details text",
-    hidden: false
-};
 
 export const propTypes = AdditionalDetails.propTypes;
-export const defaultProps = AdditionalDetails.defaultProps;
 
 export default AdditionalDetails;

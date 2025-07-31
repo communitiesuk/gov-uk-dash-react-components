@@ -93,6 +93,9 @@ app.layout = html.Div(
                 html.Div("Content for Section B"),
             ],
         ),
+        uk_gov_dash_components.AdditionalDetails(
+            "additional-details", "Additional details", "XYZ"
+        ),
     ]
 )
 
