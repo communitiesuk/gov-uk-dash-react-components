@@ -57,9 +57,11 @@ side_menu = [
 
 app.layout = html.Div(
     [
+        html.H1("ChangeLogBanner"),
         uk_gov_dash_components.ChangeLogBanner(
             [{"type": "Update", "date": "2025/10/23", "heading": "Dummy update"}]
         ),
+        html.H1("Dropdown"),
         html.Div([], id="menu-open"),
         uk_gov_dash_components.Dropdown(
             label="Something",
@@ -76,7 +78,9 @@ app.layout = html.Div(
             style={"minWidth": "50%"},
         ),
         html.Div(id="output"),
+        html.H1("ExpandableMenuItem"),
         html.Nav(side_menu),
+        html.H1("Tabs"),
         uk_gov_dash_components.Tabs(
             children=[
                 html.Div([html.H1("I am a jitter plot")]),
@@ -85,9 +89,11 @@ app.layout = html.Div(
             defaultTab=0,
             tabHeadings=["Display jitter plots", "Display time series plots"],
         ),
+        html.H1("Radios"),
         uk_gov_dash_components.Radios(
             options=["a", "b"], value="b", id="test", title="Which do you prefer?"
         ),
+        html.H1("Accordion"),
         uk_gov_dash_components.Accordion(
             id="simple-accordion",
             accordionHeadings=["Section A", "Section B"],
@@ -96,9 +102,13 @@ app.layout = html.Div(
                 html.Div("Content for Section B"),
             ],
         ),
+        html.H1("AdditionalDetails"),
         uk_gov_dash_components.AdditionalDetails(
             "additional-details", "Additional details", "XYZ"
         ),
+        html.H1("CheckboxList"),
+        uk_gov_dash_components.CheckboxList(id="checkboxlist",options=[{"label":"a","value":"a"},{"label":"b","value":"b"}]),
+        html.Div([],id="checkbox-selection-statement")
     ]
 )
 
@@ -123,6 +133,16 @@ def update_comparison(menu_open):
         return "menu is open"
     else:
         return "menu is closed"
+    
+@app.callback(
+    Output("checkbox-selection-statement", "children"),
+    [Input("checkboxlist", "value")],
+)
+def update_comparison(value):
+    if value:
+        return f"Checkbox {value} selected"
+    else:
+        return "No checkbox selected"
 
 
 if __name__ == "__main__":
