@@ -9,8 +9,6 @@ import { CookieContext } from '../../components/cookies/utils/CookieContext';
 
 const SuccessNotification = ({...props}) => {
     const {previousPage} = props
-    console.log(props)
-    console.log(previousPage)
   return (
     <div className="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-1"
          role="alert" aria-labelledby="govuk-notification-banner-title"
