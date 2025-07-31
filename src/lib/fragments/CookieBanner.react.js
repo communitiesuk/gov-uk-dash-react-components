@@ -7,11 +7,9 @@ import { CookieContext } from '../components/cookies/utils/CookieContext';
 import Cookies from "js-cookie";
 
 
-const CookieBanner = ({ ...props }) => {
+const CookieBanner = (props) => {
+    const {tag, appTitle, domain} = props
     const { cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted } = useContext(CookieContext);
-    const { tag } = props;
-    const { appTitle } = props;
-    const { domain } = props;
 
     useEffect(() => {
 

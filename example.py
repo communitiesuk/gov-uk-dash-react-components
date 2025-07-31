@@ -112,8 +112,8 @@ app.layout = html.Div(
             options=[{"label": "a", "value": "a"}, {"label": "b", "value": "b"}],
         ),
         html.Div([], id="checkbox-selection-statement"),
-        # html.H1("CookieBanner"),
-        # uk_gov_dash_components.CookieBanner(),
+        html.H1("CookieBanner"),
+        uk_gov_dash_components.CookieBanner(id="cookie-banner-id",tagappTitle="Test"),
         # html.H1("CookiesPage"),
         # uk_gov_dash_components.CookiesPage(),
     ]
