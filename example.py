@@ -107,8 +107,15 @@ app.layout = html.Div(
             "additional-details", "Additional details", "XYZ"
         ),
         html.H1("CheckboxList"),
-        uk_gov_dash_components.CheckboxList(id="checkboxlist",options=[{"label":"a","value":"a"},{"label":"b","value":"b"}]),
-        html.Div([],id="checkbox-selection-statement")
+        uk_gov_dash_components.CheckboxList(
+            id="checkboxlist",
+            options=[{"label": "a", "value": "a"}, {"label": "b", "value": "b"}],
+        ),
+        html.Div([], id="checkbox-selection-statement"),
+        # html.H1("CookieBanner"),
+        # uk_gov_dash_components.CookieBanner(),
+        # html.H1("CookiesPage"),
+        # uk_gov_dash_components.CookiesPage(),
     ]
 )
 
@@ -133,7 +140,8 @@ def update_comparison(menu_open):
         return "menu is open"
     else:
         return "menu is closed"
-    
+
+
 @app.callback(
     Output("checkbox-selection-statement", "children"),
     [Input("checkboxlist", "value")],

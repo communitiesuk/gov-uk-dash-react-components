@@ -12,8 +12,8 @@ import { CheckboxList as RealComponent } from '../LazyLoader';
  * } [props={}]
  * @return {*}
  */
-const CheckboxList = (props = {}) => {
-	return <RealComponent {...props} />;
+const CheckboxList = ({id, options=[], value=[],setProps}) => {
+	return <RealComponent id={id} options={options} value={value} setProps={setProps} />;
 };
 
 CheckboxList.propTypes = {

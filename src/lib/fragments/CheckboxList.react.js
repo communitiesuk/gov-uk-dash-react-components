@@ -32,12 +32,9 @@ const sanitizeOptions = (options) => {
  * property and the checked items are specified with the `value` property.
  * Each checkbox is rendered as an input with a surrounding label.
  */
-const CheckboxList = ({
-    id,
-    options = [],
-    setProps = () => {},
-    value = [],
-}) => {
+const CheckboxList = (props
+) => {
+    const {id, options, setProps, value} = props
     if (!id) {
         throw new Error('id is not defined');
     }
