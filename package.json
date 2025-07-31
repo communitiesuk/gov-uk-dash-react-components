@@ -16,7 +16,7 @@
         "start-mac": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
-        "build:js": "dotenv -- webpack --mode production",
+        "build:js": "cross-env NODE_OPTIONS=--openssl-legacy-provider dotenv -- webpack --mode production",
         "build:backends": "dash-generate-components ./src/lib/components uk_gov_dash_components -p package-info.json --r-prefix 'govuk' --jl-prefix 'govuk' --ignore \\.test\\.",
         "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
         "build": "npm run build:js && npm run build:backends",
