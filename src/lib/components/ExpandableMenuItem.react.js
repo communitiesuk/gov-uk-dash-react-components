@@ -71,9 +71,12 @@ ExpandableMenuItem.propTypes = {
      */
     setProps: PropTypes.func,
     /**
-     * An array of li HTML elements that will displayed on click
+     * An array of li HTML elements that will displayed on click or a single html element
      */
-    children: PropTypes.array,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]),
     /**
      * CSS class that will be applied when the menu is expanded
      */
