@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CookiesPage as RealComponent } from '../LazyLoader';
 import { CookieProvider } from './cookies/utils/CookieContext';
-import { ap } from 'ramda';
 
 /**
  * Lazy loaded CookiesPage
