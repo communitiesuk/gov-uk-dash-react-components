@@ -1,6 +1,6 @@
 {
     "name": "uk_gov_dash_components",
-    "version": "1.29.4",
+    "version": "1.30.",
     "description": "Dash components for Gov UK",
     "repository": {
         "type": "git",
@@ -13,10 +13,10 @@
     "main": "build/index.js",
     "scripts": {
         "start": "dotenv -- webpack-serve --config ./webpack.serve.config.js --open --port 8000",
-        "start-mac": "export NODE_OPTIONS=--openssl-legacy-provider && webpack-serve --config ./webpack.serve.config.js --open --port 8000",
+        "start-mac": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
-        "build:js": "dotenv -- webpack --mode production",
+        "build:js": "cross-env NODE_OPTIONS=--openssl-legacy-provider dotenv -- webpack --mode production",
         "build:backends": "dash-generate-components ./src/lib/components uk_gov_dash_components -p package-info.json --r-prefix 'govuk' --jl-prefix 'govuk' --ignore \\.test\\.",
         "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
         "build": "npm run build:js && npm run build:backends",
@@ -35,8 +35,8 @@
         "@react-aria/overlays": "^3.8.1",
         "@react-stately/combobox": "^3.0.4",
         "dash": "^3.24.23",
-        "js-cookie": "^3.0.5",
         "date-fns": "^2.30.0",
+        "js-cookie": "^3.0.5",
         "ramda": "^0.26.1",
         "react-router-dom": "^6.15.0",
         "styled-components": "^6.0.7",
@@ -54,6 +54,7 @@
         "babel-eslint": "^10.0.2",
         "babel-loader": "^8.0.6",
         "copyfiles": "^2.1.1",
+        "cross-env": "^10.0.0",
         "css-loader": "^3.0.0",
         "dotenv": "^16.3.1",
         "dotenv-cli": "^7.3.0",

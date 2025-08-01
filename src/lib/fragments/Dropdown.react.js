@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { useLabel } from '@react-aria/label';
 import AutoComplete from './AutoComplete.react';
 import {
-	defaultProps,
-} from '../components/AutoComplete.react';
-import {
 	dropdownPropTypes,
 } from '../components/Dropdown.react';
 
@@ -59,6 +56,5 @@ const Dropdown = (props = {}) => {
 }
 
 Dropdown.propTypes = dropdownPropTypes;
-Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;

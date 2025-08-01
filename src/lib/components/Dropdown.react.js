@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	defaultProps,
-} from './AutoComplete.react';
+import { AUTO_COMPLETE_DEFAULTS } from '../helper/autocomplete.defaults';
 import { Dropdown as RealComponent } from '../LazyLoader';
 
 
@@ -40,10 +38,9 @@ import { Dropdown as RealComponent } from '../LazyLoader';
  * @return {*}
  */
 const Dropdown = (props = {}) => {
-	return (
-		<RealComponent {...props} />
-	);
-}
+	const mergedProps = { ...AUTO_COMPLETE_DEFAULTS, ...props };
+	return <RealComponent {...mergedProps} />;
+};
 
 export const dropdownPropTypes = {
 	/**
@@ -184,6 +181,5 @@ export const dropdownPropTypes = {
 }
 
 Dropdown.propTypes = dropdownPropTypes;
-Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;

@@ -2,7 +2,7 @@ import { type } from 'ramda';
 
 import React, { useState } from 'react';
 
-import { defaultProps, propTypes } from '../components/Radios.react';
+import { propTypes } from '../components/Radios.react';
 
 const sanitizeOptions = options => {
     if (type(options) === 'Object') {
@@ -42,7 +42,7 @@ const Radios = (props) => {
         options,
         setProps,
         value: propValue,
-    } =  { ...defaultProps, ...props };
+    } =  { ...props };
 
      // State to manage the selected radio value
     const [value, setValue] = useState(propValue);
@@ -80,7 +80,6 @@ const Radios = (props) => {
     ) 
 }
 
-Radios.defaultProps = defaultProps;
 Radios.propTypes = propTypes;
 
 export default Radios

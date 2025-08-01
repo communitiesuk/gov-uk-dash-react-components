@@ -19,10 +19,10 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * } [props={}]
  * @return {*}
  */
-const CookieBanner = (props = {}) => {
+const CookieBanner = ({id, tag, appTitle, domain}) => {
     return (
         <CookieProvider>
-        <RealComponent {...props} />
+        <RealComponent id={id} tag={tag} appTitle={appTitle} domain={domain}/>
         </CookieProvider>
     );
 }
@@ -31,13 +31,6 @@ const CookieBanner = (props = {}) => {
  * PropTypes is a part of React, see full documenation below.
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
-
-CookieBanner.defaultProps = {
-    /**
-     * Any default prop values, e.g.
-     *   congratulatoryMessage: 'You are amazing'
-     */
-};
 
 CookieBanner.propTypes = {
     /**
@@ -72,7 +65,6 @@ CookieBanner.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = CookieBanner.defaultProps;
 export const propTypes = CookieBanner.propTypes;
 
 export default CookieBanner

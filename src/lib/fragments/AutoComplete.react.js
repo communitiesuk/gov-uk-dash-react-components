@@ -1,6 +1,6 @@
 /* eslint-disable no-undefined */
 import React, { render, useEffect, useRef, useState } from 'react';
-import { defaultProps, propTypes } from '../components/AutoComplete.react';
+import { propTypes } from '../components/AutoComplete.react';
 import Status from '../components/status';
 import { isIOSDevice } from '../helper/isIOS';
 import { isPrintableKeyCode, keyCodes } from '../helper/keys';
@@ -71,7 +71,7 @@ const AutoComplete = (props) => {
 		errorMessageWhenEmpty,
 		menu_open,
 		showOptionHeadings
-	} = { ...defaultProps, ...props }
+	} = {...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
 
@@ -806,5 +806,4 @@ AutoComplete.enhanceSelectElement = (configurationOptions) => {
 	configurationOptions.selectElement.id = configurationOptions.selectElement.id + '-select'
 }
 
-AutoComplete.defaultProps = defaultProps;
 AutoComplete.propTypes = propTypes;

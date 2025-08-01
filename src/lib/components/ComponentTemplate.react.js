@@ -10,9 +10,15 @@ import { ComponentTemplate as RealComponent } from '../LazyLoader';
  * } [props={}]
  * @return {*}
  */
-const ComponentTemplate = (props = {}) => {
+const ComponentTemplate = ({
+    id,
+    setProps,
+}) => {
     return (
-        <RealComponent {...props} />
+        <RealComponent
+            id={id}
+			setProps={setProps}
+        />
     );
 }
 
@@ -21,12 +27,6 @@ const ComponentTemplate = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
-ComponentTemplate.defaultProps = {
-    /**
-     * Any default prop values, e.g.
-     *   congratulatoryMessage: 'You are amazing'
-     */
-};
 
 ComponentTemplate.propTypes = {
     /**
@@ -46,7 +46,6 @@ ComponentTemplate.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = ComponentTemplate.defaultProps;
 export const propTypes = ComponentTemplate.propTypes;
 
 export default ComponentTemplate

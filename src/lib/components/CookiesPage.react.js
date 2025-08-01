@@ -17,10 +17,15 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * } [props={}]
  * @return {*}
  */
-const CookiesPage = (props = {}) => {
+const CookiesPage = ({id, tag, appTitle, previousPage}) => {
     return (
         <CookieProvider>
-        <RealComponent {...props} />
+        <RealComponent
+            id={id}
+            tag={tag}
+            appTitle={appTitle}
+            previousPage={previousPage}
+        />
         </CookieProvider>
     );
 }
@@ -30,12 +35,6 @@ const CookiesPage = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
- CookiesPage.defaultProps = {
-    /**
-     * Any default prop values, e.g.
-     *   congratulatoryMessage: 'You are amazing'
-     */
-};
 
 CookiesPage.propTypes = {
     /**
@@ -76,7 +75,6 @@ CookiesPage.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = CookiesPage.defaultProps;
 export const propTypes = CookiesPage.propTypes;
 
 export default CookiesPage

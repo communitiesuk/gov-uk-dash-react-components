@@ -90,6 +90,5 @@ function ComboBox(props) {
 	);
 }
 ComboBox.propTypes = propTypes;
-ComboBox.defaultProps = {};
 
 export default ComboBox;

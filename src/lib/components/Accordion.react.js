@@ -19,9 +19,23 @@ import { Accordion as RealComponent } from '../LazyLoader';
  * }} [props={}]                            // Component props with default empty object
  * @return {React.ReactElement}             // Returns a React element representing the accordion
  */
-const Accordion = (props = {}) => {
+const Accordion = ({
+    id,
+    accordionHeadings,
+    children,
+    showToggleText = true,
+    defaultSectionsOpen,
+    setProps,
+}) => {
     return (
-        <RealComponent {...props} />
+        <RealComponent
+            id={id}
+            accordionHeadings={accordionHeadings}
+            children={children}
+            showToggleText={showToggleText}
+            defaultSectionsOpen={defaultSectionsOpen}
+            setProps={setProps}
+        />
     );
 }
 
@@ -31,13 +45,6 @@ const Accordion = (props = {}) => {
  * https://reactjs.org/docs/typechecking-with-proptypes.html
  */
 
-Accordion.defaultProps = {
-    /**
-     * Any default prop values, e.g.
-     *   congratulatoryMessage: 'You are amazing'
-     */
-    showToggleText: true,
-};
 
 Accordion.propTypes = {
     /**
@@ -93,7 +100,6 @@ Accordion.propTypes = {
 
 };
 
-export const defaultProps = Accordion.defaultProps;
 export const propTypes = Accordion.propTypes;
 
 export default Accordion

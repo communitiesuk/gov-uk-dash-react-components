@@ -12,15 +12,8 @@ import { CheckboxList as RealComponent } from '../LazyLoader';
  * } [props={}]
  * @return {*}
  */
-const CheckboxList = (props = {}) => {
-	return (
-        <RealComponent {...props} />
-	);
-}
-
-CheckboxList.defaultProps = {    
-    options: [],
-    value: [],
+const CheckboxList = ({id, options=[], value=[],setProps}) => {
+	return <RealComponent id={id} options={options} value={value} setProps={setProps} />;
 };
 
 CheckboxList.propTypes = {
@@ -55,7 +48,6 @@ CheckboxList.propTypes = {
                  * The option's label
                  */
                 label: PropTypes.node.isRequired,
-
                 /**
                  * The value of the option. This value
                  * corresponds to the items specified in the
@@ -66,12 +58,10 @@ CheckboxList.propTypes = {
                     PropTypes.number,
                     PropTypes.bool,
                 ]).isRequired,
-
                 /**
                  * If true, this option is disabled and cannot be selected.
                  */
                 disabled: PropTypes.bool,
-
                 /**
                  * The HTML 'title' attribute for the option. Allows for
                  * information on hover. For more information on this attribute,
@@ -91,7 +81,7 @@ CheckboxList.propTypes = {
             PropTypes.number,
             PropTypes.bool,
         ])
-    ),   
+    ),
 
     /**
      * The ID of this component, used to identify dash components
@@ -106,7 +96,6 @@ CheckboxList.propTypes = {
     setProps: PropTypes.func,
 };
 
-export const defaultProps = CheckboxList.defaultProps;
 export const propTypes = CheckboxList.propTypes;
 
-export default CheckboxList
+export default CheckboxList;
