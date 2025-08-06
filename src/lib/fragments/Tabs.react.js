@@ -16,25 +16,36 @@ class Tabs extends Component {
     this.setState({ tabSelected: index });
   }
 
-  render() {
-    const selectedTabContent = this.props.children[this.state.tabSelected]
-    let tabHeaders;
-    if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
-      tabHeaders = this.renderTabHeader(0, this.props.tabHeadings[0]);
-    }
-    else {
-      tabHeaders = this.props.tabHeadings.map((tabHeader, index) => this.renderTabHeader(index, tabHeader))
-    }
-    return (
-      <div className="js-enabled">
-        <div className="govuk-tabs" data-module="govuk-tabs" id={this.props.id}>
-          <h2 className="govuk-tabs__title"> Contents </h2>
-          <ul className="govuk-tabs__list" role="tablist"> {tabHeaders} </ul>
-          <div className="govuk-tabs__panel">{selectedTabContent} </div>
+render() {
+  let tabHeaders;
+  if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
+    tabHeaders = this.renderTabHeader(0, this.props.tabHeadings[0]);
+  } else {
+    tabHeaders = this.props.tabHeadings.map((tabHeader, index) => this.renderTabHeader(index, tabHeader));
+  }
+
+  return (
+    <div className="js-enabled">
+      <div className="govuk-tabs" data-module="govuk-tabs" id={this.props.id}>
+        <h2 className="govuk-tabs__title"> Contents </h2>
+        <ul className="govuk-tabs__list" role="tablist"> {tabHeaders} </ul>
+        <div className="govuk-tabs__panel-container">
+          {this.props.children.map((child, index) => (
+            <div 
+              key={index} 
+              style={{ display: index === this.state.tabSelected ? 'block' : 'none' }}
+              className="govuk-tabs__panel"
+              role="tabpanel"
+              aria-hidden={index !== this.state.tabSelected}
+            >
+              {child}
+            </div>
+          ))}
         </div>
       </div>
-    )
-  }
+    </div>
+  );
+}
 
 
   renderTabHeader(index, tabHeader) {
