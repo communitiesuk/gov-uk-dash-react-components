@@ -45,7 +45,7 @@ const AutoComplete = (props) => {
 		cssNamespace,
 		value,
 		displayMenu,
-		minLength,
+		minLength=0, // <-- make sure default is 0 if not passed
 		name,
 		placeholder,
 		onConfirm,
@@ -525,17 +525,17 @@ const AutoComplete = (props) => {
 		}
 	}
 
-	const handleInputClick = (event) => {
-		if ((selectElement || showAllValues) && isMenuOpen === false) {
-			updateMenuForInput(event.target.value);
-		} else if (selectElement || showAllValues) {
-			handleComponentBlur({
-				menuOpen: false
-			}, true)
+	const handleInputClick = () => {
+		if (isMenuOpen) {
+			// Menu is open, so close it
+			handleComponentBlur({ menuOpen: false }, true);
 		} else {
-			handleInputChange(event)
+			// Menu is closed, so open it and show all options
+			setMenuOpen(true);
+			updateMenuForInput('');
 		}
-	}
+		};
+
 
 	const updateMenuForInput = (newQuery) => {
 		dataSource('', (options) => {

@@ -179,3 +179,7 @@
 		line-height: 1.31579;
 	}
 }
+
+.autocomplete__input:hover {
+  cursor: pointer;
+}
