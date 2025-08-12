@@ -34,7 +34,6 @@ import './autocomplete.css';
  * 	tStatusResults,
  *  errorMessage,
  *  errorMessageWhenEmpty,
- *  showOptionHeadings
  * }=defaultProps]
  * @return {*}
  */
@@ -70,7 +69,6 @@ const AutoComplete = (props) => {
 		errorMessage,
 		errorMessageWhenEmpty,
 		menu_open,
-		showOptionHeadings
 	} = {...props }
 	if (!id) { throw new Error('id is not defined') }
 	if (!source) { throw new Error('source is not defined') }
@@ -720,8 +718,18 @@ const AutoComplete = (props) => {
 							'whiteSpace:nowrap;width:1px">' + ` ${index + 1} of ${options?.length}</span>`
 							: ''
 
-						const disabledOrHeadingClass = showOptionHeadings ? `${optionClassName}--heading` : `${optionClassName}--disabled`
-						const optionClass = option.disabled === true ? `${optionClassName} ${disabledOrHeadingClass}` : `${optionClassName}${optionModifierFocused}${optionModifierOdd}`
+						let optionClass;
+
+						if (option.heading) {
+						// Option is a heading
+						optionClass = `${optionClassName} ${optionClassName}--heading`;
+						} else if (option.disabled) {
+						// Option is disabled
+						optionClass = `${optionClassName} ${optionClassName}--disabled`;
+						} else {
+						// Option is enabled and selectable
+						optionClass = `${optionClassName}${optionModifierFocused}${optionModifierOdd}`;
+						}
 						return (
 							<li
 								aria-selected={isFocus === index ? 'true' : 'false'}

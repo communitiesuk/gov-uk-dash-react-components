@@ -34,7 +34,6 @@ import { AUTO_COMPLETE_DEFAULTS } from '../helper/autocomplete.defaults';
  *  errorMessage,
  *  errorMessageWhenEmpty,
  *  menu_open, 
- *  showOptionHeadings
  * } [props={}]
  * @return {*}
  */
@@ -62,7 +61,6 @@ const AutoComplete = ({
 		errorMessage={errorMessage}
 		errorMessageWhenEmpty={errorMessageWhenEmpty}
 		menu_open={menu_open}
-		showOptionHeadings={showOptionHeadings}
 		{...props}
 	/>;
 };
@@ -203,11 +201,6 @@ export const basePropTypes = {
 	 * when the menu is opened.
 	 */
 	 menu_open: PropTypes.bool,
-	/**
-	 * Whether the list of autocomplete options contains headings that
-	 * are unclickable (like when disabled) but not struckthrough and bolded
-	 */
-	 showOptionHeadings: PropTypes.bool,
 
 };
 

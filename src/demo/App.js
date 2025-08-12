@@ -60,7 +60,6 @@ const App = () => {
                     id="autocomplete-default"
                     placeholder="Select Option"
                     value="Hello LOL2"
-                    showOptionHeadings={true}
                     setProps={setProps}
                 />
                 <span>The output value is {value}</span>
