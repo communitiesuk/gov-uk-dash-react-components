@@ -29,7 +29,6 @@ import DropdownArrowDown from "../components/dropdownArrowDown.react";
  *  errorMessage,
  *  errorMessageWhenEmpty,
  *  menu_open, 
- *  showOptionHeadings
  * } [props={}]
  * @return {*}
  */
@@ -53,5 +52,4 @@ export const AUTO_COMPLETE_DEFAULTS = {
     errorMessage: 'Invalid value entered',
     errorMessageWhenEmpty: false,
     menu_open: false,
-    showOptionHeadings: false
 };
