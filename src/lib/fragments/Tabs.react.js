@@ -17,20 +17,21 @@ class Tabs extends Component {
   }
 
 render() {
-  let tabHeaders;
-  if (this.props.children.length === 1 || xtype.type(this.props.children) !== 'array') {
-    tabHeaders = this.renderTabHeader(0, this.props.tabHeadings[0]);
-  } else {
-    tabHeaders = this.props.tabHeadings.map((tabHeader, index) => this.renderTabHeader(index, tabHeader));
-  }
+  const childrenArray = React.Children.toArray(this.props.children);
+
+  const tabHeaders = this.props.tabHeadings.map((tabHeader, index) => 
+    this.renderTabHeader(index, tabHeader)
+  );
 
   return (
     <div className="js-enabled">
       <div className="govuk-tabs" data-module="govuk-tabs" id={this.props.id}>
-        <h2 className="govuk-tabs__title"> Contents </h2>
-        <ul className="govuk-tabs__list" role="tablist"> {tabHeaders} </ul>
+        <h2 className="govuk-tabs__title">Contents</h2>
+        <ul className="govuk-tabs__list" role="tablist">
+          {tabHeaders}
+        </ul>
         <div className="govuk-tabs__panel-container">
-          {this.props.children.map((child, index) => (
+          {childrenArray.map((child, index) => (
             <div 
               key={index} 
               style={{ display: index === this.state.tabSelected ? 'block' : 'none' }}
