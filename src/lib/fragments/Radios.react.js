@@ -71,8 +71,13 @@ const Radios = (props) => {
         ? ""
         : "govuk-label"
 
+    const formStyle =
+        variant === "likert"
+            ? { flex: 1}
+            : {}
+
     return (
-        <div className='govuk-form-group' id={id}>
+        <div className='govuk-form-group' id={id} style={formStyle}>
             <fieldset className='govuk-fieldset'>
                 <legend className='govuk-fieldset__legend govuk-fieldset__legend--m'>
                     <label className={legendLabelClass}>{title}</label>
