@@ -66,11 +66,16 @@ const Radios = (props) => {
             ? "govuk-radios__item horizontal-radio"
             : "govuk-radios__item";
 
+    const legendLabelClass =
+        variant === "likert"
+        ? ""
+        : "govuk-label"
+
     return (
         <div className='govuk-form-group' id={id}>
             <fieldset className='govuk-fieldset'>
-                <legend className='govuk-fieldset__legend govuk-fieldset__legend--l'>
-                    <label className="govuk-label">{title}</label>
+                <legend className='govuk-fieldset__legend govuk-fieldset__legend--m'>
+                    <label className={legendLabelClass}>{title}</label>
                 </legend>
 
                 <div className={wrapperClass}>
