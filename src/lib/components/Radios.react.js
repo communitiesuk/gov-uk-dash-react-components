@@ -10,6 +10,7 @@ import { Radios as RealComponent } from '../LazyLoader';
  *  title,
  *  options,
  *  value,
+ *  variant
  * } [props={}]
  * @return {*}
  */
@@ -18,6 +19,7 @@ const Radios = ({
     title,
     options = [],
     value = [],
+    variant = "default",
     setProps,
 }) => {
     return (
@@ -26,6 +28,7 @@ const Radios = ({
             title={title}
             options={options}
             value={value}
+            variant={variant}
             setProps={setProps}
         />
     );
@@ -116,6 +119,8 @@ Radios.propTypes = {
      * The title to be displayed above all Radio items.
      */
     title: PropTypes.string,
+
+    variant: PropTypes.oneOf(['default', 'likert']),
 
     /**
      * Dash-assigned callback that gets fired when the value changes.
