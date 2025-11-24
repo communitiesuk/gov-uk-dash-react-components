@@ -120,7 +120,7 @@ Radios.propTypes = {
      */
     title: PropTypes.string,
 
-    variant: PropTypes.oneOf(['default', 'likert']),
+    variant: PropTypes.oneOf(['default', 'likert', 'inline']),
 
     /**
      * Dash-assigned callback that gets fired when the value changes.
