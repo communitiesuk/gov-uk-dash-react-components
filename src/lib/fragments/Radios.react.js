@@ -59,6 +59,8 @@ const Radios = (props) => {
     const wrapperClass =
         variant === "likert"
             ? "horizontal-radios"
+            : variant === "inline"
+            ? "govuk-radios govuk-radios--inline"
             : "govuk-radios govuk-radios--small";
 
     const itemClass =
