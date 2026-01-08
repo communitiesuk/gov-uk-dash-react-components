@@ -1,5 +1,30 @@
 import Cookies from "js-cookie";
+import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 
+let ai = null;
+
+export function enableAppInsights(connectionString) {
+  if (!connectionString) return null;
+  if (ai) return ai;
+
+  ai = new ApplicationInsights({
+    config: {
+      connectionString,
+      // because you’re only calling this after consent:
+      disableCookiesUsage: false,
+      enableAutoRouteTracking: true,
+    },
+  });
+
+  ai.loadAppInsights();
+  return ai;
+}
+
+export function disableAppInsights() {
+  if (ai) {
+    ai.config.disableCookiesUsage = true;
+  }
+}
 export const stripPII = function (str) {
     if (!str || str === "") return "";
 
@@ -14,41 +39,41 @@ export const stripPIIUri = function (str) {
 };
 
 
-export const setCookies = (tag) => {
-    window[`ga-disable-${tag}`] = false;
 
-    window.dataLayer = window.dataLayer || [];
+export const setCookies = (tag, app_insights_conn_string) => {
+  window[`ga-disable-${tag}`] = false;
 
-    function gtag() {
-        window.dataLayer.push(arguments)
-    }
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
 
-    window.gtag = window.gtag || gtag;
+  try {
+    gtag("js", new Date());
+    gtag("config", tag, { cookie_domain: "none" });
+  } catch (error) {
+    console.warn("Cookies accepted, but tracking is blocked by the browser.");
+    console.warn("Failed to set GA cookies.");
+  }
 
-    try {
-        gtag('js', new Date());
-        // GovUK tracker
-        gtag('config', tag, {
-            cookie_domain: 'none'
-        });
-
-    } catch (error) {
-        console.warn("Cookies accepted, but tracking is blocked by the browser.")
-        console.warn("Failed to set GA cookies.")
-    }
+  // ✅ App Insights only starts after consent
+  enableAppInsights(app_insights_conn_string);
 };
-
 
 export const deleteCookies = (tag, domain) => {
-    Cookies.remove("_ga", { path: '/', domain: domain });
-    Cookies.remove("_gid", { path: '/', domain: domain });
-    Cookies.remove(`_ga_${tag?.slice(2)}`, { path: '/', domain: domain })
-    Cookies.remove(`_gat_gtag_${tag}`, { path: '/', domain: domain });
+  Cookies.remove("_ga", { path: "/", domain });
+  Cookies.remove("_gid", { path: "/", domain });
+  Cookies.remove(`_ga_${tag?.slice(2)}`, { path: "/", domain });
+  Cookies.remove(`_gat_gtag_${tag}`, { path: "/", domain });
 
-    window[`ga-disable-${tag}`] = true;
+  window[`ga-disable-${tag}`] = true;
+
+  // ✅ Remove App Insights cookies (common names)
+  Cookies.remove("ai_user", { path: "/", domain });
+  Cookies.remove("ai_session", { path: "/", domain });
+
+  // ✅ If AI was already initialised, stop it using cookies going forward
+  disableAppInsights();
 };
-
-
 export const handleCookieAccept = (accepted, tag, domain) => {
     const
         today = new Date(),
