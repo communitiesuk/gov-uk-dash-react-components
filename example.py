@@ -7,7 +7,7 @@ app = dash.Dash(__name__)
 
 unique_las = ["LA1", "LA2", "LA3"]
 unique_las_dicts = [
-    {"label": "LA1", "value": "LA1", "heading":True},
+    {"label": "LA1", "value": "LA1", "heading": True},
     {"label": "LA2", "value": "LA2", "disabled": True},
     {"label": "LA3", "value": "LA3"},
 ]

@@ -14,15 +14,16 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * @param {
  * id: string,                            // Unique identifier for the cookie component
  * tag: string                            // Google Analytics tag string
+ * app_insights_conn_string: string       // Application insights connection string
  * appTitle: string                       // Name of the app
  * domain: string                         // Domain of the website
  * } [props={}]
  * @return {*}
  */
-const CookieBanner = ({id, tag, appTitle, domain}) => {
+const CookieBanner = ({id, tag, app_insights_conn_string, appTitle, domain}) => {
     return (
         <CookieProvider>
-        <RealComponent id={id} tag={tag} appTitle={appTitle} domain={domain}/>
+        <RealComponent id={id} tag={tag} app_insights_conn_string={app_insights_conn_string} appTitle={appTitle} domain={domain}/>
         </CookieProvider>
     );
 }
@@ -48,6 +49,11 @@ CookieBanner.propTypes = {
      * The Google Analytics tag.
      */
     tag: PropTypes.string,
+
+    /**
+     * Application insights connection string
+     */
+    app_insights_conn_string: PropTypes.string,
 
     /**
      * The name of the app to be referenced in CookieBanner.

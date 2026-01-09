@@ -12,17 +12,20 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * @param {
  * id: string,                            // Unique identifier for the cookie component
  * tag: string                            // Google Analytics tag string
+ * app_insights_conn_string: string       // Application insights connection string
  * appTitle: string                       // Name of the app
  * previousPage: string                   // The path to the previous page                   
  * } [props={}]
  * @return {*}
  */
-const CookiesPage = ({id, tag, appTitle, previousPage}) => {
+const CookiesPage = ({id, tag, app_insights_conn_string, appTitle, previousPage}) => {
+    console.log("app insight conn string",app_insights_conn_string)
     return (
         <CookieProvider>
         <RealComponent
             id={id}
             tag={tag}
+            app_insights_conn_string={app_insights_conn_string}
             appTitle={appTitle}
             previousPage={previousPage}
         />
@@ -52,6 +55,11 @@ CookiesPage.propTypes = {
      * The Google Analytics tag.
      */
     tag: PropTypes.string,
+
+    /**
+     * Application insights connection string
+     */
+    app_insights_conn_string: PropTypes.string,
 
     /**
      * The name of the app to be referenced in CookiesPage.
