@@ -8,17 +8,17 @@ import Cookies from "js-cookie";
 
 
 const CookieBanner = (props) => {
-    const {tag, appTitle, domain} = props
+    const {tag, app_insights_conn_string, appTitle, domain} = props
     const { cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted } = useContext(CookieContext);
 
     useEffect(() => {
 
         if (cookieAccepted) {
-            handleCookieAccept(true, tag, domain);
+            handleCookieAccept(true, tag, domain, app_insights_conn_string);
             setCookieStateIsSet(true);
         }
         else if (cookieAccepted === false) {
-            handleCookieAccept(false, tag, domain);
+            handleCookieAccept(false, tag, domain, app_insights_conn_string);
             setCookieStateIsSet(true);
         }
 

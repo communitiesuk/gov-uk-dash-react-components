@@ -31,12 +31,12 @@ const CookiesPage = (props) => {
     const {cookieStateIsSet, setCookieStateIsSet, cookieAccepted, setCookieAccepted} = useContext(CookieContext);
     const [initialised, setInitialised] = useState(false);
     const [cookieThroughCookiePage, setCookieThroughCookiePage] = useState(false)
-    const { tag, appTitle, domain } = props;
+    const { tag, app_insights_conn_string, appTitle, domain } = props;
 
     const handleButtonClick = (cookieState) => {
       setCookieAccepted(cookieState);
       setCookieThroughCookiePage(true)
-      handleCookieAccept(cookieState, tag, domain);
+      handleCookieAccept(cookieState, tag, domain, app_insights_conn_string);
       window.scrollTo(0, 0);
     };
   
