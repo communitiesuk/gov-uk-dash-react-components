@@ -66,11 +66,12 @@ const CookiesPage = (props) => {
             <h1 className={"govuk-heading-l"}>Cookies</h1>
 
             <p className={"govuk-body"}>
-                Cookies are files saved on your phone, tablet or computer when you visit a website.
+                Cookies are small files saved on your phone, tablet or computer when you visit a 
+                website.
             </p>
             <p className={"govuk-body govuk-!-margin-bottom-8"}>
-                We use cookies to store information about how you use the {appTitle} dashboard,
-                such as the pages you visit.
+                We use cookies to make the {appTitle} dashboard work and collect information about 
+                how you use our service.
             </p>
 
             <h2 className={"govuk-heading-m"}>Cookie settings</h2>
@@ -98,7 +99,7 @@ const CookiesPage = (props) => {
                         <tr className={"govuk-table__row"}>
                             <td className={"govuk-table__cell"}><b>cookies_policy</b></td>
                             <td className={"govuk-table__cell"}>
-                                Saves your chosen cookies preference for future vists.
+                                Saves your cookie consent settings.
                             </td>
                             <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>1 year
                             </td>
@@ -106,7 +107,7 @@ const CookiesPage = (props) => {
                         <tr className={"govuk-table__row"}>
                             <td className={"govuk-table__cell"}><b>cookies_preferences_set</b></td>
                             <td className={"govuk-table__cell"}>
-                                Saves whether you've set your cookie preferences to avoid repeat prompts.
+                                Lets us know that you’ve already set your cookie preferences.
                             </td>
                                 <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>1 year
                             </td>
@@ -115,31 +116,31 @@ const CookiesPage = (props) => {
                 </table>
             </div>
 
-            <h2 className={"govuk-heading-m"}>Cookies that measure website use</h2>
+            <h2 className={"govuk-heading-m"}>Analytics cookies (cookies that measure website use)</h2>
 
             <p className={"govuk-body"}>
-                We use Google Analytics to measure how you use the website so we can
-                improve it based on user needs. Google Analytics sets cookies that store
-                anonymized information about:
+                We use Google Analytics and Azure Application Insights to measure how you use the 
+                {appTitle} dashboard so we can improve it based on user needs.
             </p>
+
+            <p className={"govuk-body"}>We collect information about:</p>
 
             <div className={"govuk-body"}>
                 <ul className="govuk-list govuk-list--bullet">
                     <li>how you got to the site</li>
-                    <li>the pages you visit on the {appTitle} dashboard, and how long you spend on each page</li>
+                    <li>the pages you visit and how long you spend on them</li>
                     <li>what you click on while you're visiting the site</li>
+                    <li>technical information about your browser and device</li>
+                    <li>any errors that occur while you’re using the service</li>
                 </ul>
             </div>
 
 
             <p className={"govuk-body"}>
-                We’d like to set additional cookies so we can remember your settings, understand how
-                people use the service and make improvements.
+                We do not allow Google or Microsoft to use or share our analytics data.
             </p>
 
-            <p className={"govuk-body"}>
-                These are the Google Analytics cookies we’ll use:
-            </p>
+            <h2 className={"govuk-heading-m"}>Analytics cookies we use</h2>
 
             <div className={"govuk-body govuk-!-margin-bottom-8"}>
                 <table>
@@ -154,8 +155,7 @@ const CookiesPage = (props) => {
                         <tr className={"govuk-table__row"}>
                             <td className={"govuk-table__cell"}><b>_ga</b></td>
                             <td className={"govuk-table__cell"}>
-                                These help us count how many people visit the {appTitle} dashboard by
-                                tracking if you’ve visited before.
+                                Helps us count how many people visit the service by tracking if you’ve visited before.
                             </td>
                             <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>2 years
                             </td>
@@ -163,10 +163,26 @@ const CookiesPage = (props) => {
                         <tr className={"govuk-table__row"}>
                             <td className={"govuk-table__cell"}><b>_gid</b></td>
                             <td className={"govuk-table__cell"}>
-                                These help us count how many people visit the {appTitle} dashboard by
-                                tracking if you’ve visited before.
+                                Helps us count how many people visit the service by tracking if you’ve visited before.
                             </td>
                                 <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>24 hours
+                            </td>
+                        </tr>
+                        <tr className={"govuk-table__row"}>
+                            <td className={"govuk-table__cell"}><b>ai_user</b></td>
+                            <td className={"govuk-table__cell"}>
+                                Used by Azure Application Insights to identify unique users for 
+                                analytics and service monitoring.
+                            </td>
+                                <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>1 year
+                            </td>
+                        </tr>
+                        <tr className={"govuk-table__row"}>
+                            <td className={"govuk-table__cell"}><b>ai_session</b></td>
+                            <td className={"govuk-table__cell"}>
+                                Used by Azure Application Insights to group user activity into sessions.
+                            </td>
+                                <td className={"govuk-table__cell"} style={{ minWidth: `100px` }}>30 minutes
                             </td>
                         </tr>
                     </tbody>
