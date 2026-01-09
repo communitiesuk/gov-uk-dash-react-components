@@ -120,7 +120,7 @@ const CookiesPage = (props) => {
 
             <p className={"govuk-body"}>
                 We use Google Analytics and Azure Application Insights to measure how you use the 
-                Housing in England dashboard so we can improve it based on user needs.
+                {appTitle} dashboard so we can improve it based on user needs.
             </p>
 
             <p className={"govuk-body"}>We collect information about:</p>
