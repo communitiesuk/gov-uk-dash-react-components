@@ -18,7 +18,8 @@ import { CookieProvider } from './cookies/utils/CookieContext';
  * } [props={}]
  * @return {*}
  */
-const CookiesPage = ({id, tag, app_insights_conn_string=app_insights_conn_string, appTitle, previousPage}) => {
+const CookiesPage = ({id, tag, app_insights_conn_string, appTitle, previousPage}) => {
+    console.log("app insight conn string",app_insights_conn_string)
     return (
         <CookieProvider>
         <RealComponent

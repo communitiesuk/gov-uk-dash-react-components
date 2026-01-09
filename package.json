@@ -26,6 +26,7 @@
     "author": "DLUHC GovUk <pythonvisualisations@levellingup.gov.uk>",
     "license": "MIT",
     "dependencies": {
+        "@microsoft/applicationinsights-web": "^3.3.10",
         "@react-aria/button": "^3.4.3",
         "@react-aria/combobox": "^3.2.5",
         "@react-aria/focus": "^3.5.4",

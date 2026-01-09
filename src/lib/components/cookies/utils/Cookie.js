@@ -74,14 +74,14 @@ export const deleteCookies = (tag, domain) => {
   // ✅ If AI was already initialised, stop it using cookies going forward
   disableAppInsights();
 };
-export const handleCookieAccept = (accepted, tag, domain) => {
+export const handleCookieAccept = (accepted, tag, domain, app_insights_conn_string) => {
     const
         today = new Date(),
         [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDate()],
         cookieExpiryDate = new Date(year + 1, month, day).toUTCString();
     if (accepted) {
         document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":true,"preferences":true}')}; expires=${cookieExpiryDate};`;
-        setCookies(tag);
+        setCookies(tag, app_insights_conn_string);
     } else {
         document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
         deleteCookies(tag, domain);
