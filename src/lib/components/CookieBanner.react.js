@@ -53,7 +53,7 @@ CookieBanner.propTypes = {
     /**
      * Application insights connection string
      */
-    app_insights_conn_string: propTypes.string,
+    app_insights_conn_string: PropTypes.string,
 
     /**
      * The name of the app to be referenced in CookieBanner.
