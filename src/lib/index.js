@@ -12,6 +12,7 @@ import AdditionalDetails from './components/AdditionalDetails.react';
 import Radios from './components/Radios.react';
 import CookieBanner from './components/CookieBanner.react';
 import CookiesPage from './components/CookiesPage.react';
+import AppInsightsRehydrator from './components/AppInsightsRehydrator.react';
 import Cookies from 'js-cookie';
 
 export {
@@ -28,6 +29,6 @@ export {
     Radios,
     CookieBanner,
     CookiesPage,
-    Cookies
-
+    Cookies,
+    AppInsightsRehydrator
 };
