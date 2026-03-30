@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CookieBanner as RealComponent } from '../LazyLoader';
-import { CookieProvider } from './cookies/utils/CookieContext';
+import { CookieProvider } from '../utils/cookies/CookieContext';
 
 /**
  * Lazy loaded CookieBanner

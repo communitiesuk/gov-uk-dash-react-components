@@ -1,9 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
 
-import { handleCookieAccept } from '../../components/cookies/utils/Cookie';
+import { handleCookieAccept } from '../../utils/cookies/Cookie';
 
 import Cookies from "js-cookie";
-import { CookieContext } from '../../components/cookies/utils/CookieContext';
+import { CookieContext } from '../../utils/cookies/CookieContext';
 
 
 
