@@ -91,3 +91,23 @@ export const handleCookieAccept = (accepted, tag, domain, app_insights_conn_stri
     
 
 };
+
+
+export function hasUsageConsent() {
+  const cookiePolicyRaw = Cookies.get("cookies_policy");
+  if (!cookiePolicyRaw) return false;
+
+  try {
+    const cookiePolicy = JSON.parse(cookiePolicyRaw);
+    return cookiePolicy?.usage === true;
+  } catch {
+    return false;
+  }
+}
+
+export function rehydrateAppInsights(connectionString) {
+  if (!connectionString) return null;
+  if (!hasUsageConsent()) return null;
+
+  return enableAppInsights(connectionString);
+}
