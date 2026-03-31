@@ -24,7 +24,7 @@ export const CookieProvider = ({ children }) => {
       }
   
       if (!Cookies.get('cookies_policy')) {
-        document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate};`;
+        document.cookie = `cookies_policy=${encodeURIComponent('{"essential":true,"usage":false,"preferences":false}')}; expires=${cookieExpiryDate}; path=/`;
         setCookieStateIsSet(false);
       }
     }, []);
