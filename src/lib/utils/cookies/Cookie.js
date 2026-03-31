@@ -9,7 +9,6 @@ export function enableAppInsights(connectionString) {
   if (ai) {
     ai.core.getCookieMgr().setEnabled(true);
     ai.config.disableTelemetry = false;
-    ai.trackPageView();
     return ai;
   }
 
@@ -19,6 +18,7 @@ export function enableAppInsights(connectionString) {
       disableCookiesUsage: false,
       disableTelemetry: false,
       enableAutoRouteTracking: true,
+      enableSessionStorageBuffer: false,
     },
   });
 
@@ -32,6 +32,12 @@ export function disableAppInsights() {
 
   ai.config.disableTelemetry = true;
   ai.core.getCookieMgr().setEnabled(false);
+
+  if (typeof ai.unload === "function") {
+    ai.unload(false);
+  }
+
+  ai = null;
 }
 
 export const setCookies = (tag, app_insights_conn_string) => {
@@ -48,7 +54,8 @@ export const setCookies = (tag, app_insights_conn_string) => {
     console.warn("Cookies accepted, but tracking is blocked by the browser.");
   }
 
-  enableAppInsights(app_insights_conn_string);
+  // User has just accepted on the current page, so log that page once.
+  enableAppInsights(app_insights_conn_string, true);
 };
 
 export const deleteCookies = (tag, domain) => {
