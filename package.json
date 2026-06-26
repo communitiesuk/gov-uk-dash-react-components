@@ -2,15 +2,22 @@
     "name": "uk_gov_dash_components",
     "version": "2.1.4",
     "description": "Dash components for Gov UK",
+    "homepage": "https://github.com/communitiesuk/uk-gov-dash-components",
+    "bugs": {
+        "url": "https://github.com/communitiesuk/uk-gov-dash-components/issues"
+    },
     "repository": {
         "type": "git",
         "url": "git://github.com/communitiesuk/uk-gov-dash-components.git"
     },
-    "bugs": {
-        "url": "https://github.com/communitiesuk/uk-gov-dash-components/issues"
-    },
-    "homepage": "https://github.com/communitiesuk/uk-gov-dash-components",
+    "license": "MIT",
+    "author": "DLUHC GovUk <pythonvisualisations@levellingup.gov.uk>",
+    "type": "commonjs",
     "main": "build/index.js",
+    "directories": {
+        "man": "man",
+        "test": "tests"
+    },
     "scripts": {
         "start": "dotenv -- webpack-serve --config ./webpack.serve.config.js --open --port 8000",
         "start-mac": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-serve --config ./webpack.serve.config.js --open --port 8000",
@@ -23,8 +30,6 @@
         "build:activated": "npm run build:js && npm run build:backends-activated",
         "dist": "npm run build && python setup.py sdist bdist_wheel"
     },
-    "author": "DLUHC GovUk <pythonvisualisations@levellingup.gov.uk>",
-    "license": "MIT",
     "dependencies": {
         "@microsoft/applicationinsights-web": "^3.3.10",
         "@react-aria/button": "^3.4.3",
@@ -74,12 +79,12 @@
         "webpack-cli": "^3.3.12",
         "webpack-serve": "^3.2.0"
     },
-    "overrides": {
-        "chokidar": "3.5.3",
-        "glob-parent": "6.0.2"
-    },
     "engines": {
         "node": ">=8.11.0",
         "npm": ">=6.1.0"
+    },
+    "overrides": {
+        "chokidar": "3.5.3",
+        "glob-parent": "6.0.2"
     }
 }
