@@ -15,6 +15,11 @@ class ExpandableMenuItem extends Component {
   }
 
   getInitialHidden = (props) => {
+    // If this is the group for the current page, always open it.
+    if (props.collapsedByDefault === false) {
+      return false
+    }
+
     const storedValue = window.sessionStorage.getItem(this.getStorageKey(props))
 
     if (storedValue !== null) {
@@ -26,6 +31,14 @@ class ExpandableMenuItem extends Component {
 
   saveHiddenState = (hidden) => {
     window.sessionStorage.setItem(this.getStorageKey(), String(hidden))
+  }
+
+  componentDidMount() {
+    // Important: if the group starts open because it contains the current page,
+    // save that immediately. Otherwise the first navigation away will close it.
+    if (this.props.collapsedByDefault === false) {
+      this.saveHiddenState(false)
+    }
   }
 
   componentDidUpdate(prevProps) {
