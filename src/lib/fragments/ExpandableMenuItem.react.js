@@ -6,7 +6,38 @@ class ExpandableMenuItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: props.collapsedByDefault
+      hidden: this.getInitialHidden(props)
+    }
+  }
+
+  getStorageKey = (props = this.props) => {
+    return `expandable-menu-item-${props.id}`
+  }
+
+  getInitialHidden = (props) => {
+    const storedValue = window.sessionStorage.getItem(this.getStorageKey(props))
+
+    if (storedValue !== null) {
+      return storedValue === "true"
+    }
+
+    return props.collapsedByDefault
+  }
+
+  saveHiddenState = (hidden) => {
+    window.sessionStorage.setItem(this.getStorageKey(), String(hidden))
+  }
+
+  componentDidUpdate(prevProps) {
+    const becameActiveGroup =
+      prevProps.collapsedByDefault === true &&
+      this.props.collapsedByDefault === false
+
+    if (becameActiveGroup && this.state.hidden) {
+      this.setState(
+        { hidden: false },
+        () => this.saveHiddenState(false)
+      )
     }
   }
 
@@ -14,20 +45,23 @@ class ExpandableMenuItem extends Component {
     const expandableControl = event.target.getAttribute('data-expandable-control')
 
     if (expandableControl) {
-      this.setState({
-        hidden: !this.state.hidden
-      })
+      event.preventDefault()
+
+      this.setState(
+        (prevState) => ({
+          hidden: !prevState.hidden
+        }),
+        () => this.saveHiddenState(this.state.hidden)
+      )
     }
-
   }
-
 
   render() {
     const { id, title, children, expandedClass, collapsedClass, ariaLabel, subMenuClass, titleClass } = this.props
 
     return (
       <li id={id} aria-label={ariaLabel}
-        aria-controls="expandable-menu-contents" aria-expanded={!this.state.hidden} className={this.state.hidden ? collapsedClass : expandedClass} onClick={this.handleSubMenuVisibility}>
+        aria-controls={"expandable-menu-contents-" + id} aria-expanded={!this.state.hidden} className={this.state.hidden ? collapsedClass : expandedClass} onClick={this.handleSubMenuVisibility}>
         <a className={titleClass} href="#" data-expandable-control="expandable-link">
           {title}
         </a>
